@@ -46,7 +46,9 @@
     - tube 使模型专注于 feature map 的一个子集 —— 运动员（忽略背景）
     - self-attention 生成了 时间维度 上的 上下文信息
 
-### 1-2 TSA-Net 流程
+### 1-2 Approach
+
+![](./assets/TSA%20Pipline.png)
 
 1. 包含两个步骤：
 
@@ -101,7 +103,7 @@
         $$
 
 
-#### TSA Module 实现
+#### TSA Module
 
 根据 Bounding-Box 对 I3D 生成的 feature-map 进行过滤，减少 self-attention 处理的数据量
 
@@ -382,3 +384,5 @@
     > 传统的 l<sub>2</sub> 距离对于从属于不同 class 的 action 是无意义的；
     >
     > 相比于 Spearman's Rank Correlation 注重 RANK，R-l<sub>2</sub> 更加重视具体数值
+
+## 3 PECoP
