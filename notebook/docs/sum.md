@@ -747,3 +747,210 @@ location
     - 使用 Unsupervised 方法减少数据标注、降低主观影响
 
     - 对 复杂、长期 动作的质量进行评估
+
+## 5 TPT
+
+### 5-1 Abstract
+
+- 先前的 SOTA 方法
+
+    使用 ranking-based pairwise comparison，或 regression-based methods 
+
+    => 通过对 backbone 输出做 global Pooling，基于 *整个视频 (holistic video)* 进行 regression / ranking
+
+    !!! bug "限制了对 细粒度·类内差异 (fine-grained intra-class variation) 的捕捉"
+
+- 创新点
+
+    regression-based，可以在避免 part-level 监督的情况下学习更细粒度的特征
+
+    1. 使用 Temporal Parsing Transfomer 将 "整体特征(holistic)" 拆解为 temporal part-level 形式
+
+        !!! example "将 Diving 拆解为 approach -> take off -> flight 等多个阶段"
+
+        - 使用一系列 queries 来表示 <u>特定动作的 atomic temporal patterns</u>
+
+        - 在 Decoding 阶段，将 frames 转换为 长度固定的·按照时序排列的 part representations
+
+        - 基于 (relative pairwise) part representations 和 对比回归 得到最终的 Quality Score
+
+    2. 提出了两种新的 Loss Function 用于 Decoder
+
+        > 因为当前的数据集都没有提供 temporal part-level labels / partitions
+
+        1. Ranking Loss: Cross Attenion 阶段学习的参数符合时序
+
+        2. Sparsity Loss: 让学习的 part representation 更具 "判别性(discriminative)"
+
+!!! info "Temporal Action Parsing: 细粒度动作识别"
+    - Zhang: Temporal Query Network adopted query-response functionality
+    - Dian: TransParser
+
+    上述工作均聚焦于 "frame-level" 的特征增强，而本文则侧重于提取 "更具备语义信息的·part representation"
+
+### 5-2 Approach
+
+![](./assets/TPT%20Pipeline.png)
+
+#### Overview
+
+1. 使用滑动窗口将 input 划分为 $T \times M \text{frames}$ 的 <u>重叠 Clips</u>
+
+2. 对于分割得到的 Clips，使用 I3D (backbone) 处理得到 $V = \{v_t \in \mathbb{R}^D\}_{t=1}^T$
+
+    - $D$ 为 feature dimension
+
+    - 每个 $v_t$ 经由空间上的 Average Pooling 得到（本模型并不关注 spatial patterns）
+
+3. Contrastive Regression
+
+    1. <u>Clip-Level</u> $V$ $\rightarrow$ <u>Temporal Part-Level</u> representations $P =\{p_k\in \mathbb{R}^d\}_{k=1}^K$
+
+        > $d$ 为 Part Feature-dimension, $K$ 为 query 总数
+        > 
+        > 操作分别对 Input & Exampler 进行，生成 $P, P_0$
+
+    2. 基于 Part-aware Contrastive Regressor 计算 Part-wise Relative representations
+    3. Fuse Part-aware representation 以预测 Relative Score $\Delta s = R(P,P_0)$
+    4. Final Score = $s + \Delta s$（$s$ 为 exampler 的实际分数）
+
+#### Temporal Parsing Transformer
+> 输入：Clip-Level Representation $V$，输出：quries (Part Representation)
+
+!!! info "区别于 DETR 的 Transformer 架构"
+    1. 因为 Encoder 不能提高本方法的准确性，本方法 **仅包含 Decoder**：
+        
+        可能是因为：
+        
+        - clip-level self-attention smooths the temporal representations
+
+        - 本方法 cannot decode part presentations without part labels
+
+    2. 在 cross attention block 添加了参数 $temperature$ 以控制内积的放大（？）
+
+    3. 没有把位置信息（clip id）embed 到输入数据中
+    
+        => query 用于表示 atomic patterns 而非作为时间锚点
+
+对于 $i^{th}$ Decoder Layer，有：
+
+- Decoder Part Feature $p^{(i)}_k \in \mathbb{R}^d$
+
+- Learnable Atomic Patterns $q_k \in \mathbb{R}^d$
+
+- embedded Clip Rrpresentation $v_t \in \mathbb{R}^d$
+
+<center>先用 $p^{(i)}_k + q_k$ 得到 query，随后和 $v_t$ 做 cross attention 得到输出 $\alpha_{k,t}$</center>
+
+$$
+\alpha_{k,t} = \frac{
+    \exp{((p_k^{(i)} + q_k)^T \cdot \frac{v_t}{\tau})}
+}{
+    \sum_{j=1}^T \exp{((p_k^{(i)} + q_k)^T \cdot \frac{v_j}{\tau})}
+}
+$$
+
+- $\alpha_{k,t}$ 表示 query<sup>k</sup> 和 clip<sup>t</sup> 之间的 attention value
+- $\tau \in \mathbb{R}$ 是可调参数，用于放大内积以使得 attention 更加 discriminative.
+
+---
+
+由于本模块的目的在于：将 Clip Repre 聚合到 Part Repre 中，我们需要根据如下策略对 Part Repre 进行更新：
+
+$$
+p^{(i)}_k += \sum_{j=1}^{T} \alpha_{k,j} v_j + p_k^{(i)}
+$$
+
+#### Part-Aware Contrastive Regression
+
+> 在 Temporal Parsing Transformer 模块，我们已经成功将输入转化为 Part Repre $P = \{p_k\}$;
+> 
+> 此时我们需要对 Input 和 Exampler 的 $P,P_0$ 进行比较，并生成 Relative Score $\Delta s$
+
+!!! tip "我们可以分别计算每个 Part 的相对分数，最后把他们 fuse 到一块儿"
+
+对于 $k^{th}$ Part，我们通过 *多层感知机(MLP)* $f_r(.)$ 生成对应的 relative pairwise representation $r_k \in \mathbb{R}^d$：
+
+> 所有的 Parts <u>共用一个 MLP</u>
+
+$$
+r_k = f_r(\text{concat}([P_k;P_k^0]))
+$$
+
+---
+
+为了提高准确性，此处使用 Group-aware Regression strategy 生成 Relative Score $\Delta s$：
+
+- 对 Training Set 中所有可能的 pair 生成 $B$ 个 $\Delta s$ 取值区间（类似 CoRe Tree 里的区间非偏区间划分策略）
+
+- 生成 One-Hot Label $\{l_n\}$，表示 $\Delta s[i]$ 所处的区间编号
+
+---
+
+对 Input Video 的预测：
+
+1. 对 Relative Part Repre $\{r_k\}$ 使用 Average Pooling
+2. 使用 2 * 2-Layer MLP 对输入视频的 classification label $l$ & 回归结果 $\gamma$ 进行预测
+
+### 5-3 Optimization
+
+- 假设：每一类动作都可以按照相同顺序进行阶段切分，并通过 transformer query 进行表示
+
+- 在 Cross Attention 阶段，$k^{th}$ query 的 attention center $\\overline{\alpha}_k$：
+
+    $$
+    \overline{\alpha}_k = \sum_{t=1}^T t \cdot \alpha_{k,t} \in [1,T]
+    $$
+
+    - $\{\alpha_{k,t}\}$ 是已经 normalized 的 attention responses
+    - $k^{th}$ query 对于所有 clip 的 attention 总和为 1，即 $\sum_{t=1}^T \alpha_{k,t} = 1$
+
+#### Cross Attention Block
+
+1. Ranking Loss
+
+    为了鼓励各 query 聚焦于 <u>different temporal region</u>，我们对 attention center 使用 Ranking Loss
+
+    !!! tip "理想情况下，Part Repre 在（同类）不同视频下有 <u>相同时序</u>"
+
+    $$
+    L_{rank} = \sum_{k=1}^{K-1} \max{(0,\ \overline{\alpha}_k - \overline{\alpha}_{k+1} + m)} + \max{(0,\ 1-\overline{\alpha}_1 + m)} + \max{(0,\ \overline{\alpha}_k - T + m)}
+    $$
+
+    <center>$m$ 是用于控制惩罚力度的超参数</center>
+
+    - 第一项用于确保顺序 $\overline{\alpha}_k \lt \overline{\alpha}_{k+1}$ 成立
+
+    - 后两项分别用于确定首位顺序 $\overline{\alpha}_0 = 1$ 和 $\overline{\alpha}_{k+1} = T$ 成立
+    （$\overline{\alpha}_k \in [1,T]$）
+
+2. Sparsity Loss
+
+    鼓励每一个 query 聚焦于靠近 center $\mu_k$ 的那些切片：
+
+    $$
+    L_{sparsity} = \sum_{k=1}^K\sum_{t=1}^T|t - \overline{\alpha}_k| \cdot \alpha_{k,t}
+    $$
+
+#### Contrastive Regressor
+
+基于比较学习的回归器需要预测 分组标签 $l$ & 相对偏差 $\gamma$，我们：
+
+- 对各组使用 BCE Loss
+
+    $$
+    L_{cls} = - \sum_{n=1}^N [l_n \log{(\vec{l}_n)} + (1-l_n) \log{(1 - \vec{l}_n)}]
+    $$
+
+- 对由 ground-truth 生成的 interval 信息使用 Square Error
+
+    $$
+    L_{reg} = \sum_{n=1}^N (\gamma_n \ \vec{\gamma}_n)^2, \text{ where } l_n=1
+    $$
+
+
+#### Overall Training Loss
+
+$$
+L = \lambda_{cls} L_{cls} + \lambda_{reg} L_{reg} + \lambda_{rank} \sum_{i=1}^L L^i_{rank} + \lambda_{sparsity} \sum_{i=1}^L L^i_{sparsity}
+$$
