@@ -45,8 +45,9 @@ theme:
       quote: octicons/quote-16
   features:
     - navigation.footer
+    - navigation.expand
     - content.code.copy
-    - content.code.annotate  
+    - content.code.annotate 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -57,6 +58,8 @@ markdown_extensions:
       generic: true
   - admonition
   - pymdownx.details
+  - toc:
+      toc_depth: 3
 extra_css:
   # fonts
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
