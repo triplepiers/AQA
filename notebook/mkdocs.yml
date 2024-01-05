@@ -70,6 +70,7 @@ extra_javascript:
 nav:
 - Home: index.md
 - Summary: sum.md
+- Repitition: rep.md
 - References:
   - 2021:
     - CoRe 组感知对比回归: ref/2021/CoRe.pdf
@@ -79,4 +80,3 @@ nav:
     - TPA 时序转译 transformer: ref/2022/TPA.pdf
   - 2023:
     - PECoP 连续预训练: ref/2023/PECoP.pdf
-
