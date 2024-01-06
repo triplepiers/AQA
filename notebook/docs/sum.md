@@ -1088,7 +1088,10 @@ $$
 
     => 使用 Group Contrastive Learning，对具有相似 sub-action seq 的视频进行对比
 
-- 输入的 $(f_i,f_a)$ 会被赋予与其动作、语义具有最大相似度组别的 Pseudo Label $p$
+- 输入的 $(f_i,f_a)$ 会被
+
+    - 赋予与其动作、语义具有最大相似度组别的 Pseudo Label $p$
+    - 最终生成 sub-action sequence $(\overline{f}_i,\overline{f}_a)$
 
 - 具有相同 Pseudo Label 的 feature 将组成如下的 group：
 
@@ -1124,6 +1127,14 @@ $$
 
 #### Spatio-Temporal Multiscale Transformer
 
+!!! tip "输入 sub-action sequence $(\overline{f}_i,\overline{f}_a)$，并在不同 scale 上挖掘 long-range dependencies"
+
 ##### 1 Actor-Centric Multiscale Transformer
+
+- 本文提出的 Transformer 各阶段具有各异的 channel resolution => channel & scale 逐渐增加
+
+- 
+
+
 
 ##### 2 Multiscale Temporal Fusion

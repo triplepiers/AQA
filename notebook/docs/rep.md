@@ -73,7 +73,7 @@
 
 ## 2 TSA-Net
 
-!!! info "Source Code"
+??? info "Source Code"
 
     - Src
 
@@ -83,8 +83,34 @@
 
     - Dataset: [FR-FS (star)](https://pan.baidu.com/s/1Nkl6FlM2PcvbofegNjCIGA)
 
-        > 新的一天从发现学长没下过这个 dataset 开始崩溃
+        > 新的一天从发现学长没下过这个 dataset 开始崩溃        
 
+??? quote "Prepareation"
+
+    - 服务器: `10.214.211.137`
+
+    - 准备工作：
+
+        - 在 `~/dataset` 中下载 FR-FS 数据集，并建立软链接至 `/TSA/data/FRFS`
+
+        - 在 `~/TSA/data` 路径下，下载预训练 backbone
+
+        - `AttributeError: module 'distutils' has no attribute 'version'`
+
+            tensordBoard 版本与 setuptool 不匹配，重装 `setuptools==58.0.4`
+
+        - `Descriptors cannot be created directly.`
+
+            将 protobuf 降级至 3.20.X
+
+    - 模型训练（在 `~/TSA` 根路径下）
+
+        ```bash title="使用 nohup 进行后台训练"
+        # train TSA-Net >> TSA.log
+        nohup python train.py --gpu 0 --model_path TSA-USDL --TSA >> TSA.log  2>&1 &
+        # train Plain-Net >> plain.log
+        nohup python train.py --gpu 0 --model_path USDL >> plain.log  2>&1 &
+        ```
 
 ## 3 TPT
 
@@ -106,3 +132,5 @@
         - 补充依赖 `tensorboardX`
 
         - 在 `~/PECoP` 路径下，下载预训练 I3D backbone（同 CoRe）
+
+        
