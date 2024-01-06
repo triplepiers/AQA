@@ -1111,7 +1111,69 @@ $$
 
         > Action Seq 相同，但 Sub-action Seq 不同
 
-- 有 Group Contrastive Loss：
+
+#### Spatio-Temporal Multiscale Transformer
+
+!!! tip "输入 sub-action sequence $(\overline{f}_i,\overline{f}_a)$，并在不同 scale 上挖掘 long-range dependencies"
+
+##### 1 Actor-Centric Multiscale Transformer
+
+- 本文提出的 Transformer 各阶段具有各异的 channel resolution => channel & scale 逐渐增加
+
+- 该 Multiscale Transformer，由 3 * stage（结构相同）构成
+    
+    - 每个 stage 
+
+        - 在 early Layer 处理粗粒度特征，并在更深层处理细粒度特征
+    
+        - 各包含了 3 个 transformer block + 8 attention head，用于处理相同 scale 的信息并生成 Attention 值
+
+            $$
+            \hat{f}_i += MLP(LN(attention)), attention = Multihead(LN(\frac{Q_a(K_i)^T}{\sqrt{d_k}})V_i) + \overline{f}_i
+            $$
+
+            <center>$Ln(.)$ 为 Layer Norm 操作，$MLP$ 为两层使用 GELU 激活函数</center>
+
+            <center><img src="../assets/FSPN%20block.png" style="max-height:250px"></center>
+            
+            <center>block 结构：$\overline{f}_a = query, \overline{f}_i=memory$</center>
+
+    - 对于输入特征 $f \in \mathbb{R}^{T' \times C'}$:
+
+        1. 进行一次 1D 卷积 (kernel=3, stride=1)
+
+        2. 使用包含 $L$ 个 block 的 Multiscale Transformer，其中 stage n 的 output_shape = $T' \times 2^nC'$（放大）
+
+            > channel dimesion 会在 stage 切换时通过 MLP 扩大 2 倍
+
+##### 2 Multiscale Temporal Fusion
+
+<center><img src="../assets/FSPN%20fusion.png" style="max-width:500px;"></center>
+
+对于第 $n$ 层的 output shape 为 $F_n = T' \times 2^nC'$，而第 $n+1$ 层则为 $F_{n+1}= T' \times 2^{n+1}C'$
+
+- 为了成功进行 aggregate，我们需要进行 upsampling: $U_\varphi(F_n) = \text{Upsampling}(R_n\mathcal{W}^n)$
+
+- 随后使用 element-wise addition 更新 $F_{n+1} = U_\varphi(F_n) + F_{n+1}\mathcal{W}^{n+1}$
+
+最终通过 fuse 的到的 intergrated feature $\mathcal{F} = \text{Concat}(F_1, ..., F_{N})$
+
+### 6-4 Optimization
+
+#### Overall Training Loss
+
+最终将由 2-Layer MLP 对 $\text{MaxPool}(\mathcal{F})$ 预测得到分组标签 $\gamma_i$ 和 回归分数 $y_i$
+
+- 对于回归预测，有：
+
+    $$
+    \begin{align*}
+    L_{bce} &= - \sum_{i=1}^I(\gamma_i log(\overline{\gamma_i}) + (1-\gamma_i)log(1-\overline{\gamma}_i)) \\
+    L_{reg} &= \sum_{i=1}^I \| \overline{y}_i - y_i\|^2,\ \text{where } \gamma_i = 1
+    \end{align*}
+    $$
+
+- 对 Group Contrastive，有：
 
     $$
     L_{gc} = - \log{\frac{
@@ -1124,17 +1186,3 @@ $$
     - $h(.) = \exp{(\text{cosine similarity})}$ 
 
     - $\tau$ 是 teperature 超参数
-
-#### Spatio-Temporal Multiscale Transformer
-
-!!! tip "输入 sub-action sequence $(\overline{f}_i,\overline{f}_a)$，并在不同 scale 上挖掘 long-range dependencies"
-
-##### 1 Actor-Centric Multiscale Transformer
-
-- 本文提出的 Transformer 各阶段具有各异的 channel resolution => channel & scale 逐渐增加
-
-- 
-
-
-
-##### 2 Multiscale Temporal Fusion
