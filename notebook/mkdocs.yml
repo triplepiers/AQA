@@ -80,3 +80,4 @@ nav:
     - TPA 时序转译 transformer: ref/2022/TPA.pdf
   - 2023:
     - PECoP 连续预训练: ref/2023/PECoP.pdf
+    - FSPN 细粒度时空解析网络: ref/2023/STPN.pdf

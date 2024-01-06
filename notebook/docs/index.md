@@ -67,3 +67,7 @@
 - [PECoP](./ref//2023/PECoP.pdf): Parameter Efficient Continual Pretraining for Action Quality Assessment 
 
     **(WACV 2023 Oral)** [[Paper]](https://arxiv.org/pdf/2311.07603.pdf) [[Code]](https://github.com/Plrbear/PECoP)
+
+- [FSPN](./ref/2023/STPN.pdf): Fine-Grained Spatio-Temporal Parsing Network for Action Quality Assessment 
+
+    **(TIP 2023)** [[Paper]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10317826)

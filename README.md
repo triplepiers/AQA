@@ -1,6 +1,6 @@
 # Tips
 Action Quality Assessment（毕设救一下啊毕设）
-
+  
 ## Server
 
 - 使用的公钥是 `~/.ssh/id_rsa.pub`
@@ -23,12 +23,34 @@ exit # log out
 
 > 我超，3.6 版本的 wheel 构建需要交叉编译（我又没有 sudo 权限给服务器装 G++）
 
-| EnvName | PythonVer | Desc. | pkgs |
-| :-----: | :-------: | ----- | ---- |
-| torch39 | 3.9.18 | for CoRe |Pytorch(1.10.1), torchvision(0.11.2), tourch_videovision |
-
+| EnvName | PythonVer | Desc. |
+| :-----: | :-------: | ----- |
+| torch39 | 3.9.18 | for CoRe |
 
 ## Tip
+
+- 后台执行命令
+
+    ```bash
+    nohup [command] & # 命令将在断开 ssh 连接后继续执行，输出被写入 nohup.out
+
+    # 查看并杀死后台运行的 wget 命令
+    ps aux | grep wget
+    kill -9 [pid]
+    ```
+
+- 软连接
+
+    ```bash
+    # 创建软链接
+    ln -s [源文件或目录] [目标文件或目录]
+
+    # 删除软链接
+    rm -rf [软链接名字]
+
+    # 修改软链接
+    ln -snf [新的源文件或目录] [目标文件或目录]
+    ```
 
 - [bypy](https://github.com/houtianze/bypy) 下载百度云文件
 
@@ -41,13 +63,20 @@ exit # log out
 
     # 我的应用数据/bypy/* => currentDir
     bypy syncdown -v
+
+    # 下载指定文件
+    bypt downfile [pth/to/remoteFile] [path/to/localFile]
     ```
 
 
-- pip 临时换源
+- pip 
 
     ```bash
+    # 临时换源
     pip install -i https://pypi.tuna.tsinghua.edu.cn/simple [some-package]
+
+    # 从列表安装指定依赖
+    pip install -r requirements.txt
     ```
 
 - 查看服务器下的显卡信息
@@ -75,5 +104,3 @@ exit # log out
     ./Miniconda3-latest-Linux-x86_64.sh
     # 一直 enter 到接受条款，默认安装在当前用户路径下
     ```
-
- wget -c --referer=[网盘分享链接] -O [文件名] "[文件下载链接]"
