@@ -71,3 +71,7 @@
 - [FSPN](./ref/2023/STPN.pdf): Fine-Grained Spatio-Temporal Parsing Network for Action Quality Assessment 
 
     **(TIP 2023)** [[Paper]](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10317826)
+
+- [IRIS](./ref/2023/IRIS.pdf): Interpretable Rubric-Informed Segmentation for Action Quality Assessment 
+
+    **(ACM-IUI 2023)** [[Paper]](https://arxiv.org/pdf/2303.09097.pdf)

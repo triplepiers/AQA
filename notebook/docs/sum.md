@@ -1186,3 +1186,97 @@ $$
     - $h(.) = \exp{(\text{cosine similarity})}$ 
 
     - $\tau$ 是 teperature 超参数
+
+## 7 IRIS
+
+!!! info "本文聚焦的问题：(花滑)单人短节目"
+    - 节目时长约为 3min
+
+    - 相比于自由滑，节目编排受制于更多的规则
+
+### 7-1 Abstract
+
+- 创新点
+
+    > XAI 开发者应该学习 <u>具体应用场景（运动）的评分标准(rubrics)</u>
+
+    本文提出的 Interpretable Rubric- Informed Segmentation：
+
+    - 其给出评分的过程是 **可解释** 的，依照 rubric 决定 what to consider
+
+        使用 4 个 key feature 进行 预测&解释: Score, Sequence, Segments, and Subscores
+
+    - 对输入进行分割，以定位对应特定 criteria 的特殊 section
+
+    - 本文仅对 *figure skating* 进行测定，但方法同样适用于其他 Video-based AQA 问题
+
+### 7-2 Relative Works
+
+1. Action Quality Assessment
+
+    目前已经有许多针对 Sport 及其他领域的 AQA AI 解决方案被提出，通过训练一个 Regression Model 对最终分数进行预测。
+    
+    - 这些方法往往通过 3D CNN (C3D / I3D) 进行特征提取 —— 通过在 2D(spatial) & 1D(temporal) 进行卷积，将**较短的**视频切片转换为 feature vector
+
+    - 为了处理**更长的**输入视频：
+
+        - Parmar 将 3DCNN 和 LSTM 结合，提出了 C3D-LSTM
+
+        - Zheng 基于 Graph Convolutional Network 提出了 Context-aware 的模型
+        
+            对 Static Posture & Dynamic Movement 进行建模来捕捉不同时间跨度上的联系
+
+        - Nekoui 提出了一种 CNN-based 的方法同时对粗细粒度的 temporal dependencies 进行捕捉
+        
+            使用 video feature & pose estimation heatmap，并堆叠不同 kernel size 的 CNN 模块来捕捉不同时间跨度的 pattern 进行捕捉
+
+        - Xu 针对 *figure skating* 场景提出了 multi-scale and skip-connected CNN-LSTM
+        
+            通过不同大小的 CNN kernel 对短期 temporal dependencies 进行捕捉 & 通过 LSTM + self-attention 对长期 temporal dependencies 进行捕捉
+
+2. Explaining Action Quality Assessment
+
+    虽然上述方法卷赢了准确性（预测结果和裁判评分之间的 Spearman’s rank correlation），但却忽略了用户应该如何应用和解释这些预测结果
+
+    > 老师 chua 的一下给你的卷子批了个总评分，又不告诉你扣哪了
+
+    - Yu 通过 Grad-CAM saliency maps 对 *diving* 问题的评分过程进行解释
+    
+        => 但 saliency maps 的本意是拿来 debug 的 orz
+
+    - Pirsiavash 通过计算 由姿态估计得到的 relative score 的梯度 来对 *diving* 问题的评分过程进行解释
+
+        => 基于数据（而非基于人类裁判如何做出裁决）
+
+    - 使用数据传感器 + 浅层模型的方法
+
+        - Khan 借鉴了电子板球游戏，使用可穿戴设备收集数据并对板球击球数据进行分析，并人为规定了若干 low-level sub-actions
+
+        - Thompson 在量化评分标准后，提出了对 “盛装舞步” 项目的可视化方法
+
+3. Rubrics for Figure Skating
+
+    - “评分标准” 的两要素：
+
+        1. $\geq 1$ * trait / dimension + 对应的解释案例
+
+        2. 各 dimension 的 评分范围 / 分段标准
+
+    - ISU Judging System: 对每个维度给 sub-score，最后折算总分
+
+        1. TES（技术得分）
+
+            运动员的技术动作序列将被提前列出，每个动作的得分 = Base Value(难度分) + GOE(偏差值)
+
+            > $GOE \in [-5,5]$
+
+            - 动作序列将由：Jump, Spin, Step Seq 及之间的过渡动作组成
+
+            - Jump 可被分为六种：Toe Loop (T), Salchow (S), Loop (Lo), Flip (F), Lutz (Lz), and Axel (A)
+
+                根据起跳、落冰动作进行区分
+
+        2. combined PCS (Program Component Score)
+
+### 7-3 Approach
+
