@@ -73,7 +73,7 @@
     bash ./scripts/train.sh 0,1 MTL try
     ```
 
-    - 跑了两天多，然后在第 118 Epoch 因为忘记插电然后寄了，这是 [Training Log](./assets/rep/CoRe%20Train.log)
+    - 跑了两天多，然后在第 118 Epoch 因为忘记插电然后寄了，这是 [Training Log](./assets/rep/CoRe%20Train%20MTL.log)
 
     <center>![](./assets/rep/CoRe%20log1.png)</center>
     <center>第一条 log，有一种“孩子生了”的美感</center>
@@ -90,7 +90,8 @@
     bash ./scripts/train.sh 0,1 Seven try --Seven_cls 1
     ```
 
-    这次挂后台了，log 在 ~/CoRe/seven.log
+    - 修改了 MAX_EPOCH 跑了 60 个 Epoch，这是 [Training Log](./assets/rep/CoRe%20Train%20Seven.log)
+
 
 ### 模型验证
 
@@ -105,16 +106,6 @@
         ```text title="验证结果"
         ckpts @ 59 epoch( rho = 0.9541, L2 = 25.6865 , RL2 = 0.0024)
 
-        [TEST][0/353] 	 Batch_time 112.51 	 Data_time 134.18 
-        [TEST][40/353] 	 Batch_time 0.98 	 Data_time 78.54 
-        [TEST][80/353] 	 Batch_time 1.07 	 Data_time 90.37 
-        [TEST][120/353]  Batch_time 0.98 	 Data_time 0.00 
-        [TEST][160/353]  Batch_time 0.98 	 Data_time 0.00 
-        [TEST][200/353]  Batch_time 0.98 	 Data_time 0.00 
-        [TEST][240/353]  Batch_time 0.98 	 Data_time 0.00 
-        [TEST][280/353]  Batch_time 0.98 	 Data_time 0.00 
-        [TEST][320/353]  Batch_time 0.97 	 Data_time 0.00 
-
         [TEST] correlation: 0.953281, L2: 26.893236, RL2: 0.002463
         ```
 
@@ -124,6 +115,24 @@
         # 只是改了一下参数路径
         bash ./scripts/test.sh 0 MTL try --ckpts ./experiments/CoRe_RT/MTL/try/best.pth
         ```
+
+        ```text title="验证结果"
+        ckpts @ 108 epoch( rho = 0.9534, L2 = 30.5425 , RL2 = 0.0028)
+
+        [TEST] correlation: 0.951908, L2: 31.714521, RL2: 0.002904
+        ```
+
+- On AQA-7 (自己跑了 60 个 Epoch 的模型)
+
+    ```bash
+    bash ./scripts/test.sh 0 MTL try --ckpts ./experiments/CoRe_RT/Seven/try/best.pth
+    ```
+
+    ```text title="验证结果"
+    ckpts @ 58 epoch( rho = 0.8681, L2 = 63.5571 , RL2 = 0.0064)
+
+    [TEST] correlation: 0.840793, L2: 89.697052, RL2: 0.008214
+    ```
 
 ## 2 TSA-Net
 
