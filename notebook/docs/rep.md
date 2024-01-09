@@ -69,20 +69,24 @@
 
 - On MTL-AQA
 
-    ```bash title="在 CoRe 根路径下执行"
+    ```bash
     bash ./scripts/train.sh 0,1 MTL try
     ```
 
-    跑了两天多，然后在第 118 Epoch 因为忘记插电然后寄了。这是 [Training Log](./assets/rep/CoRe%20Train.log)
+    - 跑了两天多，然后在第 118 Epoch 因为忘记插电然后寄了，这是 [Training Log](./assets/rep/CoRe%20Train.log)
 
     <center>![](./assets/rep/CoRe%20log1.png)</center>
-    <center>虽然只是第一条，但有一种“孩子生了”的美感</center>
+    <center>第一条 log，有一种“孩子生了”的美感</center>
+
+    - giao 我以为断了就没了，读了下 src 发现还是有中间存档的（你不输出谁知道啊）
+
+        > 模型在 `~/CoRe/experiments/CoRe_RT/MTL/try/best.pth`
 
 - On AQA-7
 
     > 为了能快点跑完，把 MAX_EPOCH 改成 60 了
 
-    ```bash title="在 CoRe 根路径下执行"
+    ```bash
     bash ./scripts/train.sh 0,1 Seven try --Seven_cls 1
     ```
 
@@ -92,28 +96,34 @@
 
 - On MTL-AQA
 
-    ```bash title="在 CoRe 根路径下执行"
-    bash ./scripts/test.sh 0 MTL try --ckpts ./MTL_CoRe.pth
-    ```
+    1. 作者的[预训练模型](https://cloud.tsinghua.edu.cn/f/2dc6e1febc0e49fdb711/?dl=1)
 
-    由于自己跑的训练中断了，这里测试的是作者在 MTL-AQA 上[预训练的模型]([Tsinghua Cloud])
+        ```bash
+        bash ./scripts/test.sh 0 MTL try --ckpts ./MTL_CoRe.pth
+        ```
 
-    ```text title="验证结果"
-    ckpts @ 59 epoch( rho = 0.9541, L2 = 25.6865 , RL2 = 0.0024)
+        ```text title="验证结果"
+        ckpts @ 59 epoch( rho = 0.9541, L2 = 25.6865 , RL2 = 0.0024)
 
-    [TEST][0/353] 	 Batch_time 112.51 	 Data_time 134.18 
-    [TEST][40/353] 	 Batch_time 0.98 	 Data_time 78.54 
-    [TEST][80/353] 	 Batch_time 1.07 	 Data_time 90.37 
-    [TEST][120/353]  Batch_time 0.98 	 Data_time 0.00 
-    [TEST][160/353]  Batch_time 0.98 	 Data_time 0.00 
-    [TEST][200/353]  Batch_time 0.98 	 Data_time 0.00 
-    [TEST][240/353]  Batch_time 0.98 	 Data_time 0.00 
-    [TEST][280/353]  Batch_time 0.98 	 Data_time 0.00 
-    [TEST][320/353]  Batch_time 0.97 	 Data_time 0.00 
+        [TEST][0/353] 	 Batch_time 112.51 	 Data_time 134.18 
+        [TEST][40/353] 	 Batch_time 0.98 	 Data_time 78.54 
+        [TEST][80/353] 	 Batch_time 1.07 	 Data_time 90.37 
+        [TEST][120/353]  Batch_time 0.98 	 Data_time 0.00 
+        [TEST][160/353]  Batch_time 0.98 	 Data_time 0.00 
+        [TEST][200/353]  Batch_time 0.98 	 Data_time 0.00 
+        [TEST][240/353]  Batch_time 0.98 	 Data_time 0.00 
+        [TEST][280/353]  Batch_time 0.98 	 Data_time 0.00 
+        [TEST][320/353]  Batch_time 0.97 	 Data_time 0.00 
 
-    [TEST] correlation: 0.953281, L2: 26.893236, RL2: 0.002463
-    ```
+        [TEST] correlation: 0.953281, L2: 26.893236, RL2: 0.002463
+        ```
 
+    2. 自己跑了 117 个 Epoch [中道崩徂的模型 (2fcd)](https://pan.baidu.com/s/1vuDndWhKk5b4tFO4lO3Uyw)
+
+        ```bash
+        # 只是改了一下参数路径
+        bash ./scripts/test.sh 0 MTL try --ckpts ./experiments/CoRe_RT/MTL/try/best.pth
+        ```
 
 ## 2 TSA-Net
 
