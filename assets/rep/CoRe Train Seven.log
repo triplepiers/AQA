@@ -1,0 +1,1574 @@
+nohup: ignoring input
+Using CLASS idx 1
+Load config yaml from configs/Seven_CoRe.yaml
+Save the Config file at ./experiments/CoRe_RT/Seven/try/config.yaml
+Namespace(benchmark='Seven', exp_name='try', fix_bn=True, resume=False, test=False, ckpts=None, Seven_cls=1, class_idx=1, config='configs/Seven_CoRe.yaml', experiment_path='./experiments/CoRe_RT/Seven/try', bs_train=2, bs_test=1, workers=4, step_per_update=2, max_epoch=60, pretrained_i3d_weight='./MTL-AQA/model_rgb.pth', RT_depth=5, score_range=100, voter_number=10, data_root='./Seven/', frame_length=103, seed=0, optimizer='Adam', weight_decay=0, base_lr=0.001, lr_factor=0.1, print_freq=10)
+Trainer start ... 
+Using I3D backbone
+loading ckpt done
+[Training][0/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 6.3159 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 6.6709 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 6.1043 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][40/150] 	 Batch_time 0.72 	 Batch_loss: 5.9244 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][50/150] 	 Batch_time 0.41 	 Batch_loss: 5.8733 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 5.5975 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 5.6236 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][80/150] 	 Batch_time 0.31 	 Batch_loss: 6.1333 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][90/150] 	 Batch_time 0.74 	 Batch_loss: 5.7440 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][100/150] 	 Batch_time 0.31 	 Batch_loss: 6.2251 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 5.3413 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][120/150] 	 Batch_time 0.73 	 Batch_loss: 5.2670 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][130/150] 	 Batch_time 0.39 	 Batch_loss: 8.0430 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][140/150] 	 Batch_time 0.31 	 Batch_loss: 9.9352 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][0/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 5.5446 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 0, correlation: 0.1797, L2: 701.6329, RL2: 0.0866, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 0
+[TEST][0/60][0/70] 	 Batch_time 2.31 	 Data_time 24.36 
+[TEST][0/60][10/70] 	 Batch_time 1.05 	 Data_time 26.92 
+[TEST][0/60][20/70] 	 Batch_time 1.03 	 Data_time 0.00 
+[TEST][0/60][30/70] 	 Batch_time 1.04 	 Data_time 0.00 
+[TEST][0/60][40/70] 	 Batch_time 1.04 	 Data_time 0.00 
+[TEST][0/60][50/70] 	 Batch_time 2.05 	 Data_time 0.00 
+[TEST][0/60][60/70] 	 Batch_time 1.09 	 Data_time 0.00 
+-----New best found!-----
+[TEST] EPOCH: 0, correlation: 0.829879, L2: 152.300813, RL2: 0.015230
+[TEST] EPOCH: 0, best correlation: 0.829879, best L2: 152.300813, best RL2: 0.015230
+[Training][1/60][10/150] 	 Batch_time 0.77 	 Batch_loss: 5.1816 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][20/150] 	 Batch_time 0.77 	 Batch_loss: 6.1843 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 5.5995 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][40/150] 	 Batch_time 0.32 	 Batch_loss: 6.1524 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][50/150] 	 Batch_time 0.39 	 Batch_loss: 6.2413 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][60/150] 	 Batch_time 0.32 	 Batch_loss: 5.1792 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][70/150] 	 Batch_time 0.41 	 Batch_loss: 6.2560 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][80/150] 	 Batch_time 0.37 	 Batch_loss: 6.1101 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][90/150] 	 Batch_time 0.39 	 Batch_loss: 5.5009 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][100/150] 	 Batch_time 0.32 	 Batch_loss: 5.3255 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][110/150] 	 Batch_time 0.32 	 Batch_loss: 5.1896 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 4.9128 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][130/150] 	 Batch_time 0.38 	 Batch_loss: 4.8444 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][140/150] 	 Batch_time 0.57 	 Batch_loss: 4.3710 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][1/60][150/150] 	 Batch_time 0.66 	 Batch_loss: 6.0240 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 1, correlation: 0.4336, L2: 557.1120, RL2: 0.0688, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 1
+[TEST][1/60][0/70] 	 Batch_time 2.06 	 Data_time 11.00 
+[TEST][1/60][10/70] 	 Batch_time 1.04 	 Data_time 0.82 
+[TEST][1/60][20/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST][1/60][30/70] 	 Batch_time 1.05 	 Data_time 0.00 
+[TEST][1/60][40/70] 	 Batch_time 1.08 	 Data_time 0.00 
+[TEST][1/60][50/70] 	 Batch_time 1.05 	 Data_time 0.00 
+[TEST][1/60][60/70] 	 Batch_time 1.05 	 Data_time 0.27 
+[TEST] EPOCH: 1, correlation: 0.805718, L2: 308.710422, RL2: 0.030871
+[TEST] EPOCH: 1, best correlation: 0.829879, best L2: 152.300813, best RL2: 0.015230
+[Training][2/60][10/150] 	 Batch_time 0.37 	 Batch_loss: 6.4414 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][20/150] 	 Batch_time 0.41 	 Batch_loss: 4.8583 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][30/150] 	 Batch_time 0.40 	 Batch_loss: 8.1585 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][40/150] 	 Batch_time 0.32 	 Batch_loss: 5.6909 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][50/150] 	 Batch_time 0.39 	 Batch_loss: 4.5882 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][60/150] 	 Batch_time 0.41 	 Batch_loss: 5.9456 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][70/150] 	 Batch_time 0.40 	 Batch_loss: 3.3578 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][80/150] 	 Batch_time 0.41 	 Batch_loss: 4.8817 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][90/150] 	 Batch_time 0.32 	 Batch_loss: 4.1705 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][100/150] 	 Batch_time 0.32 	 Batch_loss: 5.5261 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][110/150] 	 Batch_time 0.35 	 Batch_loss: 6.8996 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 6.8661 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][130/150] 	 Batch_time 0.40 	 Batch_loss: 5.8521 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][140/150] 	 Batch_time 0.35 	 Batch_loss: 7.0251 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][2/60][150/150] 	 Batch_time 0.38 	 Batch_loss: 5.4826 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 2, correlation: 0.5065, L2: 518.6476, RL2: 0.0640, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 2
+[TEST][2/60][0/70] 	 Batch_time 1.08 	 Data_time 17.50 
+[TEST][2/60][10/70] 	 Batch_time 1.05 	 Data_time 0.40 
+[TEST][2/60][20/70] 	 Batch_time 1.05 	 Data_time 0.00 
+[TEST][2/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][2/60][40/70] 	 Batch_time 1.22 	 Data_time 0.00 
+[TEST][2/60][50/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][2/60][60/70] 	 Batch_time 1.16 	 Data_time 0.00 
+[TEST] EPOCH: 2, correlation: 0.782310, L2: 177.278065, RL2: 0.017728
+[TEST] EPOCH: 2, best correlation: 0.829879, best L2: 152.300813, best RL2: 0.015230
+[Training][3/60][10/150] 	 Batch_time 0.32 	 Batch_loss: 5.5915 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 6.0017 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 5.8481 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][40/150] 	 Batch_time 0.69 	 Batch_loss: 5.2740 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 6.0178 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 3.3966 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][70/150] 	 Batch_time 0.64 	 Batch_loss: 4.7579 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][80/150] 	 Batch_time 0.64 	 Batch_loss: 5.8659 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][90/150] 	 Batch_time 0.66 	 Batch_loss: 6.0416 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][100/150] 	 Batch_time 0.73 	 Batch_loss: 5.0357 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][110/150] 	 Batch_time 0.40 	 Batch_loss: 5.3478 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 5.3501 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][130/150] 	 Batch_time 0.32 	 Batch_loss: 6.4645 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 4.0695 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][3/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 5.2585 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 3, correlation: 0.5233, L2: 432.7093, RL2: 0.0534, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 3
+[TEST][3/60][0/70] 	 Batch_time 1.09 	 Data_time 13.95 
+[TEST][3/60][10/70] 	 Batch_time 1.05 	 Data_time 0.95 
+[TEST][3/60][20/70] 	 Batch_time 1.05 	 Data_time 0.00 
+[TEST][3/60][30/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][3/60][40/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][3/60][50/70] 	 Batch_time 1.08 	 Data_time 0.00 
+[TEST][3/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 3, correlation: 0.781838, L2: 291.684271, RL2: 0.029168
+[TEST] EPOCH: 3, best correlation: 0.829879, best L2: 152.300813, best RL2: 0.015230
+[Training][4/60][10/150] 	 Batch_time 0.31 	 Batch_loss: 5.7745 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][20/150] 	 Batch_time 0.32 	 Batch_loss: 5.7483 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 5.2624 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][40/150] 	 Batch_time 0.64 	 Batch_loss: 5.4041 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.5072 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 5.8134 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][70/150] 	 Batch_time 0.75 	 Batch_loss: 5.8891 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 5.6208 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][90/150] 	 Batch_time 1.01 	 Batch_loss: 5.3331 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][100/150] 	 Batch_time 0.76 	 Batch_loss: 6.6711 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][110/150] 	 Batch_time 0.77 	 Batch_loss: 5.4962 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][120/150] 	 Batch_time 0.40 	 Batch_loss: 5.7450 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][130/150] 	 Batch_time 0.40 	 Batch_loss: 3.0495 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][140/150] 	 Batch_time 0.33 	 Batch_loss: 5.2024 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][4/60][150/150] 	 Batch_time 0.32 	 Batch_loss: 6.2188 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 4, correlation: 0.5060, L2: 382.9992, RL2: 0.0473, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 4
+[TEST][4/60][0/70] 	 Batch_time 1.05 	 Data_time 14.76 
+[TEST][4/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][4/60][20/70] 	 Batch_time 1.09 	 Data_time 0.53 
+[TEST][4/60][30/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][4/60][40/70] 	 Batch_time 1.16 	 Data_time 0.78 
+[TEST][4/60][50/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][4/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 4, correlation: 0.613327, L2: 205.698553, RL2: 0.020570
+[TEST] EPOCH: 4, best correlation: 0.829879, best L2: 152.300813, best RL2: 0.015230
+[Training][5/60][10/150] 	 Batch_time 0.65 	 Batch_loss: 6.2118 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 4.4789 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 3.5418 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][40/150] 	 Batch_time 0.78 	 Batch_loss: 6.5119 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][50/150] 	 Batch_time 0.75 	 Batch_loss: 4.0663 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][60/150] 	 Batch_time 0.33 	 Batch_loss: 5.8742 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 4.1209 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][80/150] 	 Batch_time 0.64 	 Batch_loss: 4.7749 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][90/150] 	 Batch_time 0.65 	 Batch_loss: 4.8062 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][100/150] 	 Batch_time 0.70 	 Batch_loss: 8.2825 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][110/150] 	 Batch_time 0.68 	 Batch_loss: 5.7797 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][120/150] 	 Batch_time 0.65 	 Batch_loss: 3.4442 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][130/150] 	 Batch_time 0.66 	 Batch_loss: 4.8965 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 4.5121 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][5/60][150/150] 	 Batch_time 0.99 	 Batch_loss: 7.3980 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 5, correlation: 0.5310, L2: 372.9215, RL2: 0.0460, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 5
+[TEST][5/60][0/70] 	 Batch_time 2.10 	 Data_time 7.82 
+[TEST][5/60][10/70] 	 Batch_time 1.16 	 Data_time 0.00 
+[TEST][5/60][20/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][5/60][30/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][5/60][40/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][5/60][50/70] 	 Batch_time 1.07 	 Data_time 0.49 
+[TEST][5/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 5, correlation: 0.639658, L2: 257.894553, RL2: 0.025789
+[TEST] EPOCH: 5, best correlation: 0.829879, best L2: 152.300813, best RL2: 0.015230
+[Training][6/60][10/150] 	 Batch_time 0.66 	 Batch_loss: 6.9189 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 5.4524 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 4.3733 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 5.0420 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 6.0071 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][60/150] 	 Batch_time 0.64 	 Batch_loss: 5.1814 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 5.0233 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 5.9886 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][90/150] 	 Batch_time 0.67 	 Batch_loss: 5.1101 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][100/150] 	 Batch_time 0.66 	 Batch_loss: 4.2082 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][110/150] 	 Batch_time 0.65 	 Batch_loss: 2.3702 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][120/150] 	 Batch_time 0.80 	 Batch_loss: 4.2723 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][130/150] 	 Batch_time 0.76 	 Batch_loss: 5.1077 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][140/150] 	 Batch_time 0.76 	 Batch_loss: 5.7896 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][6/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 6.2176 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 6, correlation: 0.5644, L2: 242.5357, RL2: 0.0299, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 6
+[TEST][6/60][0/70] 	 Batch_time 1.13 	 Data_time 9.55 
+[TEST][6/60][10/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][6/60][20/70] 	 Batch_time 1.07 	 Data_time 1.07 
+[TEST][6/60][30/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][6/60][40/70] 	 Batch_time 1.06 	 Data_time 1.46 
+[TEST][6/60][50/70] 	 Batch_time 1.08 	 Data_time 0.00 
+[TEST][6/60][60/70] 	 Batch_time 2.10 	 Data_time 1.18 
+[TEST] EPOCH: 6, correlation: 0.769512, L2: 138.024953, RL2: 0.013802
+[TEST] EPOCH: 6, best correlation: 0.829879, best L2: 138.024953, best RL2: 0.013802
+[Training][7/60][10/150] 	 Batch_time 0.65 	 Batch_loss: 3.9102 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 4.9215 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][30/150] 	 Batch_time 0.68 	 Batch_loss: 5.2327 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 4.3535 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.2860 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 5.0267 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 4.2578 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 5.0068 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][90/150] 	 Batch_time 0.67 	 Batch_loss: 6.6708 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 4.9786 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 9.1152 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 8.6130 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 4.1235 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 4.3145 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][7/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 3.0692 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 7, correlation: 0.6765, L2: 205.0048, RL2: 0.0253, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 7
+[TEST][7/60][0/70] 	 Batch_time 1.04 	 Data_time 12.94 
+[TEST][7/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][7/60][20/70] 	 Batch_time 1.06 	 Data_time 0.22 
+[TEST][7/60][30/70] 	 Batch_time 1.19 	 Data_time 0.00 
+[TEST][7/60][40/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][7/60][50/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][7/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 7, correlation: 0.786005, L2: 135.589130, RL2: 0.013559
+[TEST] EPOCH: 7, best correlation: 0.829879, best L2: 135.589130, best RL2: 0.013559
+[Training][8/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 4.4638 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 4.0602 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 2.2396 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 3.6935 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 2.7576 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 3.5781 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 5.2515 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 4.1863 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][90/150] 	 Batch_time 0.76 	 Batch_loss: 6.3533 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][100/150] 	 Batch_time 0.75 	 Batch_loss: 5.0062 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 4.1272 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 3.8276 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][130/150] 	 Batch_time 0.74 	 Batch_loss: 4.9216 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][140/150] 	 Batch_time 0.74 	 Batch_loss: 4.8547 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][8/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 6.9840 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 8, correlation: 0.6622, L2: 176.9962, RL2: 0.0219, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 8
+[TEST][8/60][0/70] 	 Batch_time 1.18 	 Data_time 10.08 
+[TEST][8/60][10/70] 	 Batch_time 1.14 	 Data_time 0.00 
+[TEST][8/60][20/70] 	 Batch_time 1.14 	 Data_time 0.87 
+[TEST][8/60][30/70] 	 Batch_time 1.21 	 Data_time 0.00 
+[TEST][8/60][40/70] 	 Batch_time 1.62 	 Data_time 0.00 
+[TEST][8/60][50/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST][8/60][60/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST] EPOCH: 8, correlation: 0.782521, L2: 174.701712, RL2: 0.017470
+[TEST] EPOCH: 8, best correlation: 0.829879, best L2: 135.589130, best RL2: 0.013559
+[Training][9/60][10/150] 	 Batch_time 0.65 	 Batch_loss: 5.4786 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 3.9008 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 6.6937 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][40/150] 	 Batch_time 0.66 	 Batch_loss: 5.1184 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.5354 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 4.3295 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 4.3297 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 4.2688 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 4.5521 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 3.4522 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][110/150] 	 Batch_time 0.78 	 Batch_loss: 4.5868 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 5.0944 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][130/150] 	 Batch_time 0.64 	 Batch_loss: 5.5671 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 3.3785 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][9/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 4.4704 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 9, correlation: 0.6891, L2: 191.5507, RL2: 0.0236, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 9
+[TEST][9/60][0/70] 	 Batch_time 1.11 	 Data_time 6.35 
+[TEST][9/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][9/60][20/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][9/60][30/70] 	 Batch_time 1.08 	 Data_time 0.00 
+[TEST][9/60][40/70] 	 Batch_time 1.13 	 Data_time 1.65 
+[TEST][9/60][50/70] 	 Batch_time 1.19 	 Data_time 0.00 
+[TEST][9/60][60/70] 	 Batch_time 1.67 	 Data_time 0.00 
+[TEST] EPOCH: 9, correlation: 0.819094, L2: 106.097845, RL2: 0.010610
+[TEST] EPOCH: 9, best correlation: 0.829879, best L2: 106.097845, best RL2: 0.010610
+[Training][10/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 5.5988 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][20/150] 	 Batch_time 0.75 	 Batch_loss: 4.0922 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][30/150] 	 Batch_time 0.67 	 Batch_loss: 4.1700 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 3.8813 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.9864 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][60/150] 	 Batch_time 0.64 	 Batch_loss: 4.2929 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 4.1684 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][80/150] 	 Batch_time 0.64 	 Batch_loss: 4.3128 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 3.1038 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][100/150] 	 Batch_time 0.76 	 Batch_loss: 5.6671 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][110/150] 	 Batch_time 0.76 	 Batch_loss: 2.9461 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][120/150] 	 Batch_time 0.75 	 Batch_loss: 4.4138 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 3.9822 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 3.9602 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][10/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 2.7237 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 10, correlation: 0.7352, L2: 166.7680, RL2: 0.0206, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 10
+[TEST][10/60][0/70] 	 Batch_time 1.06 	 Data_time 6.55 
+[TEST][10/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][10/60][20/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][10/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][10/60][40/70] 	 Batch_time 1.28 	 Data_time 0.00 
+[TEST][10/60][50/70] 	 Batch_time 1.18 	 Data_time 0.00 
+[TEST][10/60][60/70] 	 Batch_time 1.12 	 Data_time 0.00 
+[TEST] EPOCH: 10, correlation: 0.821440, L2: 87.154620, RL2: 0.008715
+[TEST] EPOCH: 10, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][11/60][10/150] 	 Batch_time 0.78 	 Batch_loss: 4.9742 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][20/150] 	 Batch_time 0.79 	 Batch_loss: 4.7938 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 4.0744 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 4.7947 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.1194 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][60/150] 	 Batch_time 0.75 	 Batch_loss: 4.8296 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 4.6253 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][80/150] 	 Batch_time 0.81 	 Batch_loss: 3.2992 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][90/150] 	 Batch_time 0.68 	 Batch_loss: 8.6787 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][100/150] 	 Batch_time 0.65 	 Batch_loss: 6.2691 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][110/150] 	 Batch_time 0.64 	 Batch_loss: 4.9957 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][120/150] 	 Batch_time 0.64 	 Batch_loss: 4.4110 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][130/150] 	 Batch_time 0.66 	 Batch_loss: 4.2367 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 5.0643 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][11/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 3.3639 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 11, correlation: 0.6236, L2: 194.5910, RL2: 0.0240, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 11
+[TEST][11/60][0/70] 	 Batch_time 1.29 	 Data_time 5.89 
+[TEST][11/60][10/70] 	 Batch_time 2.07 	 Data_time 0.00 
+[TEST][11/60][20/70] 	 Batch_time 2.27 	 Data_time 0.00 
+[TEST][11/60][30/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][11/60][40/70] 	 Batch_time 1.18 	 Data_time 0.00 
+[TEST][11/60][50/70] 	 Batch_time 1.21 	 Data_time 0.00 
+[TEST][11/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 11, correlation: 0.790066, L2: 125.301715, RL2: 0.012530
+[TEST] EPOCH: 11, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][12/60][10/150] 	 Batch_time 0.80 	 Batch_loss: 6.0821 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][20/150] 	 Batch_time 0.78 	 Batch_loss: 3.5840 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][30/150] 	 Batch_time 0.76 	 Batch_loss: 3.2627 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][40/150] 	 Batch_time 0.81 	 Batch_loss: 2.3793 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 3.8800 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 2.2037 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 5.2839 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][80/150] 	 Batch_time 0.66 	 Batch_loss: 5.0595 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][90/150] 	 Batch_time 0.72 	 Batch_loss: 4.4865 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][100/150] 	 Batch_time 0.68 	 Batch_loss: 3.4491 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][110/150] 	 Batch_time 0.84 	 Batch_loss: 2.9145 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][120/150] 	 Batch_time 0.83 	 Batch_loss: 3.6432 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][130/150] 	 Batch_time 0.84 	 Batch_loss: 4.8091 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][140/150] 	 Batch_time 0.85 	 Batch_loss: 5.6239 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][12/60][150/150] 	 Batch_time 0.40 	 Batch_loss: 4.3415 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 12, correlation: 0.7460, L2: 145.5275, RL2: 0.0180, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 12
+[TEST][12/60][0/70] 	 Batch_time 1.28 	 Data_time 5.71 
+[TEST][12/60][10/70] 	 Batch_time 1.23 	 Data_time 0.00 
+[TEST][12/60][20/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][12/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][12/60][40/70] 	 Batch_time 1.17 	 Data_time 0.00 
+[TEST][12/60][50/70] 	 Batch_time 1.10 	 Data_time 0.00 
+[TEST][12/60][60/70] 	 Batch_time 2.20 	 Data_time 0.00 
+[TEST] EPOCH: 12, correlation: 0.784674, L2: 141.848818, RL2: 0.014185
+[TEST] EPOCH: 12, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][13/60][10/150] 	 Batch_time 0.73 	 Batch_loss: 4.5174 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][20/150] 	 Batch_time 0.75 	 Batch_loss: 2.1826 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 4.3255 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 6.2456 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][50/150] 	 Batch_time 0.74 	 Batch_loss: 5.5813 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][60/150] 	 Batch_time 0.64 	 Batch_loss: 3.6275 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 4.6687 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 4.3022 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][90/150] 	 Batch_time 0.65 	 Batch_loss: 4.5523 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][100/150] 	 Batch_time 0.68 	 Batch_loss: 4.4345 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][110/150] 	 Batch_time 0.68 	 Batch_loss: 3.6456 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][120/150] 	 Batch_time 0.68 	 Batch_loss: 3.4381 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][130/150] 	 Batch_time 0.73 	 Batch_loss: 5.3606 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][140/150] 	 Batch_time 0.72 	 Batch_loss: 3.2571 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][13/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 5.6524 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 13, correlation: 0.7547, L2: 143.0459, RL2: 0.0177, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 13
+[TEST][13/60][0/70] 	 Batch_time 1.16 	 Data_time 6.64 
+[TEST][13/60][10/70] 	 Batch_time 2.07 	 Data_time 0.00 
+[TEST][13/60][20/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][13/60][30/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][13/60][40/70] 	 Batch_time 1.12 	 Data_time 0.00 
+[TEST][13/60][50/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][13/60][60/70] 	 Batch_time 1.11 	 Data_time 0.00 
+[TEST] EPOCH: 13, correlation: 0.791765, L2: 88.367966, RL2: 0.008837
+[TEST] EPOCH: 13, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][14/60][10/150] 	 Batch_time 0.66 	 Batch_loss: 4.2498 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 5.0279 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 3.4082 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 3.8942 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][50/150] 	 Batch_time 0.76 	 Batch_loss: 6.4617 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 1.2673 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][70/150] 	 Batch_time 0.78 	 Batch_loss: 4.6407 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][80/150] 	 Batch_time 0.76 	 Batch_loss: 5.6216 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][90/150] 	 Batch_time 0.95 	 Batch_loss: 6.3672 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][100/150] 	 Batch_time 0.31 	 Batch_loss: 3.0658 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][110/150] 	 Batch_time 0.32 	 Batch_loss: 3.0984 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 4.8100 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][130/150] 	 Batch_time 0.74 	 Batch_loss: 3.3590 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][140/150] 	 Batch_time 0.75 	 Batch_loss: 6.6495 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][14/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 6.2631 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 14, correlation: 0.8000, L2: 114.9609, RL2: 0.0142, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 14
+[TEST][14/60][0/70] 	 Batch_time 1.87 	 Data_time 5.72 
+[TEST][14/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][14/60][20/70] 	 Batch_time 1.39 	 Data_time 0.64 
+[TEST][14/60][30/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][14/60][40/70] 	 Batch_time 2.14 	 Data_time 0.00 
+[TEST][14/60][50/70] 	 Batch_time 1.11 	 Data_time 0.00 
+[TEST][14/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 14, correlation: 0.799398, L2: 110.933668, RL2: 0.011093
+[TEST] EPOCH: 14, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][15/60][10/150] 	 Batch_time 0.78 	 Batch_loss: 2.9041 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][20/150] 	 Batch_time 0.99 	 Batch_loss: 3.7511 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 3.7470 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][40/150] 	 Batch_time 0.76 	 Batch_loss: 3.6953 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][50/150] 	 Batch_time 0.76 	 Batch_loss: 4.4672 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][60/150] 	 Batch_time 0.33 	 Batch_loss: 3.1418 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][70/150] 	 Batch_time 0.36 	 Batch_loss: 2.9693 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][80/150] 	 Batch_time 0.32 	 Batch_loss: 2.3076 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][90/150] 	 Batch_time 0.38 	 Batch_loss: 4.3997 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][100/150] 	 Batch_time 0.32 	 Batch_loss: 3.5421 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][110/150] 	 Batch_time 0.32 	 Batch_loss: 7.1691 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 5.8409 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][130/150] 	 Batch_time 0.32 	 Batch_loss: 4.1396 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][140/150] 	 Batch_time 0.77 	 Batch_loss: 3.7660 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][15/60][150/150] 	 Batch_time 0.73 	 Batch_loss: 3.5762 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 15, correlation: 0.8153, L2: 82.0110, RL2: 0.0101, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 15
+[TEST][15/60][0/70] 	 Batch_time 2.17 	 Data_time 5.71 
+[TEST][15/60][10/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][15/60][20/70] 	 Batch_time 1.10 	 Data_time 0.00 
+[TEST][15/60][30/70] 	 Batch_time 1.17 	 Data_time 0.00 
+[TEST][15/60][40/70] 	 Batch_time 1.81 	 Data_time 0.00 
+[TEST][15/60][50/70] 	 Batch_time 1.17 	 Data_time 0.00 
+[TEST][15/60][60/70] 	 Batch_time 1.11 	 Data_time 0.00 
+[TEST] EPOCH: 15, correlation: 0.789471, L2: 87.370566, RL2: 0.008737
+[TEST] EPOCH: 15, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][16/60][10/150] 	 Batch_time 0.31 	 Batch_loss: 5.4126 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][20/150] 	 Batch_time 0.34 	 Batch_loss: 1.6261 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][30/150] 	 Batch_time 0.32 	 Batch_loss: 3.0947 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][40/150] 	 Batch_time 0.35 	 Batch_loss: 3.3856 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][50/150] 	 Batch_time 0.32 	 Batch_loss: 3.3778 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][60/150] 	 Batch_time 0.35 	 Batch_loss: 2.7249 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][70/150] 	 Batch_time 0.32 	 Batch_loss: 5.5060 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][80/150] 	 Batch_time 0.35 	 Batch_loss: 4.7544 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][90/150] 	 Batch_time 0.36 	 Batch_loss: 4.1768 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][100/150] 	 Batch_time 0.35 	 Batch_loss: 3.2992 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][110/150] 	 Batch_time 0.32 	 Batch_loss: 3.2412 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][120/150] 	 Batch_time 0.36 	 Batch_loss: 3.3329 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][130/150] 	 Batch_time 0.35 	 Batch_loss: 4.1058 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][140/150] 	 Batch_time 0.32 	 Batch_loss: 6.8841 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][16/60][150/150] 	 Batch_time 0.32 	 Batch_loss: 5.3791 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 16, correlation: 0.8109, L2: 96.7011, RL2: 0.0119, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 16
+[TEST][16/60][0/70] 	 Batch_time 1.28 	 Data_time 5.73 
+[TEST][16/60][10/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][16/60][20/70] 	 Batch_time 2.07 	 Data_time 0.00 
+[TEST][16/60][30/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][16/60][40/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][16/60][50/70] 	 Batch_time 1.11 	 Data_time 0.00 
+[TEST][16/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 16, correlation: 0.811058, L2: 122.594208, RL2: 0.012259
+[TEST] EPOCH: 16, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][17/60][10/150] 	 Batch_time 0.31 	 Batch_loss: 3.9578 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][20/150] 	 Batch_time 0.31 	 Batch_loss: 3.8935 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][30/150] 	 Batch_time 0.35 	 Batch_loss: 3.9900 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][40/150] 	 Batch_time 0.32 	 Batch_loss: 4.6867 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][50/150] 	 Batch_time 0.33 	 Batch_loss: 5.5747 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][60/150] 	 Batch_time 0.35 	 Batch_loss: 3.8561 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][70/150] 	 Batch_time 0.35 	 Batch_loss: 3.5635 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][80/150] 	 Batch_time 0.35 	 Batch_loss: 4.7962 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][90/150] 	 Batch_time 0.32 	 Batch_loss: 4.3915 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][100/150] 	 Batch_time 0.32 	 Batch_loss: 3.5851 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][110/150] 	 Batch_time 0.35 	 Batch_loss: 3.9614 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 0.2383 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][130/150] 	 Batch_time 0.36 	 Batch_loss: 3.5601 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][140/150] 	 Batch_time 0.31 	 Batch_loss: 7.7965 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][17/60][150/150] 	 Batch_time 0.31 	 Batch_loss: 3.4943 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 17, correlation: 0.8064, L2: 107.6602, RL2: 0.0133, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 17
+[TEST][17/60][0/70] 	 Batch_time 1.17 	 Data_time 6.00 
+[TEST][17/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][17/60][20/70] 	 Batch_time 1.06 	 Data_time 0.31 
+[TEST][17/60][30/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST][17/60][40/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][17/60][50/70] 	 Batch_time 1.17 	 Data_time 0.00 
+[TEST][17/60][60/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST] EPOCH: 17, correlation: 0.807539, L2: 106.437957, RL2: 0.010644
+[TEST] EPOCH: 17, best correlation: 0.829879, best L2: 87.154620, best RL2: 0.008715
+[Training][18/60][10/150] 	 Batch_time 0.39 	 Batch_loss: 3.9238 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][20/150] 	 Batch_time 0.35 	 Batch_loss: 3.5679 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][30/150] 	 Batch_time 0.32 	 Batch_loss: 4.6621 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][40/150] 	 Batch_time 0.38 	 Batch_loss: 2.8177 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][50/150] 	 Batch_time 0.32 	 Batch_loss: 3.4976 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][60/150] 	 Batch_time 0.39 	 Batch_loss: 3.8164 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][70/150] 	 Batch_time 0.32 	 Batch_loss: 4.0598 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][80/150] 	 Batch_time 0.40 	 Batch_loss: 3.3622 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][90/150] 	 Batch_time 0.40 	 Batch_loss: 3.2555 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][100/150] 	 Batch_time 0.39 	 Batch_loss: 3.7567 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][110/150] 	 Batch_time 0.39 	 Batch_loss: 4.7609 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][120/150] 	 Batch_time 0.75 	 Batch_loss: 1.5107 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 4.8473 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 2.2964 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][18/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 4.8817 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 18, correlation: 0.8287, L2: 86.5694, RL2: 0.0107, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 18
+[TEST][18/60][0/70] 	 Batch_time 2.06 	 Data_time 6.40 
+[TEST][18/60][10/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][18/60][20/70] 	 Batch_time 1.12 	 Data_time 0.00 
+[TEST][18/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][18/60][40/70] 	 Batch_time 1.42 	 Data_time 0.00 
+[TEST][18/60][50/70] 	 Batch_time 1.09 	 Data_time 0.00 
+[TEST][18/60][60/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST] EPOCH: 18, correlation: 0.780577, L2: 83.750637, RL2: 0.008375
+[TEST] EPOCH: 18, best correlation: 0.829879, best L2: 83.750637, best RL2: 0.008375
+[Training][19/60][10/150] 	 Batch_time 0.42 	 Batch_loss: 4.5256 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][20/150] 	 Batch_time 0.41 	 Batch_loss: 3.6430 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][30/150] 	 Batch_time 0.32 	 Batch_loss: 4.5126 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][40/150] 	 Batch_time 0.31 	 Batch_loss: 1.1595 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 1.9242 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 5.9256 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][70/150] 	 Batch_time 0.72 	 Batch_loss: 5.7417 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][80/150] 	 Batch_time 0.94 	 Batch_loss: 3.6754 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][90/150] 	 Batch_time 0.93 	 Batch_loss: 3.7376 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][100/150] 	 Batch_time 0.92 	 Batch_loss: 3.7520 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][110/150] 	 Batch_time 0.97 	 Batch_loss: 4.6032 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][120/150] 	 Batch_time 0.38 	 Batch_loss: 3.7629 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][130/150] 	 Batch_time 0.31 	 Batch_loss: 3.6206 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][140/150] 	 Batch_time 0.33 	 Batch_loss: 4.4760 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][19/60][150/150] 	 Batch_time 0.36 	 Batch_loss: 3.1443 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 19, correlation: 0.8404, L2: 77.4762, RL2: 0.0096, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 19
+[TEST][19/60][0/70] 	 Batch_time 1.25 	 Data_time 5.95 
+[TEST][19/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][19/60][20/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][19/60][30/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][19/60][40/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST][19/60][50/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST][19/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+-----New best found!-----
+[TEST] EPOCH: 19, correlation: 0.845233, L2: 78.353670, RL2: 0.007835
+[TEST] EPOCH: 19, best correlation: 0.845233, best L2: 78.353670, best RL2: 0.007835
+[Training][20/60][10/150] 	 Batch_time 0.78 	 Batch_loss: 4.6399 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][20/150] 	 Batch_time 0.81 	 Batch_loss: 4.6179 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 2.6279 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 2.9919 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 4.7283 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][60/150] 	 Batch_time 0.95 	 Batch_loss: 5.2295 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][70/150] 	 Batch_time 0.41 	 Batch_loss: 8.7861 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][80/150] 	 Batch_time 0.42 	 Batch_loss: 3.6345 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][90/150] 	 Batch_time 0.35 	 Batch_loss: 1.8766 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][100/150] 	 Batch_time 0.41 	 Batch_loss: 1.8007 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][110/150] 	 Batch_time 0.32 	 Batch_loss: 4.3388 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 8.7314 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][130/150] 	 Batch_time 0.38 	 Batch_loss: 4.3113 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][140/150] 	 Batch_time 0.74 	 Batch_loss: 1.9848 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][20/60][150/150] 	 Batch_time 0.79 	 Batch_loss: 0.8155 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 20, correlation: 0.8499, L2: 84.3547, RL2: 0.0104, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 20
+[TEST][20/60][0/70] 	 Batch_time 2.23 	 Data_time 6.27 
+[TEST][20/60][10/70] 	 Batch_time 2.08 	 Data_time 0.00 
+[TEST][20/60][20/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][20/60][30/70] 	 Batch_time 1.10 	 Data_time 0.00 
+[TEST][20/60][40/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST][20/60][50/70] 	 Batch_time 1.18 	 Data_time 0.00 
+[TEST][20/60][60/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST] EPOCH: 20, correlation: 0.840996, L2: 104.703127, RL2: 0.010470
+[TEST] EPOCH: 20, best correlation: 0.845233, best L2: 78.353670, best RL2: 0.007835
+[Training][21/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 4.9109 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][20/150] 	 Batch_time 0.78 	 Batch_loss: 5.7209 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][30/150] 	 Batch_time 0.73 	 Batch_loss: 3.7363 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][40/150] 	 Batch_time 0.76 	 Batch_loss: 4.0291 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 3.2071 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 2.6496 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 4.4554 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][80/150] 	 Batch_time 0.78 	 Batch_loss: 2.7808 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][90/150] 	 Batch_time 0.35 	 Batch_loss: 2.3096 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][100/150] 	 Batch_time 0.41 	 Batch_loss: 1.7926 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][110/150] 	 Batch_time 0.32 	 Batch_loss: 3.5767 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][120/150] 	 Batch_time 0.39 	 Batch_loss: 1.6614 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][130/150] 	 Batch_time 0.38 	 Batch_loss: 3.7437 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][140/150] 	 Batch_time 0.39 	 Batch_loss: 1.3506 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][21/60][150/150] 	 Batch_time 0.80 	 Batch_loss: 1.9212 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 21, correlation: 0.8583, L2: 81.3620, RL2: 0.0100, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 21
+[TEST][21/60][0/70] 	 Batch_time 2.08 	 Data_time 7.06 
+[TEST][21/60][10/70] 	 Batch_time 2.14 	 Data_time 0.00 
+[TEST][21/60][20/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][21/60][30/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][21/60][40/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][21/60][50/70] 	 Batch_time 1.56 	 Data_time 0.00 
+[TEST][21/60][60/70] 	 Batch_time 2.09 	 Data_time 0.00 
+-----New best found!-----
+[TEST] EPOCH: 21, correlation: 0.854985, L2: 79.728624, RL2: 0.007973
+[TEST] EPOCH: 21, best correlation: 0.854985, best L2: 78.353670, best RL2: 0.007835
+[Training][22/60][10/150] 	 Batch_time 0.35 	 Batch_loss: 2.5395 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][20/150] 	 Batch_time 0.35 	 Batch_loss: 3.8768 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][30/150] 	 Batch_time 0.35 	 Batch_loss: 1.6223 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][40/150] 	 Batch_time 0.35 	 Batch_loss: 3.0569 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][50/150] 	 Batch_time 0.32 	 Batch_loss: 2.4150 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][60/150] 	 Batch_time 0.50 	 Batch_loss: 3.1878 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 1.3508 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][80/150] 	 Batch_time 0.77 	 Batch_loss: 4.1461 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 4.2744 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 4.5516 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][110/150] 	 Batch_time 0.76 	 Batch_loss: 2.2020 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][120/150] 	 Batch_time 0.73 	 Batch_loss: 1.6138 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][130/150] 	 Batch_time 0.79 	 Batch_loss: 3.6446 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][140/150] 	 Batch_time 0.68 	 Batch_loss: 3.2166 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][22/60][150/150] 	 Batch_time 0.83 	 Batch_loss: 4.4083 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 22, correlation: 0.8883, L2: 57.3199, RL2: 0.0071, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 22
+[TEST][22/60][0/70] 	 Batch_time 2.15 	 Data_time 6.05 
+[TEST][22/60][10/70] 	 Batch_time 1.24 	 Data_time 0.00 
+[TEST][22/60][20/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][22/60][30/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][22/60][40/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][22/60][50/70] 	 Batch_time 1.47 	 Data_time 0.00 
+[TEST][22/60][60/70] 	 Batch_time 2.08 	 Data_time 0.00 
+[TEST] EPOCH: 22, correlation: 0.782678, L2: 101.262082, RL2: 0.010126
+[TEST] EPOCH: 22, best correlation: 0.854985, best L2: 78.353670, best RL2: 0.007835
+[Training][23/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 1.0360 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][20/150] 	 Batch_time 0.83 	 Batch_loss: 2.7486 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 4.6950 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][40/150] 	 Batch_time 0.75 	 Batch_loss: 5.3607 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][50/150] 	 Batch_time 0.78 	 Batch_loss: 4.4815 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][60/150] 	 Batch_time 0.78 	 Batch_loss: 1.5950 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][70/150] 	 Batch_time 0.81 	 Batch_loss: 4.5837 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 4.0132 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][90/150] 	 Batch_time 0.82 	 Batch_loss: 3.4342 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][100/150] 	 Batch_time 0.77 	 Batch_loss: 3.5554 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][110/150] 	 Batch_time 0.77 	 Batch_loss: 3.5650 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][120/150] 	 Batch_time 0.84 	 Batch_loss: 3.4278 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][130/150] 	 Batch_time 0.76 	 Batch_loss: 4.3214 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][140/150] 	 Batch_time 0.84 	 Batch_loss: 2.6568 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][23/60][150/150] 	 Batch_time 0.81 	 Batch_loss: 3.8144 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 23, correlation: 0.8638, L2: 86.1245, RL2: 0.0106, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 23
+[TEST][23/60][0/70] 	 Batch_time 2.08 	 Data_time 6.95 
+[TEST][23/60][10/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][23/60][20/70] 	 Batch_time 2.04 	 Data_time 0.00 
+[TEST][23/60][30/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][23/60][40/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][23/60][50/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][23/60][60/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST] EPOCH: 23, correlation: 0.807049, L2: 96.069321, RL2: 0.009607
+[TEST] EPOCH: 23, best correlation: 0.854985, best L2: 78.353670, best RL2: 0.007835
+[Training][24/60][10/150] 	 Batch_time 0.80 	 Batch_loss: 2.6691 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][20/150] 	 Batch_time 0.77 	 Batch_loss: 0.3398 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 3.9458 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 3.4510 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][50/150] 	 Batch_time 0.84 	 Batch_loss: 3.6012 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][60/150] 	 Batch_time 0.75 	 Batch_loss: 1.8602 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 3.2381 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][80/150] 	 Batch_time 0.77 	 Batch_loss: 3.4183 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][90/150] 	 Batch_time 0.85 	 Batch_loss: 4.2580 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 2.7351 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][110/150] 	 Batch_time 0.83 	 Batch_loss: 2.7462 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 1.8635 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][130/150] 	 Batch_time 0.77 	 Batch_loss: 2.0281 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][140/150] 	 Batch_time 0.76 	 Batch_loss: 1.2626 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][24/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 3.0842 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 24, correlation: 0.8744, L2: 66.4366, RL2: 0.0082, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 24
+[TEST][24/60][0/70] 	 Batch_time 2.16 	 Data_time 5.70 
+[TEST][24/60][10/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][24/60][20/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][24/60][30/70] 	 Batch_time 2.19 	 Data_time 0.00 
+[TEST][24/60][40/70] 	 Batch_time 2.14 	 Data_time 0.00 
+[TEST][24/60][50/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][24/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+-----New best found!-----
+[TEST] EPOCH: 24, correlation: 0.857086, L2: 71.534348, RL2: 0.007153
+[TEST] EPOCH: 24, best correlation: 0.857086, best L2: 71.534348, best RL2: 0.007153
+[Training][25/60][10/150] 	 Batch_time 0.77 	 Batch_loss: 2.8461 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][20/150] 	 Batch_time 0.77 	 Batch_loss: 3.9367 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][30/150] 	 Batch_time 0.78 	 Batch_loss: 3.3197 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][40/150] 	 Batch_time 0.74 	 Batch_loss: 3.5138 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][50/150] 	 Batch_time 0.74 	 Batch_loss: 2.9642 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][60/150] 	 Batch_time 0.83 	 Batch_loss: 4.3571 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 3.5631 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][80/150] 	 Batch_time 0.77 	 Batch_loss: 2.9267 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][90/150] 	 Batch_time 0.74 	 Batch_loss: 2.8617 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 2.4242 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 3.1049 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 1.7900 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][130/150] 	 Batch_time 0.74 	 Batch_loss: 4.0362 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][140/150] 	 Batch_time 0.74 	 Batch_loss: 3.9481 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][25/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 2.7821 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 25, correlation: 0.8556, L2: 67.2477, RL2: 0.0083, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 25
+[TEST][25/60][0/70] 	 Batch_time 2.13 	 Data_time 6.02 
+[TEST][25/60][10/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][25/60][20/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][25/60][30/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][25/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][25/60][50/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][25/60][60/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST] EPOCH: 25, correlation: 0.832592, L2: 79.874405, RL2: 0.007987
+[TEST] EPOCH: 25, best correlation: 0.857086, best L2: 71.534348, best RL2: 0.007153
+[Training][26/60][10/150] 	 Batch_time 0.73 	 Batch_loss: 1.3384 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][20/150] 	 Batch_time 0.77 	 Batch_loss: 3.6873 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 3.6840 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][40/150] 	 Batch_time 0.81 	 Batch_loss: 3.8011 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][50/150] 	 Batch_time 0.76 	 Batch_loss: 2.7644 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 6.8749 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][70/150] 	 Batch_time 0.75 	 Batch_loss: 3.5678 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][80/150] 	 Batch_time 0.84 	 Batch_loss: 3.1740 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][90/150] 	 Batch_time 0.75 	 Batch_loss: 3.3628 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 3.2616 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][110/150] 	 Batch_time 0.75 	 Batch_loss: 3.5016 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 1.5096 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][130/150] 	 Batch_time 0.84 	 Batch_loss: 3.9807 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][140/150] 	 Batch_time 0.74 	 Batch_loss: 2.4794 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][26/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 3.0312 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 26, correlation: 0.9040, L2: 51.0745, RL2: 0.0063, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 26
+[TEST][26/60][0/70] 	 Batch_time 2.08 	 Data_time 6.46 
+[TEST][26/60][10/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][26/60][20/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][26/60][30/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST][26/60][40/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][26/60][50/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][26/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST] EPOCH: 26, correlation: 0.845023, L2: 103.957774, RL2: 0.010396
+[TEST] EPOCH: 26, best correlation: 0.857086, best L2: 71.534348, best RL2: 0.007153
+[Training][27/60][10/150] 	 Batch_time 0.80 	 Batch_loss: 2.5645 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][20/150] 	 Batch_time 0.74 	 Batch_loss: 2.7690 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 5.8386 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][40/150] 	 Batch_time 0.74 	 Batch_loss: 4.0886 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][50/150] 	 Batch_time 0.70 	 Batch_loss: 4.5754 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][60/150] 	 Batch_time 0.75 	 Batch_loss: 4.8073 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][70/150] 	 Batch_time 0.83 	 Batch_loss: 2.3515 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][80/150] 	 Batch_time 0.81 	 Batch_loss: 3.3411 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][90/150] 	 Batch_time 0.84 	 Batch_loss: 2.5883 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][100/150] 	 Batch_time 0.77 	 Batch_loss: 3.5392 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][110/150] 	 Batch_time 0.76 	 Batch_loss: 3.4894 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 3.4603 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][130/150] 	 Batch_time 0.74 	 Batch_loss: 2.5718 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][140/150] 	 Batch_time 0.77 	 Batch_loss: 2.3475 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][27/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 4.0492 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 27, correlation: 0.9031, L2: 46.9519, RL2: 0.0058, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 27
+[TEST][27/60][0/70] 	 Batch_time 2.09 	 Data_time 6.57 
+[TEST][27/60][10/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][27/60][20/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][27/60][30/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][27/60][40/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][27/60][50/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][27/60][60/70] 	 Batch_time 2.14 	 Data_time 0.00 
+-----New best found!-----
+[TEST] EPOCH: 27, correlation: 0.864124, L2: 80.578542, RL2: 0.008058
+[TEST] EPOCH: 27, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][28/60][10/150] 	 Batch_time 0.85 	 Batch_loss: 2.6830 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][20/150] 	 Batch_time 0.73 	 Batch_loss: 5.3884 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 2.5288 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][40/150] 	 Batch_time 0.81 	 Batch_loss: 6.2047 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 5.6642 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][60/150] 	 Batch_time 0.81 	 Batch_loss: 2.4034 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 2.9634 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 3.5828 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][90/150] 	 Batch_time 0.79 	 Batch_loss: 3.2321 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][100/150] 	 Batch_time 0.76 	 Batch_loss: 2.6211 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][110/150] 	 Batch_time 0.81 	 Batch_loss: 3.1596 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 2.4629 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][130/150] 	 Batch_time 0.74 	 Batch_loss: 1.7777 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][140/150] 	 Batch_time 0.74 	 Batch_loss: 2.7305 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][28/60][150/150] 	 Batch_time 0.75 	 Batch_loss: 3.7404 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 28, correlation: 0.8820, L2: 47.1903, RL2: 0.0058, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 28
+[TEST][28/60][0/70] 	 Batch_time 2.13 	 Data_time 6.67 
+[TEST][28/60][10/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][28/60][20/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][28/60][30/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][28/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][28/60][50/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][28/60][60/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST] EPOCH: 28, correlation: 0.836549, L2: 79.243800, RL2: 0.007924
+[TEST] EPOCH: 28, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][29/60][10/150] 	 Batch_time 0.77 	 Batch_loss: 4.9895 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][20/150] 	 Batch_time 0.74 	 Batch_loss: 2.3703 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 3.6391 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 3.5535 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][50/150] 	 Batch_time 0.81 	 Batch_loss: 2.8447 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 3.1958 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][70/150] 	 Batch_time 0.83 	 Batch_loss: 5.2992 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][80/150] 	 Batch_time 0.77 	 Batch_loss: 3.7648 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][90/150] 	 Batch_time 0.68 	 Batch_loss: 3.1876 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 1.6401 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][110/150] 	 Batch_time 0.77 	 Batch_loss: 4.0239 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][120/150] 	 Batch_time 0.79 	 Batch_loss: 0.3884 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][130/150] 	 Batch_time 0.77 	 Batch_loss: 2.8045 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][140/150] 	 Batch_time 0.86 	 Batch_loss: 4.0545 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][29/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 10.7331 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 29, correlation: 0.8969, L2: 47.5441, RL2: 0.0059, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 29
+[TEST][29/60][0/70] 	 Batch_time 2.08 	 Data_time 6.60 
+[TEST][29/60][10/70] 	 Batch_time 2.08 	 Data_time 0.00 
+[TEST][29/60][20/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][29/60][30/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][29/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][29/60][50/70] 	 Batch_time 2.22 	 Data_time 0.00 
+[TEST][29/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST] EPOCH: 29, correlation: 0.830141, L2: 105.992355, RL2: 0.010599
+[TEST] EPOCH: 29, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][30/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 2.7934 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][20/150] 	 Batch_time 0.79 	 Batch_loss: 9.3896 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 5.3359 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][40/150] 	 Batch_time 0.74 	 Batch_loss: 4.4762 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][50/150] 	 Batch_time 0.74 	 Batch_loss: 3.8597 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 3.0504 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 4.4791 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 6.7020 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 3.3487 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][100/150] 	 Batch_time 0.77 	 Batch_loss: 3.2072 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][110/150] 	 Batch_time 0.77 	 Batch_loss: 2.6456 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][120/150] 	 Batch_time 0.77 	 Batch_loss: 3.6599 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][130/150] 	 Batch_time 0.78 	 Batch_loss: 3.0432 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][140/150] 	 Batch_time 0.77 	 Batch_loss: 3.6873 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][30/60][150/150] 	 Batch_time 0.82 	 Batch_loss: 3.7659 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 30, correlation: 0.8927, L2: 69.6177, RL2: 0.0086, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 30
+[TEST][30/60][0/70] 	 Batch_time 2.14 	 Data_time 5.93 
+[TEST][30/60][10/70] 	 Batch_time 2.08 	 Data_time 0.00 
+[TEST][30/60][20/70] 	 Batch_time 2.19 	 Data_time 0.00 
+[TEST][30/60][30/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][30/60][40/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][30/60][50/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][30/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST] EPOCH: 30, correlation: 0.835166, L2: 104.442998, RL2: 0.010444
+[TEST] EPOCH: 30, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][31/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 3.0844 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][20/150] 	 Batch_time 0.75 	 Batch_loss: 5.0099 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 2.7595 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][40/150] 	 Batch_time 0.76 	 Batch_loss: 2.9435 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][50/150] 	 Batch_time 0.80 	 Batch_loss: 6.6902 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][60/150] 	 Batch_time 0.80 	 Batch_loss: 3.5105 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 3.5355 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][80/150] 	 Batch_time 0.81 	 Batch_loss: 3.0189 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][90/150] 	 Batch_time 0.74 	 Batch_loss: 3.1201 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][100/150] 	 Batch_time 0.76 	 Batch_loss: 5.5026 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 3.7862 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][120/150] 	 Batch_time 0.79 	 Batch_loss: 3.4419 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][130/150] 	 Batch_time 0.81 	 Batch_loss: 2.8211 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][140/150] 	 Batch_time 0.83 	 Batch_loss: 2.9710 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][31/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 3.3687 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 31, correlation: 0.8994, L2: 46.8116, RL2: 0.0058, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 31
+[TEST][31/60][0/70] 	 Batch_time 2.15 	 Data_time 5.81 
+[TEST][31/60][10/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][31/60][20/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][31/60][30/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][31/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][31/60][50/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][31/60][60/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST] EPOCH: 31, correlation: 0.839753, L2: 78.655837, RL2: 0.007866
+[TEST] EPOCH: 31, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][32/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 3.7414 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][20/150] 	 Batch_time 0.76 	 Batch_loss: 3.5336 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 2.8651 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][40/150] 	 Batch_time 0.73 	 Batch_loss: 2.6687 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][50/150] 	 Batch_time 0.75 	 Batch_loss: 3.7187 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][60/150] 	 Batch_time 0.83 	 Batch_loss: 3.2618 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 3.4972 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 2.0165 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][90/150] 	 Batch_time 0.85 	 Batch_loss: 3.6578 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][100/150] 	 Batch_time 0.83 	 Batch_loss: 4.7235 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][110/150] 	 Batch_time 0.77 	 Batch_loss: 2.5726 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][120/150] 	 Batch_time 0.83 	 Batch_loss: 1.4756 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][130/150] 	 Batch_time 0.76 	 Batch_loss: 1.5016 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][140/150] 	 Batch_time 0.84 	 Batch_loss: 0.2492 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][32/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 1.3320 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 32, correlation: 0.9160, L2: 47.7481, RL2: 0.0059, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 32
+[TEST][32/60][0/70] 	 Batch_time 2.30 	 Data_time 5.66 
+[TEST][32/60][10/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][32/60][20/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][32/60][30/70] 	 Batch_time 2.19 	 Data_time 0.00 
+[TEST][32/60][40/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][32/60][50/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][32/60][60/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST] EPOCH: 32, correlation: 0.817763, L2: 100.205234, RL2: 0.010021
+[TEST] EPOCH: 32, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][33/60][10/150] 	 Batch_time 0.75 	 Batch_loss: 1.9822 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][20/150] 	 Batch_time 0.74 	 Batch_loss: 1.8893 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 2.4990 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 2.0085 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][50/150] 	 Batch_time 0.75 	 Batch_loss: 2.1480 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][60/150] 	 Batch_time 0.76 	 Batch_loss: 0.7034 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][70/150] 	 Batch_time 0.75 	 Batch_loss: 4.0915 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][80/150] 	 Batch_time 0.76 	 Batch_loss: 2.3683 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][90/150] 	 Batch_time 0.76 	 Batch_loss: 3.3160 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][100/150] 	 Batch_time 0.77 	 Batch_loss: 1.1029 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 4.1828 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 3.9942 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][130/150] 	 Batch_time 0.81 	 Batch_loss: 2.4645 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][140/150] 	 Batch_time 0.83 	 Batch_loss: 2.9067 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][33/60][150/150] 	 Batch_time 0.80 	 Batch_loss: 1.4266 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 33, correlation: 0.9203, L2: 37.4525, RL2: 0.0046, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 33
+[TEST][33/60][0/70] 	 Batch_time 2.07 	 Data_time 6.89 
+[TEST][33/60][10/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][33/60][20/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][33/60][30/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][33/60][40/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][33/60][50/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][33/60][60/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST] EPOCH: 33, correlation: 0.819392, L2: 119.647895, RL2: 0.011965
+[TEST] EPOCH: 33, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][34/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 2.9744 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][20/150] 	 Batch_time 0.77 	 Batch_loss: 2.7383 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 3.5480 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 2.4062 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][50/150] 	 Batch_time 0.74 	 Batch_loss: 2.4528 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 1.5329 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][70/150] 	 Batch_time 0.78 	 Batch_loss: 5.1691 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 3.6400 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][90/150] 	 Batch_time 0.74 	 Batch_loss: 1.8461 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][100/150] 	 Batch_time 0.75 	 Batch_loss: 2.7558 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][110/150] 	 Batch_time 0.77 	 Batch_loss: 0.1076 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][120/150] 	 Batch_time 0.75 	 Batch_loss: 4.2059 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][130/150] 	 Batch_time 0.74 	 Batch_loss: 3.1801 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][140/150] 	 Batch_time 0.74 	 Batch_loss: 2.4961 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][34/60][150/150] 	 Batch_time 0.81 	 Batch_loss: 4.1566 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 34, correlation: 0.9292, L2: 29.6272, RL2: 0.0037, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 34
+[TEST][34/60][0/70] 	 Batch_time 2.11 	 Data_time 6.39 
+[TEST][34/60][10/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][34/60][20/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][34/60][30/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][34/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][34/60][50/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][34/60][60/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST] EPOCH: 34, correlation: 0.831227, L2: 77.899046, RL2: 0.007790
+[TEST] EPOCH: 34, best correlation: 0.864124, best L2: 71.534348, best RL2: 0.007153
+[Training][35/60][10/150] 	 Batch_time 0.74 	 Batch_loss: 4.0268 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][20/150] 	 Batch_time 0.74 	 Batch_loss: 1.2008 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][30/150] 	 Batch_time 0.78 	 Batch_loss: 2.7063 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][40/150] 	 Batch_time 0.74 	 Batch_loss: 2.4714 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 2.8271 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 6.2210 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 0.2472 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 2.6043 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 1.2377 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 2.4301 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][110/150] 	 Batch_time 0.75 	 Batch_loss: 4.0445 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][120/150] 	 Batch_time 0.73 	 Batch_loss: 3.6454 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][130/150] 	 Batch_time 0.77 	 Batch_loss: 3.6389 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][140/150] 	 Batch_time 0.75 	 Batch_loss: 2.1746 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][35/60][150/150] 	 Batch_time 0.80 	 Batch_loss: 2.9677 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 35, correlation: 0.9110, L2: 47.4607, RL2: 0.0059, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 35
+[TEST][35/60][0/70] 	 Batch_time 2.31 	 Data_time 5.80 
+[TEST][35/60][10/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][35/60][20/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][35/60][30/70] 	 Batch_time 2.19 	 Data_time 0.00 
+[TEST][35/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][35/60][50/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][35/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST] EPOCH: 35, correlation: 0.826622, L2: 69.322053, RL2: 0.006932
+[TEST] EPOCH: 35, best correlation: 0.864124, best L2: 69.322053, best RL2: 0.006932
+[Training][36/60][10/150] 	 Batch_time 0.76 	 Batch_loss: 2.5015 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][20/150] 	 Batch_time 0.79 	 Batch_loss: 2.3880 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 1.2265 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][40/150] 	 Batch_time 0.74 	 Batch_loss: 2.4564 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 2.6835 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][60/150] 	 Batch_time 0.80 	 Batch_loss: 3.7129 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][70/150] 	 Batch_time 0.78 	 Batch_loss: 3.4877 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 1.9073 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][90/150] 	 Batch_time 0.78 	 Batch_loss: 1.4548 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][100/150] 	 Batch_time 0.76 	 Batch_loss: 3.2836 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][110/150] 	 Batch_time 0.77 	 Batch_loss: 2.5925 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 0.4777 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][130/150] 	 Batch_time 0.75 	 Batch_loss: 2.7258 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][140/150] 	 Batch_time 0.75 	 Batch_loss: 3.4990 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][36/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 3.5871 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 36, correlation: 0.9193, L2: 37.6975, RL2: 0.0047, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 36
+[TEST][36/60][0/70] 	 Batch_time 2.30 	 Data_time 5.92 
+[TEST][36/60][10/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][36/60][20/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][36/60][30/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][36/60][40/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][36/60][50/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][36/60][60/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST] EPOCH: 36, correlation: 0.846528, L2: 68.859327, RL2: 0.006886
+[TEST] EPOCH: 36, best correlation: 0.864124, best L2: 68.859327, best RL2: 0.006886
+[Training][37/60][10/150] 	 Batch_time 0.76 	 Batch_loss: 3.2323 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][20/150] 	 Batch_time 0.77 	 Batch_loss: 2.7686 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 3.0338 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][40/150] 	 Batch_time 0.64 	 Batch_loss: 1.5174 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][50/150] 	 Batch_time 0.64 	 Batch_loss: 2.9536 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 2.8325 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][70/150] 	 Batch_time 0.80 	 Batch_loss: 3.5471 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][80/150] 	 Batch_time 0.81 	 Batch_loss: 3.5172 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][90/150] 	 Batch_time 0.74 	 Batch_loss: 2.1425 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 4.2328 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 3.0243 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 4.0294 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][130/150] 	 Batch_time 0.77 	 Batch_loss: 3.4411 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][140/150] 	 Batch_time 0.74 	 Batch_loss: 5.8126 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][37/60][150/150] 	 Batch_time 0.75 	 Batch_loss: 3.1207 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 37, correlation: 0.9086, L2: 49.1435, RL2: 0.0061, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 37
+[TEST][37/60][0/70] 	 Batch_time 1.14 	 Data_time 6.13 
+[TEST][37/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][37/60][20/70] 	 Batch_time 1.06 	 Data_time 1.23 
+[TEST][37/60][30/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][37/60][40/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][37/60][50/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][37/60][60/70] 	 Batch_time 1.09 	 Data_time 0.00 
+[TEST] EPOCH: 37, correlation: 0.821493, L2: 101.180653, RL2: 0.010118
+[TEST] EPOCH: 37, best correlation: 0.864124, best L2: 68.859327, best RL2: 0.006886
+[Training][38/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 1.9047 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 1.1728 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 2.1486 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][40/150] 	 Batch_time 0.76 	 Batch_loss: 1.8755 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][50/150] 	 Batch_time 0.74 	 Batch_loss: 3.6854 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 2.2382 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 1.8586 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][80/150] 	 Batch_time 0.77 	 Batch_loss: 1.9694 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 1.9756 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][100/150] 	 Batch_time 0.68 	 Batch_loss: 1.5525 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][110/150] 	 Batch_time 0.68 	 Batch_loss: 4.2183 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][120/150] 	 Batch_time 0.68 	 Batch_loss: 4.0931 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 0.9317 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][140/150] 	 Batch_time 0.66 	 Batch_loss: 2.9157 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][38/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 0.6213 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 38, correlation: 0.9318, L2: 36.3093, RL2: 0.0045, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 38
+[TEST][38/60][0/70] 	 Batch_time 2.17 	 Data_time 7.12 
+[TEST][38/60][10/70] 	 Batch_time 2.07 	 Data_time 0.00 
+[TEST][38/60][20/70] 	 Batch_time 2.20 	 Data_time 0.00 
+[TEST][38/60][30/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][38/60][40/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][38/60][50/70] 	 Batch_time 1.20 	 Data_time 0.00 
+[TEST][38/60][60/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST] EPOCH: 38, correlation: 0.808642, L2: 81.907178, RL2: 0.008191
+[TEST] EPOCH: 38, best correlation: 0.864124, best L2: 68.859327, best RL2: 0.006886
+[Training][39/60][10/150] 	 Batch_time 0.65 	 Batch_loss: 2.5517 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 1.4144 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 3.5819 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][40/150] 	 Batch_time 0.64 	 Batch_loss: 2.9115 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][50/150] 	 Batch_time 0.67 	 Batch_loss: 4.1003 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 10.0430 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 3.7335 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 2.7817 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 2.6274 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 2.5710 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 1.6361 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 3.5914 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][130/150] 	 Batch_time 0.76 	 Batch_loss: 4.8212 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][140/150] 	 Batch_time 0.81 	 Batch_loss: 3.5756 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][39/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 2.7309 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 39, correlation: 0.9180, L2: 43.7454, RL2: 0.0054, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 39
+[TEST][39/60][0/70] 	 Batch_time 1.15 	 Data_time 5.94 
+[TEST][39/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][39/60][20/70] 	 Batch_time 2.10 	 Data_time 0.49 
+[TEST][39/60][30/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][39/60][40/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][39/60][50/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][39/60][60/70] 	 Batch_time 1.16 	 Data_time 0.00 
+[TEST] EPOCH: 39, correlation: 0.849470, L2: 69.147545, RL2: 0.006915
+[TEST] EPOCH: 39, best correlation: 0.864124, best L2: 68.859327, best RL2: 0.006886
+[Training][40/60][10/150] 	 Batch_time 0.77 	 Batch_loss: 2.9451 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][20/150] 	 Batch_time 0.76 	 Batch_loss: 0.6612 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][30/150] 	 Batch_time 0.74 	 Batch_loss: 1.5582 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][40/150] 	 Batch_time 0.76 	 Batch_loss: 3.3048 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][50/150] 	 Batch_time 0.74 	 Batch_loss: 3.5173 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][60/150] 	 Batch_time 0.78 	 Batch_loss: 3.1995 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 2.1684 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 1.1156 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][90/150] 	 Batch_time 0.79 	 Batch_loss: 3.9812 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][100/150] 	 Batch_time 0.76 	 Batch_loss: 1.6414 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][110/150] 	 Batch_time 0.81 	 Batch_loss: 2.9803 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][120/150] 	 Batch_time 0.78 	 Batch_loss: 2.7865 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][130/150] 	 Batch_time 0.75 	 Batch_loss: 2.2710 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][140/150] 	 Batch_time 0.80 	 Batch_loss: 2.3867 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][40/60][150/150] 	 Batch_time 0.81 	 Batch_loss: 4.7779 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 40, correlation: 0.9259, L2: 38.7523, RL2: 0.0048, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 40
+[TEST][40/60][0/70] 	 Batch_time 2.14 	 Data_time 6.38 
+[TEST][40/60][10/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][40/60][20/70] 	 Batch_time 2.21 	 Data_time 0.00 
+[TEST][40/60][30/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][40/60][40/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][40/60][50/70] 	 Batch_time 2.18 	 Data_time 0.00 
+[TEST][40/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST] EPOCH: 40, correlation: 0.842257, L2: 93.132370, RL2: 0.009313
+[TEST] EPOCH: 40, best correlation: 0.864124, best L2: 68.859327, best RL2: 0.006886
+[Training][41/60][10/150] 	 Batch_time 0.65 	 Batch_loss: 2.1867 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 1.8107 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 1.6009 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 1.7272 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][50/150] 	 Batch_time 0.76 	 Batch_loss: 3.8926 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][60/150] 	 Batch_time 0.79 	 Batch_loss: 3.6554 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][70/150] 	 Batch_time 0.77 	 Batch_loss: 2.7108 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][80/150] 	 Batch_time 0.77 	 Batch_loss: 2.0758 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 1.1071 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][100/150] 	 Batch_time 0.76 	 Batch_loss: 3.1072 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 2.5657 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][120/150] 	 Batch_time 0.77 	 Batch_loss: 4.0645 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][130/150] 	 Batch_time 0.78 	 Batch_loss: 2.8508 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][140/150] 	 Batch_time 0.63 	 Batch_loss: 4.7092 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][41/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 3.4807 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 41, correlation: 0.9331, L2: 36.8364, RL2: 0.0045, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 41
+[TEST][41/60][0/70] 	 Batch_time 1.13 	 Data_time 5.92 
+[TEST][41/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][41/60][20/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][41/60][30/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][41/60][40/70] 	 Batch_time 2.16 	 Data_time 0.00 
+[TEST][41/60][50/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][41/60][60/70] 	 Batch_time 1.10 	 Data_time 0.00 
+[TEST] EPOCH: 41, correlation: 0.855247, L2: 63.557057, RL2: 0.006356
+[TEST] EPOCH: 41, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][42/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 3.2892 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 2.1326 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 2.0741 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][40/150] 	 Batch_time 0.63 	 Batch_loss: 2.7231 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][50/150] 	 Batch_time 0.74 	 Batch_loss: 3.1183 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][60/150] 	 Batch_time 0.74 	 Batch_loss: 1.5937 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][70/150] 	 Batch_time 0.74 	 Batch_loss: 2.4698 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][80/150] 	 Batch_time 0.73 	 Batch_loss: 4.9529 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][90/150] 	 Batch_time 0.81 	 Batch_loss: 2.8139 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 2.6369 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 3.6410 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 3.0381 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 2.1346 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][140/150] 	 Batch_time 0.64 	 Batch_loss: 2.2190 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][42/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 2.9796 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 42, correlation: 0.9320, L2: 28.6168, RL2: 0.0035, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 42
+[TEST][42/60][0/70] 	 Batch_time 1.13 	 Data_time 6.66 
+[TEST][42/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][42/60][20/70] 	 Batch_time 2.10 	 Data_time 0.32 
+[TEST][42/60][30/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][42/60][40/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][42/60][50/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][42/60][60/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST] EPOCH: 42, correlation: 0.861725, L2: 81.547245, RL2: 0.008155
+[TEST] EPOCH: 42, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][43/60][10/150] 	 Batch_time 0.67 	 Batch_loss: 0.5551 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 1.9328 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 5.3629 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 1.3048 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][50/150] 	 Batch_time 0.64 	 Batch_loss: 2.3393 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 0.7680 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][70/150] 	 Batch_time 0.75 	 Batch_loss: 2.9500 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][80/150] 	 Batch_time 0.77 	 Batch_loss: 4.3283 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][90/150] 	 Batch_time 0.74 	 Batch_loss: 3.3651 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 3.3640 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][110/150] 	 Batch_time 0.74 	 Batch_loss: 3.7601 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][120/150] 	 Batch_time 0.75 	 Batch_loss: 2.2600 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][130/150] 	 Batch_time 0.64 	 Batch_loss: 1.7807 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 3.7156 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][43/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 3.1006 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 43, correlation: 0.9204, L2: 30.8665, RL2: 0.0038, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 43
+[TEST][43/60][0/70] 	 Batch_time 1.18 	 Data_time 5.90 
+[TEST][43/60][10/70] 	 Batch_time 1.05 	 Data_time 0.00 
+[TEST][43/60][20/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][43/60][30/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][43/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][43/60][50/70] 	 Batch_time 1.22 	 Data_time 0.00 
+[TEST][43/60][60/70] 	 Batch_time 1.14 	 Data_time 0.00 
+[TEST] EPOCH: 43, correlation: 0.817501, L2: 85.897043, RL2: 0.008590
+[TEST] EPOCH: 43, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][44/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 4.5570 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 3.9718 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 3.2566 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][40/150] 	 Batch_time 0.76 	 Batch_loss: 2.9746 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][50/150] 	 Batch_time 0.83 	 Batch_loss: 2.6900 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 2.3925 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][70/150] 	 Batch_time 0.81 	 Batch_loss: 3.2411 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][80/150] 	 Batch_time 0.74 	 Batch_loss: 2.1472 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][90/150] 	 Batch_time 0.75 	 Batch_loss: 4.2325 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][100/150] 	 Batch_time 0.74 	 Batch_loss: 3.9558 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][110/150] 	 Batch_time 0.64 	 Batch_loss: 1.8997 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][120/150] 	 Batch_time 0.68 	 Batch_loss: 2.3299 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][130/150] 	 Batch_time 0.66 	 Batch_loss: 4.2469 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][140/150] 	 Batch_time 0.64 	 Batch_loss: 4.3805 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][44/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 3.2425 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 44, correlation: 0.9044, L2: 41.7451, RL2: 0.0052, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 44
+[TEST][44/60][0/70] 	 Batch_time 1.23 	 Data_time 6.08 
+[TEST][44/60][10/70] 	 Batch_time 1.05 	 Data_time 0.00 
+[TEST][44/60][20/70] 	 Batch_time 2.17 	 Data_time 0.00 
+[TEST][44/60][30/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][44/60][40/70] 	 Batch_time 1.12 	 Data_time 0.00 
+[TEST][44/60][50/70] 	 Batch_time 1.08 	 Data_time 0.00 
+[TEST][44/60][60/70] 	 Batch_time 1.21 	 Data_time 0.00 
+[TEST] EPOCH: 44, correlation: 0.843657, L2: 80.440403, RL2: 0.008044
+[TEST] EPOCH: 44, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][45/60][10/150] 	 Batch_time 0.77 	 Batch_loss: 4.5717 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][20/150] 	 Batch_time 0.74 	 Batch_loss: 3.6275 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][30/150] 	 Batch_time 0.77 	 Batch_loss: 3.3652 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][40/150] 	 Batch_time 0.70 	 Batch_loss: 2.7034 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.0492 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 2.0350 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 3.7499 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 3.2692 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][90/150] 	 Batch_time 0.65 	 Batch_loss: 2.9018 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][100/150] 	 Batch_time 0.65 	 Batch_loss: 5.2420 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][110/150] 	 Batch_time 0.75 	 Batch_loss: 2.2486 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][120/150] 	 Batch_time 0.74 	 Batch_loss: 4.6425 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][130/150] 	 Batch_time 0.80 	 Batch_loss: 2.0112 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][140/150] 	 Batch_time 0.77 	 Batch_loss: 2.8587 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][45/60][150/150] 	 Batch_time 0.74 	 Batch_loss: 2.2788 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 45, correlation: 0.9423, L2: 35.6003, RL2: 0.0044, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 45
+[TEST][45/60][0/70] 	 Batch_time 2.25 	 Data_time 5.62 
+[TEST][45/60][10/70] 	 Batch_time 1.09 	 Data_time 0.00 
+[TEST][45/60][20/70] 	 Batch_time 1.14 	 Data_time 0.00 
+[TEST][45/60][30/70] 	 Batch_time 1.17 	 Data_time 0.00 
+[TEST][45/60][40/70] 	 Batch_time 1.10 	 Data_time 0.00 
+[TEST][45/60][50/70] 	 Batch_time 2.34 	 Data_time 0.00 
+[TEST][45/60][60/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST] EPOCH: 45, correlation: 0.845776, L2: 89.235432, RL2: 0.008924
+[TEST] EPOCH: 45, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][46/60][10/150] 	 Batch_time 0.32 	 Batch_loss: 2.0059 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][20/150] 	 Batch_time 0.37 	 Batch_loss: 4.9040 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][30/150] 	 Batch_time 0.39 	 Batch_loss: 3.0194 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][40/150] 	 Batch_time 0.36 	 Batch_loss: 1.5532 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][50/150] 	 Batch_time 0.42 	 Batch_loss: 1.1164 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][60/150] 	 Batch_time 0.32 	 Batch_loss: 2.9662 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][70/150] 	 Batch_time 0.42 	 Batch_loss: 3.3339 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][80/150] 	 Batch_time 0.36 	 Batch_loss: 2.2203 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][90/150] 	 Batch_time 0.33 	 Batch_loss: 2.7980 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][100/150] 	 Batch_time 0.32 	 Batch_loss: 1.8064 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][110/150] 	 Batch_time 0.39 	 Batch_loss: 1.6321 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][120/150] 	 Batch_time 0.40 	 Batch_loss: 4.9306 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][130/150] 	 Batch_time 0.32 	 Batch_loss: 3.4740 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 4.0524 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][46/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 2.7252 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 46, correlation: 0.9343, L2: 36.8667, RL2: 0.0046, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 46
+[TEST][46/60][0/70] 	 Batch_time 1.05 	 Data_time 6.66 
+[TEST][46/60][10/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][46/60][20/70] 	 Batch_time 1.12 	 Data_time 0.00 
+[TEST][46/60][30/70] 	 Batch_time 1.04 	 Data_time 18.64 
+[TEST][46/60][40/70] 	 Batch_time 1.11 	 Data_time 0.00 
+[TEST][46/60][50/70] 	 Batch_time 1.05 	 Data_time 0.44 
+[TEST][46/60][60/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST] EPOCH: 46, correlation: 0.849014, L2: 80.701850, RL2: 0.008070
+[TEST] EPOCH: 46, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][47/60][10/150] 	 Batch_time 0.48 	 Batch_loss: 2.3112 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][20/150] 	 Batch_time 0.31 	 Batch_loss: 0.5206 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][30/150] 	 Batch_time 0.31 	 Batch_loss: 4.6462 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][40/150] 	 Batch_time 0.32 	 Batch_loss: 2.7831 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][50/150] 	 Batch_time 0.37 	 Batch_loss: 3.2365 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][60/150] 	 Batch_time 0.38 	 Batch_loss: 2.8066 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][70/150] 	 Batch_time 0.38 	 Batch_loss: 2.0113 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][80/150] 	 Batch_time 0.42 	 Batch_loss: 5.0374 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][90/150] 	 Batch_time 0.32 	 Batch_loss: 2.9054 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][100/150] 	 Batch_time 0.31 	 Batch_loss: 3.1733 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][110/150] 	 Batch_time 0.43 	 Batch_loss: 2.8714 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 4.1590 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][130/150] 	 Batch_time 0.33 	 Batch_loss: 3.8623 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][140/150] 	 Batch_time 0.35 	 Batch_loss: 2.7989 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][47/60][150/150] 	 Batch_time 0.35 	 Batch_loss: 3.7623 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 47, correlation: 0.9345, L2: 31.5550, RL2: 0.0039, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 47
+[TEST][47/60][0/70] 	 Batch_time 1.13 	 Data_time 6.12 
+[TEST][47/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][47/60][20/70] 	 Batch_time 1.13 	 Data_time 0.25 
+[TEST][47/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][47/60][40/70] 	 Batch_time 1.12 	 Data_time 0.23 
+[TEST][47/60][50/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][47/60][60/70] 	 Batch_time 1.15 	 Data_time 0.11 
+[TEST] EPOCH: 47, correlation: 0.850030, L2: 114.111991, RL2: 0.011411
+[TEST] EPOCH: 47, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][48/60][10/150] 	 Batch_time 0.35 	 Batch_loss: 2.3488 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][20/150] 	 Batch_time 0.36 	 Batch_loss: 2.3773 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][30/150] 	 Batch_time 0.35 	 Batch_loss: 3.7883 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][40/150] 	 Batch_time 0.35 	 Batch_loss: 3.8346 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][50/150] 	 Batch_time 0.35 	 Batch_loss: 3.0991 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][60/150] 	 Batch_time 0.38 	 Batch_loss: 2.5190 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][70/150] 	 Batch_time 0.38 	 Batch_loss: 2.9376 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][80/150] 	 Batch_time 0.32 	 Batch_loss: 2.0934 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][90/150] 	 Batch_time 0.37 	 Batch_loss: 2.1791 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][100/150] 	 Batch_time 0.36 	 Batch_loss: 4.1916 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][110/150] 	 Batch_time 0.35 	 Batch_loss: 2.1647 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][120/150] 	 Batch_time 0.32 	 Batch_loss: 6.4500 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][130/150] 	 Batch_time 0.42 	 Batch_loss: 4.3519 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][140/150] 	 Batch_time 0.38 	 Batch_loss: 0.3115 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][48/60][150/150] 	 Batch_time 0.37 	 Batch_loss: 2.6524 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 48, correlation: 0.9357, L2: 31.7603, RL2: 0.0039, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 48
+[TEST][48/60][0/70] 	 Batch_time 1.24 	 Data_time 5.50 
+[TEST][48/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][48/60][20/70] 	 Batch_time 1.27 	 Data_time 0.24 
+[TEST][48/60][30/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][48/60][40/70] 	 Batch_time 1.14 	 Data_time 0.26 
+[TEST][48/60][50/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][48/60][60/70] 	 Batch_time 1.13 	 Data_time 0.17 
+[TEST] EPOCH: 48, correlation: 0.849050, L2: 74.917027, RL2: 0.007492
+[TEST] EPOCH: 48, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][49/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 3.5615 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][20/150] 	 Batch_time 0.71 	 Batch_loss: 3.5224 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][30/150] 	 Batch_time 0.67 	 Batch_loss: 3.2354 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][40/150] 	 Batch_time 0.64 	 Batch_loss: 1.5660 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][50/150] 	 Batch_time 0.64 	 Batch_loss: 2.6720 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][60/150] 	 Batch_time 0.64 	 Batch_loss: 3.0617 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 1.8162 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][80/150] 	 Batch_time 0.64 	 Batch_loss: 2.7384 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][90/150] 	 Batch_time 0.64 	 Batch_loss: 3.2351 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][100/150] 	 Batch_time 0.64 	 Batch_loss: 2.9985 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][110/150] 	 Batch_time 0.64 	 Batch_loss: 3.3535 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][120/150] 	 Batch_time 0.64 	 Batch_loss: 3.3699 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][130/150] 	 Batch_time 0.64 	 Batch_loss: 3.0142 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][140/150] 	 Batch_time 0.64 	 Batch_loss: 2.2844 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][49/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 2.7124 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 49, correlation: 0.9505, L2: 29.6594, RL2: 0.0037, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 49
+[TEST][49/60][0/70] 	 Batch_time 1.32 	 Data_time 5.59 
+[TEST][49/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][49/60][20/70] 	 Batch_time 1.06 	 Data_time 0.25 
+[TEST][49/60][30/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][49/60][40/70] 	 Batch_time 1.07 	 Data_time 0.35 
+[TEST][49/60][50/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST][49/60][60/70] 	 Batch_time 1.08 	 Data_time 0.13 
+[TEST] EPOCH: 49, correlation: 0.820407, L2: 96.217605, RL2: 0.009622
+[TEST] EPOCH: 49, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][50/60][10/150] 	 Batch_time 0.68 	 Batch_loss: 4.0050 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 2.7313 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 2.6027 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 3.1270 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 2.6165 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][60/150] 	 Batch_time 0.64 	 Batch_loss: 5.1984 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 0.4800 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][80/150] 	 Batch_time 0.66 	 Batch_loss: 2.1658 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][90/150] 	 Batch_time 0.65 	 Batch_loss: 1.4942 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][100/150] 	 Batch_time 0.65 	 Batch_loss: 3.0584 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][110/150] 	 Batch_time 0.65 	 Batch_loss: 3.9671 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][120/150] 	 Batch_time 0.65 	 Batch_loss: 2.7804 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 3.1444 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 2.2022 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][50/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 3.5002 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 50, correlation: 0.9361, L2: 24.0474, RL2: 0.0030, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 50
+[TEST][50/60][0/70] 	 Batch_time 2.17 	 Data_time 5.95 
+[TEST][50/60][10/70] 	 Batch_time 2.06 	 Data_time 0.00 
+[TEST][50/60][20/70] 	 Batch_time 2.14 	 Data_time 0.00 
+[TEST][50/60][30/70] 	 Batch_time 1.08 	 Data_time 0.00 
+[TEST][50/60][40/70] 	 Batch_time 1.20 	 Data_time 0.00 
+[TEST][50/60][50/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][50/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 50, correlation: 0.829616, L2: 101.907317, RL2: 0.010191
+[TEST] EPOCH: 50, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][51/60][10/150] 	 Batch_time 0.67 	 Batch_loss: 3.1547 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][20/150] 	 Batch_time 0.64 	 Batch_loss: 2.2121 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 3.8120 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][40/150] 	 Batch_time 0.64 	 Batch_loss: 4.3781 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.3963 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 2.2960 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][70/150] 	 Batch_time 0.66 	 Batch_loss: 2.8102 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][80/150] 	 Batch_time 0.68 	 Batch_loss: 1.4749 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][90/150] 	 Batch_time 0.67 	 Batch_loss: 2.6634 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][100/150] 	 Batch_time 0.65 	 Batch_loss: 2.2911 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][110/150] 	 Batch_time 0.64 	 Batch_loss: 2.3097 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][120/150] 	 Batch_time 0.65 	 Batch_loss: 1.9377 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][130/150] 	 Batch_time 0.68 	 Batch_loss: 4.4562 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][140/150] 	 Batch_time 0.78 	 Batch_loss: 5.6498 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][51/60][150/150] 	 Batch_time 0.82 	 Batch_loss: 3.2003 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 51, correlation: 0.9515, L2: 23.5253, RL2: 0.0029, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 51
+[TEST][51/60][0/70] 	 Batch_time 2.13 	 Data_time 6.01 
+[TEST][51/60][10/70] 	 Batch_time 2.08 	 Data_time 0.00 
+[TEST][51/60][20/70] 	 Batch_time 1.94 	 Data_time 0.00 
+[TEST][51/60][30/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST][51/60][40/70] 	 Batch_time 1.09 	 Data_time 0.00 
+[TEST][51/60][50/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][51/60][60/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST] EPOCH: 51, correlation: 0.817221, L2: 85.364724, RL2: 0.008536
+[TEST] EPOCH: 51, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][52/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 2.1857 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][20/150] 	 Batch_time 0.63 	 Batch_loss: 5.0676 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 3.9820 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 3.5820 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.4823 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 3.5297 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 1.5654 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 3.0049 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][90/150] 	 Batch_time 0.68 	 Batch_loss: 1.8389 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][100/150] 	 Batch_time 0.68 	 Batch_loss: 2.2223 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][110/150] 	 Batch_time 0.68 	 Batch_loss: 1.4561 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][120/150] 	 Batch_time 0.68 	 Batch_loss: 3.1376 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 3.1120 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 3.4694 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][52/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 3.7212 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 52, correlation: 0.9298, L2: 32.2223, RL2: 0.0040, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 52
+[TEST][52/60][0/70] 	 Batch_time 1.06 	 Data_time 6.34 
+[TEST][52/60][10/70] 	 Batch_time 2.12 	 Data_time 0.00 
+[TEST][52/60][20/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][52/60][30/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][52/60][40/70] 	 Batch_time 2.15 	 Data_time 0.00 
+[TEST][52/60][50/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][52/60][60/70] 	 Batch_time 2.19 	 Data_time 0.00 
+[TEST] EPOCH: 52, correlation: 0.841504, L2: 71.370113, RL2: 0.007137
+[TEST] EPOCH: 52, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][53/60][10/150] 	 Batch_time 0.78 	 Batch_loss: 1.2229 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][20/150] 	 Batch_time 0.79 	 Batch_loss: 3.7865 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][30/150] 	 Batch_time 0.78 	 Batch_loss: 4.4870 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 2.7774 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][50/150] 	 Batch_time 0.79 	 Batch_loss: 3.9192 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][60/150] 	 Batch_time 0.79 	 Batch_loss: 3.5401 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][70/150] 	 Batch_time 0.78 	 Batch_loss: 1.4811 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][80/150] 	 Batch_time 0.98 	 Batch_loss: 2.7409 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][90/150] 	 Batch_time 0.83 	 Batch_loss: 4.3642 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][100/150] 	 Batch_time 0.66 	 Batch_loss: 0.9745 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][110/150] 	 Batch_time 0.68 	 Batch_loss: 3.0527 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][120/150] 	 Batch_time 0.66 	 Batch_loss: 3.1163 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 2.9749 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][140/150] 	 Batch_time 0.68 	 Batch_loss: 0.1083 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][53/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 2.2925 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 53, correlation: 0.9499, L2: 29.3967, RL2: 0.0036, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 53
+[TEST][53/60][0/70] 	 Batch_time 1.25 	 Data_time 5.74 
+[TEST][53/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][53/60][20/70] 	 Batch_time 1.13 	 Data_time 0.65 
+[TEST][53/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][53/60][40/70] 	 Batch_time 1.07 	 Data_time 0.56 
+[TEST][53/60][50/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][53/60][60/70] 	 Batch_time 1.14 	 Data_time 0.49 
+[TEST] EPOCH: 53, correlation: 0.842799, L2: 80.293661, RL2: 0.008029
+[TEST] EPOCH: 53, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][54/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 4.9437 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][20/150] 	 Batch_time 0.63 	 Batch_loss: 0.6468 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 3.2010 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][40/150] 	 Batch_time 0.64 	 Batch_loss: 2.3851 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 3.7987 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 4.7182 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 2.9231 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][80/150] 	 Batch_time 0.78 	 Batch_loss: 1.1693 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][90/150] 	 Batch_time 0.77 	 Batch_loss: 3.9912 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][100/150] 	 Batch_time 0.77 	 Batch_loss: 0.8430 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][110/150] 	 Batch_time 0.80 	 Batch_loss: 2.5374 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][120/150] 	 Batch_time 0.77 	 Batch_loss: 1.3675 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][130/150] 	 Batch_time 0.87 	 Batch_loss: 1.0306 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][140/150] 	 Batch_time 1.01 	 Batch_loss: 2.1167 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][54/60][150/150] 	 Batch_time 0.77 	 Batch_loss: 3.1839 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 54, correlation: 0.9642, L2: 23.9937, RL2: 0.0030, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 54
+[TEST][54/60][0/70] 	 Batch_time 2.20 	 Data_time 5.64 
+[TEST][54/60][10/70] 	 Batch_time 2.08 	 Data_time 0.00 
+[TEST][54/60][20/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][54/60][30/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][54/60][40/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][54/60][50/70] 	 Batch_time 1.15 	 Data_time 0.00 
+[TEST][54/60][60/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST] EPOCH: 54, correlation: 0.830964, L2: 98.567732, RL2: 0.009857
+[TEST] EPOCH: 54, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][55/60][10/150] 	 Batch_time 0.93 	 Batch_loss: 3.1384 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][20/150] 	 Batch_time 0.77 	 Batch_loss: 1.4383 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][30/150] 	 Batch_time 0.76 	 Batch_loss: 1.4379 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][40/150] 	 Batch_time 0.76 	 Batch_loss: 1.5652 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 2.3128 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 2.2493 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 3.1919 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 1.4273 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][90/150] 	 Batch_time 0.65 	 Batch_loss: 0.2144 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][100/150] 	 Batch_time 0.65 	 Batch_loss: 2.7855 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][110/150] 	 Batch_time 0.65 	 Batch_loss: 1.9068 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][120/150] 	 Batch_time 0.65 	 Batch_loss: 2.5018 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 4.0365 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 2.2287 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][55/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 2.1973 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 55, correlation: 0.9593, L2: 20.0032, RL2: 0.0025, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 55
+[TEST][55/60][0/70] 	 Batch_time 1.15 	 Data_time 6.48 
+[TEST][55/60][10/70] 	 Batch_time 1.13 	 Data_time 0.00 
+[TEST][55/60][20/70] 	 Batch_time 1.17 	 Data_time 0.82 
+[TEST][55/60][30/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][55/60][40/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST][55/60][50/70] 	 Batch_time 2.11 	 Data_time 0.00 
+[TEST][55/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST] EPOCH: 55, correlation: 0.856210, L2: 96.941228, RL2: 0.009694
+[TEST] EPOCH: 55, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][56/60][10/150] 	 Batch_time 0.77 	 Batch_loss: 2.1274 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][20/150] 	 Batch_time 0.78 	 Batch_loss: 3.5632 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][30/150] 	 Batch_time 0.79 	 Batch_loss: 2.6102 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][40/150] 	 Batch_time 0.77 	 Batch_loss: 1.3614 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][50/150] 	 Batch_time 0.77 	 Batch_loss: 2.3240 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][60/150] 	 Batch_time 0.77 	 Batch_loss: 1.5260 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][70/150] 	 Batch_time 0.83 	 Batch_loss: 2.8009 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 1.1683 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][90/150] 	 Batch_time 0.68 	 Batch_loss: 2.1532 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][100/150] 	 Batch_time 0.64 	 Batch_loss: 2.7024 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][110/150] 	 Batch_time 0.65 	 Batch_loss: 1.7661 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][120/150] 	 Batch_time 0.68 	 Batch_loss: 3.5674 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 2.1502 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 0.9593 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][56/60][150/150] 	 Batch_time 0.64 	 Batch_loss: 3.6289 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 56, correlation: 0.9468, L2: 30.1217, RL2: 0.0037, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 56
+[TEST][56/60][0/70] 	 Batch_time 1.22 	 Data_time 6.22 
+[TEST][56/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][56/60][20/70] 	 Batch_time 1.22 	 Data_time 0.40 
+[TEST][56/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][56/60][40/70] 	 Batch_time 1.19 	 Data_time 0.44 
+[TEST][56/60][50/70] 	 Batch_time 2.09 	 Data_time 0.00 
+[TEST][56/60][60/70] 	 Batch_time 2.10 	 Data_time 0.00 
+[TEST] EPOCH: 56, correlation: 0.848244, L2: 101.807772, RL2: 0.010181
+[TEST] EPOCH: 56, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][57/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 1.8836 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 2.3354 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][30/150] 	 Batch_time 0.64 	 Batch_loss: 3.4319 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 1.8557 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][50/150] 	 Batch_time 0.64 	 Batch_loss: 5.2461 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 2.0545 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 1.7557 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 1.7181 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][90/150] 	 Batch_time 0.64 	 Batch_loss: 4.2982 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][100/150] 	 Batch_time 0.78 	 Batch_loss: 1.7077 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][110/150] 	 Batch_time 0.78 	 Batch_loss: 1.6087 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][120/150] 	 Batch_time 0.78 	 Batch_loss: 3.2122 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][130/150] 	 Batch_time 0.76 	 Batch_loss: 1.5283 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][140/150] 	 Batch_time 0.80 	 Batch_loss: 3.4955 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][57/60][150/150] 	 Batch_time 0.76 	 Batch_loss: 2.5200 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 57, correlation: 0.9564, L2: 28.0018, RL2: 0.0035, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 57
+[TEST][57/60][0/70] 	 Batch_time 2.06 	 Data_time 6.65 
+[TEST][57/60][10/70] 	 Batch_time 2.07 	 Data_time 0.00 
+[TEST][57/60][20/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][57/60][30/70] 	 Batch_time 1.18 	 Data_time 0.00 
+[TEST][57/60][40/70] 	 Batch_time 1.18 	 Data_time 0.00 
+[TEST][57/60][50/70] 	 Batch_time 1.07 	 Data_time 0.55 
+[TEST][57/60][60/70] 	 Batch_time 1.13 	 Data_time 0.29 
+[TEST] EPOCH: 57, correlation: 0.856613, L2: 71.840475, RL2: 0.007184
+[TEST] EPOCH: 57, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][58/60][10/150] 	 Batch_time 0.64 	 Batch_loss: 1.3475 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 1.4045 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 2.3323 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][40/150] 	 Batch_time 0.64 	 Batch_loss: 1.7953 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 1.9818 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][60/150] 	 Batch_time 0.65 	 Batch_loss: 3.1881 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][70/150] 	 Batch_time 0.65 	 Batch_loss: 2.3068 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][80/150] 	 Batch_time 0.65 	 Batch_loss: 2.8460 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][90/150] 	 Batch_time 0.65 	 Batch_loss: 2.4267 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][100/150] 	 Batch_time 0.78 	 Batch_loss: 3.4500 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][110/150] 	 Batch_time 0.79 	 Batch_loss: 2.0944 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][120/150] 	 Batch_time 0.79 	 Batch_loss: 2.9898 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][130/150] 	 Batch_time 0.78 	 Batch_loss: 2.1170 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][140/150] 	 Batch_time 0.66 	 Batch_loss: 1.8661 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][58/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 0.7346 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 58, correlation: 0.9549, L2: 28.7238, RL2: 0.0035, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 58
+[TEST][58/60][0/70] 	 Batch_time 1.11 	 Data_time 6.89 
+[TEST][58/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][58/60][20/70] 	 Batch_time 1.09 	 Data_time 0.41 
+[TEST][58/60][30/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][58/60][40/70] 	 Batch_time 1.16 	 Data_time 0.40 
+[TEST][58/60][50/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][58/60][60/70] 	 Batch_time 1.08 	 Data_time 0.43 
+[TEST] EPOCH: 58, correlation: 0.841171, L2: 89.060080, RL2: 0.008906
+[TEST] EPOCH: 58, best correlation: 0.864124, best L2: 63.557057, best RL2: 0.006356
+[Training][59/60][10/150] 	 Batch_time 0.76 	 Batch_loss: 2.7784 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][20/150] 	 Batch_time 0.65 	 Batch_loss: 2.3678 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][30/150] 	 Batch_time 0.65 	 Batch_loss: 1.1690 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][40/150] 	 Batch_time 0.65 	 Batch_loss: 2.6426 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][50/150] 	 Batch_time 0.65 	 Batch_loss: 4.2153 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][60/150] 	 Batch_time 0.64 	 Batch_loss: 2.8551 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][70/150] 	 Batch_time 0.68 	 Batch_loss: 0.2408 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][80/150] 	 Batch_time 0.66 	 Batch_loss: 2.8613 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][90/150] 	 Batch_time 0.69 	 Batch_loss: 3.8674 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][100/150] 	 Batch_time 0.65 	 Batch_loss: 4.4043 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][110/150] 	 Batch_time 0.65 	 Batch_loss: 1.3198 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][120/150] 	 Batch_time 0.65 	 Batch_loss: 3.3449 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][130/150] 	 Batch_time 0.65 	 Batch_loss: 3.4556 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][140/150] 	 Batch_time 0.65 	 Batch_loss: 4.3025 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training][59/60][150/150] 	 Batch_time 0.65 	 Batch_loss: 1.6981 	 lr1 : 0.00010 	 lr2 : 0.00100
+[Training] EPOCH: 59, correlation: 0.9466, L2: 29.0635, RL2: 0.0036, lr1: 0.0001, lr2: 0.0010
+Start validating epoch 59
+[TEST][59/60][0/70] 	 Batch_time 1.11 	 Data_time 6.99 
+[TEST][59/60][10/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][59/60][20/70] 	 Batch_time 1.07 	 Data_time 0.89 
+[TEST][59/60][30/70] 	 Batch_time 1.07 	 Data_time 0.00 
+[TEST][59/60][40/70] 	 Batch_time 2.13 	 Data_time 0.00 
+[TEST][59/60][50/70] 	 Batch_time 1.06 	 Data_time 0.00 
+[TEST][59/60][60/70] 	 Batch_time 1.17 	 Data_time 0.00 
+-----New best found!-----
+[TEST] EPOCH: 59, correlation: 0.868133, L2: 85.490587, RL2: 0.008549
+[TEST] EPOCH: 59, best correlation: 0.868133, best L2: 63.557057, best RL2: 0.006356

@@ -560,6 +560,66 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#6-4-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      6-4 Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-iris" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 IRIS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 IRIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7-1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-1 Abstract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-2-relative-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-2 Relative Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-4-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-4 Evaluation
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -792,7 +852,7 @@
         
   
   <span class="md-ellipsis">
-    TPA 时序转译 transformer
+    TPT 时序转译 transformer
   </span>
   
 
@@ -882,6 +942,27 @@
   
   <span class="md-ellipsis">
     FSPN 细粒度时空解析网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ref/2023/IRIS.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IRIS 评分标准可解释分割
   </span>
   
 
@@ -1183,6 +1264,66 @@
   <a href="#6-3-approach" class="md-nav__link">
     <span class="md-ellipsis">
       6-3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-4-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      6-4 Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-iris" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 IRIS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 IRIS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#7-1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-1 Abstract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-2-relative-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-2 Relative Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-4-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7-4 Evaluation
     </span>
   </a>
   
@@ -2512,15 +2653,518 @@ f_i = E_v(x_i),\ f_a = E_v(x_a)
 <div class="admonition tip">
 <p class="admonition-title">确定每个 sub-action 的 起始帧 &amp; 结束帧</p>
 </div>
-<p>给出的 Parser 可以对 <span class="arithmatex">\(S\)</span> 个 sub-action 的分布概率进行预测，同时指出 “转变” 发生的具体帧编号 <span class="arithmatex">\(f^{th}\)</span>：</p>
 <ul>
 <li>
-<p>使用 up-sampling decoder + MLP layers projection head 构建 “分布概率预测器”</p>
-<p>features -&gt; probability vec <span class="arithmatex">\(A_s\)</span> (一个对 <span class="arithmatex">\(s^{th}\)</span> sub-action 的 middle-level 表示)</p>
+<p>给出的 Parser 可以对 <span class="arithmatex">\(S\)</span> 个 sub-action 的分布概率进行预测，同时指出 “转变” 发生的具体帧编号 <span class="arithmatex">\(f^{th}\)</span>：</p>
+<p>features -&gt; probability vec <span class="arithmatex">\(A_s\)</span> (对 <span class="arithmatex">\(s^{th}\)</span> sub-action 的 middle-level 表示)</p>
+<div class="arithmatex">\[
+[A_1, ..., A_s] = IAP(f_i,f_a)
+\]</div>
 </li>
-<li></li>
+<li>
+<p>使用 up-sampling decoder + MLP layers projection head 构建 “分布概率预测器”</p>
+<ul>
+<li>
+<p>上采样包含四个 spatial-temporal dimensions 分别为：(1024, 12), (512, 24), (256, 48), and (128, 96) 的子块</p>
+<ul>
+<li>
+<p>temporal axis 会被卷积操作扩充</p>
+</li>
+<li>
+<p>spatial dimensions 会被 Max Pooling 削减</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用了 3 Layer MLP</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(A_s(\vec{t})\)</span> 表示 <span class="arithmatex">\(t^{th}\)</span> 帧可能对应的 sub-action 概率分布；<span class="arithmatex">\(\vec{t}_s\)</span> 是对 <span class="arithmatex">\(s^{th}\)</span> 跳 action sequence 的预测结果</p>
+<blockquote>
+<p><span class="arithmatex">\(\text{argmax } A_s(\vec{t})\)</span> 即为该帧最可能对应的 sub-action 类型</p>
+<p>此时 t 与 t+1 必然对应不同的 sub-aciton =&gt; 新的 sub-action instance 从 <span class="arithmatex">\((t+1)^{th}\)</span> 帧开始</p>
+</blockquote>
+<div class="arithmatex">\[
+\vec{t}_s = \text{argmax } A_s(\vec{t}),\ \frac{T}{S}(s-1) \leq \vec{t} \leq \frac{T}{S}s
+\]</div>
+<p>上式保证了 <span class="arithmatex">\(\vec{t}_1 \leq ... \leq \vec{t}_s\)</span></p>
+</li>
 </ul>
 <h5 id="2-group-contrastive-learning">2 Group Contrastive Learning</h5>
+<ul>
+<li>
+<p>上一步得到的 <span class="arithmatex">\((f_i,f_a)\)</span> 共享了较多的语义信息，直接对其进行比较学习会导致 <u>对具有相同语义的动作序列学习得到不同的表示</u></p>
+<p>=&gt; 使用 Group Contrastive Learning，对具有相似 sub-action seq 的视频进行对比</p>
+</li>
+<li>
+<p>输入的 <span class="arithmatex">\((f_i,f_a)\)</span> 会被</p>
+<ul>
+<li>赋予与其动作、语义具有最大相似度组别的 Pseudo Label <span class="arithmatex">\(p\)</span></li>
+<li>最终生成 sub-action sequence <span class="arithmatex">\((\overline{f}_i,\overline{f}_a)\)</span></li>
+</ul>
+</li>
+<li>
+<p>具有相同 Pseudo Label 的 feature 将组成如下的 group：</p>
+<div class="arithmatex">\[
+G^p_k = \frac{\sum_{i=1}^B g(A_s^k)}{T_B},\ \text{where } p=A_s^k
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(g(.)\)</span> 是序列 <span class="arithmatex">\(A_s^k\)</span> 的 logits</p>
+</li>
+<li>
+<p><span class="arithmatex">\(T_B\)</span> 是 Group <span class="arithmatex">\(B\)</span> 的序列总量</p>
+</li>
+</ul>
+</li>
+<li>
+<p>我们使用 Group 的 average representation <span class="arithmatex">\(G_f^g\)</span>，定义：</p>
+<ul>
+<li>
+<p>positive-pair：<span class="arithmatex">\(G_a^p, G_i^p\)</span> （上标组别相同）</p>
+</li>
+<li>
+<p>negative-pair：<span class="arithmatex">\(G_a^p, G_k^q\)</span> （上标组别不同）</p>
+<blockquote>
+<p>Action Seq 相同，但 Sub-action Seq 不同</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="spatio-temporal-multiscale-transformer">Spatio-Temporal Multiscale Transformer</h4>
+<div class="admonition tip">
+<p class="admonition-title">输入 sub-action sequence <span class="arithmatex">\((\overline{f}_i,\overline{f}_a)\)</span>，并在不同 scale 上挖掘 long-range dependencies</p>
+</div>
+<h5 id="1-actor-centric-multiscale-transformer">1 Actor-Centric Multiscale Transformer</h5>
+<ul>
+<li>
+<p>本文提出的 Transformer 各阶段具有各异的 channel resolution =&gt; channel &amp; scale 逐渐增加</p>
+</li>
+<li>
+<p>该 Multiscale Transformer，由 3 * stage（结构相同）构成</p>
+<ul>
+<li>
+<p>每个 stage </p>
+<ul>
+<li>
+<p>在 early Layer 处理粗粒度特征，并在更深层处理细粒度特征</p>
+</li>
+<li>
+<p>各包含了 3 个 transformer block + 8 attention head，用于处理相同 scale 的信息并生成 Attention 值</p>
+<div class="arithmatex">\[
+\hat{f}_i += MLP(LN(attention)), attention = Multihead(LN(\frac{Q_a(K_i)^T}{\sqrt{d_k}})V_i) + \overline{f}_i
+\]</div>
+<p><center><span class="arithmatex">\(Ln(.)\)</span> 为 Layer Norm 操作，<span class="arithmatex">\(MLP\)</span> 为两层使用 GELU 激活函数</center></p>
+<p><center><img src="../assets/FSPN%20block.png" style="max-height:250px"></center></p>
+<p><center>block 结构：<span class="arithmatex">\(\overline{f}_a = query, \overline{f}_i=memory\)</span></center></p>
+</li>
+</ul>
+</li>
+<li>
+<p>对于输入特征 <span class="arithmatex">\(f \in \mathbb{R}^{T' \times C'}\)</span>:</p>
+<ol>
+<li>
+<p>进行一次 1D 卷积 (kernel=3, stride=1)</p>
+</li>
+<li>
+<p>使用包含 <span class="arithmatex">\(L\)</span> 个 block 的 Multiscale Transformer，其中 stage n 的 output_shape = <span class="arithmatex">\(T' \times 2^nC'\)</span>（放大）</p>
+<blockquote>
+<p>channel dimesion 会在 stage 切换时通过 MLP 扩大 2 倍</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-multiscale-temporal-fusion">2 Multiscale Temporal Fusion</h5>
+<p><center><img src="../assets/FSPN%20fusion.png" style="max-width:500px;"></center></p>
+<p>对于第 <span class="arithmatex">\(n\)</span> 层的 output shape 为 <span class="arithmatex">\(F_n = T' \times 2^nC'\)</span>，而第 <span class="arithmatex">\(n+1\)</span> 层则为 <span class="arithmatex">\(F_{n+1}= T' \times 2^{n+1}C'\)</span></p>
+<ul>
+<li>
+<p>为了成功进行 aggregate，我们需要进行 upsampling: <span class="arithmatex">\(U_\varphi(F_n) = \text{Upsampling}(R_n\mathcal{W}^n)\)</span></p>
+</li>
+<li>
+<p>随后使用 element-wise addition 更新 <span class="arithmatex">\(F_{n+1} = U_\varphi(F_n) + F_{n+1}\mathcal{W}^{n+1}\)</span></p>
+</li>
+</ul>
+<p>最终通过 fuse 的到的 intergrated feature <span class="arithmatex">\(\mathcal{F} = \text{Concat}(F_1, ..., F_{N})\)</span></p>
+<h3 id="6-4-optimization">6-4 Optimization</h3>
+<h4 id="overall-training-loss_1">Overall Training Loss</h4>
+<p>最终将由 2-Layer MLP 对 <span class="arithmatex">\(\text{MaxPool}(\mathcal{F})\)</span> 预测得到分组标签 <span class="arithmatex">\(\gamma_i\)</span> 和 回归分数 <span class="arithmatex">\(y_i\)</span></p>
+<ul>
+<li>
+<p>对于回归预测，有：</p>
+<div class="arithmatex">\[
+\begin{align*}
+L_{bce} &amp;= - \sum_{i=1}^I(\gamma_i log(\overline{\gamma_i}) + (1-\gamma_i)log(1-\overline{\gamma}_i)) \\
+L_{reg} &amp;= \sum_{i=1}^I \| \overline{y}_i - y_i\|^2,\ \text{where } \gamma_i = 1
+\end{align*}
+\]</div>
+</li>
+<li>
+<p>对 Group Contrastive，有：</p>
+<div class="arithmatex">\[
+L_{gc} = - \log{\frac{
+    h(G_a^p,G_i^p) / \tau
+}{
+    h(G_a^p,G_i^p) / \tau + \sum_{q=1,k}^S  h(G_a^p,G_k^q) 
+}}, \text{ where }p\neq q
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(h(.) = \exp{(\text{cosine similarity})}\)</span> </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\tau\)</span> 是 teperature 超参数</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-iris">7 IRIS</h2>
+<div class="admonition info">
+<p class="admonition-title">本文聚焦的问题：(花滑)单人短节目</p>
+<ul>
+<li>
+<p>节目时长约为 3min</p>
+</li>
+<li>
+<p>相比于自由滑，节目编排受制于更多的规则</p>
+</li>
+</ul>
+</div>
+<h3 id="7-1-abstract">7-1 Abstract</h3>
+<ul>
+<li>
+<p>创新点</p>
+<blockquote>
+<p>XAI 开发者应该学习 <u>具体应用场景（运动）的评分标准(rubrics)</u></p>
+</blockquote>
+<p>本文提出的 Interpretable Rubric- Informed Segmentation：</p>
+<ul>
+<li>
+<p>其给出评分的过程是 <strong>可解释</strong> 的，依照 rubric 决定 what to consider</p>
+<p>使用 4 个 key feature 进行 预测&amp;解释: Score, Sequence, Segments, and Subscores</p>
+</li>
+<li>
+<p>对输入进行分割，以定位对应特定 criteria 的特殊 section</p>
+</li>
+<li>
+<p>本文仅对 <em>figure skating</em> 进行测定，但方法同样适用于其他 Video-based AQA 问题</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-2-relative-works">7-2 Relative Works</h3>
+<ol>
+<li>
+<p>Action Quality Assessment</p>
+<p>目前已经有许多针对 Sport 及其他领域的 AQA AI 解决方案被提出，通过训练一个 Regression Model 对最终分数进行预测。</p>
+<ul>
+<li>
+<p>这些方法往往通过 3D CNN (C3D / I3D) 进行特征提取 —— 通过在 2D(spatial) &amp; 1D(temporal) 进行卷积，将<strong>较短的</strong>视频切片转换为 feature vector</p>
+</li>
+<li>
+<p>为了处理<strong>更长的</strong>输入视频：</p>
+<ul>
+<li>
+<p>Parmar 将 3DCNN 和 LSTM 结合，提出了 C3D-LSTM</p>
+</li>
+<li>
+<p>Zheng 基于 Graph Convolutional Network 提出了 Context-aware 的模型</p>
+<p>对 Static Posture &amp; Dynamic Movement 进行建模来捕捉不同时间跨度上的联系</p>
+</li>
+<li>
+<p>Nekoui 提出了一种 CNN-based 的方法同时对粗细粒度的 temporal dependencies 进行捕捉</p>
+<p>使用 video feature &amp; pose estimation heatmap，并堆叠不同 kernel size 的 CNN 模块来捕捉不同时间跨度的 pattern 进行捕捉</p>
+</li>
+<li>
+<p>Xu 针对 <em>figure skating</em> 场景提出了 multi-scale and skip-connected CNN-LSTM</p>
+<p>通过不同大小的 CNN kernel 对短期 temporal dependencies 进行捕捉 &amp; 通过 LSTM + self-attention 对长期 temporal dependencies 进行捕捉</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Explaining Action Quality Assessment</p>
+<p>虽然上述方法卷赢了准确性（预测结果和裁判评分之间的 Spearman’s rank correlation），但却忽略了用户应该如何应用和解释这些预测结果</p>
+<blockquote>
+<p>老师 chua 的一下给你的卷子批了个总评分，又不告诉你扣哪了</p>
+</blockquote>
+<ul>
+<li>
+<p>Yu 通过 Grad-CAM saliency maps 对 <em>diving</em> 问题的评分过程进行解释</p>
+<p>=&gt; 但 saliency maps 的本意是拿来 debug 的 orz</p>
+</li>
+<li>
+<p>Pirsiavash 通过计算 由姿态估计得到的 relative score 的梯度 来对 <em>diving</em> 问题的评分过程进行解释</p>
+<p>=&gt; 基于数据（而非基于人类裁判如何做出裁决）</p>
+</li>
+<li>
+<p>使用数据传感器 + 浅层模型的方法</p>
+<ul>
+<li>
+<p>Khan 借鉴了电子板球游戏，使用可穿戴设备收集数据并对板球击球数据进行分析，并人为规定了若干 low-level sub-actions</p>
+</li>
+<li>
+<p>Thompson 在量化评分标准后，提出了对 “盛装舞步” 项目的可视化方法</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Rubrics for Figure Skating</p>
+<ul>
+<li>
+<p>“评分标准” 的两要素：</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(\geq 1\)</span> * trait / dimension + 对应的解释案例</p>
+</li>
+<li>
+<p>各 dimension 的 评分范围 / 分段标准</p>
+</li>
+</ol>
+</li>
+<li>
+<p>ISU Judging System: 对每个维度给 sub-score，最后折算总分</p>
+<ol>
+<li>
+<p>TES（技术得分）</p>
+<p>运动员的技术动作序列将被提前列出，每个动作的得分 = Base Value(难度分) + GOE(偏差值)</p>
+<blockquote>
+<p><span class="arithmatex">\(GOE \in [-5,5]\)</span></p>
+</blockquote>
+<ul>
+<li>
+<p>动作序列将由：Jump, Spin, Step Seq 及之间的过渡动作组成</p>
+</li>
+<li>
+<p>Jump 可被分为六种：Toe Loop (T), Salchow (S), Loop (Lo), Flip (F), Lutz (Lz), and Axel (A)</p>
+<p>根据起跳、落冰动作进行区分，不同的圈数会给不同的分</p>
+</li>
+<li>
+<p>Rotation 可被分为三种：Upright (USp), Sit (SSp), and Camel (CSp)</p>
+<p>根据难度、流畅度、稳定度进行评分</p>
+</li>
+<li>
+<p>Step Sequence 可被分为三种：Straight line step sequence (SISt), Circular step sequence (CiSt), and Serpentine step sequence (SeSt)</p>
+<p>步伐必须与音乐相匹配，并且干净利落的完成shuo ta</p>
+</li>
+</ul>
+</li>
+<li>
+<p>PCS (Program Component Score) 由五部分组成：</p>
+<ul>
+<li>
+<p>Skating Skills: 对节目内容的丰富程度、技术是否干净、滑速进行评分</p>
+</li>
+<li>
+<p>Tran- sition / Linking Footwork: 对整体步法和姿态转变流畅度进行评分</p>
+</li>
+<li>
+<p>Performance / Execution: 是否从肢体动作和情绪上传达了配乐的情感</p>
+</li>
+<li>
+<p>Choreography / Composition: 节目动作编排是否与音乐契合</p>
+</li>
+<li>
+<p>Interpretation: 用于表达音乐的动作是否具有创新性</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="7-3-approach">7-3 Approach</h3>
+<p><center><img src="../assets/IRIS%20Pipeline.png" style="max-width:500px;"></center></p>
+<details class="info">
+<summary>事前可解释性建模 Ante-hoc</summary>
+<blockquote>
+<p>IRIS 在对模型进行训练前，将可解释性结合到模型结构中，以实现模型内置的可解释性</p>
+</blockquote>
+<ul>
+<li>
+<p>It is informed by a rubric to determine what to consider when calculating its judgement.</p>
+</li>
+<li>
+<p>It performs seg- mentation to specify moments of a performance to judge specific criteria.</p>
+</li>
+</ul>
+</details>
+<p>IRIS 使用了 4 个 Rubric-Feature 以预测和解释其作出的判断：</p>
+<ol>
+<li>
+<p>Score: Final Judgement</p>
+</li>
+<li>
+<p>Sequence: 描述了用于评判的动作 (technical elements)</p>
+</li>
+<li>
+<p>Segments: 每个动作由哪一条规则评判</p>
+</li>
+<li>
+<p>Subscores: 描述 TES &amp; PCS 各项得分</p>
+</li>
+</ol>
+<h4 id="0-data-preparation">0 Data Preparation</h4>
+<blockquote>
+<p>使用 MIT-Skate 数据集</p>
+</blockquote>
+<ul>
+<li>
+<p>将 3min 左右的视频转化为 4D tensor: <code>[x, y, time, colorChannel]</code></p>
+</li>
+<li>
+<p>提取 ISU 发布的 PDF 文件中的 skater name, TES base, GOE, total subscores, PCS subscore。将其与视频数据相对应。</p>
+</li>
+<li>
+<p><span style="color:red;">手动</span> 标记每个动作的起止时间 （train segmentation）</p>
+</li>
+<li>
+<p>为了确保每个类别下的都有充足的数据，这里队 Jump, Spin, Step Sequence, Transition 的划分较为宽泛</p>
+<blockquote>
+<p>建议 Future Work 能够用更多数据来划分 more specific labels</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="1-base-embedding">1 Base Embedding</h4>
+<blockquote>
+<p>生成 video 的 vector presentation</p>
+</blockquote>
+<p>训练 3D-CNN（I3D） 模型 <span class="arithmatex">\(M_0\)</span>：</p>
+<ul>
+<li>
+<p>输入: video tensor <span class="arithmatex">\(x\)</span></p>
+</li>
+<li>
+<p>输出: timeseries embedding <span class="arithmatex">\(\hat{z}_t\)</span>: 2D tensor</p>
+<p><span class="arithmatex">\(M_0\)</span> 会对每 0.534s 生成一个 vector embedding，每个视频将对应约 356 个（zero-padding）</p>
+</li>
+</ul>
+<h4 id="2-action-segments">2 Action Segments</h4>
+<ul>
+<li>
+<p>训练 multi-stage temporal convolutional network (MS-TCN) <span class="arithmatex">\(M_t\)</span>：</p>
+<ul>
+<li>
+<p>训练集：人工标注的 segments 作为 ground truth (监督学习)</p>
+</li>
+<li>
+<p>输入：<span class="arithmatex">\(\hat{z}_t\)</span></p>
+</li>
+<li>
+<p>输出：action sequence embedding <span class="arithmatex">\(\hat{z}_{\tau}\)</span> (Seq-to-Seq)</p>
+<p>标注了每个 action 的起止时间 (zero-padding)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>由于 TCN 可能预测出 over-segmentation，本文使用了以下方法进行优化</p>
+<ol>
+<li>
+<p>使用 truncated mean squared err 对 loss function 进行平滑操作</p>
+<blockquote>
+<p>合并较小的 segmentation</p>
+</blockquote>
+<div class="arithmatex">\[
+L_{\mu} = \frac{1}{T} \sum_t^T \max(\varepsilon_t, \varepsilon)
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(\varepsilon_t = (\log\hat{m}(t)- \log\hat{m}(t-1))^2\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\varepsilon\)</span>: truncation 超参数</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用启发式的方法</p>
+<ol>
+<li>
+<p>从裁判表中数处每个动作类别 <span class="arithmatex">\(a\)</span> 包含的动作数量，总量为 <span class="arithmatex">\(n_a\)</span> 个</p>
+</li>
+<li>
+<p>使用 <u>最长的</u> <span class="arithmatex">\(n_a\)</span> 个 segmentation，将其分配给各类别</p>
+</li>
+<li>
+<p>剩下的较短 segmentations 全都打上 <code>transition</code> 标签</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-predict-subscores">3 Predict Subscores</h4>
+<p>IRIS 预测的 subscores 分为以下两个部分：</p>
+<ol>
+<li>
+<p>TES (7): 对每个技术得分点进行评估</p>
+<ol>
+<li>
+<p>对 action sequence 中的每一个动作 <span class="arithmatex">\(\tau\)</span> 分别预测 TES（仅 GOE 部分）</p>
+<p>为每个 seq step <span class="arithmatex">\(\tau\)</span> 各训练一个传统 CNN 模型 <span class="arithmatex">\(M_{\Delta \tau}\)</span>:</p>
+<ul>
+<li>
+<p>输入：seq embedding <span class="arithmatex">\(\hat{z}_{\tau}\)</span> &amp; 真实动作标签 <span class="arithmatex">\(a_{\tau}\)</span>(可以预先得知)</p>
+</li>
+<li>
+<p>输出：单个动作的 GOE 得分 <span class="arithmatex">\(\hat{y}_{\Delta \tau}\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>计算单个动作的 TES 得分 <span class="arithmatex">\(\hat{y}_{\tau} = \hat{y}_{\tau_0} + \hat{y}_{\Delta \tau}\)</span> (Base + GOE)</p>
+</li>
+<li>
+<p>计算所有动作的总 TES 得分 <span class="arithmatex">\(\hat{y}_{total} = \sum_r \hat{y}_r\)</span></p>
+</li>
+</ol>
+</li>
+<li>
+<p>PCS (5): 对节目 <em>整体表现</em> 进行评估</p>
+<p>训练 multi-task CNN 模型 <span class="arithmatex">\(M_{\pi}\)</span>：</p>
+<blockquote>
+<p>因为各项总评之间存在 correlation，训练 multi-task 比训练 multi-indipendent 更准确</p>
+</blockquote>
+<ul>
+<li>
+<p>输入： <strong>整个视频</strong> 的 time series embedding <span class="arithmatex">\(\hat{z}_t\)</span></p>
+</li>
+<li>
+<p>输出：预测 PCS 的各分量 <span class="arithmatex">\(\hat{y}_p^i\)</span> (multi-task)，将其和 <span class="arithmatex">\(\hat{y}_{\pi}\)</span> 作为总 PCS</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="4-predict-final-score">4 Predict Final Score</h4>
+<p>简单的将 TES &amp; PCS 总分相加即可：</p>
+<div class="arithmatex">\[
+\hat{y} = \hat{y}_{total} + \hat{y}_p
+\]</div>
+<p><center><img src="../assets/IRIS%20visual.png" style="max-width:500px;"></center>
+<center>IRIS 评分过程可视化</center></p>
+<h3 id="7-4-evaluation">7-4 Evaluation</h3>
+<ol>
+<li>
+<p>计算 Final Score 的 Spearman Rank Correlation</p>
+</li>
+<li>
+<p>(New) 分别计算 TES &amp; PCS 的 Spearman Rank Correlation</p>
+</li>
+<li>
+<p>Dice Coefficient: 计算 segmentation 的准确性</p>
+<p>对预测分割序列 <span class="arithmatex">\(\hat{a}\)</span> 和真实动作序列 <span class="arithmatex">\(a\)</span>，计算其交叠程度 <span class="arithmatex">\(2(a \cdot \hat{a})/(|a|^2 + |\hat{a}|^2)\)</span></p>
+</li>
+</ol>
 
 
 
