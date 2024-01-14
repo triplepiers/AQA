@@ -82,7 +82,7 @@ exit # log out
 - 查看服务器下的显卡信息
 
     ```bash
-    nivadia-smi
+    nvidia-smi
     ```
 
 - 远程连接时 bash 没有颜色

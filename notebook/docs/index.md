@@ -60,7 +60,7 @@
 
 ### 2022
 
-- [TPA](./ref/2022/TPA.pdf): Action Quality Assessment with Temporal Parsing Transformer
+- [TPT](./ref/2022/TPA.pdf): Action Quality Assessment with Temporal Parsing Transformer [[Code]](https://github.com/baiyang4/aqa_tpt)
 
 ### 2023
 

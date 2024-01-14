@@ -77,7 +77,7 @@ nav:
     - TSA-Net 管自注意力网络: ref/2021/TSA-Net.pdf
     - Video-based: ref/2021/Video-based.pdf
   - 2022:
-    - TPA 时序转译 transformer: ref/2022/TPA.pdf
+    - TPT 时序转译 transformer: ref/2022/TPA.pdf
   - 2023:
     - PECoP 连续预训练: ref/2023/PECoP.pdf
     - FSPN 细粒度时空解析网络: ref/2023/STPN.pdf
