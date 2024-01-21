@@ -1947,6 +1947,9 @@ R-l_2(\theta) = \frac{1}{K} \sum\left(\frac{|s_k - \hat{s}_k|}{s_{max} - s_{min}
 </li>
 <li>
 <p>在每一个 Inception Module 的 concatenation Layer 后插入一个 3D-Adapter 可以得到显著的性能提升</p>
+<blockquote>
+<p>事实上 R3D + 3D-Adapter 也能提升性能</p>
+</blockquote>
 </li>
 </ul>
 <p><center><img alt="" src="../assets/ReCoP%20Incept%20with%20Adapter.png" /></center>
@@ -1992,10 +1995,35 @@ h_{out} = \alpha \odot (\theta_{up} \otimes f(\theta_{down} \overline{\otimes} h
 <p>在集合 <span class="arithmatex">\(D_q\)</span> 中以 SSL 形式进行 —— 视频标签由模型自动生成</p>
 </li>
 <li>
-<p>使用了 Video Segment Pace Prediction (VSPP) 进行了预处理，从而对 “以不同速度完成的动作” 进行对比</p>
+<p>使用了 Video Segment Pace Prediction (VSPP) 进行了预处理，从而对 “以不同速度完成的动作” 进行对比，生成视 SSL 标签信息：</p>
+<ul>
+<li>
+<p>speed rate <span class="arithmatex">\(\lambda_i\)</span></p>
+</li>
+<li>
+<p>Segment No. <span class="arithmatex">\(\zeta_i\)</span></p>
 </li>
 </ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">一些拉踩信息</p>
+<ol>
+<li>
+<p>关于 SSL Pretext 的选取</p>
+<p>作者也尝试使用了 Constrastive-Based 的 RSPNet &amp; 同样是 Transformatoin-Based 的 VideoPace，但表现都不及 VSPP</p>
+</li>
+<li>
+<p>关于 BatchNorm Tuning（对比 Adapter）</p>
+<p>在小型数据库上容易过拟合</p>
+</li>
+</ol>
+</div>
 <h4 id="supervised-fine-tuning">Supervised fine-tuning</h4>
+<div class="admonition question">
+<p class="admonition-title">为啥还要 Fine-Tuning (?)</p>
+<p>本文 3D-Adapter 只对 I3D 模块进行 Continual Pretraining，整个模型的参数还是需要微调</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">在这个阶段，<u>所有参数（预训练参数 &amp; 3D-Adapter）</u> 将在 <span class="arithmatex">\(D_t\)</span> 上被微调</p>
 </div>

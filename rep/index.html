@@ -1253,6 +1253,9 @@
 </li>
 <li>
 <p>设置环境变量 <code>export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:2048"</code></p>
+<blockquote>
+<p>2048 还是不够</p>
+</blockquote>
 </li>
 </ol>
 </li>
@@ -1264,8 +1267,11 @@
 <p>On MTL-AQA</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># 默认端口 29500 already in use，此处指定端口 29501</span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1"># 逐渐放弃多卡训练 =&gt; 我超，动了！我永远爱 137 这台机子</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>nohup<span class="w"> </span>python<span class="w"> </span>-u<span class="w"> </span>-m<span class="w"> </span>torch.distributed.launch<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">2</span><span class="w"> </span>--master_port<span class="w"> </span><span class="m">29501</span><span class="w"> </span>train_pairencode1_decoder_1selfatt_self8head_ffn_sp_new.py<span class="w"> </span>--epoch_num<span class="o">=</span><span class="m">250</span><span class="w"> </span>--dataset<span class="o">=</span>MLT_AQA<span class="w"> </span>--bs_train<span class="o">=</span><span class="m">3</span><span class="w"> </span>--bs_test<span class="o">=</span><span class="m">3</span><span class="w"> </span>--use_pretrain<span class="o">=</span>False<span class="w"> </span>--num_cluster<span class="o">=</span><span class="m">5</span><span class="w"> </span>--margin_factor<span class="o">=</span><span class="m">3</span>.2<span class="w"> </span>--encode_video<span class="o">=</span>False<span class="w"> </span>--hinge_loss<span class="o">=</span>True<span class="w"> </span>--multi_hinge<span class="o">=</span>True<span class="w"> </span>--d_model<span class="o">=</span><span class="m">512</span><span class="w"> </span>--d_ffn<span class="o">=</span><span class="m">512</span><span class="w"> </span>--exp_name<span class="o">=</span>sp_new_103_5_3<span class="w"> </span>&gt;&gt;<span class="w"> </span>MTL.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>nohup<span class="w"> </span>python<span class="w"> </span>-u<span class="w"> </span>-m<span class="w"> </span>torch.distributed.launch<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">1</span><span class="w"> </span>--master_port<span class="w"> </span><span class="m">29501</span><span class="w"> </span>train_pairencode1_decoder_1selfatt_self8head_ffn_sp_new.py<span class="w"> </span>--epoch_num<span class="o">=</span><span class="m">250</span><span class="w"> </span>--dataset<span class="o">=</span>MLT_AQA<span class="w"> </span>--bs_train<span class="o">=</span><span class="m">2</span><span class="w"> </span>--bs_test<span class="o">=</span><span class="m">2</span><span class="w"> </span>--use_pretrain<span class="o">=</span>False<span class="w"> </span>--num_cluster<span class="o">=</span><span class="m">5</span><span class="w"> </span>--margin_factor<span class="o">=</span><span class="m">3</span>.2<span class="w"> </span>--encode_video<span class="o">=</span>False<span class="w"> </span>--hinge_loss<span class="o">=</span>True<span class="w"> </span>--multi_hinge<span class="o">=</span>True<span class="w"> </span>--d_model<span class="o">=</span><span class="m">512</span><span class="w"> </span>--d_ffn<span class="o">=</span><span class="m">512</span><span class="w"> </span>--exp_name<span class="o">=</span>sp_new_103_5_3<span class="w"> </span>&gt;&gt;<span class="w"> </span>MTL.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
+<div class="admonition bug">
+<p class="admonition-title">降到 batch_size = 2 还是内存不够，仙逝了</p>
+</div>
 </li>
 </ul>
 <h3 id="_7">模型验证</h3>

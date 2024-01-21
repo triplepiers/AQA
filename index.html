@@ -292,22 +292,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-msg-logs" class="md-nav__link">
+  <a href="#2-references" class="md-nav__link">
     <span class="md-ellipsis">
-      2 Msg Logs
+      2 References
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 References
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3 References">
+    <nav class="md-nav" aria-label="2 References">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -760,22 +751,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-msg-logs" class="md-nav__link">
+  <a href="#2-references" class="md-nav__link">
     <span class="md-ellipsis">
-      2 Msg Logs
+      2 References
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 References
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3 References">
+    <nav class="md-nav" aria-label="2 References">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -843,48 +825,7 @@
 <p>尝试研究一种可解释的打分模型，使运动员更容易理解需要改进的技术点，提高运动成绩。</p>
 </li>
 </ul>
-<h2 id="2-msg-logs">2 Msg Logs</h2>
-<div class="admonition note">
-<p class="admonition-title">2023-12-28</p>
-<p>我个人觉得比较好的文章就是 <a href="ref/2021/TSA-Net.pdf">TSA-Net</a> &amp; <a href="ref/2021/CoRe.pdf">CoRe</a>，这两篇是两种流派的基础方法：</p>
-<ol>
-<li>
-<p>Backbone + attention + 回归头 的传统结构</p>
-</li>
-<li>
-<p>对比学习框架 的结构</p>
-</li>
-</ol>
-<p>然后我最近比较关注 <a href="ref/2023/PECoP.pdf">PECoP</a> 这一篇，因为感觉架构上已经水了不少了。下面还有做的空间：</p>
-<ul>
-<li>
-<p>怎么优化表示</p>
-</li>
-<li>
-<p>找一个持续学习和自监督、半监督的方法</p>
-</li>
-</ul>
-</div>
-<div class="admonition note">
-<p class="admonition-title">2023-12-30</p>
-<blockquote>
-<p>终于见到黎叔了，好耶！</p>
-</blockquote>
-<ul>
-<li>
-<p>主要聚焦于”可解释性“，accuracy 接近 SOTA 即可</p>
-<p>输出可比较的 <u>视频片段</u>（对比 2D 中的热力图）</p>
-</li>
-<li>
-<p>可以不用即时出成果（25fps），可以输入图像 - 后续输出结果</p>
-</li>
-<li>
-<p>可以先基于 skeleton 做，如果后续有更好的就可以进行批判</p>
-<p>骨架不太细致：手部动作评委能看到，但是骨架识别不出来</p>
-</li>
-</ul>
-</div>
-<h2 id="3-references">3 References</h2>
+<h2 id="2-references">2 References</h2>
 <h3 id="2021">2021</h3>
 <ul>
 <li>
@@ -908,6 +849,22 @@
 <li>
 <p><a href="ref/2023/PECoP.pdf">PECoP</a>: Parameter Efficient Continual Pretraining for Action Quality Assessment </p>
 <p><strong>(WACV 2023 Oral)</strong> <a href="https://arxiv.org/pdf/2311.07603.pdf">[Paper]</a> <a href="https://github.com/Plrbear/PECoP">[Code]</a></p>
+<ul>
+<li>
+<p>为 I3D Module 引入 3D-Adapter 进行 Continual Pretraining</p>
+<ul>
+<li>
+<p>更好的学习 domain-specific 任务、减少需要调整的参数</p>
+</li>
+<li>
+<p>使用 VSPP (transform-based) 作为 SSL Pretext Task</p>
+</li>
+</ul>
+</li>
+<li>
+<p>证明在 R3D 中引入 3D-Adapter 同样有效</p>
+</li>
+</ul>
 </li>
 <li>
 <p><a href="ref/2023/STPN.pdf">FSPN</a>: Fine-Grained Spatio-Temporal Parsing Network for Action Quality Assessment </p>
