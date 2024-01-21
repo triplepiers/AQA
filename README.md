@@ -35,7 +35,7 @@ exit # log out
     nohup [command] & # 命令将在断开 ssh 连接后继续执行，输出被写入 nohup.out
 
     # 查看并杀死后台运行的 wget 命令
-    ps aux | grep wget
+    ps aux | grep wget # 或使用 jobs -l 显示所有后台任务
     kill -9 [pid]
     ```
 

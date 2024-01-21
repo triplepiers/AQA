@@ -482,6 +482,8 @@
 
 - 在每一个 Inception Module 的 concatenation Layer 后插入一个 3D-Adapter 可以得到显著的性能提升
 
+    > 事实上 R3D + 3D-Adapter 也能提升性能
+
 <center>![](./assets/ReCoP%20Incept%20with%20Adapter.png)</center>
 <center>添加 3D-Adapter 后的 Inception Module</center>
 
@@ -520,9 +522,26 @@ Continual Pretraining 阶段：
 
 - 在集合 $D_q$ 中以 SSL 形式进行 —— 视频标签由模型自动生成
 
-- 使用了 Video Segment Pace Prediction (VSPP) 进行了预处理，从而对 “以不同速度完成的动作” 进行对比
+- 使用了 Video Segment Pace Prediction (VSPP) 进行了预处理，从而对 “以不同速度完成的动作” 进行对比，生成视 SSL 标签信息：
+
+    - speed rate $\lambda_i$
+    
+    - Segment No. $\zeta_i$
+
+!!! info "一些拉踩信息"
+    1. 关于 SSL Pretext 的选取
+    
+        作者也尝试使用了 Constrastive-Based 的 RSPNet & 同样是 Transformatoin-Based 的 VideoPace，但表现都不及 VSPP
+
+    2. 关于 BatchNorm Tuning（对比 Adapter）
+
+        在小型数据库上容易过拟合
+
 
 #### Supervised fine-tuning
+
+!!! question "为啥还要 Fine-Tuning (?)"
+    本文 3D-Adapter 只对 I3D 模块进行 Continual Pretraining，整个模型的参数还是需要微调
 
 !!! tip "在这个阶段，<u>所有参数（预训练参数 & 3D-Adapter）</u> 将在 $D_t$ 上被微调"
 

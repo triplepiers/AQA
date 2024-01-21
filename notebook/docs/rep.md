@@ -258,6 +258,8 @@ std: 5                              lr: 0.0001
 
         4. 设置环境变量 `export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:2048"`
 
+            > 2048 还是不够
+
 ### 模型训练
 
 - On MTL-AQA
@@ -265,8 +267,10 @@ std: 5                              lr: 0.0001
     ```bash
     # 默认端口 29500 already in use，此处指定端口 29501
     # 逐渐放弃多卡训练 => 我超，动了！我永远爱 137 这台机子
-    nohup python -u -m torch.distributed.launch --nproc_per_node=2 --master_port 29501 train_pairencode1_decoder_1selfatt_self8head_ffn_sp_new.py --epoch_num=250 --dataset=MLT_AQA --bs_train=3 --bs_test=3 --use_pretrain=False --num_cluster=5 --margin_factor=3.2 --encode_video=False --hinge_loss=True --multi_hinge=True --d_model=512 --d_ffn=512 --exp_name=sp_new_103_5_3 >> MTL.log  2>&1 &
+    nohup python -u -m torch.distributed.launch --nproc_per_node=1 --master_port 29501 train_pairencode1_decoder_1selfatt_self8head_ffn_sp_new.py --epoch_num=250 --dataset=MLT_AQA --bs_train=2 --bs_test=2 --use_pretrain=False --num_cluster=5 --margin_factor=3.2 --encode_video=False --hinge_loss=True --multi_hinge=True --d_model=512 --d_ffn=512 --exp_name=sp_new_103_5_3 >> MTL.log  2>&1 &
     ```
+
+    !!! bug "降到 batch_size = 2 还是内存不够，仙逝了"
 
 ### 模型验证
 > 作者暂未提供 test script，蹭一下隔壁 CoRe 的
