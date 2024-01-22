@@ -22,15 +22,40 @@
 
     **(ICCV 2021)** [[Paper]](http://openaccess.thecvf.com//content/ICCV2021/papers/Yu_Group-Aware_Contrastive_Regression_for_Action_Quality_Assessment_ICCV_2021_paper.pdf) [[Code]](https://github.com/yuxumin/CoRe)
 
+    - 使用 Grad-Cam 对单帧图像的重点进行可视化
+
+    - 使用 I3D 对整个视频卷积一次，然后丢到 GART 里进行回归计算 $\Delta s$
+
 - [TSA-Net](./ref/2021/TSA-Net.pdf): Tube Self-Attention Network for Action Quality Assessment 
 
     **(ACM-MM 2021 Oral)** [[Paper]](https://arxiv.org/pdf/2201.03746) [[Code]](https://github.com/Shunli-Wang/TSA-Net)
+
+    - 联合之前的论文《FineGym》一起批判了 AlphaPose 不能正确实现 Pose Estimation
+
+        在本文中采用了 Tracking Box 算法 VOT
+
+    - 使用 Self-Attention 机制利用上下文信息
 
 - [A Survey of Video-based Action Quality Assessment](./ref/2021/Video-based.pdf)
 
 ### 2022
 
 - [TPT](./ref/2022/TPA.pdf): Action Quality Assessment with Temporal Parsing Transformer [[Code]](https://github.com/baiyang4/aqa_tpt)
+
+    - 使用热力图对 cross attention 进行可视化（标出 high attention responses）的 video clip
+
+    - 使用类 Transformer 架构聚焦于细粒度特征（Part）
+
+        - 基于若干个 overlap 的 Clips 生成 Part Representations（长度一致）
+
+        - 假设所有视频都可以按照相同的顺序进行阶段切分（在 Diving 中可行），具体表现为 queries 的总数
+
+    - 对每个 Part 估计 relative pairwise representation ，并最终使用 AVG Pooling 进行整合
+
+        所有 Part 共享同一个 MLP（多层感知机）
+
+    - 最终使用两层 MLP 基于 relative pairwise representation 预测 relatiave score
+
 
 ### 2023
 
