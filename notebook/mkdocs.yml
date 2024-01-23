@@ -2,6 +2,7 @@ site_name: Action Quality Assessment
 site_url: https://triplepiers.github.io/AQA/
 copyright: Copyright © 2023 SeaBee
 plugins:
+  - mermaid2
   - termynal:
       prompt_literal_start:
         - "$"
@@ -60,6 +61,11 @@ markdown_extensions:
   - pymdownx.details
   - toc:
       toc_depth: 3
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:mermaid2.fence_mermaid_custom
 extra_css:
   # fonts
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
@@ -69,9 +75,15 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js
 nav:
 - Home: index.md
-- Summary: sum.md
+- Summary: 
+    - Survey: sum/sum.md
+    - Regression: sum/Regression-Based.md
+    - Constrastive: sum/Constrastive.md
+    - Transformer: sum/Transformer.md
 - Repitition: rep.md
 - References:
+  - 2018:
+    - ST-GCN 基于骨骼的动作识别: ref/2018 Skeleton.pdf
   - 2021:
     - CoRe 组感知对比回归: ref/2021/CoRe.pdf
     - TSA-Net 管自注意力网络: ref/2021/TSA-Net.pdf

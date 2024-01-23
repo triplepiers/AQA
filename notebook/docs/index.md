@@ -16,6 +16,14 @@
 
 ## 2 References
 
+### 2018
+
+- [ST-GCN](./ref/2018%20Skeleton.pdf): Spatial Temporal Graph Convolutional Networks for Skeleton-Based Action Recognition
+
+    **(AAAI 2018)** [[Code]](https://github.com/yysijie/st-gcn)
+
+    - 基于动态骨骼的 **动作识别**
+
 ### 2021
 
 - [CoRE](./ref/2021/CoRe.pdf): Group-aware Contrastive Regression for Action Quality Assessment
