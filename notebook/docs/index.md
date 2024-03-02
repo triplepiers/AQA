@@ -86,3 +86,7 @@
 - [IRIS](./ref/2023/IRIS.pdf): Interpretable Rubric-Informed Segmentation for Action Quality Assessment 
 
     **(ACM-IUI 2023)** [[Paper]](https://arxiv.org/pdf/2303.09097.pdf)
+
+- [HGCN](): Hierarchical Graph Convolutional Networks
+
+    **(IEEE 2023)** 

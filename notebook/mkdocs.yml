@@ -2,12 +2,12 @@ site_name: Action Quality Assessment
 site_url: https://triplepiers.github.io/AQA/
 copyright: Copyright © 2023 SeaBee
 plugins:
-  - mermaid2
-  - termynal:
-      prompt_literal_start:
-        - "$"
-        - ">"
-        - "%"
+  # - mermaid2
+  # - termynal:
+  #     prompt_literal_start:
+  #       - "$"
+  #       - ">"
+  #       - "%"
 theme:
   name: material
   language: zh
@@ -61,11 +61,11 @@ markdown_extensions:
   - pymdownx.details
   - toc:
       toc_depth: 3
-  - pymdownx.superfences:
-      custom_fences:
-          - name: mermaid
-            class: mermaid
-            format: !!python/name:mermaid2.fence_mermaid_custom
+  # - pymdownx.superfences:
+  #     custom_fences:
+  #         - name: mermaid
+  #           class: mermaid
+  #           format: !!python/name:mermaid2.fence_mermaid_custom
 extra_css:
   # fonts
   - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
@@ -80,6 +80,7 @@ nav:
     - Regression: sum/Regression-Based.md
     - Constrastive: sum/Constrastive.md
     - Transformer: sum/Transformer.md
+    - GCN: sum/GCN.md
 - Repitition: rep.md
 - References:
   - 2018:
