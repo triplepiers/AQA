@@ -1,8 +1,8 @@
 # 汇总
 
-## 1 Video-based AQA (综述)
+## 2021: A Survey of Video-based AQA
 
-### 1-1 Definition & Challenges
+### 1 Definition & Challenges
 
 - 相关领域：Human Action Recognition & Analysis
 
@@ -65,7 +65,7 @@ location
 
     计算效率、视角遮挡、模型可解释性  etc.
 
-### 1-2 Datasets & Evaluation
+### 2 Datasets & Evaluation
 
 <center>Datasets for AQA</center>
 
@@ -156,7 +156,7 @@ location
     \rho = \frac{\sum_i(p_i - \overline{p})(q_i - \overline{q})}{\sqrt{\sum_i(p_i - \overline{p})^2 \sum_i(q_i - \overline{q})^2}}
     $$
 
-### 1-3 Models (截至 2021)
+### 3 Models (截至 2021)
 
 - Medical Skill Evaluation
 
@@ -187,7 +187,7 @@ location
 
     - ASU 聚焦于 腹腔镜手术(laparoscopic surgery)
 
-### 1-4 发展前景
+### 4 发展前景
 
 - Dataset
 
@@ -203,12 +203,65 @@ location
 
     - 对 复杂、长期 动作的质量进行评估
 
+## 2022: 视频理解中的动作质量评估方法综述
 
+### 1 AQA 方法分类
 
+1. 以质量分数为评估结果
+2. 以等级类别为评估结果
+3. 以质量等级排序为评估结果
+   
+### 2 数据集 & 评价指标
+!!! comment "21 那篇按照数据集的 “内容” 聚类，这篇按 “指标” 聚类了"
 
-## 2 PECoP
+1. 以质量分数为评估结果
 
-### 2-1 Abstract
+    - 评价指标：Spearman Rank Correlation
+    - 数据集：（一张表，比 2021 的有增加）
+    - 实验结果对比：把各个方法的 Spearman Rank Corr. 列在了同一张表里，然后对比分析
+
+2. 以 等级类别/ 质量等级排序 为评估结果（二合一）
+
+    - 评价指标：
+
+        - 等级类别：$\text{accuracy} = \frac{n_{分类正确}}{N}$
+        - 质量等级排序：
+            - 考虑一对样本 $(p_i,p_j)$，如果预测值的相对大小符合真实值的相对大小关系，则认为分类正确 `m+=1`
+            - 对于整个数据集，若存在 $N$ 对样本，则 $\text{accuracy}_{rank} = \frac{m}{N}$
+
+        - （新）NDCG：常用于搜索算法评估，评估预测排名序列与实际排名序列的相似程度
+
+    - 数据集
+    - 实验结果对比：把 accuracy 列了一下
+
+### 3 限制与展望
+
+1. 仅面向特定动作
+
+    对每种动作单独训练模型进行评估，不能对复杂动作进行评估
+
+2. 对分数的预测分析过于单一：只有回归模型
+
+3. 虽然存在 “分阶段评估” 的方法，但切割方式简单
+
+    - 大部分方法直接 **等分** 视频
+    - 部分采用 **时序分割**，但可能导致时间信息丢失，分割准确率也会影响后续回归准确率
+
+4. 对于以 **排序** 作为评估依据的方法，只有 pair-wise 的相对排序
+
+    而在 **排序学习算法** 中，还有 Point-Wise Ranking / ListWise Sorting 两种
+
+    缺少使用其他排序思想进行评估的指标
+
+5. 数据集仍然欠缺
+
+    对特定领域进行专家级注释的成本巨大，而 复杂动作的·多阶段 评价更是如此
+
+    大部分模型以基于 image/video 的大规模数据进行预训练，急需基于 弱监督/半监督 的方法
+
+## 2023: PECoP
+
+### 1 Abstract
 
 - 先前的工作
 
@@ -244,7 +297,7 @@ location
 
         > 此处拉踩需要更新 <u>所有参数</u> 的 HPT
 
-### 2-2 Relative Works
+### 2 Relative Works
 
 - AQA：如 Tang(USDL)，Yu（CoRe）
 
@@ -278,7 +331,7 @@ location
 
         - 提出 Conv-Adapter，使其可以应用于 2D CNN
 
-### 2-3 Approach
+### 3 Approach
 
 ![](./assets/PECoP%20Pipline.png)
 
