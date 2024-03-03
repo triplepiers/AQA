@@ -1,5 +1,11 @@
 # AQA: 动作质量评估
 
+```title="I'm MAAAAAAAD"
+我觉得我快颠了，每天看 RGB-Based 和 Skeleton-Based 左右互搏
+
+然后，找不出一个兼具准确性和可解释性的方法
+```
+
 - 李渊明 的 GitHub 仓库：[Awesome AQA](https://github.com/Lyman-Smoker/Awesome-AQA)
 
 ## 1 Requirement

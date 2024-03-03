@@ -81,6 +81,7 @@ nav:
     - Constrastive: sum/Constrastive.md
     - Transformer: sum/Transformer.md
     - GCN: sum/GCN.md
+    - Selekton-based: sum/Selekton-Based.md
 - Repitition: rep.md
 - References:
   - 2018:
