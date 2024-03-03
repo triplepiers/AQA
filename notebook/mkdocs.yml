@@ -76,10 +76,11 @@ extra_javascript:
 nav:
 - Home: index.md
 - Summary: 
-    - Survey: sum/sum.md
+    - Survey: sum/survey.md
     - Regression: sum/Regression-Based.md
     - Constrastive: sum/Constrastive.md
     - Transformer: sum/Transformer.md
+    - Self-Supervised: sum/Self-Supervised.md
     - GCN: sum/GCN.md
     - Selekton-based: sum/Selekton-Based.md
 - Repitition: rep.md

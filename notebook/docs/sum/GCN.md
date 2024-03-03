@@ -1,7 +1,9 @@
-# HGCN: Hierarchical Graph Convolutional Networks
+# 图卷积神经网络 GCN
+
+## 2023: Hierarchical Graph Convolutional Networks
 > 层级卷积神经网络
 
-## 1 Abstract
+### 1 Abstract
 
 - 当前工作存在的问题：将 video 划分为等长的 clip，可能会导致两种问题
 
@@ -24,11 +26,11 @@
 
     - 验证数据集：AQA-7，MTL-AQA，JIGSAWS
   
-## 2 Relative Works
+### 2 Relative Works
 
-### 2.1 AQA 
+#### 2.1 AQA 
 
-#### 主要流派
+##### 主要流派
 
 1. Pose-Based（早期）：使用 pose-based feature 回归预测分数
 
@@ -89,7 +91,7 @@
 
 - Pairwise-Sorting：输出 quality score，并提供 rank-coefficient 进行评估
 
-#### Trade off
+##### Trade off
 
 > Sequence Length x Visual Cues
 
@@ -107,7 +109,7 @@
 
 - 一个有效的评分周期往往横跨多个基本动作单元（单个 unit 往往不能看到全局信息）
 
-#### Aggregation Methods
+##### Aggregation Methods
 
 - 常见方法如 Average Pooling，LSTM 无法准确的捕捉 local & global dynamics
 
@@ -125,11 +127,11 @@
 
 <center>![](../assets/HGC-structure.png)</center>
 
-### 2.2 Video Representation Learning
+#### 2.2 Video Representation Learning
 
 > 为下游任务提供 Spatial-Temporal Features，从而进行 回归/分类
 
-#### 2.2.1 Key Points（早期）
+##### 2.2.1 Key Points（早期）
 
 早期方法:
 
@@ -142,7 +144,7 @@
 !!!bug "这些方法不能 *完整* 识别 discriminative features"
     基于骨架的方法会忽略 subtle diffs，这也是 AQA 前期发展缓慢的重要原因
 
-#### 2.2.2 Deep Learning-Based
+##### 2.2.2 Deep Learning-Based
 > 性能更好捏
 
 - 最普遍且有效提取 Spatial-Temporal feature 的方法是 3D-CNNs
@@ -151,7 +153,7 @@
 
     AQA 往往先识别 clip-level 特征（再考虑聚合）
 
-### 2.3 Structured Video Analysis
+#### 2.3 Structured Video Analysis
 
 !!! question "WHY structured?"
     - Raw Video 是 非结构化(unstructured) 数据 => 就是 frame stream
@@ -179,11 +181,11 @@
 
         本文使用 GCN 构建深层 hierarchical model，从而解决 AQA 问题
 
-## 3 Approach
+### 3 Approach
 
 <center>![](../assets/HGC-Pipeline.png)</center>
 
-### 3.1 Clip 特征提取
+#### 3.1 Clip 特征提取
 
 - Input 表示
 
@@ -203,9 +205,9 @@
 
     => 把这一坨 feature 拼合，即可得到特征矩阵 $\mathbf{F} \in \mathbb{R}^{N \times C_1}$
 
-### 3.2 HGCN Modules
+#### 3.2 HGCN Modules
 
-#### Clip Refinement
+##### Clip Refinement
 > 因为等距划分过于草率，这一模块通过左右调整 boundary 使得 each clip 具有完备的语义信息
 
 下面是两种可能的草率划分情形：
@@ -223,7 +225,7 @@
   
     - 结果：从 clip feature $\mathbf{F}$ 生成 shot feature $\mathbf{S}$
  
-##### 1 Motion Decomposition
+###### 1 Motion Decomposition
 
 在这一步中，我们需要将抽取的特征 $f_i$ 映射到 "潜在流形空间 latent manifold space" ，有：
 
@@ -248,7 +250,7 @@ $$
 !!! comment "Convenience"
     通过比较 $m_i, m_j$ 对应的系数 $\lambda_i^x, \lambda_j^x$，我们可以方便的计算任意两个 clip 之间的 direction & magnitude
 
-##### 2 Motion Graph Construction
+###### 2 Motion Graph Construction
 
 我们将有向图 Motion Graph 记为 $\mathcal{G}_{mot} = (\mathcal{V}_{mot},\mathcal{E}_{mot})$
 
@@ -288,7 +290,7 @@ $$
 
     - $\|d_i{j}\|$ 表示 transfer 的梯度（具体横跨几个 clip）
 
-##### 3 Information Transfer
+###### 3 Information Transfer
 
 这里使用一个 GCN Layer 完成 $(f_i,f_j)$ 之间的 transfer，得到 shot feature $s_i \in \mathbb{R}^{C_2}$：
 
@@ -300,7 +302,7 @@ $$
 
 - 其中：$B_{mot}^{ij} = A_{mot}^{ij} \cdot d_{ij}$，$\mathbf{W}_{tra}, \mathbf{U}_{tra} \in \mathbb{R}^{C_1 \times C_2}$，$\mathcal{N}_i$ 是 clip-i 的邻域（前后 $r$ 个）
   
-##### 4 Sequential Property
+###### 4 Sequential Property
 
 - 先前的工作证明：Encoder 可以有效的将 raw data 映射到 motion manifold
 
@@ -325,7 +327,7 @@ $$
     !!! info "Theorem"
         当 $H = FW$ 时，GCN 的传播过程 $\Leftrightarrow$ 优化上述的 clip-level 正则化表达式
 
-#### Scene Construction
+##### Scene Construction
 > 旨在将连续的几个 shots 组合成一个 meaningful scene
 
 - 本文同样认为同一类的 Video 由固定的 Action Procedures 构成，比如 跳水 = 起跳 -> 翻滚 -> 入水
@@ -385,7 +387,7 @@ $$
 
 其中 $E$ 是 $S$ 个 scenes $\{e_i\}$ 拼接得到的，$S'$ 是更新后的 shot feature $\{s'_i\}$ 拼接得到的
 
-#### Action Aggregation
+##### Action Aggregation
 > 用于捕捉一些 global dynamics，用于衡量总体表现
 
 由于动作只能从 i 单向过渡到 i+1（不能反过来）
@@ -416,7 +418,7 @@ $$
 
     更新后的 secene feature $\{e'_i\}$ 将作为最后用于回归的 video-level representation
 
-### 3.3 Score Regression
+#### 3.3 Score Regression
 > 并不是直接回归，从而降低评委主观因素的影响
 
 - 降低评委主观因素影响的常见方法是 uncertainty-aware score distribution learning
@@ -449,7 +451,7 @@ $$
     \hat{s} = \mu(v) + \varepsilon \cdot \sigma(v)
     $$
 
-### 3.4 Loss Function
+#### 3.4 Loss Function
 
 对于 score distribution regression 过程，使用 MSE Loss 进行评估：
 

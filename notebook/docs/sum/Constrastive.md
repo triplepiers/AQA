@@ -1,6 +1,8 @@
-## 1 CoRe
+# Pair-wise 对比学习
 
-### 1-1 Abstract
+## 2021: CoRe
+
+### 1 Abstract
 
 !!! info "对比学习 Constrastive Learning"
     学习一个 representation space，通过比较两个（same class）样本在 representation space 中的距离来衡量其 语义联系 (semantic relationship)
@@ -48,7 +50,7 @@
 
     - 提出 Relative L2-distance，在模型评估中考虑组间差异
 
-### 1-2 Relative Works
+### 2 Relative Works
 
 - Gordan：使用骨架轨迹评估体操跳跃动作质量
 
@@ -72,7 +74,7 @@
 
     > uncertainty-aware score distribution learning
 
-### 1-3 Approach
+### 3 Approach
 
 ![](./assets/CoRe%20Pipline.png)
 
@@ -207,7 +209,7 @@
             \end{align*}
         $$
 
-### 1-4 Evaluation Protocol
+### 4 Evaluation Protocol
 
 1. Spearman's Rank Correlation 
 
@@ -237,9 +239,9 @@
     >
     > 相比于 Spearman's Rank Correlation 注重 RANK，R-l<sub>2</sub> 更加重视具体数值
 
-## 2 TPT
+## 2022: TPT
 
-### 2-1 Abstract
+### 1 Abstract
 
 - 先前的 SOTA 方法
 
@@ -277,7 +279,7 @@
 
     上述工作均聚焦于 "frame-level" 的特征增强，而本文则侧重于提取 "更具备语义信息的·part representation"
 
-### 2-2 Approach
+### 2 Approach
 
 ![](./assets/TPT%20Pipeline.png)
 
@@ -381,7 +383,7 @@ $$
 1. 对 Relative Part Repre $\{r_k\}$ 使用 Average Pooling
 2. 使用 2 * 2-Layer MLP 对输入视频的 classification label $l$ & 回归结果 $\gamma$ 进行预测
 
-### 2-3 Optimization
+### 3 Optimization
 
 - 假设：每一类动作都可以按照相同顺序进行阶段切分，并通过 transformer query 进行表示
 
