@@ -1,11 +1,169 @@
-## 2 IRIS
+# 狠狠切割
+
+## 2018 Stacking Segmental P3D
+
+!!! info "首个 Stage by Stage 评分的方法"
+
+### 1 Abstract
+
+- 先前的工作
+
+    - C3D (Convolutional 3D Network)
+  
+        - 优势：可以同时捕捉 appearance & subtle motion cues
+        - 缺点：训练消耗会消耗较多内存，只能处理等帧切割的 clip
+
+    - 更多工作将 C3D 分解为 “两步走”：
+  
+        1. 在图像上训练的 2D-CNN（ResNet）
+        2. 基于 2D feature 生成时序特征的 1D-CNN（LSTM）
+
+        > 但除了 Two-stream 外的方法无法捕捉 motion cue
+
+    - 信号处理领域的研究表明，一个 filter 往往可以由若干更简单的 filter 相乘得到
+
+        P3D 和 I3D 工作已经证明在大规模数据集(Kinetics)上训练的3D卷积可被隐式分解
+
+        => 但我们很难解释具体是哪一个部分起到了关键作用
+
+
+- 本文工作
+
+    - 基于 ED-TCN，提出了 Segment-based P3D-fused Network (S3D)
+
+        对于每个 segment 分别应用 P3D，再进行 aggregation
+
+    - 证明 segment-aware 的训练方式强于 full-video 训练
+
+        发现 full-video P3D 和只观察 “水花” 的结果类似（但没有关注入水前的动作序列）
+        
+    - 证明 temporal segmentation 可以以较小的代价完成
+    - benchmark: UNLV-Dive
+
+### 2 Related Works
+
+#### Diving Skill Assessment
+
+- 早期有使用 approximate entropy features 的工作
+- Pose + SVR on MIT-Diving
+- C3D + SVR on UNLV-Dive
+
+#### 3D-CNN & STN
+
+- 3D-CNN
+
+    - 3D-CNN 并不是特别为了视频分析任务设计的（patch-level 3D-CNN 是医学图像分析的重要手段）
+
+        事实上，3D-CNN 是 STN 的替代品（毕竟时间和空间存在本质上的不同）
+
+    - 在预设帧数视频上训练的 3D-CNN 要求输入也有同样的帧数（每个 clip 都得是 16-frame）
+
+        小的 clipSize 一是出于内存占用的考虑，同时也保证了特征的 locality
+
+    - 和捕获 spatial local connectivity 的 2D-CNN 相比，3D-CNN 天然支持对 temporally local motion and coherence 的捕捉
+
+- TCN: 在 segmenting fine-grained actions 上具备 SOTA 表现
+
+    - TCN 实际上是 2D-CNN + LSTM 的简化版本 —— 在 2D-CNN 的倒数第二层上构建 cross-frame 的 1D-CNN
+    
+        其输入是由 2D-CNN 逐帧提取的一维特征
+
+    - Encoder-Decoder TCN (ED-TCN) 通过 下采样-上采样 实现 Encode-Decode，随后通过 `softmax` 为每一帧预测动作类型标签
+
+### 3 Approach
+
+!!! info "Diving Video Segmentation"
+    作者认为 Diving 视频可以划分为 5 个片段：
+
+    > 实际需要评分的只有 2-5 (4个片段)
+
+    1. Preparation（不评分）
+    2. Jumping: 离开跳台 -> 手第一次碰到身体
+    3. Dropping: 手第一次碰到身体 -> 手最后一次离开身体
+    4. Entering into the water
+    5. Water-spray decaying: 水花逐渐消失
+
+
+#### 1 full-video P3D
+
+- 改装 P3D
+
+    - 原装的 P3D 适用于 action classification 任务，但同时考虑了 appearance & local motion
+
+    - 为了完成适配 regression 任务，作者把最后一层换成了 Fully-Connected + Dropout
+
+- 拉踩 C3D
+
+    - C3D 的 `3 * 3 * 3` kernel size 是硬性要求，训练成本大
+    - P3D 的 `3 * 3 * 3` kernel 是 **可拆分的**，可以看成 `3*3*1 + 1*1*3` 的简单 kernel 组合
+
+        这同时允许网络独立进行 2D-Conv 和 1D-Conv
+
+    - 与 ResNet 的思想类似，P3D 允许将这些卷积层做成 residual units，根据 2D($S(·)$)-1D($T(·)$) 的混合策略不同，可以讲单元划分为三种：
+  
+        1. P3D-serial: $x_{t+1} = x_t + T(S(x_t))$
+        2. P3D-parallel: $x_{t+1} = x_t + T(x_t) + S(x_t)$
+        3. P3D-composition: $x_{t+1} = x_t + T(S(x_t)) + S(x_t)$
+
+        其中 $x_t, x_{t+1}$ 分别是 x-th 单元的输入输出
+
+    - P3D 还采用了 bottleneck 的设计：在每个 residual units 前后加上 `1*1*1 Conv`，分别用于 降低输入纬度 & 增长输出纬度
+  
+#### 2 Segment-level P3D
+
+!!! question "预训练的 P3D 模型只能处理 16-frame 输入，我们应该怎么对 segment 提取特征呢？"
+    只要在每个 segment center-frame 的左右 16-frame 提取特征就好啦
+
+- 我们能够 independently 的对每一个 stage 进行特征提取/分数预测：
+
+    - use features: 取 $Avg$ => single feature
+
+    - use subscores: 合并所有 subscores => feature vec `[s1, s2, ..., sn]`
+
+- 通过上面的方法，我们可以获得 segmentation+P3D 处理后的 feature set $x$
+
+    加上整个视频的 ground-truth label $y$，我们可以得到一个 training-sample $(x,y)$
+
+- 最终训练一个 LR(逻辑回归) / SVR 模型进行分数的回归预测
+
+#### 3 Teomporal Segmentation using TCN
+
+- 此处的 Temporal Segmentation 其实可以视为一个 *逐帧五分类* 任务
+
+    同时需要保证 intra-class continuity（每个阶段是连续的）
+
+- 输入：frame-level 2D-CNN feature
+
+    - 假设输入视频共有 $K$ 帧，2D-CNN 的输出纬度为 $D$，我们可以将 2D-CNN 提取的特征表示为 $X_0 \in \mathbb{R}^{D \times K}$
+
+    - 此时每一层 TCN 的输入可以被记为 $X_i(i \geq 0)$
+
+- 输出：5 segments
+
+- ED-TCN: 我们可以讲 l-th Layer 的 temporalConv 过程记为以下形式
+
+    $$
+    X_l = \text{Activate}(W_l * X_{l-1} + b)\\
+    $$
+
+    $$
+    X_l \in \mathbb{R}^{N_l \times T_l},\ W_l \in \mathbb{R}^{d_l \times N_{l-1}},\ b \in \mathbb{R}^{N_l}
+    $$
+
+    - 初始条件为 $(N_0, T_0) = (D,K)$
+    - $N_l$ 是 l-th Layer 中的 `n_Conv_Filters`，$T_l$ 是 `len(feature)`，$d_l$ 是 l-th Layer 的 `len(filter)`
+
+
+
+
+## 2023 IRIS
 
 !!! info "本文聚焦的问题：(花滑)单人短节目"
     - 节目时长约为 3min
 
     - 相比于自由滑，节目编排受制于更多的规则
 
-### 2-1 Abstract
+### 1 Abstract
 
 - 创新点
 
@@ -21,7 +179,7 @@
 
     - 本文仅对 *figure skating* 进行测定，但方法同样适用于其他 Video-based AQA 问题
 
-### 2-2 Relative Works
+### 2 Relative Works
 
 1. Action Quality Assessment
 
@@ -108,7 +266,7 @@
             - Interpretation: 用于表达音乐的动作是否具有创新性
 
 
-### 2-3 Approach
+### 3 Approach
 
 <center><img src="../../assets/IRIS%20Pipeline.png" style="max-width:500px;"></center>
 
@@ -224,10 +382,10 @@ $$
 \hat{y} = \hat{y}_{total} + \hat{y}_p
 $$
 
-<center><img src="../assets/IRIS%20visual.png" style="max-width:500px;"></center>
+<center><img src="../../assets/IRIS%20visual.png" style="max-width:500px;"></center>
 <center>IRIS 评分过程可视化</center>
 
-### 2-4 Evaluation
+### 4 Evaluation
 
 1. 计算 Final Score 的 Spearman Rank Correlation
 

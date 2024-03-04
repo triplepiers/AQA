@@ -1,6 +1,6 @@
-## 1 FSPN
+## 2023: FSPN
 
-### 1-1 Abstract
+### 1 Abstract
 
 - 先前的工作
 
@@ -42,7 +42,7 @@
 
     最终，各阶段特征会通过 multiscale temporal fusion 聚合生成 unified feature represen- tation，并用于最终的预测
 
-### 1-2 Relative Works
+### 2 Relative Works
 
 1. AQA
 
@@ -60,7 +60,7 @@
 
     从 低分辨率图片 & 较小的通道数量 开始，逐渐增加通道并减少 spatial resolution
 
-### 1-3 Approach
+### 3 Approach
 
 ![](./assets/FSPN%20Pipeline.png)
 
@@ -201,7 +201,7 @@
 
 最终通过 fuse 的到的 intergrated feature $\mathcal{F} = \text{Concat}(F_1, ..., F_{N})$
 
-### 1-4 Optimization
+### 4 Optimization
 
 #### Overall Training Loss
 

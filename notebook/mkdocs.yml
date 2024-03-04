@@ -83,6 +83,7 @@ nav:
     - Self-Supervised: sum/Self-Supervised.md
     - GCN: sum/GCN.md
     - Selekton-based: sum/Selekton-Based.md
+    - Segmentation: sum/Segmentation.md
 - Repitition: rep.md
 - References:
   - 2018:
