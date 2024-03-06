@@ -76,7 +76,7 @@
 
 ### 3 Approach
 
-![](./assets/CoRe%20Pipline.png)
+![](../assets/CoRe%20Pipline.png)
 
 #### 1 Contrastive Regression
 
@@ -281,7 +281,7 @@
 
 ### 2 Approach
 
-![](./assets/TPT%20Pipeline.png)
+![](../assets/TPT%20Pipeline.png)
 
 #### Overview
 
@@ -445,3 +445,228 @@ $$
 $$
 L = \lambda_{cls} L_{cls} + \lambda_{reg} L_{reg} + \lambda_{rank} \sum_{i=1}^L L^i_{rank} + \lambda_{sparsity} \sum_{i=1}^L L^i_{sparsity}
 $$
+
+## 2022: PCLN
+> Pairwise Contrastive Learning Network
+
+??? info "End-to-End 模型"
+    指直接输入 *原始数据(raw data)*，输出最终结果的模型
+
+    - 经典的 Machine Learning 方法
+  
+        - 需要人工进行 feature engineering，通过先验经验人工的将 raw data 处理成 feature，随后输入模型
+
+        - 在这种情况下，特征提取的好坏会严重影响预测质量（甚至比学习算法本身造成的影响更大）
+
+        - 此时的 ML 方法由多个 *独立模块* 执行，比如 NLP = 分词 + 词性标注 + 词法分析 + 语义分析 ...
+
+    - 多层神经网络
+  
+        - 可以拟合**任意非线性函数**，模型可以自行通过反向传输对 feature 进行捕捉
+
+        - 这使得 End-to-End 模型中间的细节都无需人工干预（丢图片进去就行了）
+
+### 1 Introduction
+
+- Previous Works: AQA in sports
+
+    - common solution: $\text{Regression}(\text{video}) \rightarrow \text{Score}$
+
+        => 忽略了 subtle diffs，也没有考虑同分但不同难度的情况
+
+    - 一种启发式的解决方案：train a specific model to learn diffs *between videos*
+
+        受 pairwise Learning to Rank (LTR) 思想的启发（一对对比较数据，然后排名）
+
+        - 以 video-pairs 为输入（可以扩大训练集 $N \rightarrow C_N^2$）
+        - 以相对分数 relative score = `s1 - s2` 作为标签（预测目标）
+
+
+- 本文工作
+
+    - 提出了 BasicRegression + PCLN 的端到端模型，对 Video-Pair 进行编码，对 relative score 进行预测
+
+        PCLN 是一个新颖的、LTR-based 模型，用于学习两个视频间的差异
+  
+    - 定义了新的 consistency constraint 用于训练模型（平衡 PCLN & BasicRgression）
+
+    - 在 Test 阶段，只有 BasicRegression 模块参与（PCLN 不用动）
+
+    - benchmarks: AQA-7, MTL-AQA
+
+### 2 Related Works
+
+#### a) Regression-based AQA
+
+基于 input data 的格式可以被分为两类：
+
+1. Skeleton-based
+
+    - Pirsiavash：DCT（特征提取）+ SVR（回归预测）
+    - Pan：`Human joint Learning = joint-Common + joint-Difference` Modules
+
+2. Appearance-based
+
+    > to: acquire more detailed appearance-based info
+
+    - Parmar: C3D（特征提取）+ SVR & LSTM（回归预测）
+    - Xiang: P3D（分段特征提取）+ fuse（整合） + Regression（回归预测）
+    - Tang: Uncertainty-aware Score Distribution Learning
+    - Dong: (Multioke Hidden Substages) Learning & Fusion Network
+
+#### b) Pairwise Ranking AQA
+
+- Doughty: A Supervised Deep Ranking Method
+
+    a rank-specific attention Module，用于分别处理 higher/lower skills parts
+
+- Yu: Group-aware Regression Tree（替换传统 Regression 模块）
+
+- Jain: 使用 Binary Classification Network 来学习两个视频间的 **similarity**
+
+    将 input video & expert video(训练集中得分最高的) 被一起输入模型，但是：
+
+    - 只有一个 expert sample 不能适应动作的复杂性和视频的多样性
+    - 使用了 2-stage 策略，不能保证在 Binary-Classification 阶段学习的参数同样适用于 Score-Regression 阶段
+
+### 3 Approach
+
+<center>
+    <img src="../../assets/PCLN-Pipeline.png" style="max-height:250px;">
+</center>
+
+#### Question Formulation
+
+- Input: 
+
+    - 假设输入的视频共有 $L$ 帧，则可将输入视频记为 $V = \{v_i\}_{i=1}^L$
+
+    - PCLN 用于学习两个视频之间的 diff，从而进行更准确的预测。其输入 $<V_i, V_j>$ 有随机抽样产生，共有 $C(n,2)$ 种
+
+- Prediction: 使用 $\Theta(·)$ 表示分数预测函数，则整个模型的功能可以概括为
+
+    $$
+    \hat{S} = \Theta(V)
+    $$
+
+    但必不可能这么简单，本文的目的就是找到一个更有效的 Regression Function $\Theta(·)$
+
+    > 最抽象的是：这个方法里 $\hat{S}$ 和 $\Delta S$ 是由 BasicReg 和 PCLN 模块 **独立预测** 的
+
+    将本文提出的算法记为 $\Upsilon(·)$，那么整体过程可以重写为：
+
+    $$
+    [\hat{S}_i, \hat{S}_j, \Delta S] = \Upsilon(V_i, V_j)
+    $$
+
+#### Feature Extraction
+
+对于 video-pair $<V_i, V_j>$，理论上有两种特征提取方案：
+
+1. 3D-Conv-based: require short clip with fixed-length
+
+    !!! bug "从 clip 中提取的特征并不稳定，会导致预测结果存在较大波动"
+
+2. ✅ Temporal Encoder-based
+
+---
+
+本文使用的 Temporal Encoder-based 方法：
+
+$$
+f_i = \text{TemporalEncoder}(\text{ResNet}(V_i)),\ i=p,q
+$$
+
+<center><span style="color:grey;">对视频 $V_i,V_j$ 使用 weight-sharing Model 分别提取特征</span></center>
+
+1. 使用 backbone（ResNet） 对 each frame 进行特征提取
+2. 使用 Temporal Encoder Network 对 featureSeq 的时序信息进行编码
+
+    - Temporal Encoder Network 由两个 EncodingBlock 堆叠而成。
+    - 单个 EncodingBlock = `1*1` temporalConv + ActivationFunc + maxPooling
+
+#### Score Regression
+
+- 使用 Fully-Connexted Network 进行回归运算
+
+    该 FC network 共包含三个全连接层：`D * 4096`, `4096 * 2048`, `2048 * 1`
+
+- 我们可以用以下的公式描述 Regression 过程：
+
+    $$
+    \hat{S}_i = \text{Regression}(f_i),\ i=p,q
+    $$
+
+#### PCLN Model
+
+> 大多数体育活动是在 similar background 下完成的
+
+<center>
+    <img src="../../assets/PCLN.png">
+</center>
+<center>
+    <span style="color:grey;">使用 Teomporal-Encoded Features $f_p, f_q$ 作为输入</span>
+</center>
+
+1. 对于单个输入视频（的 temporal encoded feature）使用 1D-Conv
+
+    > further encode feature 以捕捉抽象程度更高的 action info
+
+    $$
+    f'_i = \text{ReLU}(w_{(0)} \otimes f_i + b_{(0)}),\ i=p,q
+    $$
+
+    $w_{(0)}$ 是 1D-Conv 参数，$\otimes$ 是 Conv 操作，$b_{(0)}$ 是对应的 bias vec
+
+2. 使用矩阵乘法连接两个视频的 feature matrix
+
+    $$
+    f_{(0)} = f'_p \circ f'_q
+    $$
+
+3. 对 $f_{(0)}$ 使用 堆叠的 [2D-Conv 层 + MaxPooling] 进行处理
+
+    > 本文验证实验中使用了 2 层 2D-Conv
+
+    记 i-th 层 2D-Conv 的输出为 $f'_{(i)}$，$(w_{(i)}, b_{(i)})$ 为该层的 ConvParams & BiasVec
+
+    $$
+    \begin{align*}
+        f'_{(i)} &= \text{ReLU}(w_{(i)} \otimes f_{(i-1)} + b_{(i)}) \\
+        f_{(i)} &= \text{MaxPool}(f'_{(i)})
+    \end{align*}
+    $$
+
+4. 使用 4Layers-MLP（多层感知机机）预测 relative score $\Delta S$，Dense 层的节点数分别为 `[64, 32, 8, 1]`
+
+    $$
+    \Delta S = \text{MLP}(f_{(\text{last})})
+    $$
+
+### 4 Evaluation
+
+本文总共使用了 3 个 constraint 来同时提升对 $\Delta S$ & $\hat{S}$ 预测的准确度：
+
+1. Loss for Basic-Regression
+
+    AQA 问题最本质的需求：获得更准确的 $\hat{S}$ -> 最小化均方误差（两个视频分开算）
+
+    $$
+    \mathcal{L}_{bs} = \frac{1}{2} \sum_{i=p,q}^N(\hat{S}_i - S)^2
+    $$
+
+2. Loss for PCLN
+
+    同样的，我们需要更准确的 $\Delta S$
+
+    $$
+    \mathcal{L}_{ds} = (\Delta S - |S_i - S_j|)^2
+    $$
+
+3. Consistency between PCLN & BasicRegression: 限制 $\Delta S = |\hat{S}_i - \hat{S}_j|$
+
+    $$
+    \mathcal{L}_{rs} = (\Delta S - |\hat{S}_i - \hat{S}_j|)^2
+    $$
+
+!!! info "不同于先前的方法：在 test 阶段直接使用 Basic Regression 预测最终分数"
