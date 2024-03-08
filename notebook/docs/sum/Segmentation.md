@@ -385,7 +385,7 @@ $$
 <center><img src="../../assets/IRIS%20visual.png" style="max-width:500px;"></center>
 <center>IRIS 评分过程可视化</center>
 
-### 4 Evaluation
+### 4 Evaluatio
 
 1. 计算 Final Score 的 Spearman Rank Correlation
 
@@ -394,3 +394,177 @@ $$
 3. Dice Coefficient: 计算 segmentation 的准确性
 
     对预测分割序列 $\hat{a}$ 和真实动作序列 $a$，计算其交叠程度 $2(a \cdot \hat{a})/(|a|^2 + |\hat{a}|^2)$
+
+## 2023 PSL
+
+> Label-reconstruction-based Pseudo-subscore Learning
+
+!!! info "本文针对 Diving 问题，认为可以背划分为：start - takeoff - drop - entry - end 五个 substages"
+
+### 1 Introduction
+
+- 大部分现有工作
+
+    - Methods
+
+        - Provide an **Overall Quality Score** for input video
+        - Lack an evaluation for **each substage**
+        - Cann't provide **detailed feedback**
+
+    - Databases: Do not provide **labels for substage** quality assessment
+
+        - 只有 `UNLV-Diving` 提供了每个 substage 的 segmentation labels，但仍缺少各 substage 的 quality labels
+  
+- 本文工作: PSL
+
+    - *overall score* 不仅被视为 *quality label*，同时也被用作 traning set 的 *feature*
+
+        将 overall score & 各阶段的 visual feature FUSE 在一起，从而生成 subscores
+
+    - PSL Model 用于生成 pseudo-subascore label
+    - 提出了用于 PSL 训练的 `label construction loss`
+    - 基于 `pseudo-subascore label` & `overall score label` 对 PSL 进行 fine-tune，得到一个 multi-substage Model，用于预测：
+
+        - quality score label for **Each Substage**
+        - **Overall** qualirt score label
+
+### 2 Related Works
+
+- Expanding Scope of Application
+
+    - Parmar 设计了一种用于自动评估 piano-playing quality 的方法
+
+- 基于 execution score + difficulty-level 的方法
+
+    1. 将 DD 作为训练用 feature，认为 final_score = executionScore * DD
+    2. Nekoui：结合了 Pose 和 Scoring Rule
+    3. Li：抽取 key fragments 以生成 final feature
+    4. Xian：对 Diving 的 substage 进行了划分，并认为不同 substage 对总分贡献具有不同权重
+
+- 其他的一些方法
+
+    1. Parmar：设计了 multitask framework，结合 pose，category，score 进行评估
+    2. Tang：提出了 distribution learning method 以去除评委的主观因素干扰
+
+### 3 Approach
+
+<center>
+    <img src="../../assets/PSL-Pipeline.png" style="max-height: 350px;">
+</center>
+
+#### 1) Temporal Semantic Segmentation
+
+1. 将输入视频 $V$ 划分为 clips $\{p_i\}_{i=1}^n \in \mathbb{R}^{W\times H \times T}$
+
+    $T$ 为每个 clip 包含的帧数
+
+2. 使用 off-the-shelf Encoder-Decoder Temporal Convolutional Network (ED-TCN) 对 clips 进行 Temporal Semantic Segmentation
+
+    经过 Temporal Segmentation 后，每个 clip 将被划入一个 substage
+
+#### 2) PSL Module
+
+<center>
+    <img src="../../assets/PSL-Module.png" style="max-height:250px;">
+</center>
+<center>
+    <span style="color:grey;">PSL 由三部分构成，用于生成各 substage 的 pseudo-scores</span>
+</center>
+
+##### 1 - Feature Backbone Network (P3D)
+
+- P3D 使用 `1*3*3` SpatialConv + `3*1*1` TemporalConv 替换常用的 `3*3*3` C3D，使得在 same depth 下，P3D 可以通过 fewer params 准确提取特征
+
+- 将 P3D 提取到的 feature 记为 $f_i \in \mathbb{R}^m$（$i$ 为 substage 编号）
+
+    经特征处理后，输入由 clips 变为 features $V = \{f_1, f_2, ... , f_n\}$
+
+- Embed `overall-score label` in **each** substage
+
+    - $V' = \{f_{l1}, f_{l2}, ... , f_{ln}\} \in \mathbb{R}^{m+1}$
+    
+        => 其实就是简单 concat 操作，增加的纬度就是 overall-score，也即：
+
+    - $f_{li} = L \oplus f_i$，其中 $L$ 为 overall-score
+ 
+##### 2 - Subscore Generator (Label Decomposition)
+
+!!! warning "各 substage 的 `Subscore Generator` 享有 **独立** 的参数"
+
+- 通过 Fully-Connected Network 实现，在本文中包含 5 个 FC Layers
+
+    - 各层包含的节点数为：`[m+1, m/4, m/32, m/128, 1]`
+
+    - t<sup>th</sup> 层输出记为：$f^t_{li} = \text{FC}(W^t, f_{lt}^{t-1})$
+
+- 1<sup>st</sup> Layer 使用 embedded feature $\{f_{li}\}$ 作为输入
+
+- last Layer 使用 $\text{Sigmoid}$ 作为激活函数，输出预测的 subscores
+
+    => $\text{subs}_i = \text{Sigmoid}(f'_{li})$ 为 i<sup>th</sup> substage 的预测得分
+
+##### 3 - Overall Score Generator (Label Construction)
+
+使用单个全连接层对 subscores 取加权平均：
+
+$$
+\hat{S} = \text{Sigmoid}(\sum_{i=1}^n (w_i \times \text{subs}_i))
+$$
+
+---
+
+##### Evaluation of PSL Module
+
+- 假设：final_score = execution_score * DD = $S^e * d$
+- 每个输入视频的标签由两部分构成：(overallScore, executionScore)
+- $\mathcal{L}_{psl}$：使用 均方误差(MSE) 作为 label-reconstruction loss，有：
+
+    $$
+    \begin{align*}
+        \mathcal{L}_{psl} &= \frac{1}{N} \sum_{i=1}^N (\hat{S}_i - S_i)^2 \\
+        &= \frac{1}{N} \sum_{i=1}^N ((\hat{S}_i^e - S_i^e)^2 \times d_i^2)
+    \end{align*}
+    $$
+
+#### 3) Multi-substage AQA Module
+
+!!! bug "PSL Module 存在的问题"
+    - PSL 使用了 overall-score embedded feature，但在 AQA 任务中 overall-score 是未知的
+
+    - 因此，我们需要构建一个新的 SPN（切片分组网络），使其能不依赖于 overall-score 对结果进行预测
+
+Multi-substate AQA Module 同样由 5 个 FC-Layer 构成（各层节点数与 PSL 中一致），其计算过程如下：
+
+> 主要就是没有把 overall-score embed 进去
+
+$$
+    \begin{align*}
+        f_i^t &= \text{FC}(W^t, f_i^{t-1})\\
+        S_i^{sub} &= \text{Sigmoid}(f_i')\\
+        \hat{S} &= \text{Sigmoid}\left(\sum_{i=1}^n w_i \times S_i^{sub}\right)
+    \end{align*}
+$$
+
+##### Evaluation
+
+我们有如下标签：
+
+- ground-truth overall label $L$
+- PSL 预测出的 subscores： $\{\text{subs}_i\}$
+- Multi-substage AQA 预测的 subscores: $\{s_i^{sub}\}$
+
+---
+
+- 我们可以衡量 subscores 之间的 MSE 误差：
+
+    $$
+    \mathcal{L}_i^{sub} = (\text{subs}_i - s_i^{sub})^2
+    $$
+
+- 另外有 Overall-score 的 MSE 误差：
+
+    $$
+    \mathcal{L}_{o} = (\hat{S} - L)^2
+    $$
+
+最后的 Loss Func 即为二者之和 $\mathcal{L} = \mathcal{L}_o + \sum \mathcal{L}_i^{sub}$
