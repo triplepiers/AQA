@@ -1,6 +1,8 @@
 # 基于骨架的方法
 
-## 2018: Spatial Temporal Graph Convolutional Networks
+## 2018: ST-GCN
+
+> Spatial Temporal Graph Convolutional Networks
 
 ### 1 Abstract
 
@@ -453,4 +455,202 @@ $$
 
     $$
     L_{MSE} = \frac{1}{N}\sum_{i=1}^N(l_i - \hat{l}_i)^2
+    $$
+
+## 2023: MS-GCN
+
+> Multi-skeleton Structure Graph Convolution Network
+
+### 1 Introduction
+
+- 已有工作
+
+    - 广泛的应用场景：physical therapy & rehabilitation, sporting event scoring, special skill training
+
+    - 当前研究的一些不足：
+        
+        1. 大部分聚焦于 short video, 忽略了 long-duratoin videos。而长体育视频的 challenges 在于：
+
+              - large action speed variance & duration
+              - high similarity categories
+  
+        2. 通过 Deeplearning NN 从 RGB video 中提取信息的方法：
+  
+            - 忽视了 specific postures defnined by dynamic changes in human body joints 
+            - 无法区分 3Lz-3Lp 与 3Lz-3Tp （但是 skeletion-based 方法可以）
+
+    - Pose Estimation 技术对 AQA 的影响
+
+        - 可以直接从 RGB video 中提取 Skeleton data
+        - 现有方法只是根据无力结构对 joints 进行连接，忽略了语义信息以及身体各部分间的连接关系
+
+- 本文工作
+
+    - 提出了三种 skeleton structures 以实现对 关节 & 身体部位 运动模式的建模
+
+        > Joints' self-connection, intra-part connection, inter-part connection
+
+    - 设计了一个 Temporal Attention Learning Module，用于提取 skeleton subSeq 中的时序联系，并对不同 action 赋予正确的权重
+  
+    - benchmarks: MIT-Skate, Rhythmic Gymnastics
+
+### 2 Related Works
+
+#### RGB video-baesd AQA
+
+- RGB video-based 方法通过提取丰富的时空信息，已经实现了对 *short-video* 中的 *simple action* 的有效评估
+- 但受复杂场景因素影响（人体外观 / 背景变化），RGB-based 方法包含了许多无关的场景信息，使其不能准确描述人体运动
+
+---
+
+1. 少数人将 AQA 视为一个 level classifying task
+2. 大多属人将 AQA 当做一个 regression task:
+
+      - Dong 提出了 Multistage Regression Model (MSRM) 用于从不同的 hidden substages 中提取并 fuse feature
+      - Li 提出了一个 2 * C3D + 2 * FC 的端到端模型，并使用了两个 loss（分别约束 quality score & rank）
+      - Gao 将 agents 划分为 primary/secondary 两类，以对交互式动作中的非对称关系进行分析
+      - Wang 提出了 TSA 模型，使用 single object tracker 来区分前后景
+
+3. 最近，也有一些人聚焦于 pair-ranking task:
+
+
+     - Doughty 最初考虑了将任意两个视频组成输入，并提出了 similarity loss
+     - Jain 使用 C3D 进行特征提取，并通过 Siamese Network 实现了 reference-guided evaluation
+     - Yu 使用 I3D 提取特征，并通过 GART 来学习一对视频间的 relative score
+
+#### Skeleton-based AQA
+
+!!! warning "现有的 Skeleton-based Methods 聚焦于 local 信息"
+    他们通过构建 single joint adjacnet matrix 来表示人体骨骼的自然拓扑结构
+
+    但这种方法忽略了无骨骼连接关节间的隐含信息，以及 global 视角下身体各部分间关系中暗含的信息
+
+    => 这使得提取信息对于人体运动特征的表征肤浅、不充分，进而降低预测性能
+
+- Prisiavash 首先将 pose estimation 应用于 AQA（DCT + SVR）
+- Bruce 提出了基于 GCN 的方法，将 feature embed into 2D-Vecs，并通过 SoftMax Classifier 探测异常动作
+- Pan 提出在短视频中应用 joints relation graph，他们提出了两个模块：一个模块从身体部位动力学中提取特征，另一个模块从关节协调中学习。
+
+    在随后的工作中，他们开发了一种自适应动作评估系统，该系统可以根据关节相互作用为不同类型的动作自动构建不同的评估架构
+
+- [Action Recognition] Plizzari 提出了 two-stream Spatial-Temporal Transformer Network (ST-TR)，使用 Spatial/Temporal Self-attention Module 分别对帧内/帧间关系进行建模
+
+- 一些方法尝试将 appearance & pose 信息结合，他们通常采用双流网络独立处理两种特征，并在 fuse 后进行回归预测
+
+### 3 Approach
+
+<center>
+    <img src="../../assets/MS-GCN.png" style="max-height:300px;">
+</center>
+
+#### 1) Skeleton Sequence Extraction & Sampling
+
+- 本文使用 18-joints OpenPose + avanced 2D Pose Estimation 进行特征提取
+
+- 考虑到长视频中 skeletonSeq 存在信息冗余，本文首先在 temporal demension 上进行采样：
+
+    对于 skeletonSeq $S = \{s_i^t\}_{i=1\sim 18}^{t=1\sim T} = \{(x_i^t, y_i^t ,acc_i^t)\}$
+
+    1. 使用 uniform sampling strategy with fixed interval $\Delta l$，有：$S' = \{s'_l\}_{l=1\sim L}, L = T/\Delta l$
+    2. 使用 uniform partition strategy 将采样后的 skeletonSeq 划分成 $G$ 个不重叠的 subSeqs (每个 subSeq 的长度为 $L/G$)
+
+#### 2) Deep Pose Feature Learning
+
+??? info "3 types of skeleton structures"
+    <center>
+        <img src="../../assets/MS-TCN-3-skeletons.png" style="max-height: 200px;">
+    </center>
+
+    1. Joints' Self-connection $A_{self}$
+
+        以 local 视角聚焦于关节本身，确保每个 joint 在卷积过程中能被平等对待
+
+    2. Intra-part Connection $A_{intra}$
+
+        根据骨骼自然连接关系定义，对身体特定部位的运动模式进行建模
+
+    3. Inter-part Connection $A_{inter}$
+
+        使得从属于不同身体部位的 joint 间产生依赖关系，确保能捕捉到 global 信息
+
+
+对于 normalized skeleton subSeq $P = \{(x,y,acc)_v^t\}_{v=1\sim 18}^{t=1\sim T} \in \mathbb{R}^{3\times V \times T'}$，使用以下的方式对于 skeleton graph 进行 encode：
+
+- 构建 Spatial Relation Graph $A = A_{self},A_{intra},A_{inter}$
+
+    - $A_{self}$ 是一个 $V \times V$ 的 identity matrix，$A_{intra},A_{inter}$ 是 $V\times V$ 的邻接矩阵
+
+    - $A_{ij} \in \{0,1\}$ 表示顶点 $(v_i, v_j)$ 间是否存在边
+
+- 构建 MS-GCN: a hierachy of 10 stacked blocks
+    - 10个 blocks 的输出通道数为 64\*4 + 128\*3 + 256\*3
+    - 4<sup>th</sup> & 7<sup>th</sup> 的 `strideSize=2`，其他层均为 1
+    - 输入 $P_{in} \in \mathbb{R}^{C_{in} \times 18 \times T'}$
+    - 最后一层的输出将被 flattern 为一个 vector，并输入一个具有 $d$ 个神经元的 FC Layer 进行降纬，得到 $f_p \in \mathbb{R}^d$
+
+- 单个 block 的结构如下：
+    <center><img src="../../assets/MS-GCN-block.png" style="max-height: 250px;"></center>
+
+    1. GCN Layer 拥有三个独立的 Conv Operator 以分别处理三个 Graph $A$，从而抽取 motion pattern of joints & body parts。
+
+        - 整个 block 在 Spatial 纬度上的操作可以表述为：$P_{spatial}(v_i) = \sum_{j=1}^{18} \sum_{k=1}^3 (M_{ij}^k \odot A_{ij}^k)P_{in}(v_j) W^k$
+        
+        - $M^k$ 用于 scale the contribution of a nodes' feature，$W^k$ 是 Conv Kernel
+    
+    2. TCN Layer 通过 2D Conv (`kernelSize = 9*1`) 实现
+
+        - GCN & TCN 层后都跟了一个 BatchNorm；此外，为了训练的稳定性增加了 residual connection
+
+        - 整个 block 的处理过程可以描述为：$P_{out} = \sigma(\gamma_{temporal}(\sigma(\gamma_{spatial}(P_{in}))))$，$\sigma = ReLU(BatchNorm(·))$
+            
+#### 3) Temporal Attention Learning
+> extract features from the layout & arrangement of actions
+
+经过 MS-GCN 模块处理，我们可以得到 Pose Features $F_p = \{f_p^m\}_{m=1\sim G} \in \mathbb{R}^d$（$m$ 为 skeleten subSeq 编号）
+
+1. 此处使用拥有 $G$ 个 cells 的 LSTM 来提取 subSeqs 间的 temporal structures，对于每个 cell 来说
+
+    - `n_layer = 1`, `n_hidden_size = d'`
+    - input = m<sup>th</sup>-pose features + 上一个 cell 的输出
+    - output = temporal relation feature $f_t^m \in \mathbb{R}^{d'}$，所有 cell 的输出集合记为 $F_t = \{f_t^m\}_{m=1\sim G}$
+
+2. 根据 self-attention learning strategy 将新的 $F_t$ embed 成 vector
+
+3. 根据 embedded vector 生成 correlation matrix & attention weight
+
+4. 使用 $SoftMax(·)$ 对 attention weight 进行 normalize
+
+5. 将 weighted sum 作为新的 feature
+
+---
+
+上述过程可以描述为：
+
+$$
+\begin{align*}
+e_m &= V_p^T tanh(W_pf_t^m) \\
+\hat{F}_t &= \sum_{m=1}^G \alpha(e_m) f_t^m
+\end{align*}
+$$
+
+- $V_p \in \mathbb{R}^{d'}, W_p \in \mathbb{R}^{d' \times d'}$ 均为可训练参数，用于计算 correlation
+
+- $e_m$ 代表 self-attention learning 对 m<sup>th</sup>-cell output 估计的 attention weight
+
+- $\alpha(·)$ 表示对 weight vec $\{e_m\}_{,=1\sim G}$ 进行的 SoftMax 操作
+
+- $\hat{F}_t \in \mathbb{R}^{d'}$ 是 Temporal Attention Learning 得到的最终特征
+
+#### 4) Score Prediction & Evaluation
+
+- 分数预测通过 一个全连接层 + 激活函数 实现：
+  
+    $$
+    \hat{S} = \text{activation}(FC(\hat{F}_t))
+    $$
+
+- 使用 MSE Loss 以最小化预测总分与 ground-truth 之间的误差 ($N$ 为 batchSize)：
+
+    $$
+    \mathcal{L} = \frac{1}{n} \sum_{n=1}^N (\hat{S}_n - L_n)^2
     $$
