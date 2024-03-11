@@ -1,6 +1,8 @@
 # 狠狠切割
 
-## 2018 Stacking Segmental P3D
+## 2018: S3D
+
+> Stacking Segmental P3D for Action Quality Assessment
 
 !!! info "首个 Stage by Stage 评分的方法"
 

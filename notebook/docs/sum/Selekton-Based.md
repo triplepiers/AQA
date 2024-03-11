@@ -263,6 +263,181 @@ graph LR
 
     - feature vector 将通过 SoftMax Classifier 识别动作类型
 
+## 2019: Action Assessment by Joint Relation Graphs
+
+### 1 Introduction
+
+- 先前的工作
+
+    - 大部分聚焦于 whole secene（包括 performer's body & background），但忽略了 detailed joint interactions
+
+    - 由于各关节的动作质量一定程度依赖于其邻域，这使得细粒度的动作质量评估无法正确进行
+
+    - 虽然部分工作尝试通过分析各 joint 的运动，但都是 individually 地进行分析
+
+- 本文工作
+
+    - 考虑了 locally connected joints 间的 interactive motion（而非 individually 的对每个关节点进行单独分析）
+    - 构建了 trainable Joint Relation Graphs 并以此为基础对 joint motion 进行分析
+    - 提出了两个新的 Modules:
+
+        !!! info "Good Performance = Excellent Movement for each body part + Good Coordination among joints"
+
+        - Joint Commonality Module：对 certain body part 的 general motion 进行建模
+
+            locally connected joints 之间的运动共性反映了身体部分的 general motion
+
+            通过在 spatial graph 中汇总关节运动来提取特定 time step 的身体部位动力学信息
+
+        - Joint Difference Module：对于 body part 内的 motion difference 进行建模
+
+            locally connected joints 之间的差异性反映了运动的协调性
+
+            通过将每个关节与其在空间图和时间图中的局部连接邻居进行比较，来提取协调信息
+  
+    - 分析了本方法对于描述动作质量评估过程的可解释性
+
+### 2 Related Works
+
+#### Action Performance Assessment
+
+- Gordon 首先探索了对视频进行自动动作评估的可行性，并尝试通过 skeleton trajectories 分析跳马
+
+- 对外科手术评估的工作为不同的外科动作定义了 specific features，使得这些成果难以泛化
+
+#### Relation Models
+> CV 社区尝试对 semantic / spatial / temporal relation 进行建模
+
+一些工作尝试对 skeleton structure 上的 spatial-temporal relations 进行建模
+
+- 部分工作将 human skeleton 构建成 tree（移除了一些边）
+- 部分工作对 neighbouring joints 进行提取，并重新进行排列（但 image 中相邻的点在真实骨骼结构中可能不相邻）
+- Celiktutan 尝试对 skeleton dynamic sequences 进行分析，但忽视了单幅 skeleton graph 中各 joint 之间的联系
+
+#### Graph-based Joint Relations
+
+- 部分 Action Recognition 也尝试通过 graph 对 spatial-temporal joint relation 进行建模
+
+    simply connect the same joints individually across time
+
+    但由于 short-term, local fluency and proficiency 对于 AQA 十分重要，这一方法并不好用
+
+- 本文通过分析 joints' neighbours on Both spatial & temporal relation graphs 来对更细粒度的特征进行建模
+
+### 3 Approach
+
+<center>
+    <img src="../../assets/JRG-Pipline.png" style="max-height:300px;">
+</center>
+
+#### 1) Joint Commonality Module
+> Learning motion of joint neighbourhoods
+
+!!! info "learnable Spatial Relation Graph"
+    > represents how much impact each neighbour has on the motion of a certain joint within each time step
+
+    - 使用邻接矩阵 $A_s \in \mathbb{R}^{J\times J}$ 表示顶点间的连接关系（$J$ 为顶点总数），其元素值非负
+        - relevant pair 上的元素 is learnable
+        - irrelevant pair 上的元素被设为 0
+    - $A_s(i,j)$ 表示 i<sup>th</sup>-node 对 j<sup>th</sup>-node 施加的影响
+
+Joint Commonality Module 本质上是在 Spatial Relation Graph 进行 graphConv 操作，最终输出 Commonality Features
+
+在进行 Conv 操作前，该模块学习了 individual joints' motion，而在卷积后对 neighbourhoods 进行了学习
+
+- 假设进行 graphConv 前的 feature matrix 为 $H_c^t$，包含了 t<sup>th</sup> time-step 中所有节点的 hidden state
+
+    $c \in \{0,1\}$ 表示 graphConv 是否已经执行
+
+- graphConv 操作可以被视为 feature Matrix 与 adjacent Matrix 之间的乘积，即
+
+    $$
+    H_1^t = A_s · H_0^t \in \mathbb{R}^{J \times M}
+    $$
+
+    - $M$ 为 feature dimension of the hidden states
+    - the hidden states contain the motion features of the joints BEFORE the convolution，即 $H_0^t = F^t \in \mathbb{R}^{J \times M}$
+
+- 随后 Module 对所有 nodes 的 hidden state 进行聚合(MeanPooling)，得到 Commonality Feature
+
+    $$
+    \overline{h^t_c} = \frac{1}{N} ({H^t_c}^T · [1,1,1,...,1]^T)
+    $$
+#### 2) Joint Difference Module
+> Great motion differences among joints within a neighbourhood indicate a lack of coordination
+
+Joint Difference Module 本质上是将特定 joint 与其 spatial & temporal neighbours 进行对比，从而对 motion difference 进行学习，最终得到 Difference Features
+
+!!! comment "目前只考虑特定 joint 在 *current & previous* time step 中的 neighbours"
+
+!!! info "Temporal Relation Graph"
+    > model the joint relations across two immediate time steps
+
+    - 使用 $A_p \in \mathbb{R}^{J\times J}$ 表示节点间的邻接关系，被初始化为 $[0,1)$ 的随机数
+    - $A_p(i,j)$ 表示 (t-1)<sup>th</sup> 中的 $v_i$ 对 t<sup>t</sup> 中的 $v_j$ 的影响
+
+1. compute the motion differences between joint $i$ and each of its neighbours $j$
+
+2. aggregates the motion differences with weighted sum (权重为 $w_j$)
+
+    $$
+    \begin{align*}
+    D_s^t(i,m) &= \sum_j w_j · (A_s(i,j) · (F^t(i,m) - F^t(j,m)))\\
+    D_p^t(i,m) &= \sum_j w_j · (A_p(i,j) · (F^t(i,m) - F^t(j,m)))\\
+    &1 \leq i,j \leq J, 1 \leq m \leq M
+    \end{align*}
+    $$
+
+3. 通过 MeanPooling 聚合得到 Difference Features $\overline{d^t_s}, \overline{d^t_p}$
+
+    $$
+    \overline{d^t_s} = \frac{1}{N}({D_s^t}^T · [1,1,1,...,1]^T)
+    $$
+
+#### 3) Regression Module
+
+Input 包含了:
+
+1. whole-scene video feature $q^t \in \mathbb{R}^M$（运动员在背景中的位置也是一个重要信息）
+2. Commonality Features $\overline{h^t_c}$
+3. Difference Features $\overline{d^t_s}, \overline{d^t_p}$
+
+---
+
+1. 通过 feature encoder 对 input feature 进行 encode
+
+    $$
+    \begin{align*}
+    \hat{u^t_i} &= \text{EncodeFunc}_i(u_i^t)\\
+    u_i^t &\in \{q^t,\overline{h^t_0}, \overline{h^t_1}, \overline{d^t_s}, \overline{d^t_p}\}
+    \end{align*}
+    $$
+
+2. 使用 feature pooling layer 整合得到 overall feature $v^t$（$\alpha_i ,\beta_i$ 分别为 scalar & bias）
+
+    $$
+    v^t = \sum_i \alpha_i · \hat{u^t_i} + \beta_i
+    $$
+
+    为了降低不同 feature 之间存在的冗余，训练过程中会为 feature pooling layer 添加正则项：
+
+    $$
+    R_O = \sum_{i,j} \gamma · (\hat{u^t_i}^T · \hat{u^t_j})
+    $$
+    
+3. 使用两个 FC Layer 进行回归计算（视频被划分为 $t$ 个 segments，并独立进行回归预测）
+
+    $$
+    \hat{s} = \sum_t \text{RegFunc}(v^t)
+    $$
+
+#### Evaluation
+
+使用 MSE Loss，together with:
+
+- orthogonal regularization term (with a weight 0.8)
+- L2 regularization terms (with a weight 0.1) on the relation graphs
+
 ## 2022: Skeleton-based Deep Pose Feature Learning
 
 !!! warning "好像只是把 ST-GCN 叠了 10 层，再加一个 LSTM"
