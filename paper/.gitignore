@@ -1,7 +1,15 @@
 /*.*
 /Makefile
 !/.gitignore
+!/Makefile
 
 /script
 /config
 /out
+
+/body/graduate
+/body/graduate-eng
+/docs
+/page/graduate
+/page/graduate-eng
+/figure/rules2018.pdf
