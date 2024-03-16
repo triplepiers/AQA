@@ -156,6 +156,95 @@
     - $N_l$ 是 l-th Layer 中的 `n_Conv_Filters`，$T_l$ 是 `len(feature)`，$d_l$ 是 l-th Layer 的 `len(filter)`
 
 
+## 2022 [TSA: Temporal Segmentation Attention](https://arxiv.org/pdf/2204.03646.pdf)
+
+![](../assets/TSA-XAI.png)
+
+### Neo Dataset: [FineDiving](https://github.com/xujinglin/FineDiving)
+
+!!! info "FineDiving是AQA任务的第一个细粒度体育视频数据集，填补了AQA中细粒度注释的空白。"
+
+FineDiving数据集包括3000个视频样本，涵盖52种动作类型、29种子动作类型和23种难度等级类型
+
+含两级注释：
+
+- 动作级别标签描述了运动员的动作类型；步骤级别标签描述了程序中连续步骤的子动作类型。
+
+    每个动作过程中相邻的步骤属于不同的子动作类型，而子动作类型的组合产生了一个动作类型。
+    
+    例如，对于动作类型“5255B”，属于“后仰”、“2.5仰式翻筋”和“2.5扭转”的步骤是依次执行的。
+
+- 在时间结构中
+
+    - 动作级别标签确定了运动员执行完整动作实例的**时间边界**
+
+    - 步骤级别标签是动作过程中连续步骤的起始帧
+  
+        例如，对于类型为“5152B”的动作，连续步骤的起始帧分别为18930、18943、18957、18967和18978
+
+### Approach
+
+- 对于给定的输入对 $<X, V_{example}>$，最终预测得分 $\hat{S_x}$ 为：
+
+    $$
+    \hat{S_x} = TSA(I3D(X,V))_{\Theta} + S_Z
+    $$
+
+- 使用 I3D 作为特征提取的 backbone
+
+![](../assets/TSA.png)
+
+#### 1) Procedure Segmentation
+
+通过 segmentation component $\mathcal{S}$ 预测在 t<sup>th</sup> frame 上发生动作转变的概率（不是分类任务）
+
+- 假设有 $L$ 次 transition（共有 $L+1$ 个阶段）
+
+- 输出 $\mathcal{S}(I3D(X)) = [p_1, p_2, ..., p_L]$，其中 $p_k(t)$ 是第 k 次转变发生在 t 帧的概率
+- 预测第 k 次转变发生的编号为：$\hat{t}_k = \mathop{argMax}\limits_{T(k-1)/L \lt k \leq Tk/L}(p_k(t))$
+
+    约束确保了预测的转变是有序的，即 $t_1 \leq · · · \leq t_L$。
+
+---
+
+segmentation component $\mathcal{S}$ 包含了两个 block：
+
+1. down-up $b_1$:
+
+    - 由四个“down-m-up-n”子块组成，其中m和n分别表示沿空间和时间轴的输出的指定维度; 每个子块包含两个连续的卷积层和一个最大池化层。
+    
+    - $b_1$ 通过沿时间轴使用卷积层增加I3D特征 $I3D(X)$ 的长度，并通过沿空间轴使用最大池化层减少 $I3D(X)$ 的维度
+  
+        推进了深层的视觉特征 $I3D(X)$ ，以包含更深层次的空间和更长的时间视图，用于过程分割。
+
+1. linear $b_2$
+
+    进一步对 $b_1$ 的输出进行编码，生成动作过程中L个步骤转变的L个概率分布 $\{p_k\}^L_{k=1}$。
+    
+#### 2) procedure-aware cross-attention learning
+
+通过 Transformer 的 Seq2Seq 能力学习 procedure-aware embedding of pairwise query and exemplar steps via cross-attention
+
+- 将划分后的 $L+1$ 个 steps 记为 $\{S_l^X, S_l^Z\}_{l=1}^{L+1}$
+
+- 通过 down-sampling 对齐 $S_l^X, S_l^Z$ 的长度
+
+#### 3) fine-grained contrastive regression
+
+!!! info "每个 step 有单独的 regressor"
+
+基于学习到的过程感知嵌入$S_l$，我们通过学习成对步骤的相对分数来量化查询和示例之间的步骤偏差，从而指导TSA模块通过学习细粒度对比回归组件R来评估动作质量：
+
+$$\hat{y}_X = \frac{1}{L+1} \sum_{l=1}^{L+1} R(S_l) + y_Z \tag{7}$$
+
+其中$y_Z$是来自训练集的示例分数标签。
+
+!!! info "Vote"
+    在测试过程中，对于测试视频$X_{\text{test}}$，我们采用多示例投票策略从训练集中选择M个示例，然后构建M个视频对$\{(X_{\text{test}}, Z_j)\}_{j=1}^M$
+
+    记示例分数标签为$\{y_{Zj}\}_{j=1}^M$，多示例投票的过程可以表示为：
+
+    $$\hat{y}_{X_{\text{test}}} = \frac{1}{M} \sum_{j=1}^{M} \left(P(X_{\text{test}}, Z_j | \Theta) + y_{Zj}\right).$$
 
 
 ## 2023 IRIS
