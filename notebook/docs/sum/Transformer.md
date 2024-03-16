@@ -1,3 +1,202 @@
+## 2021: SGN
+> Semantics-Guided Representations (for Figure Skating)
+
+### 1 Introduction
+
+- 先前的工作
+
+    - 大多数工作局限于根据 visual input 预测得分，限制了 depict highlevel semantic representation 的能力
+
+        他们侧重于利用 *视觉上下文信息*，但未探索视频中的语义信息
+
+    - 如何通过计算机视觉对 semantic reprsentation 进行 depicts and interacts 仍未明确
+
+- 本文工作
+
+    - 聚焦于提取 Figure-Skating 项目中的 semantic-aware representations
+    - 提出了 Semantic-Guided Network (SGN) 以弥合 语义-视觉信息 之间的差距
+        - 是一个 teacher-student-based network (with attention mechanism)
+        - 使得知识从 semantic domain 迁移到 visual domain
+    - 在 teacher branch 通过 cross-attention 机制聚合 semantic descriptions & visual features，为 visual domain 提供监督
+
+        除 OlympicFS 提供的 comments 外，teacher branch 中的语义表示也可以从音乐等模态中提取
+
+    - 在 student branch 使用了一串 learnable atomic queries 来模拟 teacher branch 的 semantic-aware distribution
+
+        旋转、跳跃等细粒度 query 使得模型能够识别视频中的关键原子动作，其训练受 semantic domain 中的 teacher 监督
+    
+    - 提出了三种 Loss 来 align 来自不同 domain 的 features
+    - 提出了*多模态*数据集 OlympicFS，提供了 score + professional comments。数据来自 2018年平昌冬奥会 和 2022年北京冬奥会。
+    - benchmarks: OlympicFS, FS1000, Fis-v, MTL-AQA(diving)
+
+### 2 Related Works
+
+#### Figure Skating Analysis
+
+- CV 领域关于 FS 的最早研究是 Pirsiavash 在 14 年基于 ST-Pose feature 训练的回归模型
+
+- Xu 从女子单人项目中收集了 500 个视频，并提出了一种包含 self-attentive & multi-scale LSTM 的机制，用于学习 local & global SeqInfo
+
+- 数据集 FSD-10 包含了 男子/女子 项目中的 10 种不同动作，并提出了用于 *分类* 的 key-frame-based temporal segment network
+
+- ACTION-Net 学习了在特定帧中检测到的运动员的视频动态信息和静态姿势，以加强视频中的特定姿势。
+
+- EAGLE-Eye 构建了一个双流网络，用于推理表演过程中关节协调和外观动态之间的关系。
+
+- Xia 提出多模态模型 MLP-Mixer（音频 + 视觉信息），并通过 memory recurrent unit 有效地学习长期表示；同时收集了 FS1000 数据集。
+#### Multimodal Learning
+
+最近，Transformer 模型不仅在 NLP 中得到了广泛应用，同时在 CV 任务重表现出了良好的性能。
+
+虽然这些方法依赖于大规模数据集，并采用多模态自监督任务进行预训练。
+
+!!! warning "但 AQA 领域尚未提出多模态大规模模型"
+
+### 3 Approach
+
+![](../assets/SGN-Pipeline.png)
+
+#### 1) Feature Extraction
+
+- 对于视频输入：
+
+    1. 使用 *Temporal segment networks* 将输入视频划分为 $T_v$ 个 segments
+    2. 使用 *Video swin transformer* 从 segment 中提取 visual feature
+    3. 使用 MLP 进行特征降维，得到 $X_v \in \mathbb{R}^{T_v \times D}$
+
+- 对于文字输入：使用 token embedder + BERT 提取特征 $X_t \in \mathbb{R}^{T_t \times D}$
+
+#### 2) Extract Semantic-Aware Representations
+
+!!! bug "每个 clip 仅包含当前 segment 的信息，缺少 global context info"
+
+1. 使用 self-attention Encoder 来充实 segment-wise representation
+
+    - 通过计算 weighted aggregation of segment features 来得到 context info
+
+        此处的 weight 由当前 segment 与其他 segments 之间的协方差决定
+
+    $$
+    H_0 = \text{SoftMax}\left(
+        \frac{W_{qs} X_v (W_{ks} X_v)^T}{\sqrt{D}}
+    \right) W_{vs} X_v + X_v
+    $$
+
+    - $W_{qs}, W_{ks}, W_{vs}$ 都是可训练参数
+
+2. 使用 feed-forward network (FFN) 对 $H_0$ 进行进一步 fusion，得到 $\hat{X}_v$
+
+##### Teacher Branch
+> 从评论文本中提取 semantic-aware representations
+
+- 通过构建 visual-text feature 之间的 cross-attention 来学习 semantic corr.
+
+- (受 DETR 启发) 本文的 Transformer Decoder 共包含三部分: self-attention, croess-atention, FFN
+
+    - self-attention 用于挖掘 text feature 之间的关系，得到 $\hat{X}_t$
+    - cross-attention 用于从 $\hat{X}_t, \hat{X}_v$ 中学习 context-aware representations
+
+        - $query$ 通过 $\hat{X}_t$ 生成，$key, value$ 从 $\hat{X}_v$ 变换得到
+
+        $$
+        Q_t=W_q\hat{X}_t,\ K_v = W_k\hat{X}_v,\ V_v = W_v\hat{X}_v
+        $$
+
+        - semantic corr $A^T$ 由对应 $query-key$ 之间的 dot-product similarity 衡量
+
+        $$
+        A^T = \text{SoftMax}\left(\frac{Q_tK_v^T}{\sqrt{D}}\right)
+        $$
+
+    - FFN 用于 aggregate $A^T, V_v$，得到最终输出 $H^T$
+
+        $$
+        H^T = FFN(A^T V_v) \in \mathbb{R}^{T_t \times D}
+        $$
+
+#### 3) Semantics-Guided Network
+
+- 先前的多模态模型会把 visual-semantic info 混合在一起进行预测
+- 本文则是通过 semanticRep 指导对 visual feature 的学习
+
+##### Student Branch
+
+- 定义长度为 $K$ 的 atomic queries $X_q \in \mathbb{R}^{K \times D}$
+
+    这些 query 用于表示评分中的关键语义信息，例如出色的跳跃或糟糕的摔倒。
+
+    在应用 self-attention 后更新为 $\hat{X}_q$
+
+- 类似于 teacher branch，student branch 也由三部分构成（不过用 queries 替代了 $\hat{X}_t$）
+
+    $$
+    \begin{align*}
+    Q'_q &= W'_q \hat{X}_q,\ K'_v = W'_k\hat{X}_v,\ V'_v = W'_v \hat{X}_v \\
+    A^S &= \text{SoftMax}\left(\frac{Q'_q K'^T_v}{\sqrt{D}}\right) \in \mathbb{R}^{K \times T_v}\\
+    H^S &= FFN(A^S V'_v) \in \mathbb{R}^{K \times D}
+    \end{align*}
+    $$
+
+    $A^S$ 是 attention map，$H^S$ 是 student branch 的输出
+
+#### Evaluation
+
+- distillation loss
+
+    - 目标：最小化 $A^T, A^S$ 两个 self-attention matrices 之间的差异
+    - 但是 $A^T \in T_t \times T_v,\ A^S \in K \times T_v$ 具有不同的 shape ($T_t \gg K$)，因此需要沿 $T_t/K$ 纬度进行 MaxPooling，生成 $\hat{A}^T / \hat{A}^S$
+
+        这样可以提取最显著的特征并增强特征表示能力，而不会丢失有用的信息
+
+    $$
+    \mathcal{L}_{attn} = \frac{1}{T_v h} \sum_{i=1}^{T_v} \sum_{j=1}^h \text{MSE}(\hat{A}_{ij}^T, \hat{A}_{ij}^S)
+    $$
+
+    $h$ 为 Transformer 中的 attention heads，$\hat{A}_{ij}$ 是 i<sup>th</sup>-clip j<sup>th</sup>-head 的 normalized attention
+
+- objective loss
+
+    除了限制 teacher-student branch 的 attention distribution 之外，作者还使用了 Noise Contrastive Estimation(NCE) loss 来 align teacher-student branch 之间的 output feature
+
+    - 通过将 target instance $H^S$ 与更多的 negative sample 进行对比，并与对应的 positive sample$H^T$ 进行 align
+
+    - 在 $T_t/K$ 纬度上使用 AveragePooling 来将 teacher-student feature 映射到相同的纬度上
+
+    $$
+    \mathcal{L}_{cons} = -\log{\frac{\exp{(\text{sim}(\hat{H^S_i},\hat{H^T_i})/\tau)}}
+    {\sum_{j=1}^N\mathbb{1}_{[j \neq i]}\exp{(\text{sim}(\hat{H^S_i},\hat{H^T_i})/\tau)}}}
+    $$
+
+    - $\mathbb{1}_{[j \neq i]}$ 是一个 indicatorFunc，当 $j\neq i$ 时取 1
+    - $\text{sim}(u,v) = u^T v / |u||v|$ 表示 $l_2$ normalized 的 $u·v$ 点积
+    - $\tau$ 是 temperature 超参数
+    - 这一 loss 在 mini-batch $N$ 中的所有 positive-pairs 间被计算
+
+- scoring loss
+
+    - 本文将 AQA 任务定义为：预测和具有相同 category 视频间的 $\Delta s$
+    - 对于输入对 $<X_{v.p}, X_{v,q}>$，其 ground-truth 为 $<S_p, S_q>$，有：
+
+        $$
+        L_{score} = (\Delta S - |S_p - S_q|)^2 = (\mathcal{R}_{\Theta}(\hat{H_p},\hat{H_q}) - |S_p - S_q|)^2
+        $$
+    
+    - 由于模型具有 teacher-student 两个 branch，因此会有两个 relative score，分别记为 $\mathcal{L}_{score}^T,\mathcal{L}_{score}^S$
+
+- consistency loss
+
+    - to align the learned feature representations: 限制 teacher branch 预测的 $\Delta S^T$ 与 student brach 预测的 $\Delta S^S$ 相等
+
+    $$
+    \mathcal{L}_{c-score} = (\Delta S^T - \Delta S^S)^2
+    $$
+
+<center>将以上各项相加，可得 total loss $\mathcal{L}$</center>
+
+$$
+\mathcal{L} = \mathcal{L}_{score}^T + \mathcal{L}_{score}^S + \mathcal{L}_{attn} + \mathcal{L}_{cons} + \mathcal{L}_{c-score}
+$$
+
 ## 2023: FSPN
 
 ### 1 Abstract
@@ -62,7 +261,7 @@
 
 ### 3 Approach
 
-![](./assets/FSPN%20Pipeline.png)
+![](../assets/FSPN%20Pipeline.png)
 
 #### 问题定义
 
