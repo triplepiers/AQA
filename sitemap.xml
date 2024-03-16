@@ -2,17 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://triplepiers.github.io/AQA/</loc>
-         <lastmod>2024-01-21</lastmod>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/FigureSkating/</loc>
+         <lastmod>2024-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://triplepiers.github.io/AQA/rep/</loc>
-         <lastmod>2024-01-21</lastmod>
+         <lastmod>2024-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://triplepiers.github.io/AQA/sum/</loc>
-         <lastmod>2024-01-21</lastmod>
+         <loc>https://triplepiers.github.io/AQA/sum/Constrastive/</loc>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/sum/GCN/</loc>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/sum/Regression-Based/</loc>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/sum/Segmentation/</loc>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/sum/Selekton-Based/</loc>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/sum/Self-Supervised/</loc>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/sum/Transformer/</loc>
+         <lastmod>2024-03-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://triplepiers.github.io/AQA/sum/survey/</loc>
+         <lastmod>2024-03-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

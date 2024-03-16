@@ -1,0 +1,1787 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://triplepiers.github.io/AQA/sum/GCN/">
+      
+      
+        <link rel="prev" href="../Self-Supervised/">
+      
+      
+        <link rel="next" href="../Selekton-Based/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>GCN - Action Quality Assessment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gcn" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Action Quality Assessment" class="md-header__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Action Quality Assessment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GCN
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="light-green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Action Quality Assessment" class="md-nav__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Action Quality Assessment
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Survey
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Regression-Based/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Constrastive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constrastive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Self-Supervised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Self-Supervised
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    GCN
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    GCN
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2023-hierarchical-graph-convolutional-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: Hierarchical Graph Convolutional Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2023: Hierarchical Graph Convolutional Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Abstract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-relative-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Relative Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Selekton-Based/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Selekton-based
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repitition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FigureSkating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FigureSkating
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            References
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            2018
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2018%20Skeleton.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ST-GCN 基于骨骼的动作识别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2021/CoRe.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CoRe 组感知对比回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2021/TSA-Net.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TSA-Net 管自注意力网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2021/Video-based.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Video-based
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2022/TPA.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TPT 时序转译 transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2023/PECoP.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PECoP 连续预训练
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2023/STPN.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FSPN 细粒度时空解析网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2023/IRIS.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IRIS 评分标准可解释分割
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2023-hierarchical-graph-convolutional-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: Hierarchical Graph Convolutional Networks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2023: Hierarchical Graph Convolutional Networks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Abstract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-relative-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Relative Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="gcn">图卷积神经网络 GCN</h1>
+<h2 id="2023-hierarchical-graph-convolutional-networks">2023: Hierarchical Graph Convolutional Networks</h2>
+<blockquote>
+<p>层级卷积神经网络</p>
+</blockquote>
+<h3 id="1-abstract">1 Abstract</h3>
+<ul>
+<li>
+<p>当前工作存在的问题：将 video 划分为等长的 clip，可能会导致两种问题</p>
+<ul>
+<li>
+<p>intra-clip confusion</p>
+</li>
+<li>
+<p>inter-clip incoherence</p>
+</li>
+</ul>
+</li>
+<li>
+<p>本文创新点：HGC</p>
+<ul>
+<li>
+<p>通过 clip refinement（切片细化）来纠正语义信息内的混乱，生成 <code>shot</code> 作为基本动作单元</p>
+<blockquote>
+<p>解决了 intra-clip confusion 问题</p>
+</blockquote>
+</li>
+<li>
+<p>构建 scene graph：将连续的一组 <code>shot</code> 组合成有意义的 <code>scene</code>，从而捕捉 <code>local dynamics</code></p>
+<blockquote>
+<ul>
+<li><code>scene</code> 可以被视为给定动作的另一种 “过程描述”</li>
+<li>解决了 inter-clip incoherence 问题</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>通过顺序聚合 scenes 获取 video-level representation，最终通过回归预测得到分数</p>
+</li>
+<li>
+<p>验证数据集：AQA-7，MTL-AQA，JIGSAWS</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-relative-works">2 Relative Works</h3>
+<h4 id="21-aqa">2.1 AQA</h4>
+<h5 id="_1">主要流派</h5>
+<ol>
+<li>
+<p>Pose-Based（早期）：使用 pose-based feature 回归预测分数</p>
+<ul>
+<li>
+<p>常见 pipeline：<code>location tracking -- 特征提取 -- 分数预测</code></p>
+</li>
+<li>
+<p>优势：可以提取 position / speed / direction 等可具体量化的特征</p>
+</li>
+<li>
+<p>劣势</p>
+<ul>
+<li>
+<p>在体育运动领域进行姿态估计比较困难：蹲伏/遮挡的存在会导致错估和缺失</p>
+</li>
+<li>
+<p>未考虑“水花”等 “视觉（环境）” 因素</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Sample</p>
+<ul>
+<li>
+<p>Pirsiavash</p>
+<ul>
+<li>
+<p>估计 pose -&gt; 使用 discrete cosine transform 编码 -&gt; SVR 回归预测</p>
+</li>
+<li>
+<p>由于 照明、视角变换、遮挡 的存在，估计的 pose 并不准确</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Vision-Based <code>State-of-the-Art</code> !!!</p>
+<blockquote>
+<p>make FULL use of the visual features</p>
+</blockquote>
+<ul>
+<li>
+<p>常见 pipeline：<code>特征提取 -- 特征聚合 -- 回归预测</code></p>
+</li>
+<li>
+<p>常用特征提取 backbone: I3D / C3D</p>
+<p>但这些 3D-CNN 对于内存和计算资源占用极大，只能应用于短小的 clip</p>
+</li>
+<li>
+<p>因为整个动作序列对于分数都有意义，所以 “动作识别” 用的 “关键帧抽取” 技术在 AQA 问题上不太适用</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<div class="admonition info">
+<p class="admonition-title">是否使用 <code>对比学习</code> 思想</p>
+</div>
+<p>此外，也可以按照 Input-Format 进行划分:</p>
+<ul>
+<li>
+<p>Exampler-Free</p>
+</li>
+<li>
+<p>Exampler-Based (类 CoRE)</p>
+<ul>
+<li>
+<p>优势：通过仅回归计算 relative score，提升了准确度</p>
+</li>
+<li>
+<p>劣势：</p>
+<ul>
+<li>
+<p>人工选取 sampler 会引入 personal bias（但是应该可以随机抽样？）</p>
+</li>
+<li>
+<p>对于 exampler 进行 feature learning 会引入额外的计算成本</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>按照 Output-Fomat 划分：</p>
+<ul>
+<li>
+<p>Quality Score Regression：预测准确的分数值（输出是 <code>float</code>）</p>
+</li>
+<li>
+<p>Grading：输出评级标签（如 <code>A-E</code> 档，或者 <code>Good/Bad</code> 二分类）</p>
+</li>
+<li>
+<p>Pairwise-Sorting：输出 quality score，并提供 rank-coefficient 进行评估</p>
+</li>
+</ul>
+<h5 id="trade-off">Trade off</h5>
+<blockquote>
+<p>Sequence Length x Visual Cues</p>
+</blockquote>
+<p>大部分工作：</p>
+<ul>
+<li>
+<p>将视频划分为等长的 clip（16 frames）</p>
+</li>
+<li>
+<p>对每个 clip <em>独立计算</em> spatial-temporal features</p>
+</li>
+<li>
+<p>生成 video-level feature：使用平均池化</p>
+</li>
+</ul>
+<p>以上方案的缺点：</p>
+<ul>
+<li>
+<p>等长切割对于可能导致每个 clip 中蕴含的 motion-related 语义信息存在 缺失/冗余</p>
+</li>
+<li>
+<p>一个有效的评分周期往往横跨多个基本动作单元（单个 unit 往往不能看到全局信息）</p>
+</li>
+</ul>
+<h5 id="aggregation-methods">Aggregation Methods</h5>
+<ul>
+<li>
+<p>常见方法如 Average Pooling，LSTM 无法准确的捕捉 local &amp; global dynamics</p>
+</li>
+<li>
+<p>为了更合理的对 clip 进行划分，boundary detection (of basic motion units) 将作为预训练任务</p>
+<ul>
+<li>
+<p>但是 过度切分/错误切分 仍然会导致重要时序信息的缺失</p>
+</li>
+<li>
+<p>此外，边界划分需要的 <strong>人工标签</strong> 数据集基本不给（手标的成本又很高）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>受 Structured Video Analysis 的启发，本文提出了一种层级结构</p>
+<ul>
+<li><code>shot</code> - basic action unit，包含若干帧</li>
+<li><code>scene</code> - 包含若干 <em>连续的</em> <code>shots</code></li>
+<li><code>action</code> - 包含若干 <code>scenes</code></li>
+</ul>
+</li>
+</ul>
+<p><center><img alt="" src="../../assets/HGC-structure.png" /></center></p>
+<h4 id="22-video-representation-learning">2.2 Video Representation Learning</h4>
+<blockquote>
+<p>为下游任务提供 Spatial-Temporal Features，从而进行 回归/分类</p>
+</blockquote>
+<h5 id="221-key-points">2.2.1 Key Points（早期）</h5>
+<p>早期方法:</p>
+<ul>
+<li>
+<p>首先识别得到 key points（关键点），再从这些关键点中提取抽象度更高的 feature。</p>
+<p>常见方法有：space-time interest points，dense trajectories</p>
+</li>
+<li>
+<p>随后通过 BoW / Fisher Vector 等编码方式，将特征聚合得到 video-level representation</p>
+</li>
+</ul>
+<div class="admonition bug">
+<p class="admonition-title">这些方法不能 <em>完整</em> 识别 discriminative features</p>
+<p>基于骨架的方法会忽略 subtle diffs，这也是 AQA 前期发展缓慢的重要原因</p>
+</div>
+<h5 id="222-deep-learning-based">2.2.2 Deep Learning-Based</h5>
+<blockquote>
+<p>性能更好捏</p>
+</blockquote>
+<ul>
+<li>
+<p>最普遍且有效提取 Spatial-Temporal feature 的方法是 3D-CNNs</p>
+</li>
+<li>
+<p>但由于 3D-CNN 计算成本巨大，不能处理 100 frames 以上的长视频片段</p>
+<p>AQA 往往先识别 clip-level 特征（再考虑聚合）</p>
+</li>
+</ul>
+<h4 id="23-structured-video-analysis">2.3 Structured Video Analysis</h4>
+<div class="admonition question">
+<p class="admonition-title">WHY structured?</p>
+<ul>
+<li>Raw Video 是 非结构化(unstructured) 数据 =&gt; 就是 frame stream</li>
+<li>如果要实现 content-based video processing，就需要考虑将其结构化</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>Hierarchical Video Stucture 层级视频结构</p>
+<ul>
+<li>
+<p><code>shots</code> 由连续的 frames 组成</p>
+<ul>
+<li>
+<p>通过 shot boundary detection methods 进行划分</p>
+</li>
+<li>
+<p>主要 visual content 由 key-frame 进行表示</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>groups</code> 由 similiar shots 构成</p>
+</li>
+<li>
+<p><code>scenes</code> 由 semantically-related shots 构成</p>
+</li>
+</ul>
+</li>
+<li>
+<p>本文认为： </p>
+<ul>
+<li>
+<p><u>shots</u> 是 basci motion unit，并且相互独立</p>
+</li>
+<li>
+<p>区别于 Wang 等人于 2013 年提出的 latent hierachical model</p>
+<blockquote>
+<p>自动将复杂动作划分为 sub-activitied，使用 SVM 结局 Action Classification 问题</p>
+</blockquote>
+<p>本文使用 GCN 构建深层 hierarchical model，从而解决 AQA 问题</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-approach">3 Approach</h3>
+<p><center><img alt="" src="../../assets/HGC-Pipeline.png" /></center></p>
+<h4 id="31-clip">3.1 Clip 特征提取</h4>
+<ul>
+<li>
+<p>Input 表示</p>
+<ul>
+<li>
+<p>假设视频共有 <span class="arithmatex">\(T\)</span> 帧，则可将输入记为 <span class="arithmatex">\(\mathcal{F} = \{X_1,X_2, ..., X_T\}\)</span></p>
+</li>
+<li>
+<p>假设单帧的像素为 <span class="arithmatex">\(W \times H\)</span>，则第 <span class="arithmatex">\(t\)</span> 帧可以记为 tensor: <span class="arithmatex">\(X_t \in \mathbb{R}^{W\times H \times 3}\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Clip 划分</p>
+<p>将 <span class="arithmatex">\(\mathcal{F}\)</span> 划分为 16-frames / each 的 <span class="arithmatex">\(N\)</span> * clips，我们将 clip 序列记为 <span class="arithmatex">\(\mathcal{F}_1, \mathcal{F}_2, ..., \mathcal{F}_N\)</span></p>
+</li>
+<li>
+<p>Featrue Extraction</p>
+<p>使用 weight-sharing 的 I3D backbone 对每一个 clip 进行特征提取，得到 <span class="arithmatex">\(f_1, f_2, ...,f_N \in \mathbb{R}^{C_1}\)</span></p>
+<blockquote>
+<p>其中 <span class="arithmatex">\(C_1\)</span> 表示 feature demesion</p>
+</blockquote>
+<p>=&gt; 把这一坨 feature 拼合，即可得到特征矩阵 <span class="arithmatex">\(\mathbf{F} \in \mathbb{R}^{N \times C_1}\)</span></p>
+</li>
+</ul>
+<h4 id="32-hgcn-modules">3.2 HGCN Modules</h4>
+<h5 id="clip-refinement">Clip Refinement</h5>
+<blockquote>
+<p>因为等距划分过于草率，这一模块通过左右调整 boundary 使得 each clip 具有完备的语义信息</p>
+</blockquote>
+<p>下面是两种可能的草率划分情形：</p>
+<ol>
+<li>当前 clip 包含的语义信息不完整：可能需要从 前/后 的 clip 挪用一些</li>
+<li>当前 clip 包含了 <span class="arithmatex">\(\lt\)</span> 1 motion：需要分给 前/后 的 clip</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Feature of Action</p>
+<p>假设 action feature 可以由一组正交坐标 <span class="arithmatex">\(b_1,b_2, ... , b_B \in \mathbb{R}^{D_1}\)</span> 表示（<span class="arithmatex">\(D_1\)</span> 是 embedding dimension）</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Clip Refinement Module</p>
+<p><img alt="" src="../../assets/HGC-clip-refinement.png" /></p>
+<ul>
+<li>
+<p>方案：先通过 Motion Decomposition 找出动作间 transition 发生的位置，再对 clip 进行均贫富处理</p>
+</li>
+<li>
+<p>结果：从 clip feature <span class="arithmatex">\(\mathbf{F}\)</span> 生成 shot feature <span class="arithmatex">\(\mathbf{S}\)</span></p>
+</li>
+</ul>
+</div>
+<h6 id="1-motion-decomposition">1 Motion Decomposition</h6>
+<p>在这一步中，我们需要将抽取的特征 <span class="arithmatex">\(f_i\)</span> 映射到 "潜在流形空间 latent manifold space" ，有：</p>
+<div class="arithmatex">\[
+m_i = \lambda_i^1 b_1 + \lambda_i^2 b_2 + ... + \lambda_i^B b_B
+\]</div>
+<blockquote>
+<p>其中 <span class="arithmatex">\(\{\lambda_i^j\}\)</span> 是一组用于描述 action freature 的正交坐标</p>
+</blockquote>
+<p>这一操作可以通过 NN 实现，记为以下形式：</p>
+<div class="arithmatex">\[
+m_i = ReLU(Conv1D_{group}(f_i,g))
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(Conv1D_{group}(f,g)\)</span> 是 <code>groupSize = g</code>，<code>kernelSize=1</code> 的 1D-Conv 操作</p>
+<blockquote>
+<p>各 clip 共享相同权重的 1D-Conv</p>
+</blockquote>
+</li>
+<li>
+<p>选择 ReLU 是因为计算更高效</p>
+</li>
+</ul>
+<div class="admonition comment">
+<p class="admonition-title">Convenience</p>
+<p>通过比较 <span class="arithmatex">\(m_i, m_j\)</span> 对应的系数 <span class="arithmatex">\(\lambda_i^x, \lambda_j^x\)</span>，我们可以方便的计算任意两个 clip 之间的 direction &amp; magnitude</p>
+</div>
+<h6 id="2-motion-graph-construction">2 Motion Graph Construction</h6>
+<p>我们将有向图 Motion Graph 记为 <span class="arithmatex">\(\mathcal{G}_{mot} = (\mathcal{V}_{mot},\mathcal{E}_{mot})\)</span></p>
+<ul>
+<li><span class="arithmatex">\(\left|\mathcal{V}_{mot}\right|\)</span> 是 motion nodes 构成的点集</li>
+<li><span class="arithmatex">\(\left|\mathcal{E}_{mot}\right|\)</span> 是有向边，使用邻接矩阵 <span class="arithmatex">\(\mathbf{A}_{mot} \in \mathbb{R}^{N \times N}\)</span> 表示</li>
+</ul>
+<hr />
+<p>由于 information transfer 可能在连续的 <span class="arithmatex">\(r\)</span> 个 clip 间进行，我们可以将 <span class="arithmatex">\(\mathbf{A}_{mot}\)</span> 记为：</p>
+<div class="arithmatex">\[
+A_{mot}^{ij} = 
+\left\{
+    \begin{align*}
+        &amp;1,\text{ if } \|i-j\| \lt r \\
+        &amp;0, \text{ otherwise }
+    \end{align*}
+\right.
+\]</div>
+<p><center>可以看成一个 <code>length=r</code> 的滑动窗口遮罩</center></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">如何决定 frames 移动的 direction (前/后) &amp; magnitude (具体移动多少个 clip)？</p>
+</div>
+<ul>
+<li>
+<p>学习距离函数 <span class="arithmatex">\(d_{ij}\)</span> 来衡量 <span class="arithmatex">\((m_i, m_j)\)</span> 之间的距离（主要就是学参数矩阵 <span class="arithmatex">\(\mathbf{W}_{mot} \in \mathbb{R}^{D_1 \times 1}\)</span></p>
+<div class="arithmatex">\[
+    d_{ij} = \tanh((m_i - m_j) \cdot \mathbf{W}_{mot}) \in [-1,1]
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(sign(d_{ij})\)</span> 表示 transfer 发生的方向（前/后/不变）</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(sign(d_{ij}) \lt 0\)</span> 表示 clip-i 需要从 clip-j 接收数量为 <span class="arithmatex">\(\|d_i{j}\|\)</span> 的 feature（此时 transition 发生在 clip-i 内）</p>
+</li>
+<li>
+<p><span class="arithmatex">\(sign(d_{ij}) == 0\)</span> 表示边界不需要移动</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(\|d_i{j}\|\)</span> 表示 transfer 的梯度（具体横跨几个 clip）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h6 id="3-information-transfer">3 Information Transfer</h6>
+<p>这里使用一个 GCN Layer 完成 <span class="arithmatex">\((f_i,f_j)\)</span> 之间的 transfer，得到 shot feature <span class="arithmatex">\(s_i \in \mathbb{R}^{C_2}\)</span>：</p>
+<div class="arithmatex">\[
+s_i = ReLU\left(
+    f_i \mathbf{W}_{tra} + \sum_{j \in \mathcal{N}_i} B_{mot}^{ij}\ f_j\ \mathbf{U}_{tra}
+\right)
+\]</div>
+<ul>
+<li>其中：<span class="arithmatex">\(B_{mot}^{ij} = A_{mot}^{ij} \cdot d_{ij}\)</span>，<span class="arithmatex">\(\mathbf{W}_{tra}, \mathbf{U}_{tra} \in \mathbb{R}^{C_1 \times C_2}\)</span>，<span class="arithmatex">\(\mathcal{N}_i\)</span> 是 clip-i 的邻域（前后 <span class="arithmatex">\(r\)</span> 个）</li>
+</ul>
+<h6 id="4-sequential-property">4 Sequential Property</h6>
+<ul>
+<li>
+<p>先前的工作证明：Encoder 可以有效的将 raw data 映射到 motion manifold</p>
+</li>
+<li>
+<p>但是 seperate clip encoding 不能保留 sequential property</p>
+<p>=&gt; 相邻 clip 之间的距离很小，而不相邻 clip 之间的 clip 较大</p>
+</li>
+<li>
+<p>常用的 Laplace 正则化考虑了 时空 上的 closeness，但这在本文中不太适用</p>
+<p>=&gt; 提出了 clip-level closeness 的度量 <span class="arithmatex">\(O\)</span>：</p>
+<div class="arithmatex">\[
+\begin{align*}
+O &amp;= \mathop{\min}_h \sum+{i=1}^N \sum_{j=1}^N A_{mot}^{ij} \|h_i - h_j\|_2^2\\
+&amp;= \mathop{\min}_H \text{tr}(\mathbf{HLH}^T)
+\end{align*}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(h_i \in \mathbb{R}^{C_2}\)</span> 是 clip feature (<span class="arithmatex">\(f_i\)</span>) emedding 后的结果</li>
+<li><span class="arithmatex">\(\mathbf{H} \in \mathbb{R}^{N \times C_2}\)</span> 是 <span class="arithmatex">\(\{h_i\}\)</span> 形成的矩阵，<span class="arithmatex">\(\mathbf{L} \in \mathbb{R}^{N \times N}\)</span> 是 <span class="arithmatex">\(A_{mot}\)</span> 的拉普拉斯矩阵</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Theorem</p>
+<p>当 <span class="arithmatex">\(H = FW\)</span> 时，GCN 的传播过程 <span class="arithmatex">\(\Leftrightarrow\)</span> 优化上述的 clip-level 正则化表达式</p>
+</div>
+</li>
+</ul>
+<h5 id="scene-construction">Scene Construction</h5>
+<blockquote>
+<p>旨在将连续的几个 shots 组合成一个 meaningful scene</p>
+</blockquote>
+<ul>
+<li>
+<p>本文同样认为同一类的 Video 由固定的 Action Procedures 构成，比如 跳水 = 起跳 -&gt; 翻滚 -&gt; 入水</p>
+</li>
+<li>
+<p>而 本模块 可以捕捉各个 procedure 的所有 subtle diff，从而准确的对细节进行评估</p>
+</li>
+<li>
+<p>Shot Graph Construction</p>
+<ul>
+<li>
+<p>与 Motion-Graph 类似，可以将 Shot Graph 视作 点集 + 边集 只和，记为：</p>
+<div class="arithmatex">\[
+\mathcal{G}_{sht} = (\mathcal{V}_{sht},\mathcal{E}_{sht})
+\]</div>
+<blockquote>
+<p>但不同于 Motion Graph 量化不同 shot 之间的 diffrerence，Shot Graph 旨在寻找同一 scene 中各个 shot 之间的 similarity</p>
+</blockquote>
+</li>
+<li>
+<p>类似的，设置 <code>neighborhoodSize = K</code>，可以得到控制 <span class="arithmatex">\(s_i,s_j\)</span> 之间 connection 的邻接矩阵 <span class="arithmatex">\(A_{sht}^{ij}\)</span></p>
+</li>
+<li>
+<p>我们假设：<u>属于同一 scene 的各 shots 之间的连接更加紧密</u></p>
+<p>显然，0-1 邻接矩阵 <span class="arithmatex">\(A_{sht}^{ij}\)</span> 无法对此进行衡量</p>
+<p>为此，作者提出了使用 self-attention 的可学习邻接矩阵 <span class="arithmatex">\(B_{ij}\)</span> 对 <span class="arithmatex">\(s_i,s_j\)</span> 之间的邻接紧密性进行量化：</p>
+<div class="arithmatex">\[
+B_{sht}^{ij} = \text{softmax}\left(
+    \frac{(s_iW_1) \cdot (s_jW_2)^T}{\sqrt{D_2}}
+\right)
+\]</div>
+</li>
+</ul>
+</li>
+<li>
+<p>Shot Graph Aggregation</p>
+<p>这也可以用一个 GCN Layer 实现：</p>
+<div class="arithmatex">\[
+s'_i = ReLU(s_iW_{sht} + \sum_{j\in \mathcal{N}_i} A_{adp}^{ij}\ s_j\ U_{sht})
+\]</div>
+<p>其中 <span class="arithmatex">\(A_{adp}^{ij}\)</span> 视情况选择 <span class="arithmatex">\(A_{sht} \odot B_{sht}\)</span> 或 <span class="arithmatex">\(A_{sht} + B_{sht}\)</span></p>
+</li>
+<li>
+<p>Shot Reduction</p>
+<p>尽管跳水比赛都有相同的 procedure 序列，但各 procedure 可能包含不同的 shots</p>
+<p>=&gt; 为此，文章通过 GCN Layer 学习矩阵 <span class="arithmatex">\(T\)</span> 实现 <span class="arithmatex">\(N*shots \rightarrow S*scenes\)</span> 的 映射</p>
+<div class="arithmatex">\[
+T = \text{softmax}(\oplus_{i=1}^N A_{adp}\ \sum_{j=1}^N\ s'_j\ W_{tft})
+\]</div>
+</li>
+</ul>
+<hr />
+<p><center>最后我们可以得到 scenes 的表示：</center></p>
+<div class="arithmatex">\[
+E = S'T
+\]</div>
+<p>其中 <span class="arithmatex">\(E\)</span> 是 <span class="arithmatex">\(S\)</span> 个 scenes <span class="arithmatex">\(\{e_i\}\)</span> 拼接得到的，<span class="arithmatex">\(S'\)</span> 是更新后的 shot feature <span class="arithmatex">\(\{s'_i\}\)</span> 拼接得到的</p>
+<h5 id="action-aggregation">Action Aggregation</h5>
+<blockquote>
+<p>用于捕捉一些 global dynamics，用于衡量总体表现</p>
+</blockquote>
+<p>由于动作只能从 i 单向过渡到 i+1（不能反过来）</p>
+<p>=&gt; 我们需要学习各个 procedure 之间的依赖关系，并最终聚合得到 video-level representation</p>
+<ol>
+<li>
+<p>Scene Graphp Construction</p>
+<div class="arithmatex">\[
+\mathcal{G}_{sce} = (\mathcal{V}_{sce},\mathcal{E}_{sce})
+\]</div>
+<p>为了控制信息严格 <strong>前 <span class="arithmatex">\(\rightarrow\)</span> 后</strong> 流动，此处 <code>A_sce[i][j] = (i-j &gt; 0) ? 1 : 0</code></p>
+<p>因为此处同样需要连接的 方向 &amp; 梯度，所以也需要学习 adaptive weight:</p>
+<div class="arithmatex">\[
+B_{sce}^{ij} = \text{softmax}\left(\frac{(e_i\ U_1)\cdot(e_j\ U_2)^T}{\sqrt{D_3}}\right)
+\]</div>
+</li>
+<li>
+<p>Video-level Aggregation</p>
+<p>还是使用 GCN Layer 实现：</p>
+<div class="arithmatex">\[
+e'_i = ReLU(e_i\ W_{act} + \sum_{j\in \mathcal{{N}_i}}(A_{sce} \cdot B_{sce})\ e_j\ U_{act})
+\]</div>
+<p>更新后的 secene feature <span class="arithmatex">\(\{e'_i\}\)</span> 将作为最后用于回归的 video-level representation</p>
+</li>
+</ol>
+<h4 id="33-score-regression">3.3 Score Regression</h4>
+<blockquote>
+<p>并不是直接回归，从而降低评委主观因素的影响</p>
+</blockquote>
+<ul>
+<li>
+<p>降低评委主观因素影响的常见方法是 uncertainty-aware score distribution learning</p>
+<p>主要思路是学习一个分数分布，使得两个不同 action 之间的得分具有较大差异</p>
+</li>
+<li>
+<p>相似的，本文认为最终的分数是一个 random variable，并对其分数分布概率函数进行学习</p>
+</li>
+</ul>
+<hr />
+<p>对于 video-level representation <span class="arithmatex">\(v (e')\)</span>:</p>
+<ol>
+<li>
+<p>使用 Probabilistic Encoder <span class="arithmatex">\(\mathbb{R}^{C_4} \rightarrow \mathbb{R}\)</span> 将其映射为 random score variable <span class="arithmatex">\(s\)</span></p>
+</li>
+<li>
+<p>变量 <span class="arithmatex">\(s\)</span> 应当服从高斯分布，即：</p>
+<div class="arithmatex">\[
+    p(s;v) = \frac{1}{\sqrt{2\pi\sigma^2(v)}} \exp(- \frac{(s-\mu(v))^2}{2\sigma^2(v)})
+\]</div>
+<p>其中 <span class="arithmatex">\(\mu\)</span> 对应均值，<span class="arithmatex">\(\sigma\)</span> 对应标准差</p>
+</li>
+<li>
+<p>Sample <span class="arithmatex">\(\varepsilon\)</span> from 标准分布 <span class="arithmatex">\(\mathcal{N}(0,1)\)</span>，从而确保 encoder 的训练过程的可行性</p>
+<blockquote>
+<p>这样一来 score distribution sampling 过程就是 可微的(differentiable)</p>
+</blockquote>
+</li>
+<li>
+<p>基于随机独立采样变量 <span class="arithmatex">\(\varepsilon\)</span>、均值 <span class="arithmatex">\(\mu(v)\)</span> 与 标准差 <span class="arithmatex">\(\sigma(v)\)</span> 计算最终的预测结果 <span class="arithmatex">\(\hat{s}\)</span> </p>
+<div class="arithmatex">\[
+\hat{s} = \mu(v) + \varepsilon \cdot \sigma(v)
+\]</div>
+</li>
+</ol>
+<h4 id="34-loss-function">3.4 Loss Function</h4>
+<p>对于 score distribution regression 过程，使用 MSE Loss 进行评估：</p>
+<div class="arithmatex">\[
+\mathcal{L}_{MSE} = \frac{1}{N} \sum_{i=1}^N (s_i - \hat{s}_i)^2
+\]</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Self-Supervised/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Self-Supervised">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Self-Supervised
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Selekton-Based/" class="md-footer__link md-footer__link--next" aria-label="下一页: Selekton-based">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Selekton-based
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 SeaBee
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+      
+    
+  </body>
+</html>

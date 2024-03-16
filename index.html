@@ -12,7 +12,7 @@
       
       
       
-        <link rel="next" href="sum/">
+        <link rel="next" href="sum/survey/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -90,8 +90,6 @@
       <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
     
       <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
-    
-      <link rel="stylesheet" href="termynal.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -192,6 +190,43 @@
       <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     
     
   </nav>
@@ -302,6 +337,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      2018
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#2021" class="md-nav__link">
     <span class="md-ellipsis">
       2021
@@ -347,16 +391,210 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="sum/" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Summary
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Survey
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/Regression-Based/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/Constrastive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constrastive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/Transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/Self-Supervised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Self-Supervised
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/GCN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GCN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/Selekton-Based/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Selekton-based
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sum/Segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -387,6 +625,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="FigureSkating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FigureSkating
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     
     
     
@@ -399,10 +657,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -413,8 +671,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             References
           </label>
@@ -438,10 +696,78 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
         
           
-          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            2018
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ref/2018%20Skeleton.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ST-GCN 基于骨骼的动作识别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -452,8 +778,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             2021
           </label>
@@ -548,10 +874,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -562,8 +888,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             2022
           </label>
@@ -616,10 +942,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
         
           
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -630,8 +956,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
             <span class="md-nav__icon md-icon"></span>
             2023
           </label>
@@ -761,6 +1087,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#2018" class="md-nav__link">
+    <span class="md-ellipsis">
+      2018
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#2021" class="md-nav__link">
     <span class="md-ellipsis">
       2021
@@ -808,6 +1143,10 @@
 
 
 <h1 id="aqa">AQA: 动作质量评估</h1>
+<div class="highlight"><span class="filename">I'm MAAAAAAAD</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>我觉得我快颠了，每天看 RGB-Based 和 Skeleton-Based 左右互搏
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>然后，找不出一个兼具准确性和可解释性的方法
+</code></pre></div>
 <ul>
 <li>李渊明 的 GitHub 仓库：<a href="https://github.com/Lyman-Smoker/Awesome-AQA">Awesome AQA</a></li>
 </ul>
@@ -826,15 +1165,42 @@
 </li>
 </ul>
 <h2 id="2-references">2 References</h2>
+<h3 id="2018">2018</h3>
+<ul>
+<li>
+<p><a href="ref/2018%20Skeleton.pdf">ST-GCN</a>: Spatial Temporal Graph Convolutional Networks for Skeleton-Based Action Recognition</p>
+<p><strong>(AAAI 2018)</strong> <a href="https://github.com/yysijie/st-gcn">[Code]</a></p>
+<ul>
+<li>基于动态骨骼的 <strong>动作识别</strong></li>
+</ul>
+</li>
+</ul>
 <h3 id="2021">2021</h3>
 <ul>
 <li>
 <p><a href="ref/2021/CoRe.pdf">CoRE</a>: Group-aware Contrastive Regression for Action Quality Assessment</p>
 <p><strong>(ICCV 2021)</strong> <a href="http://openaccess.thecvf.com//content/ICCV2021/papers/Yu_Group-Aware_Contrastive_Regression_for_Action_Quality_Assessment_ICCV_2021_paper.pdf">[Paper]</a> <a href="https://github.com/yuxumin/CoRe">[Code]</a></p>
+<ul>
+<li>
+<p>使用 Grad-Cam 对单帧图像的重点进行可视化</p>
+</li>
+<li>
+<p>使用 I3D 对整个视频卷积一次，然后丢到 GART 里进行回归计算 <span class="arithmatex">\(\Delta s\)</span></p>
+</li>
+</ul>
 </li>
 <li>
 <p><a href="ref/2021/TSA-Net.pdf">TSA-Net</a>: Tube Self-Attention Network for Action Quality Assessment </p>
 <p><strong>(ACM-MM 2021 Oral)</strong> <a href="https://arxiv.org/pdf/2201.03746">[Paper]</a> <a href="https://github.com/Shunli-Wang/TSA-Net">[Code]</a></p>
+<ul>
+<li>
+<p>联合之前的论文《FineGym》一起批判了 AlphaPose 不能正确实现 Pose Estimation</p>
+<p>在本文中采用了 Tracking Box 算法 VOT</p>
+</li>
+<li>
+<p>使用 Self-Attention 机制利用上下文信息</p>
+</li>
+</ul>
 </li>
 <li>
 <p><a href="ref/2021/Video-based.pdf">A Survey of Video-based Action Quality Assessment</a></p>
@@ -842,7 +1208,32 @@
 </ul>
 <h3 id="2022">2022</h3>
 <ul>
-<li><a href="ref/2022/TPA.pdf">TPT</a>: Action Quality Assessment with Temporal Parsing Transformer <a href="https://github.com/baiyang4/aqa_tpt">[Code]</a></li>
+<li>
+<p><a href="ref/2022/TPA.pdf">TPT</a>: Action Quality Assessment with Temporal Parsing Transformer <a href="https://github.com/baiyang4/aqa_tpt">[Code]</a></p>
+<ul>
+<li>
+<p>使用热力图对 cross attention 进行可视化（标出 high attention responses）的 video clip</p>
+</li>
+<li>
+<p>使用类 Transformer 架构聚焦于细粒度特征（Part）</p>
+<ul>
+<li>
+<p>基于若干个 overlap 的 Clips 生成 Part Representations（长度一致）</p>
+</li>
+<li>
+<p>假设所有视频都可以按照相同的顺序进行阶段切分（在 Diving 中可行），具体表现为 queries 的总数</p>
+</li>
+</ul>
+</li>
+<li>
+<p>对每个 Part 估计 relative pairwise representation ，并最终使用 AVG Pooling 进行整合</p>
+<p>所有 Part 共享同一个 MLP（多层感知机）</p>
+</li>
+<li>
+<p>最终使用两层 MLP 基于 relative pairwise representation 预测 relatiave score</p>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="2023">2023</h3>
 <ul>
@@ -873,6 +1264,10 @@
 <li>
 <p><a href="ref/2023/IRIS.pdf">IRIS</a>: Interpretable Rubric-Informed Segmentation for Action Quality Assessment </p>
 <p><strong>(ACM-IUI 2023)</strong> <a href="https://arxiv.org/pdf/2303.09097.pdf">[Paper]</a></p>
+</li>
+<li>
+<p><a href="">HGCN</a>: Hierarchical Graph Convolutional Networks</p>
+<p><strong>(IEEE 2023)</strong> </p>
 </li>
 </ul>
 
@@ -905,13 +1300,13 @@
         
         
           
-          <a href="sum/" class="md-footer__link md-footer__link--next" aria-label="下一页: Summary">
+          <a href="sum/survey/" class="md-footer__link md-footer__link--next" aria-label="下一页: Survey">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Summary
+                Survey
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -957,8 +1352,6 @@
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
-      
-        <script src="termynal.js"></script>
       
     
   </body>

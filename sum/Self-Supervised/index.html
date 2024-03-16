@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://triplepiers.github.io/AQA/sum/Self-Supervised/">
       
       
+        <link rel="prev" href="../Transformer/">
       
-      <link rel="icon" href="/AQA/assets/images/favicon.png">
+      
+        <link rel="next" href="../GCN/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>Action Quality Assessment</title>
+        <title>Self-Supervised - Action Quality Assessment</title>
       
     
     
-      <link rel="stylesheet" href="/AQA/assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="/AQA/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -87,7 +93,7 @@
     
       <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
     
-    <script>__md_scope=new URL("/AQA/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -112,6 +118,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ssl" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -124,7 +135,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="/AQA/." title="Action Quality Assessment" class="md-header__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+    <a href="../.." title="Action Quality Assessment" class="md-header__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -144,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Self-Supervised
             
           </span>
         </div>
@@ -245,7 +256,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/AQA/." title="Action Quality Assessment" class="md-nav__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+    <a href="../.." title="Action Quality Assessment" class="md-nav__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -263,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -280,21 +291,21 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -308,7 +319,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Summary
@@ -322,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/sum/survey/" class="md-nav__link">
+      <a href="../survey/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -343,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/sum/Regression-Based/" class="md-nav__link">
+      <a href="../Regression-Based/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -364,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/sum/Constrastive/" class="md-nav__link">
+      <a href="../Constrastive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -385,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/sum/Transformer/" class="md-nav__link">
+      <a href="../Transformer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -403,10 +414,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/AQA/sum/Self-Supervised/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Self-Supervised
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -415,6 +446,68 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2023-pecop" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: PECoP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2023: PECoP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Abstract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-relative-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Relative Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -427,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/sum/GCN/" class="md-nav__link">
+      <a href="../GCN/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -448,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/sum/Selekton-Based/" class="md-nav__link">
+      <a href="../Selekton-Based/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -469,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/sum/Segmentation/" class="md-nav__link">
+      <a href="../Segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -497,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/rep/" class="md-nav__link">
+      <a href="../../rep/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -517,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/FigureSkating/" class="md-nav__link">
+      <a href="../../FigureSkating/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -615,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2018%20Skeleton.pdf" class="md-nav__link">
+      <a href="../../ref/2018%20Skeleton.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -683,7 +776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2021/CoRe.pdf" class="md-nav__link">
+      <a href="../../ref/2021/CoRe.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -704,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2021/TSA-Net.pdf" class="md-nav__link">
+      <a href="../../ref/2021/TSA-Net.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -725,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2021/Video-based.pdf" class="md-nav__link">
+      <a href="../../ref/2021/Video-based.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -793,7 +886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2022/TPA.pdf" class="md-nav__link">
+      <a href="../../ref/2022/TPA.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -861,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2023/PECoP.pdf" class="md-nav__link">
+      <a href="../../ref/2023/PECoP.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -882,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2023/STPN.pdf" class="md-nav__link">
+      <a href="../../ref/2023/STPN.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -903,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/AQA/ref/2023/IRIS.pdf" class="md-nav__link">
+      <a href="../../ref/2023/IRIS.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -949,6 +1042,58 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2023-pecop" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: PECoP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2023: PECoP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Abstract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-relative-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Relative Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -960,8 +1105,257 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<h1 id="ssl">自监督学习 SSL</h1>
+<h2 id="2023-pecop">2023: PECoP</h2>
+<h3 id="1-abstract">1 Abstract</h3>
+<ul>
+<li>
+<p>先前的工作</p>
+<ul>
+<li>
+<p>因为有标签的 AQA 数据很少，先前的工作一般基于在 large-scale domain-general dataset 上预训练的模型进行优化</p>
+<p>=&gt; 在存在较大 domain shift 时，模型的 generalisation 较差</p>
+</li>
+<li>
+<p>侧重点不同：</p>
+<ul>
+<li>
+<p>在 Parkinson’s Disease 严重性评估中，运动节奏中的一两次间断都会对 quality score 产生极大影响</p>
+</li>
+<li>
+<p>而在 pretraining task（动作分类）中，轻微（甚至更加严重的）区别并不会影响 action classification</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Continual Pretraining</p>
+<p>主要用于 NLP，以通过 domain-specific unlabeled data 训练任务专精的模型</p>
+<p>这种方法要求更新所有参数，同时存储针对所有 separate task 的 params</p>
+</li>
+<li>
+<p>BatchNorm Tuning</p>
+<p>支持通过仅调节 BatchNorm Layer 参数获取 domain-specific model</p>
+<p>但是在 较小的 / 更加 domain-specific 的 AQA 数据集中不起作用</p>
+</li>
+</ul>
+</li>
+<li>
+<p>创新点</p>
+<p>PECoP 通过增加一个额外的预训练过程来 reduce domain shift（专注于特定 AQA 任务）：</p>
+<ul>
+<li>
+<p>往预训练的 3D CNN 外面包一层 3D-Adapters <u>自监督学习</u> spatiotemporal &amp; in-domain info</p>
+</li>
+<li>
+<p>只更新 Adapter 中的参数，预训练模型参数保持不变</p>
+<blockquote>
+<p>此处拉踩需要更新 <u>所有参数</u> 的 HPT</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-relative-works">2 Relative Works</h3>
+<ul>
+<li>
+<p>AQA：如 Tang(USDL)，Yu（CoRe）</p>
+<p>大多数方法将 AQA 视为 监督学习（score）的 回归任务，并尝试降低裁判的主观影响</p>
+<div class="admonition bug">
+<p class="admonition-title">这些方法都忽视了 base dataset(K400) 和 target dataset 之间的 domain gap</p>
+</div>
+</li>
+<li>
+<p>SSL for AQA</p>
+<p>近期的一些方法开始尝试 自监督学习（SSL）。在传统的 Regression Loss 外，在迁移学习中增加了 SSL Loss（不需要添加额外的数据标注）</p>
+<p>如 Liu 应用了 Self-Supervised Contrasive Loss</p>
+</li>
+<li>
+<p>Continual Pretraining</p>
+<p>相比于传统的迁移学习，Continual Pretraining 通过 in-domain SSL 增强了 domain shift 问题</p>
+<ul>
+<li>
+<p>Gururangan：证明了增加 in-domain data pretraining 对于文本分类性能的影响</p>
+</li>
+<li>
+<p>Reed：证明了在更接近 target dataset 的数据集上进行 Continual Pretraining 可以加快收敛、提高鲁棒性</p>
+</li>
+<li>
+<p>Azizi：结合了 supervised pretraining（on ImageNet） &amp; intermediate contrastive SSL（on MedicalImages），得到了具有更佳泛化性的医学图像诊断器</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Adapters</p>
+<p>Transformer 架构的 lightweight bottleneck module，用于实现 parameter-efficient 迁移学习</p>
+<ul>
+<li>
+<p>Chen：</p>
+<ul>
+<li>
+<p>提出 AdaptFormer 用于可量化的 img/video 识别任务</p>
+</li>
+<li>
+<p>提出 Conv-Adapter，使其可以应用于 2D CNN</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-approach">3 Approach</h3>
+<p><img alt="" src="./assets/PECoP%20Pipline.png" /></p>
+<ul>
+<li>
+<p>Training Set：</p>
+<ol>
+<li><span class="arithmatex">\(D_g\)</span>: large-scale, labelled, domain-general</li>
+<li><span class="arithmatex">\(D_t\)</span>: target video dataset in the AQA domain</li>
+</ol>
+<p>两个数据集分别对应具有 significant domain discrepancy 的学习任务 <span class="arithmatex">\(T_g, T_t\)</span></p>
+</li>
+<li>
+<p>Test Set: <span class="arithmatex">\(D_q \subseteq D_t\)</span>, unlabelled</p>
+</li>
+<li>
+<p>Target：在 <span class="arithmatex">\(D_g， D_t\)</span> 上调参，以找到一个可用于 <span class="arithmatex">\(D_q\)</span> 的 transferable spatiotemporal feature extractor </p>
+</li>
+</ul>
+<h4 id="domain-general-pretraining">Domain-general pretraining</h4>
+<p>这一部分直接使用了 pretrained backbone model —— 在 K400 上经过监督学习得到的 I3D 模型</p>
+<h4 id="in-domain-ssl-continual-pretraining">In-domain SSL continual pretraining</h4>
+<ul>
+<li>
+<p>本文提出的 3D-Adapter 和 Transformer &amp; 2D CNN 中的相应模块具有类似的结构，在此基础上添加了 3D Layers 以实现视频数据的 3D CNN 操作</p>
+</li>
+<li>
+<p>在每一个 Inception Module 的 concatenation Layer 后插入一个 3D-Adapter 可以得到显著的性能提升</p>
+<blockquote>
+<p>事实上 R3D + 3D-Adapter 也能提升性能</p>
+</blockquote>
+</li>
+</ul>
+<p><center><img alt="" src="./assets/ReCoP%20Incept%20with%20Adapter.png" /></center>
+<center>添加 3D-Adapter 后的 Inception Module</center></p>
+<ul>
+<li>
+<p>3D-Adapter modules 将被 <strong>随机初始化</strong> </p>
+</li>
+<li>
+<p>每一个 3D-Apater 使用了：</p>
+<ul>
+<li>可学习参数 <span class="arithmatex">\(\theta_{down}\)</span> —— downsampling · depth-wise · 3D convolution</li>
+<li>非线性激活函数 <span class="arithmatex">\(f(.)\)</span>，如 ReLU</li>
+<li>可学习参数 <span class="arithmatex">\(\theta_{up}\)</span> —— upsampling · point-wise · 3D convolustion</li>
+</ul>
+</li>
+<li>
+<p>相关参数如下：</p>
+<ul>
+<li><span class="arithmatex">\(C_{in}, C_{out}\)</span>： 输入/输出 的 channel dimensions</li>
+<li>compression factor <span class="arithmatex">\(\lambda\)</span>： bottleneck dimension</li>
+</ul>
+</li>
+</ul>
+<p>因此，对于给定的 input feture vecor <span class="arithmatex">\(h_{in} \in \mathbb{R}^{C_{in} \times D \times H \times W}\)</span>，3D-Adapter 将输出 <span class="arithmatex">\(h_{out} \in \mathbb{R}^{C_{out} \times D \times H \times W}\)</span></p>
+<p>具体变换过程可描述为：</p>
+<div class="arithmatex">\[
+h_{out} = \alpha \odot (\theta_{up} \otimes f(\theta_{down} \overline{\otimes} h_{in})) + h_{in}
+\]</div>
+<p>其中：</p>
+<ul>
+<li><span class="arithmatex">\(\otimes, \overline{\otimes}\)</span> 分别表示 depth-wise / point-wise 卷积操作</li>
+<li><span class="arithmatex">\(\alpha \in \mathbb{R}^{C_{out}}\)</span> 是可调超参数，初始化为 ones</li>
+<li><span class="arithmatex">\(\odot\)</span> 表示 element-wise 乘法</li>
+</ul>
+<hr />
+<p>Continual Pretraining 阶段：</p>
+<div class="admonition tip">
+<p class="admonition-title">只有 3D-Adapter 中的参数会被更新</p>
+</div>
+<ul>
+<li>
+<p>在集合 <span class="arithmatex">\(D_q\)</span> 中以 SSL 形式进行 —— 视频标签由模型自动生成</p>
+</li>
+<li>
+<p>使用了 Video Segment Pace Prediction (VSPP) 进行了预处理，从而对 “以不同速度完成的动作” 进行对比，生成视 SSL 标签信息：</p>
+<ul>
+<li>
+<p>speed rate <span class="arithmatex">\(\lambda_i\)</span></p>
+</li>
+<li>
+<p>Segment No. <span class="arithmatex">\(\zeta_i\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">一些拉踩信息</p>
+<ol>
+<li>
+<p>关于 SSL Pretext 的选取</p>
+<p>作者也尝试使用了 Constrastive-Based 的 RSPNet &amp; 同样是 Transformatoin-Based 的 VideoPace，但表现都不及 VSPP</p>
+</li>
+<li>
+<p>关于 BatchNorm Tuning（对比 Adapter）</p>
+<p>在小型数据库上容易过拟合</p>
+</li>
+</ol>
+</div>
+<h4 id="supervised-fine-tuning">Supervised fine-tuning</h4>
+<div class="admonition question">
+<p class="admonition-title">为啥还要 Fine-Tuning (?)</p>
+<p>本文 3D-Adapter 只对 I3D 模块进行 Continual Pretraining，整个模型的参数还是需要微调</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">在这个阶段，<u>所有参数（预训练参数 &amp; 3D-Adapter）</u> 将在 <span class="arithmatex">\(D_t\)</span> 上被微调</p>
+</div>
+<ul>
+<li>
+<p>USDL / MUSDL</p>
+<ul>
+<li>
+<p>特征 -&gt; I3D backbone -&gt; temporal Pooling -&gt; SoftMax -&gt; 预测分布</p>
+</li>
+<li>
+<p>使用 <em>预测分布</em> 与 <em>由 ground-truth 产生的高斯分布</em> 之间的 KL loss 进行优化</p>
+</li>
+</ul>
+<blockquote>
+<p>MUSDL 是 USDL 的 multi-path 版本，适用于 MTL-AQA / JIGSAWS 这种由多个裁判同时打分的数据集</p>
+</blockquote>
+</li>
+<li>
+<p>CoRe</p>
+<ul>
+<li>
+<p>使用添加 3D-Adapter 的 I3D 模型进行特征提取，随后丢回 GART 进行回归</p>
+</li>
+<li>
+<p>最终结果取多个 exampler 的平均</p>
+</li>
+</ul>
+</li>
+<li>
+<p>TSA</p>
+<p>使用添加 3D-Adapter 的 I3D 模型进行特征提取，随后丢回 Attention Module 进行后续操作</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -973,6 +1367,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Transformer/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Transformer">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Transformer
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../GCN/" class="md-footer__link md-footer__link--next" aria-label="下一页: GCN">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                GCN
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1001,10 +1433,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/AQA/", "features": ["navigation.footer", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "/AQA/assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="/AQA/assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

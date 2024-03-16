@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://triplepiers.github.io/AQA/rep/">
+        <link rel="canonical" href="https://triplepiers.github.io/AQA/sum/Transformer/">
       
       
-        <link rel="prev" href="../sum/Segmentation/">
+        <link rel="prev" href="../Constrastive/">
       
       
-        <link rel="next" href="../FigureSkating/">
+        <link rel="next" href="../Self-Supervised/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
-        <title>Repitition - Action Quality Assessment</title>
+        <title>Transformer - Action Quality Assessment</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -93,7 +93,7 @@
     
       <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -119,7 +119,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#2021-sgn" class="md-skip">
           跳转至
         </a>
       
@@ -135,7 +135,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Action Quality Assessment" class="md-header__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+    <a href="../.." title="Action Quality Assessment" class="md-header__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -155,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Repitition
+              Transformer
             
           </span>
         </div>
@@ -256,7 +256,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Action Quality Assessment" class="md-nav__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+    <a href="../.." title="Action Quality Assessment" class="md-nav__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -274,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -291,21 +291,21 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -319,7 +319,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Summary
@@ -333,7 +333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sum/survey/" class="md-nav__link">
+      <a href="../survey/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -354,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sum/Regression-Based/" class="md-nav__link">
+      <a href="../Regression-Based/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -375,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sum/Constrastive/" class="md-nav__link">
+      <a href="../Constrastive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -393,10 +393,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../sum/Transformer/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -405,6 +423,117 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2021-sgn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021: SGN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021: SGN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-related-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Related Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2023-fspn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: FSPN
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2023: FSPN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Abstract
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-relative-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Relative Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-approach_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Approach
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -417,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sum/Self-Supervised/" class="md-nav__link">
+      <a href="../Self-Supervised/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -438,7 +567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sum/GCN/" class="md-nav__link">
+      <a href="../GCN/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -459,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sum/Selekton-Based/" class="md-nav__link">
+      <a href="../Selekton-Based/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -480,7 +609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sum/Segmentation/" class="md-nav__link">
+      <a href="../Segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -505,30 +634,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Repitition
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../rep/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,149 +646,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      1 CoRe
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1 CoRe">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型训练
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型验证
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-tsa-net" class="md-nav__link">
-    <span class="md-ellipsis">
-      2 TSA-Net
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2 TSA-Net">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型训练
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型验证
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-tpt" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 TPT
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3 TPT">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型训练
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型验证
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-pecop" class="md-nav__link">
-    <span class="md-ellipsis">
-      4 PECoP
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4 PECoP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型训练
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -691,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../FigureSkating/" class="md-nav__link">
+      <a href="../../FigureSkating/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -789,7 +755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2018%20Skeleton.pdf" class="md-nav__link">
+      <a href="../../ref/2018%20Skeleton.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -857,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2021/CoRe.pdf" class="md-nav__link">
+      <a href="../../ref/2021/CoRe.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -878,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2021/TSA-Net.pdf" class="md-nav__link">
+      <a href="../../ref/2021/TSA-Net.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -899,7 +865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2021/Video-based.pdf" class="md-nav__link">
+      <a href="../../ref/2021/Video-based.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -967,7 +933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2022/TPA.pdf" class="md-nav__link">
+      <a href="../../ref/2022/TPA.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1035,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2023/PECoP.pdf" class="md-nav__link">
+      <a href="../../ref/2023/PECoP.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1056,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2023/STPN.pdf" class="md-nav__link">
+      <a href="../../ref/2023/STPN.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1077,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ref/2023/IRIS.pdf" class="md-nav__link">
+      <a href="../../ref/2023/IRIS.pdf" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1123,8 +1089,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1133,28 +1097,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-core" class="md-nav__link">
+  <a href="#2021-sgn" class="md-nav__link">
     <span class="md-ellipsis">
-      1 CoRe
+      2021: SGN
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1 CoRe">
+    <nav class="md-nav" aria-label="2021: SGN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#1-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      模型训练
+      1 Introduction
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#2-related-works" class="md-nav__link">
     <span class="md-ellipsis">
-      模型验证
+      2 Related Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Approach
     </span>
   </a>
   
@@ -1166,85 +1139,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-tsa-net" class="md-nav__link">
+  <a href="#2023-fspn" class="md-nav__link">
     <span class="md-ellipsis">
-      2 TSA-Net
+      2023: FSPN
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2 TSA-Net">
+    <nav class="md-nav" aria-label="2023: FSPN">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#1-abstract" class="md-nav__link">
     <span class="md-ellipsis">
-      模型训练
+      1 Abstract
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#2-relative-works" class="md-nav__link">
     <span class="md-ellipsis">
-      模型验证
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-tpt" class="md-nav__link">
-    <span class="md-ellipsis">
-      3 TPT
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3 TPT">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      模型训练
+      2 Relative Works
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#3-approach_1" class="md-nav__link">
     <span class="md-ellipsis">
-      模型验证
+      3 Approach
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-pecop" class="md-nav__link">
-    <span class="md-ellipsis">
-      4 PECoP
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4 PECoP">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#4-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      模型训练
+      4 Optimization
     </span>
   </a>
   
@@ -1270,403 +1204,538 @@
                   
 
 
-<h1 id="_1">复现结果</h1>
-<h2 id="1-core">1 CoRe</h2>
-<details class="info">
-<summary>Source Code</summary>
-<ul>
-<li>
-<p>Src</p>
-<ul>
-<li>
-<p>GitHub repo for <a href="https://github.com/yuxumin/CoRe">Group-aware Contrastive Regression for Action Quality Assessment</a></p>
-</li>
-<li>
-<p><a href="https://github.com/hassony2/kinetics_i3d_pytorch/blob/master/model/model_rgb.pth">Kinetics pretrained I3D model</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>Dataset</p>
+  <h1>Transformer</h1>
+
+<h2 id="2021-sgn">2021: SGN</h2>
 <blockquote>
-<p>当前代码仅支持在 MTL-AQA / AQA-7 上进行训练</p>
+<p>Semantics-Guided Representations (for Figure Skating)</p>
 </blockquote>
+<h3 id="1-introduction">1 Introduction</h3>
 <ul>
 <li>
-<p>MTL-AQA</p>
+<p>先前的工作</p>
 <ul>
 <li>
-<p><a href="https://github.com/ParitoshParmar/MTL-AQA">Original</a></p>
+<p>大多数工作局限于根据 visual input 预测得分，限制了 depict highlevel semantic representation 的能力</p>
+<p>他们侧重于利用 <em>视觉上下文信息</em>，但未探索视频中的语义信息</p>
 </li>
 <li>
-<p>Prepared Dataset: <a href="https://pan.baidu.com/s/1ZUHyvYFia0cJtPp7pTfAbg">百度云 (<code>smff</code>)</a></p>
+<p>如何通过计算机视觉对 semantic reprsentation 进行 depicts and interacts 仍未明确</p>
 </li>
 </ul>
 </li>
 <li>
-<p>AQA-7</p>
+<p>本文工作</p>
+<ul>
+<li>聚焦于提取 Figure-Skating 项目中的 semantic-aware representations</li>
+<li>提出了 Semantic-Guided Network (SGN) 以弥合 语义-视觉信息 之间的差距<ul>
+<li>是一个 teacher-student-based network (with attention mechanism)</li>
+<li>使得知识从 semantic domain 迁移到 visual domain</li>
+</ul>
+</li>
+<li>
+<p>在 teacher branch 通过 cross-attention 机制聚合 semantic descriptions &amp; visual features，为 visual domain 提供监督</p>
+<p>除 OlympicFS 提供的 comments 外，teacher branch 中的语义表示也可以从音乐等模态中提取</p>
+</li>
+<li>
+<p>在 student branch 使用了一串 learnable atomic queries 来模拟 teacher branch 的 semantic-aware distribution</p>
+<p>旋转、跳跃等细粒度 query 使得模型能够识别视频中的关键原子动作，其训练受 semantic domain 中的 teacher 监督</p>
+</li>
+<li>
+<p>提出了三种 Loss 来 align 来自不同 domain 的 features</p>
+</li>
+<li>提出了<em>多模态</em>数据集 OlympicFS，提供了 score + professional comments。数据来自 2018年平昌冬奥会 和 2022年北京冬奥会。</li>
+<li>benchmarks: OlympicFS, FS1000, Fis-v, MTL-AQA(diving)</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-related-works">2 Related Works</h3>
+<h4 id="figure-skating-analysis">Figure Skating Analysis</h4>
 <ul>
 <li>
-<p>Original</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>AQA-Seven<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>AQA-Seven
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>http://rtis.oit.unlv.edu/datasets/AQA-7.zip
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>unzip<span class="w"> </span>AQA-7.zip
-</code></pre></div>
+<p>CV 领域关于 FS 的最早研究是 Pirsiavash 在 14 年基于 ST-Pose feature 训练的回归模型</p>
 </li>
 <li>
-<p>Prepared Dataset: <a href="https://pan.baidu.com/s/1mcXo6g1XXhm9f0qL5lsNNw">百度云 (<code>65rl</code>)</a></p>
+<p>Xu 从女子单人项目中收集了 500 个视频，并提出了一种包含 self-attentive &amp; multi-scale LSTM 的机制，用于学习 local &amp; global SeqInfo</p>
+</li>
+<li>
+<p>数据集 FSD-10 包含了 男子/女子 项目中的 10 种不同动作，并提出了用于 <em>分类</em> 的 key-frame-based temporal segment network</p>
+</li>
+<li>
+<p>ACTION-Net 学习了在特定帧中检测到的运动员的视频动态信息和静态姿势，以加强视频中的特定姿势。</p>
+</li>
+<li>
+<p>EAGLE-Eye 构建了一个双流网络，用于推理表演过程中关节协调和外观动态之间的关系。</p>
+</li>
+<li>
+<p>Xia 提出多模态模型 MLP-Mixer（音频 + 视觉信息），并通过 memory recurrent unit 有效地学习长期表示；同时收集了 FS1000 数据集。</p>
 </li>
 </ul>
-</li>
-<li>
-<p><a href="https://cs.jhu.edu/~los/jigsaws/info.php">JIGSAWS</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>Prerained CoRe</p>
-<ul>
-<li><a href="https://cloud.tsinghua.edu.cn/f/2dc6e1febc0e49fdb711/?dl=1">for MTL-AQA</a></li>
-</ul>
-</li>
-</ul>
-</details>
-<details class="quote">
-<summary>Prepareation</summary>
-<ul>
-<li>
-<p>服务器: <code>10.214.211.135</code></p>
-</li>
-<li>
-<p>准备工作：</p>
+<h4 id="multimodal-learning">Multimodal Learning</h4>
+<p>最近，Transformer 模型不仅在 NLP 中得到了广泛应用，同时在 CV 任务重表现出了良好的性能。</p>
+<p>虽然这些方法依赖于大规模数据集，并采用多模态自监督任务进行预训练。</p>
+<div class="admonition warning">
+<p class="admonition-title">但 AQA 领域尚未提出多模态大规模模型</p>
+</div>
+<h3 id="3-approach">3 Approach</h3>
+<p><img alt="" src="../../assets/SGN-Pipeline.png" /></p>
+<h4 id="1-feature-extraction">1) Feature Extraction</h4>
 <ul>
 <li>
-<p>适用于 <code>NVIDIA RTX A6000</code> 的 Pytorch 环境</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip3<span class="w"> </span>install<span class="w"> </span><span class="nv">torch</span><span class="o">==</span><span class="m">1</span>.10.0+cu113<span class="w"> </span><span class="nv">torchvision</span><span class="o">==</span><span class="m">0</span>.11.1+cu113<span class="w"> </span><span class="nv">torchaudio</span><span class="o">==</span><span class="m">0</span>.10.0+cu113<span class="w"> </span>-f<span class="w"> </span>https://download.pytorch.org/whl/cu113/torch_stable.html
-</code></pre></div>
-</li>
-<li>
-<p>补充依赖 <code>pyyaml</code> &amp; <code>torch_videovision</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/hassony2/torch_videovision
-</code></pre></div>
-</li>
-<li>
-<p>下载预训练 I3D backbone</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>wget<span class="w"> </span>https://github.com/hassony2/kinetics_i3d_pytorch/raw/master/model/model_rgb.pth
-</code></pre></div>
-</li>
-<li>
-<p><code>~/CoRe/MTL-AQA/new/new_total_frames_256s</code> 软链接至 <code>/nfs4-p1/zzy/AQA/CoRe-MTL/*</code></p>
-</li>
-<li>
-<p>将 <code>/nfs4-p1/zzy/AQA</code> 中的 Seven.tar 复制至用户路径，并使用 <code>tar -xf [tarFile]</code> 解压，后创建软链接</p>
-</li>
-</ul>
-</li>
-</ul>
-</details>
-<h3 id="_2">模型训练</h3>
-<ul>
-<li>
-<p>On MTL-AQA</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bash<span class="w"> </span>./scripts/train.sh<span class="w"> </span><span class="m">0</span>,1<span class="w"> </span>MTL<span class="w"> </span>try
-</code></pre></div>
-<ul>
-<li>跑了两天多，然后在第 118 Epoch 因为忘记插电然后寄了，这是 <a href="../assets/rep/CoRe%20Train%20MTL.log">Training Log</a></li>
-</ul>
-<p><center><img alt="" src="../assets/rep/CoRe%20log1.png" /></center>
-<center>第一条 log，有一种“孩子生了”的美感</center></p>
-<ul>
-<li>
-<p>giao 我以为断了就没了，读了下 src 发现还是有中间存档的（你不输出谁知道啊）</p>
-<blockquote>
-<p>模型在 <code>~/CoRe/experiments/CoRe_RT/MTL/try/best.pth</code></p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li>
-<p>On AQA-7</p>
-<blockquote>
-<p>为了能快点跑完，把 MAX_EPOCH 改成 60 了</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bash<span class="w"> </span>./scripts/train.sh<span class="w"> </span><span class="m">0</span>,1<span class="w"> </span>Seven<span class="w"> </span>try<span class="w"> </span>--Seven_cls<span class="w"> </span><span class="m">1</span>
-</code></pre></div>
-<ul>
-<li>修改了 MAX_EPOCH 跑了 60 个 Epoch，这是 <a href="../assets/rep/CoRe%20Train%20Seven.log">Training Log</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="_3">模型验证</h3>
-<ul>
-<li>
-<p>On MTL-AQA</p>
+<p>对于视频输入：</p>
 <ol>
-<li>
-<p>作者的<a href="https://cloud.tsinghua.edu.cn/f/2dc6e1febc0e49fdb711/?dl=1">预训练模型</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>bash<span class="w"> </span>./scripts/test.sh<span class="w"> </span><span class="m">0</span><span class="w"> </span>MTL<span class="w"> </span>try<span class="w"> </span>--ckpts<span class="w"> </span>./MTL_CoRe.pth
-</code></pre></div>
-<div class="highlight"><span class="filename">验证结果</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ckpts @ 59 epoch( rho = 0.9541, L2 = 25.6865 , RL2 = 0.0024)
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>[TEST] correlation: 0.953281, L2: 26.893236, RL2: 0.002463
-</code></pre></div>
-</li>
-<li>
-<p>自己跑了 117 个 Epoch <a href="https://pan.baidu.com/s/1vuDndWhKk5b4tFO4lO3Uyw">中道崩徂的模型 (2fcd)</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 只是改了一下参数路径</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>bash<span class="w"> </span>./scripts/test.sh<span class="w"> </span><span class="m">0</span><span class="w"> </span>MTL<span class="w"> </span>try<span class="w"> </span>--ckpts<span class="w"> </span>./experiments/CoRe_RT/MTL/try/best.pth
-</code></pre></div>
-<div class="highlight"><span class="filename">验证结果</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ckpts @ 108 epoch( rho = 0.9534, L2 = 30.5425 , RL2 = 0.0028)
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>[TEST] correlation: 0.951908, L2: 31.714521, RL2: 0.002904
-</code></pre></div>
-</li>
+<li>使用 <em>Temporal segment networks</em> 将输入视频划分为 <span class="arithmatex">\(T_v\)</span> 个 segments</li>
+<li>使用 <em>Video swin transformer</em> 从 segment 中提取 visual feature</li>
+<li>使用 MLP 进行特征降维，得到 <span class="arithmatex">\(X_v \in \mathbb{R}^{T_v \times D}\)</span></li>
 </ol>
 </li>
 <li>
-<p>On AQA-7 (自己跑了 60 个 Epoch 的模型)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>bash<span class="w"> </span>./scripts/test.sh<span class="w"> </span><span class="m">0</span><span class="w"> </span>MTL<span class="w"> </span>try<span class="w"> </span>--ckpts<span class="w"> </span>./experiments/CoRe_RT/Seven/try/best.pth
-</code></pre></div>
-<div class="highlight"><span class="filename">验证结果</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ckpts @ 58 epoch( rho = 0.8681, L2 = 63.5571 , RL2 = 0.0064)
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>[TEST] correlation: 0.840793, L2: 89.697052, RL2: 0.008214
-</code></pre></div>
+<p>对于文字输入：使用 token embedder + BERT 提取特征 <span class="arithmatex">\(X_t \in \mathbb{R}^{T_t \times D}\)</span></p>
 </li>
 </ul>
-<h2 id="2-tsa-net">2 TSA-Net</h2>
-<details class="info">
-<summary>Source Code</summary>
-<ul>
-<li>
-<p>Src</p>
-<ul>
-<li>
-<p>GitHub repo for <a href="https://github.com/Shunli-Wang/TSA-Net">TSA-Net</a></p>
-</li>
-<li>
-<p><a href="https://pan.baidu.com/s/1L1MqzlTDFtbOKLYm1b1GpQ">Kinetics pretrained I3D model (i3dm)</a></p>
-</li>
-</ul>
-</li>
-<li>
-<p>Dataset: <a href="https://pan.baidu.com/s/1Nkl6FlM2PcvbofegNjCIGA">FR-FS (star)</a></p>
-<blockquote>
-<p>新的一天从发现学长没下过这个 dataset 开始崩溃</p>
-</blockquote>
-</li>
-</ul>
-</details>
-<details class="quote">
-<summary>Prepareation</summary>
-<ul>
-<li>
-<p>服务器: <code>10.214.211.137</code></p>
-</li>
-<li>
-<p>准备工作：</p>
-<ul>
-<li>
-<p>在 <code>~/dataset</code> 中下载 FR-FS 数据集，并建立软链接至 <code>/TSA/data/FRFS</code></p>
-</li>
-<li>
-<p>在 <code>~/TSA/data</code> 路径下，下载预训练 backbone</p>
-</li>
-<li>
-<p><code>AttributeError: module 'distutils' has no attribute 'version'</code></p>
-<p>tensordBoard 版本与 setuptool 不匹配，重装 <code>setuptools==58.0.4</code></p>
-</li>
-<li>
-<p><code>Descriptors cannot be created directly.</code></p>
-<p>将 protobuf 降级至 3.20.X</p>
-</li>
-</ul>
-</li>
-</ul>
-</details>
-<h3 id="_4">模型训练</h3>
-<div class="highlight"><span class="filename">使用 nohup 进行后台训练</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># train TSA-Net &gt;&gt; TSA.log</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>nohup<span class="w"> </span>python<span class="w"> </span>test.py<span class="w"> </span>--gpu<span class="w"> </span><span class="m">0</span><span class="w"> </span>--pt_w<span class="w"> </span>~/TSA/Exp/TSA-USDL/best.pt<span class="w"> </span>--TSA<span class="w"> </span>&gt;&gt;<span class="w"> </span>TSA.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># train Plain-Net &gt;&gt; plain.log</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>nohup<span class="w"> </span>python<span class="w"> </span>test.py<span class="w"> </span>--gpu<span class="w"> </span><span class="m">0</span><span class="w"> </span>--pt_w<span class="w"> </span>~/TSA/Exp/USDL/best.pt<span class="w"> </span>&gt;&gt;<span class="w"> </span>plain.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div>
-<p>训练结束后将在：<code>~/TSA/Exp/TSA-USDL</code> 和 <code>~/TSA/Exp/USDL</code> 产生对应的 <code>best.pt</code>（其实还有 <code>train.log</code>）</p>
-<h3 id="_5">模型验证</h3>
-<details class="bug">
-<summary>WTM 笑死，他这个 test 的代码有 bug</summary>
-<blockquote>
-<p>另外它 <code>README</code> 里给的测试代码是不对的: </p>
-<p><code>weight_logger</code> 用的不是相对 CWD 的路径 &amp; <code>train.py</code> 生成的模型后缀是 <code>.pt</code> (而不是 <code>.pth</code>)</p>
-</blockquote>
-<ul>
-<li>
-<p>Bug Tip: <code>AttributeError: 'Namespace' object has no attribute 'type'</code></p>
-</li>
-<li>
-<p>Fix:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># &quot;/home/syf/TSA/test.py&quot;, line 206</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># from</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">base_logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">model_path</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">type</span><span class="si">}</span><span class="s1">.log&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">log_info</span><span class="p">)</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># to (随便起啥名都行)</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">base_logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">model_path</span><span class="si">}</span><span class="s1">/test.log&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">log_info</span><span class="p">)</span>
-</code></pre></div>
-</li>
-</ul>
-</details>
-<div class="highlight"><span class="filename">用 nohup 挂后台</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>nohup<span class="w"> </span>python<span class="w"> </span>test.py<span class="w"> </span>--gpu<span class="w"> </span><span class="m">0</span><span class="w"> </span>--pt_w<span class="w"> </span>Exp/TSA-USDL/best.pth<span class="w"> </span>--TSA<span class="w"> </span>&gt;&gt;<span class="w"> </span>TSA.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>nohup<span class="w"> </span>python<span class="w"> </span>test.py<span class="w"> </span>--gpu<span class="w"> </span><span class="m">0</span><span class="w"> </span>--pt_w<span class="w"> </span>Exp/USDL/best.pth<span class="w"> </span>&gt;&gt;<span class="w"> </span>plain.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div>
-<p>下面是验证时的通用参数：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>dp: False                           weight_decay: 1e-05
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>num_workers: 8                      num_epochs: 20
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>test_batch_size: 8                  temporal_aug: 0
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>std: 5                              lr: 0.0001
-</code></pre></div>
-<p><center>验证结果</center></p>
-<p><center></p>
-<table>
-<tr>
-<th>Model</th>
-<th>Accuracy</th>
-</tr>
-<tr>
-<td>TSA-Net</td>
-<td>98.08%</td>
-</tr>
-<tr>
-<td>Plain-Net</td>
-<td>95.19%</td>
-</tr>
-</table>
-<p></center></p>
-<h2 id="3-tpt">3 TPT</h2>
-<details class="info">
-<summary>Source Code</summary>
-<ul>
-<li>
-<p>Src</p>
-<ul>
-<li>Github repo for <a href="https://github.com/baiyang4/aqa_tpt">TPT</a></li>
-</ul>
-</li>
-<li>
-<p>准备工作</p>
-<blockquote>
-<p>因为用的是 CoRe 的同款数据集，所以在 135 那台服务器上</p>
-<p>好的因为显卡内存不够，换到 137 了</p>
-</blockquote>
+<h4 id="2-extract-semantic-aware-representations">2) Extract Semantic-Aware Representations</h4>
+<div class="admonition bug">
+<p class="admonition-title">每个 clip 仅包含当前 segment 的信息，缺少 global context info</p>
+</div>
 <ol>
 <li>
-<p>在项目根目录下创建路径 <code>[TPT_root]/data/</code></p>
+<p>使用 self-attention Encoder 来充实 segment-wise representation</p>
+<ul>
+<li>
+<p>通过计算 weighted aggregation of segment features 来得到 context info</p>
+<p>此处的 weight 由当前 segment 与其他 segments 之间的协方差决定</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+H_0 = \text{SoftMax}\left(
+    \frac{W_{qs} X_v (W_{ks} X_v)^T}{\sqrt{D}}
+\right) W_{vs} X_v + X_v
+\]</div>
+<ul>
+<li><span class="arithmatex">\(W_{qs}, W_{ks}, W_{vs}\)</span> 都是可训练参数</li>
+</ul>
 </li>
 <li>
-<p>按照指定格式创建软链接</p>
-<div class="highlight"><span class="filename">@ [TPT_root]/data</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ln<span class="w"> </span>-s<span class="w"> </span>/home/syf/CoRe/MTL-AQA/model_rgb.pth<span class="w"> </span>./model_rgb.pth
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>ln<span class="w"> </span>-s<span class="w"> </span>/nfs4-p1/zzy/AQA/AQA-TPT/data_preprocessed<span class="w"> </span>./data_preprocessed
-</code></pre></div>
+<p>使用 feed-forward network (FFN) 对 <span class="arithmatex">\(H_0\)</span> 进行进一步 fusion，得到 <span class="arithmatex">\(\hat{X}_v\)</span></p>
 </li>
-<li>
-<p>补充依赖 <code>einops, pandas, tensorboard, tqdm, matplotlib, seaborn</code></p>
-</li>
-<li>
-<p>设置环境变量 <code>export PYTORCH_CUDA_ALLOC_CONF="max_split_size_mb:2048"</code></p>
+</ol>
+<h5 id="teacher-branch">Teacher Branch</h5>
 <blockquote>
-<p>2048 还是不够</p>
+<p>从评论文本中提取 semantic-aware representations</p>
 </blockquote>
+<ul>
+<li>
+<p>通过构建 visual-text feature 之间的 cross-attention 来学习 semantic corr.</p>
+</li>
+<li>
+<p>(受 DETR 启发) 本文的 Transformer Decoder 共包含三部分: self-attention, croess-atention, FFN</p>
+<ul>
+<li>self-attention 用于挖掘 text feature 之间的关系，得到 <span class="arithmatex">\(\hat{X}_t\)</span></li>
+<li>
+<p>cross-attention 用于从 <span class="arithmatex">\(\hat{X}_t, \hat{X}_v\)</span> 中学习 context-aware representations</p>
+<ul>
+<li><span class="arithmatex">\(query\)</span> 通过 <span class="arithmatex">\(\hat{X}_t\)</span> 生成，<span class="arithmatex">\(key, value\)</span> 从 <span class="arithmatex">\(\hat{X}_v\)</span> 变换得到</li>
+</ul>
+<div class="arithmatex">\[
+Q_t=W_q\hat{X}_t,\ K_v = W_k\hat{X}_v,\ V_v = W_v\hat{X}_v
+\]</div>
+<ul>
+<li>semantic corr <span class="arithmatex">\(A^T\)</span> 由对应 <span class="arithmatex">\(query-key\)</span> 之间的 dot-product similarity 衡量</li>
+</ul>
+<div class="arithmatex">\[
+A^T = \text{SoftMax}\left(\frac{Q_tK_v^T}{\sqrt{D}}\right)
+\]</div>
+</li>
+<li>
+<p>FFN 用于 aggregate <span class="arithmatex">\(A^T, V_v\)</span>，得到最终输出 <span class="arithmatex">\(H^T\)</span></p>
+<div class="arithmatex">\[
+H^T = FFN(A^T V_v) \in \mathbb{R}^{T_t \times D}
+\]</div>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-semantics-guided-network">3) Semantics-Guided Network</h4>
+<ul>
+<li>先前的多模态模型会把 visual-semantic info 混合在一起进行预测</li>
+<li>本文则是通过 semanticRep 指导对 visual feature 的学习</li>
+</ul>
+<h5 id="student-branch">Student Branch</h5>
+<ul>
+<li>
+<p>定义长度为 <span class="arithmatex">\(K\)</span> 的 atomic queries <span class="arithmatex">\(X_q \in \mathbb{R}^{K \times D}\)</span></p>
+<p>这些 query 用于表示评分中的关键语义信息，例如出色的跳跃或糟糕的摔倒。</p>
+<p>在应用 self-attention 后更新为 <span class="arithmatex">\(\hat{X}_q\)</span></p>
+</li>
+<li>
+<p>类似于 teacher branch，student branch 也由三部分构成（不过用 queries 替代了 <span class="arithmatex">\(\hat{X}_t\)</span>）</p>
+<div class="arithmatex">\[
+\begin{align*}
+Q'_q &amp;= W'_q \hat{X}_q,\ K'_v = W'_k\hat{X}_v,\ V'_v = W'_v \hat{X}_v \\
+A^S &amp;= \text{SoftMax}\left(\frac{Q'_q K'^T_v}{\sqrt{D}}\right) \in \mathbb{R}^{K \times T_v}\\
+H^S &amp;= FFN(A^S V'_v) \in \mathbb{R}^{K \times D}
+\end{align*}
+\]</div>
+<p><span class="arithmatex">\(A^S\)</span> 是 attention map，<span class="arithmatex">\(H^S\)</span> 是 student branch 的输出</p>
+</li>
+</ul>
+<h4 id="evaluation">Evaluation</h4>
+<ul>
+<li>
+<p>distillation loss</p>
+<ul>
+<li>目标：最小化 <span class="arithmatex">\(A^T, A^S\)</span> 两个 self-attention matrices 之间的差异</li>
+<li>
+<p>但是 <span class="arithmatex">\(A^T \in T_t \times T_v,\ A^S \in K \times T_v\)</span> 具有不同的 shape (<span class="arithmatex">\(T_t \gg K\)</span>)，因此需要沿 <span class="arithmatex">\(T_t/K\)</span> 纬度进行 MaxPooling，生成 <span class="arithmatex">\(\hat{A}^T / \hat{A}^S\)</span></p>
+<p>这样可以提取最显著的特征并增强特征表示能力，而不会丢失有用的信息</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+\mathcal{L}_{attn} = \frac{1}{T_v h} \sum_{i=1}^{T_v} \sum_{j=1}^h \text{MSE}(\hat{A}_{ij}^T, \hat{A}_{ij}^S)
+\]</div>
+<p><span class="arithmatex">\(h\)</span> 为 Transformer 中的 attention heads，<span class="arithmatex">\(\hat{A}_{ij}\)</span> 是 i<sup>th</sup>-clip j<sup>th</sup>-head 的 normalized attention</p>
+</li>
+<li>
+<p>objective loss</p>
+<p>除了限制 teacher-student branch 的 attention distribution 之外，作者还使用了 Noise Contrastive Estimation(NCE) loss 来 align teacher-student branch 之间的 output feature</p>
+<ul>
+<li>
+<p>通过将 target instance <span class="arithmatex">\(H^S\)</span> 与更多的 negative sample 进行对比，并与对应的 positive sample<span class="arithmatex">\(H^T\)</span> 进行 align</p>
+</li>
+<li>
+<p>在 <span class="arithmatex">\(T_t/K\)</span> 纬度上使用 AveragePooling 来将 teacher-student feature 映射到相同的纬度上</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+\mathcal{L}_{cons} = -\log{\frac{\exp{(\text{sim}(\hat{H^S_i},\hat{H^T_i})/\tau)}}
+{\sum_{j=1}^N\mathbb{1}_{[j \neq i]}\exp{(\text{sim}(\hat{H^S_i},\hat{H^T_i})/\tau)}}}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\mathbb{1}_{[j \neq i]}\)</span> 是一个 indicatorFunc，当 <span class="arithmatex">\(j\neq i\)</span> 时取 1</li>
+<li><span class="arithmatex">\(\text{sim}(u,v) = u^T v / |u||v|\)</span> 表示 <span class="arithmatex">\(l_2\)</span> normalized 的 <span class="arithmatex">\(u·v\)</span> 点积</li>
+<li><span class="arithmatex">\(\tau\)</span> 是 temperature 超参数</li>
+<li>这一 loss 在 mini-batch <span class="arithmatex">\(N\)</span> 中的所有 positive-pairs 间被计算</li>
+</ul>
+</li>
+<li>
+<p>scoring loss</p>
+<ul>
+<li>本文将 AQA 任务定义为：预测和具有相同 category 视频间的 <span class="arithmatex">\(\Delta s\)</span></li>
+<li>
+<p>对于输入对 <span class="arithmatex">\(&lt;X_{v.p}, X_{v,q}&gt;\)</span>，其 ground-truth 为 <span class="arithmatex">\(&lt;S_p, S_q&gt;\)</span>，有：</p>
+<div class="arithmatex">\[
+L_{score} = (\Delta S - |S_p - S_q|)^2 = (\mathcal{R}_{\Theta}(\hat{H_p},\hat{H_q}) - |S_p - S_q|)^2
+\]</div>
+</li>
+<li>
+<p>由于模型具有 teacher-student 两个 branch，因此会有两个 relative score，分别记为 <span class="arithmatex">\(\mathcal{L}_{score}^T,\mathcal{L}_{score}^S\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>consistency loss</p>
+<ul>
+<li>to align the learned feature representations: 限制 teacher branch 预测的 <span class="arithmatex">\(\Delta S^T\)</span> 与 student brach 预测的 <span class="arithmatex">\(\Delta S^S\)</span> 相等</li>
+</ul>
+<div class="arithmatex">\[
+\mathcal{L}_{c-score} = (\Delta S^T - \Delta S^S)^2
+\]</div>
+</li>
+</ul>
+<p><center>将以上各项相加，可得 total loss <span class="arithmatex">\(\mathcal{L}\)</span></center></p>
+<div class="arithmatex">\[
+\mathcal{L} = \mathcal{L}_{score}^T + \mathcal{L}_{score}^S + \mathcal{L}_{attn} + \mathcal{L}_{cons} + \mathcal{L}_{c-score}
+\]</div>
+<h2 id="2023-fspn">2023: FSPN</h2>
+<h3 id="1-abstract">1 Abstract</h3>
+<ul>
+<li>
+<p>先前的工作</p>
+<ul>
+<li>
+<p>大多数基于 粗粒度(coarse-grained)特征 进行训练、采用 holistic video representations，缺乏对 fine-grained intra-class variations 的捕捉</p>
+</li>
+<li>
+<p>Parmar and Morris 认为所有的 sub-action sequences 对结果具有 <u>相等的贡献</u></p>
+</li>
+<li>
+<p>segmenting action sequences along with their temporal dependence remains a challenging task：</p>
+<ol>
+<li>
+<p>缺少预定义的 标签 &amp; action sequence 之间的关联性</p>
+</li>
+<li>
+<p>sub-action sequences 具有非常细的粒度，动作间的变化十分平滑 =&gt; 难以确定其边界</p>
+</li>
+<li>
+<p>由于动作十分细密、在相似的背景中进行，各 sub-action 之间有较多的共同 attributes</p>
 </li>
 </ol>
 </li>
 </ul>
-</details>
-<h3 id="_6">模型训练</h3>
-<ul>
-<li>
-<p>On MTL-AQA</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># 默认端口 29500 already in use，此处指定端口 29501</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="c1"># 逐渐放弃多卡训练 =&gt; 我超，动了！我永远爱 137 这台机子</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>nohup<span class="w"> </span>python<span class="w"> </span>-u<span class="w"> </span>-m<span class="w"> </span>torch.distributed.launch<span class="w"> </span>--nproc_per_node<span class="o">=</span><span class="m">1</span><span class="w"> </span>--master_port<span class="w"> </span><span class="m">29501</span><span class="w"> </span>train_pairencode1_decoder_1selfatt_self8head_ffn_sp_new.py<span class="w"> </span>--epoch_num<span class="o">=</span><span class="m">250</span><span class="w"> </span>--dataset<span class="o">=</span>MLT_AQA<span class="w"> </span>--bs_train<span class="o">=</span><span class="m">2</span><span class="w"> </span>--bs_test<span class="o">=</span><span class="m">2</span><span class="w"> </span>--use_pretrain<span class="o">=</span>False<span class="w"> </span>--num_cluster<span class="o">=</span><span class="m">5</span><span class="w"> </span>--margin_factor<span class="o">=</span><span class="m">3</span>.2<span class="w"> </span>--encode_video<span class="o">=</span>False<span class="w"> </span>--hinge_loss<span class="o">=</span>True<span class="w"> </span>--multi_hinge<span class="o">=</span>True<span class="w"> </span>--d_model<span class="o">=</span><span class="m">512</span><span class="w"> </span>--d_ffn<span class="o">=</span><span class="m">512</span><span class="w"> </span>--exp_name<span class="o">=</span>sp_new_103_5_3<span class="w"> </span>&gt;&gt;<span class="w"> </span>MTL.log<span class="w">  </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
-</code></pre></div>
-<div class="admonition bug">
-<p class="admonition-title">降到 batch_size = 2 还是内存不够，仙逝了</p>
-</div>
 </li>
-</ul>
-<h3 id="_7">模型验证</h3>
+<li>
+<p>创新点</p>
+<p>提取 fine-grained sub-action sequence 和它们的 temporal dependencies 有助于做出更准确的估计</p>
 <blockquote>
-<p>作者暂未提供 test script，蹭一下隔壁 CoRe 的</p>
+<p>为了降低背景的干扰，本文使用预训练模型从 input video 中提取了 actor-centric regions </p>
 </blockquote>
+<ol>
+<li>
+<p>提出了由两部分组成的 FSPN：</p>
 <ul>
 <li>
-<p>On MTL-AQA</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># @ ～/CoRe</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>python<span class="w"> </span>test.py<span class="w"> </span>--gpu<span class="w"> </span><span class="m">0</span><span class="w"> </span>--pt_w<span class="w"> </span><span class="o">[</span>path_to_model<span class="o">]</span><span class="w"> </span>--TSA
-</code></pre></div>
-</li>
-</ul>
-<h2 id="4-pecop">4 PECoP</h2>
-<details class="info">
-<summary>Source Code</summary>
-<ul>
-<li>
-<p>Src</p>
-<ul>
-<li>
-<p>GitHub repo for <a href="https://github.com/Plrbear/PECoP">PECoP</a></p>
+<p><u>intra-sequence</u> action parsing module <span style="color:red;"><strong>无监督</strong></span></p>
+<p>对更细粒度下的 sub-actions 进行挖掘</p>
+<p>实现 semantical sub-action parsing，从而更准确的描述动作序列间的细微差别</p>
 </li>
 <li>
-<p><a href="https://github.com/hassony2/kinetics_i3d_pytorch/blob/master/model/model_rgb.pth">Kinetics pretrained I3D</a></p>
+<p>spatiotemporal multiscale transformer module</p>
+<blockquote>
+<p>低阶特征缺乏语义信息，高阶特征难以对 sub-action 进行细粒度描述</p>
+</blockquote>
+<p>学习 <u>motion-oriented</u> action features、挖掘其在不同时间范围内的 long-range 依赖关系</p>
 </li>
 </ul>
 </li>
 <li>
-<p>Dataset</p>
+<p>提出了一个 group contrastive loss</p>
+</li>
+</ol>
+<p>此外，由于整个动作序列可能存在组件重复 ABBBBCC，模型使用了 1D Temporal Convolution + Transformer Network 来提取 single-scale feature</p>
+<p>最终，各阶段特征会通过 multiscale temporal fusion 聚合生成 unified feature represen- tation，并用于最终的预测</p>
+</li>
+</ul>
+<h3 id="2-relative-works">2 Relative Works</h3>
+<ol>
+<li>
+<p>AQA</p>
 <ul>
 <li>
-<p>PD4T (需要填写申请表orz)</p>
+<p>Regression Formulation</p>
 </li>
 <li>
-<p>MTL-AQA (CoRe ver.): 软链接至 <code>~/dataset/MTL-AQA</code></p>
+<p>Pairwise Ranking Formulation</p>
 </li>
 </ul>
 </li>
-</ul>
-</details>
-<details class="quote">
-<summary>Prepareation</summary>
+<li>
+<p>(Fine-grained) Action Parsing </p>
 <ul>
 <li>
-<p>服务器: <code>10.214.211.137</code></p>
+<p>Zhang: Temporal Query Networks =&gt; 通过 query 找出相关的 segments</p>
 </li>
 <li>
-<p>准备工作：</p>
-<ul>
-<li>
-<p>补充依赖 <code>tensorboardX, torch_videovision, ptflops</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/hassony2/torch_videovision
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>pip<span class="w"> </span>install<span class="w"> </span>ptflops
-</code></pre></div>
-</li>
-<li>
-<p>在 <code>~/PECoP</code> 路径下，下载预训练 I3D backbone（同 CoRe）</p>
+<p>Dian: TransParser =&gt;  对 sub-action 进行挖掘（无监督）</p>
 </li>
 </ul>
 </li>
-</ul>
-</details>
-<h3 id="_8">模型训练</h3>
-<ul>
 <li>
-<p>On MTL-AQA</p>
-<p>修改了 <code>data_list</code> (数据标签文件路径) &amp; <code>rgb_prefix</code> (数据集路径)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>python<span class="w"> </span>train.py<span class="w"> </span>--bs<span class="w"> </span><span class="m">16</span><span class="w"> </span>--lr<span class="w"> </span><span class="m">0</span>.001<span class="w"> </span>--height<span class="w"> </span><span class="m">256</span><span class="w"> </span>--width<span class="w"> </span><span class="m">256</span><span class="w"> </span>--crop_sz<span class="w"> </span><span class="m">224</span><span class="w"> </span>--clip_len<span class="w"> </span><span class="m">32</span><span class="w"> </span>--rgb_prefix<span class="w"> </span>/home/syf/dataset/MTL-AQA/<span class="w"> </span>--data_list<span class="w"> </span>/home/syf/dataset/MTL-AQA/final_annotations_dict_with_dive_number.pkl
-</code></pre></div>
-<div class="admonition bug">
-<p class="admonition-title">缺少必要的 list 文件</p>
-<p><code>./datasets/ucf101.py</code> 中规定对应的 list (UTF-8)文件格式为:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sample_name(str)   action_label(int)    num_frames(int)    num_p(str)
-</code></pre></div>
-<p>因为 MTL-AQA 缺少对应格式的文件，暂时没法动</p>
+<p>Vision Transformer</p>
+<p>从 低分辨率图片 &amp; 较小的通道数量 开始，逐渐增加通道并减少 spatial resolution</p>
+</li>
+</ol>
+<h3 id="3-approach_1">3 Approach</h3>
+<p><img alt="" src="../../assets/FSPN%20Pipeline.png" /></p>
+<h4 id="_1">问题定义</h4>
+<p>对于给定 input video <span class="arithmatex">\(x_i \in \mathbb{R}^{T \times H \times W \times C}\)</span> 及其对应的分数标签 <span class="arithmatex">\(y_i\)</span>，AQA 问题可以认为是一个回归问题：</p>
+<blockquote>
+<p>T, H, W, C 分别为 clip 长度、视频宽高、通道数</p>
+</blockquote>
+<ol>
+<li>
+<p>使用预训练模型 <span class="arithmatex">\(D(.)\)</span> 得到运动员所在的 BBox <span class="arithmatex">\(x_a\)</span></p>
+<div class="arithmatex">\[
+    x_a = D(x_i) \in \mathbb{R}^{T \times H \times W \times C}
+\]</div>
+</li>
+<li>
+<p>将 原始输入 和 BBox 都输入 (相同的)I3D 来提取 spatiotemporal 特征 <span class="arithmatex">\((f_i, f_a)\)</span></p>
+<div class="arithmatex">\[
+f_i = E_v(x_i),\ f_a = E_v(x_a)
+\]</div>
+</li>
+<li>
+<p>使用 FSPN <span class="arithmatex">\(\mathbb{F}_\Theta(.)\)</span> 提取特征，并最终进行回归运算</p>
+<div class="arithmatex">\[
+\overline{y}_i = R_{\theta}(\mathbb{F}_\Theta(E_v(x_i)),\mathbb{F}_\Theta(E_v(x_a)))
+\]</div>
+</li>
+</ol>
+<h4 id="intra-sequence-action-parsing">Intra-Sequence Action Parsing</h4>
+<h5 id="1-intra-sequence-action-parsing-iap">1 Intra-Sequence Action Parsing (IAP)</h5>
+<div class="admonition tip">
+<p class="admonition-title">确定每个 sub-action 的 起始帧 &amp; 结束帧</p>
 </div>
+<ul>
+<li>
+<p>给出的 Parser 可以对 <span class="arithmatex">\(S\)</span> 个 sub-action 的分布概率进行预测，同时指出 “转变” 发生的具体帧编号 <span class="arithmatex">\(f^{th}\)</span>：</p>
+<p>features -&gt; probability vec <span class="arithmatex">\(A_s\)</span> (对 <span class="arithmatex">\(s^{th}\)</span> sub-action 的 middle-level 表示)</p>
+<div class="arithmatex">\[
+[A_1, ..., A_s] = IAP(f_i,f_a)
+\]</div>
+</li>
+<li>
+<p>使用 up-sampling decoder + MLP layers projection head 构建 “分布概率预测器”</p>
+<ul>
+<li>
+<p>上采样包含四个 spatial-temporal dimensions 分别为：(1024, 12), (512, 24), (256, 48), and (128, 96) 的子块</p>
+<ul>
+<li>
+<p>temporal axis 会被卷积操作扩充</p>
+</li>
+<li>
+<p>spatial dimensions 会被 Max Pooling 削减</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用了 3 Layer MLP</p>
+</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(A_s(\vec{t})\)</span> 表示 <span class="arithmatex">\(t^{th}\)</span> 帧可能对应的 sub-action 概率分布；<span class="arithmatex">\(\vec{t}_s\)</span> 是对 <span class="arithmatex">\(s^{th}\)</span> 跳 action sequence 的预测结果</p>
+<blockquote>
+<p><span class="arithmatex">\(\text{argmax } A_s(\vec{t})\)</span> 即为该帧最可能对应的 sub-action 类型</p>
+<p>此时 t 与 t+1 必然对应不同的 sub-aciton =&gt; 新的 sub-action instance 从 <span class="arithmatex">\((t+1)^{th}\)</span> 帧开始</p>
+</blockquote>
+<div class="arithmatex">\[
+\vec{t}_s = \text{argmax } A_s(\vec{t}),\ \frac{T}{S}(s-1) \leq \vec{t} \leq \frac{T}{S}s
+\]</div>
+<p>上式保证了 <span class="arithmatex">\(\vec{t}_1 \leq ... \leq \vec{t}_s\)</span></p>
+</li>
+</ul>
+<h5 id="2-group-contrastive-learning">2 Group Contrastive Learning</h5>
+<ul>
+<li>
+<p>上一步得到的 <span class="arithmatex">\((f_i,f_a)\)</span> 共享了较多的语义信息，直接对其进行比较学习会导致 <u>对具有相同语义的动作序列学习得到不同的表示</u></p>
+<p>=&gt; 使用 Group Contrastive Learning，对具有相似 sub-action seq 的视频进行对比</p>
+</li>
+<li>
+<p>输入的 <span class="arithmatex">\((f_i,f_a)\)</span> 会被</p>
+<ul>
+<li>赋予与其动作、语义具有最大相似度组别的 Pseudo Label <span class="arithmatex">\(p\)</span></li>
+<li>最终生成 sub-action sequence <span class="arithmatex">\((\overline{f}_i,\overline{f}_a)\)</span></li>
+</ul>
+</li>
+<li>
+<p>具有相同 Pseudo Label 的 feature 将组成如下的 group：</p>
+<div class="arithmatex">\[
+G^p_k = \frac{\sum_{i=1}^B g(A_s^k)}{T_B},\ \text{where } p=A_s^k
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(g(.)\)</span> 是序列 <span class="arithmatex">\(A_s^k\)</span> 的 logits</p>
+</li>
+<li>
+<p><span class="arithmatex">\(T_B\)</span> 是 Group <span class="arithmatex">\(B\)</span> 的序列总量</p>
+</li>
+</ul>
+</li>
+<li>
+<p>我们使用 Group 的 average representation <span class="arithmatex">\(G_f^g\)</span>，定义：</p>
+<ul>
+<li>
+<p>positive-pair：<span class="arithmatex">\(G_a^p, G_i^p\)</span> （上标组别相同）</p>
+</li>
+<li>
+<p>negative-pair：<span class="arithmatex">\(G_a^p, G_k^q\)</span> （上标组别不同）</p>
+<blockquote>
+<p>Action Seq 相同，但 Sub-action Seq 不同</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="spatio-temporal-multiscale-transformer">Spatio-Temporal Multiscale Transformer</h4>
+<div class="admonition tip">
+<p class="admonition-title">输入 sub-action sequence <span class="arithmatex">\((\overline{f}_i,\overline{f}_a)\)</span>，并在不同 scale 上挖掘 long-range dependencies</p>
+</div>
+<h5 id="1-actor-centric-multiscale-transformer">1 Actor-Centric Multiscale Transformer</h5>
+<ul>
+<li>
+<p>本文提出的 Transformer 各阶段具有各异的 channel resolution =&gt; channel &amp; scale 逐渐增加</p>
+</li>
+<li>
+<p>该 Multiscale Transformer，由 3 * stage（结构相同）构成</p>
+<ul>
+<li>
+<p>每个 stage </p>
+<ul>
+<li>
+<p>在 early Layer 处理粗粒度特征，并在更深层处理细粒度特征</p>
+</li>
+<li>
+<p>各包含了 3 个 transformer block + 8 attention head，用于处理相同 scale 的信息并生成 Attention 值</p>
+<div class="arithmatex">\[
+\hat{f}_i += MLP(LN(attention)), attention = Multihead(LN(\frac{Q_a(K_i)^T}{\sqrt{d_k}})V_i) + \overline{f}_i
+\]</div>
+<p><center><span class="arithmatex">\(Ln(.)\)</span> 为 Layer Norm 操作，<span class="arithmatex">\(MLP\)</span> 为两层使用 GELU 激活函数</center></p>
+<p><center><img src="../assets/FSPN%20block.png" style="max-height:250px"></center></p>
+<p><center>block 结构：<span class="arithmatex">\(\overline{f}_a = query, \overline{f}_i=memory\)</span></center></p>
+</li>
+</ul>
+</li>
+<li>
+<p>对于输入特征 <span class="arithmatex">\(f \in \mathbb{R}^{T' \times C'}\)</span>:</p>
+<ol>
+<li>
+<p>进行一次 1D 卷积 (kernel=3, stride=1)</p>
+</li>
+<li>
+<p>使用包含 <span class="arithmatex">\(L\)</span> 个 block 的 Multiscale Transformer，其中 stage n 的 output_shape = <span class="arithmatex">\(T' \times 2^nC'\)</span>（放大）</p>
+<blockquote>
+<p>channel dimesion 会在 stage 切换时通过 MLP 扩大 2 倍</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-multiscale-temporal-fusion">2 Multiscale Temporal Fusion</h5>
+<p><center><img src="../assets/FSPN%20fusion.png" style="max-width:500px;"></center></p>
+<p>对于第 <span class="arithmatex">\(n\)</span> 层的 output shape 为 <span class="arithmatex">\(F_n = T' \times 2^nC'\)</span>，而第 <span class="arithmatex">\(n+1\)</span> 层则为 <span class="arithmatex">\(F_{n+1}= T' \times 2^{n+1}C'\)</span></p>
+<ul>
+<li>
+<p>为了成功进行 aggregate，我们需要进行 upsampling: <span class="arithmatex">\(U_\varphi(F_n) = \text{Upsampling}(R_n\mathcal{W}^n)\)</span></p>
+</li>
+<li>
+<p>随后使用 element-wise addition 更新 <span class="arithmatex">\(F_{n+1} = U_\varphi(F_n) + F_{n+1}\mathcal{W}^{n+1}\)</span></p>
+</li>
+</ul>
+<p>最终通过 fuse 的到的 intergrated feature <span class="arithmatex">\(\mathcal{F} = \text{Concat}(F_1, ..., F_{N})\)</span></p>
+<h3 id="4-optimization">4 Optimization</h3>
+<h4 id="overall-training-loss">Overall Training Loss</h4>
+<p>最终将由 2-Layer MLP 对 <span class="arithmatex">\(\text{MaxPool}(\mathcal{F})\)</span> 预测得到分组标签 <span class="arithmatex">\(\gamma_i\)</span> 和 回归分数 <span class="arithmatex">\(y_i\)</span></p>
+<ul>
+<li>
+<p>对于回归预测，有：</p>
+<div class="arithmatex">\[
+\begin{align*}
+L_{bce} &amp;= - \sum_{i=1}^I(\gamma_i log(\overline{\gamma_i}) + (1-\gamma_i)log(1-\overline{\gamma}_i)) \\
+L_{reg} &amp;= \sum_{i=1}^I \| \overline{y}_i - y_i\|^2,\ \text{where } \gamma_i = 1
+\end{align*}
+\]</div>
+</li>
+<li>
+<p>对 Group Contrastive，有：</p>
+<div class="arithmatex">\[
+L_{gc} = - \log{\frac{
+    h(G_a^p,G_i^p) / \tau
+}{
+    h(G_a^p,G_i^p) / \tau + \sum_{q=1,k}^S  h(G_a^p,G_k^q) 
+}}, \text{ where }p\neq q
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(h(.) = \exp{(\text{cosine similarity})}\)</span> </p>
+</li>
+<li>
+<p><span class="arithmatex">\(\tau\)</span> 是 teperature 超参数</p>
+</li>
+</ul>
 </li>
 </ul>
 
@@ -1698,7 +1767,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../sum/Segmentation/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Segmentation">
+          <a href="../Constrastive/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Constrastive">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1708,20 +1777,20 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                Segmentation
+                Constrastive
               </div>
             </div>
           </a>
         
         
           
-          <a href="../FigureSkating/" class="md-footer__link md-footer__link--next" aria-label="下一页: FigureSkating">
+          <a href="../Self-Supervised/" class="md-footer__link md-footer__link--next" aria-label="下一页: Self-Supervised">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                FigureSkating
+                Self-Supervised
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1759,10 +1828,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

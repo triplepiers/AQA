@@ -1,0 +1,1774 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://triplepiers.github.io/AQA/sum/Selekton-Based/" rel="canonical"/>
+<link href="../GCN/" rel="prev"/>
+<link href="../Segmentation/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.3" name="generator"/>
+<title>Selekton-based - Action Quality Assessment</title>
+<link href="../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+<link href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css" rel="stylesheet"/>
+<link href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="purple" data-md-color-primary="teal" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          跳转至
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="Action Quality Assessment" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Action Quality Assessment">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Action Quality Assessment
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Selekton-based
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="teal" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-green" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" title="清空当前内容" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Action Quality Assessment" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Action Quality Assessment">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Action Quality Assessment
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    Summary
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../survey/">
+<span class="md-ellipsis">
+    Survey
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Regression-Based/">
+<span class="md-ellipsis">
+    Regression
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Constrastive/">
+<span class="md-ellipsis">
+    Constrastive
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Transformer/">
+<span class="md-ellipsis">
+    Transformer
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Self-Supervised/">
+<span class="md-ellipsis">
+    Self-Supervised
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../GCN/">
+<span class="md-ellipsis">
+    GCN
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Selekton-based
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    Selekton-based
+  </span>
+</a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2018-st-gcn">
+<span class="md-ellipsis">
+      2018: ST-GCN
+    </span>
+</a>
+<nav aria-label="2018: ST-GCN" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-abstract">
+<span class="md-ellipsis">
+      1 Abstract
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-relatvie-works">
+<span class="md-ellipsis">
+      2 Relatvie Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-implementation">
+<span class="md-ellipsis">
+      4 Implementation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2019-action-assessment-by-joint-relation-graphs">
+<span class="md-ellipsis">
+      2019: Action Assessment by Joint Relation Graphs
+    </span>
+</a>
+<nav aria-label="2019: Action Assessment by Joint Relation Graphs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduction">
+<span class="md-ellipsis">
+      1 Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-related-works">
+<span class="md-ellipsis">
+      2 Related Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach_1">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2022-skeleton-based-deep-pose-feature-learning">
+<span class="md-ellipsis">
+      2022: Skeleton-based Deep Pose Feature Learning
+    </span>
+</a>
+<nav aria-label="2022: Skeleton-based Deep Pose Feature Learning" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-abstract_1">
+<span class="md-ellipsis">
+      1 Abstract
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-relative-works">
+<span class="md-ellipsis">
+      2 Relative Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach_2">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2023-ms-gcn">
+<span class="md-ellipsis">
+      2023: MS-GCN
+    </span>
+</a>
+<nav aria-label="2023: MS-GCN" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduction_1">
+<span class="md-ellipsis">
+      1 Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-related-works_1">
+<span class="md-ellipsis">
+      2 Related Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach_3">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Segmentation/">
+<span class="md-ellipsis">
+    Segmentation
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rep/">
+<span class="md-ellipsis">
+    Repitition
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../FigureSkating/">
+<span class="md-ellipsis">
+    FigureSkating
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    References
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            References
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+<span class="md-ellipsis">
+    2018
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_1">
+<span class="md-nav__icon md-icon"></span>
+            2018
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2018%20Skeleton.pdf">
+<span class="md-ellipsis">
+    ST-GCN 基于骨骼的动作识别
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+<span class="md-ellipsis">
+    2021
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+            2021
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2021/CoRe.pdf">
+<span class="md-ellipsis">
+    CoRe 组感知对比回归
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2021/TSA-Net.pdf">
+<span class="md-ellipsis">
+    TSA-Net 管自注意力网络
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2021/Video-based.pdf">
+<span class="md-ellipsis">
+    Video-based
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+<span class="md-ellipsis">
+    2022
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+            2022
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2022/TPA.pdf">
+<span class="md-ellipsis">
+    TPT 时序转译 transformer
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+<span class="md-ellipsis">
+    2023
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_4">
+<span class="md-nav__icon md-icon"></span>
+            2023
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2023/PECoP.pdf">
+<span class="md-ellipsis">
+    PECoP 连续预训练
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2023/STPN.pdf">
+<span class="md-ellipsis">
+    FSPN 细粒度时空解析网络
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ref/2023/IRIS.pdf">
+<span class="md-ellipsis">
+    IRIS 评分标准可解释分割
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2018-st-gcn">
+<span class="md-ellipsis">
+      2018: ST-GCN
+    </span>
+</a>
+<nav aria-label="2018: ST-GCN" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-abstract">
+<span class="md-ellipsis">
+      1 Abstract
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-relatvie-works">
+<span class="md-ellipsis">
+      2 Relatvie Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-implementation">
+<span class="md-ellipsis">
+      4 Implementation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2019-action-assessment-by-joint-relation-graphs">
+<span class="md-ellipsis">
+      2019: Action Assessment by Joint Relation Graphs
+    </span>
+</a>
+<nav aria-label="2019: Action Assessment by Joint Relation Graphs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduction">
+<span class="md-ellipsis">
+      1 Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-related-works">
+<span class="md-ellipsis">
+      2 Related Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach_1">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2022-skeleton-based-deep-pose-feature-learning">
+<span class="md-ellipsis">
+      2022: Skeleton-based Deep Pose Feature Learning
+    </span>
+</a>
+<nav aria-label="2022: Skeleton-based Deep Pose Feature Learning" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-abstract_1">
+<span class="md-ellipsis">
+      1 Abstract
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-relative-works">
+<span class="md-ellipsis">
+      2 Relative Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach_2">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2023-ms-gcn">
+<span class="md-ellipsis">
+      2023: MS-GCN
+    </span>
+</a>
+<nav aria-label="2023: MS-GCN" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduction_1">
+<span class="md-ellipsis">
+      1 Introduction
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-related-works_1">
+<span class="md-ellipsis">
+      2 Related Works
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-approach_3">
+<span class="md-ellipsis">
+      3 Approach
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="_1">基于骨架的方法</h1>
+<h2 id="2018-st-gcn">2018: ST-GCN</h2>
+<blockquote>
+<p>Spatial Temporal Graph Convolutional Networks</p>
+</blockquote>
+<h3 id="1-abstract">1 Abstract</h3>
+<ul>
+<li>
+<p>传统 <u>骨架建模方法</u></p>
+<ul>
+<li>
+<p>依赖 hand-crafted parts / traversal rules</p>
+</li>
+<li>
+<p>表达能力有限 &amp; 泛化较为困难</p>
+</li>
+</ul>
+</li>
+<li>
+<p>创新点：提出 “空间-时间 图卷积网络 (ST-GCN)”</p>
+<ul>
+<li>
+<p>基于动态骨架，包含：</p>
+<ul>
+<li>
+<p>空间边：与关节之间的物理连接关系一致</p>
+</li>
+<li>
+<p>时间边：连接各个时间点中的同一关节</p>
+</li>
+</ul>
+</li>
+<li>
+<p>自动学习时空 pattern（深度神经网络的优势），增强表达能力与泛化能力</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-relatvie-works">2 Relatvie Works</h3>
+<ul>
+<li>
+<p>动作识别 Human Action Recognition</p>
+<ul>
+<li>
+<p>可以从多模态入手：外观、深度、光流 ...</p>
+</li>
+<li>
+<p>基于 “动态骨架建模” 的方法（Skeleton Based Action Recognition）相对较少</p>
+<p>“动态骨架“ 可以自然地表示为人体关节位置的时间序列，以二维或三维坐标的形式呈现。然后可以通过分析其运动模式来识别人体动作。</p>
+<ul>
+<li>
+<p>早期方法简单将各时间点的关节坐标作为 feature，并对其进行时序分析</p>
+<p>=&gt; 没有利用关节之间的 <u>空间关系</u></p>
+</li>
+<li>
+<p>大多数现有方法依赖于 <u>手工设计</u> 部件和规则，以实现对 <em>空间关系</em> 的分析</p>
+<p>手工设计的特征包括：关节轨迹协方差矩阵、关节相对位置、身体部位间的旋转评平移</p>
+<p>=&gt; 难以泛化</p>
+</li>
+<li>
+<p>近年来基于深度学习的方法使用 RNN/T-CNN 实现端到端的动作识别</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>NN on Graph</p>
+<p>一般采用 CNN、RNN 和 GCN (图卷积网络)，其中 GCN 的主流解决方案如下：</p>
+<ol>
+<li>
+<p>Spectral Perspective: 对于 GCN 中存在的 locality 采用 “谱分析” 的形式</p>
+</li>
+<li>
+<p>Spatial Perspective: 直接对图上某一特定节点 &amp; 其 neighbors 应用卷积核（本文路径）</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="3-approach">3 Approach</h3>
+<pre class="mermaid"><code>graph LR
+    A[Input Video] --"Pose Estimation"--&gt; B["ST Graph(joints)"] --"ST-GCN"--&gt; C[feature map] --"Classification"--&gt; D["Class Scores"] --SoftMax--&gt; Category
+</code></pre>
+<h4 id="1-construct-skeleton-graph">1 Construct Skeleton Graph</h4>
+<p>对于给定的 <span class="arithmatex">\(N\)</span> 个关节 + <span class="arithmatex">\(T\)</span> 帧，构建 undirected spatial temporal graph <span class="arithmatex">\(G = (V,E)\)</span></p>
+<ul>
+<li>
+<p>节点集 <span class="arithmatex">\(V = \{v_{ti}| t \in [1,T], i \in [1,N]\}\)</span> 包含了所有帧上的所有关节点</p>
+<p>节点 <span class="arithmatex">\(v_{ti}\)</span> 的 Feature Vector <span class="arithmatex">\(F(v_{ti})\)</span>由 坐标向量 + t 帧 i-th 节点的置信度构成</p>
+<blockquote>
+<p>节点坐标可以是 2D 或 3D 的</p>
+</blockquote>
+</li>
+<li>
+<p>边集 <span class="arithmatex">\(E\)</span> 由两部分构成</p>
+<ol>
+<li>
+<p>同一帧的身体内部连接（Spatial）<span class="arithmatex">\(E_S = \{\overline{v_{ti}v_{tj}}|(i,j) \in H\}\)</span></p>
+</li>
+<li>
+<p>帧间连接（Temporal）<span class="arithmatex">\(E_F = \{ \overline{v_{ti}v_{(t+1)i}} \}\)</span></p>
+</li>
+</ol>
+</li>
+<li>
+<p>作者通过以下两个步骤基于 <em>骨架序列</em> 构建 <em>空间-时间图</em> <span class="arithmatex">\(G\)</span></p>
+<ol>
+<li>
+<p>根据人体结构，连接同一帧内的各关节点（不是全连接，是火柴人）</p>
+</li>
+<li>
+<p>连接每一帧中的统一关节点</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-spatial-graph-convolutional-neural-network">2 Spatial Graph Convolutional Neural Network</h4>
+<h5 id="spatial-graph-convolutional">Spatial Graph Convolutional</h5>
+<ul>
+<li>
+<p>对于编号为 <span class="arithmatex">\(\tau\)</span> 的帧，我们拥有：</p>
+<ul>
+<li>包含 N 个节点的节点集合 <span class="arithmatex">\(V_{\tau}\)</span></li>
+<li>帧内骨架边集合 <span class="arithmatex">\(E_{S(\tau)} = \{\overline{v_{\tau i} v_{\tau j}}| (i,j) \in H\}\)</span></li>
+</ul>
+</li>
+<li>
+<p>考虑对 Image / Feature Map （2D数据）进行卷积：</p>
+<p>在 stride=1 + 适当 padding 时，可以实现 <u>输入输出 shape 一致</u></p>
+<ul>
+<li>
+<p>对于 kernel size = <span class="arithmatex">\(K \times K\)</span>、输入 <span class="arithmatex">\(F_{in}\)</span> 具备 c 个通道的卷积操作，空间位置（节点） <span class="arithmatex">\(x\)</span> 处的单通道输出可以写为：</p>
+<div class="arithmatex">\[
+    f_{out}(x) = \sum_{h=1}^K \sum_{w=1}^K f_{in(p(x,h,w)) \cdot w(h,w)}
+\]</div>
+<ul>
+<li>
+<p>其中 <span class="arithmatex">\(p(·)= Z^2 \times Z^2 \rightarrow Z^2\)</span> 为 采样函数，用于枚举节点 <span class="arithmatex">\(x\)</span> 的 neighbors</p>
+</li>
+<li>
+<p>权重函数 <span class="arithmatex">\(w(·) = Z^2 \rightarrow \mathbb{R}^c\)</span> 提供 c-dimension 下的权重向量</p>
+<p>=&gt; the filter weights are shared everywhere on the input image (与位置无关)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>我们可以通过以下方式将卷积操作扩充到空间图 <span class="arithmatex">\(V_t\)</span> 上：</p>
+<ul>
+<li>对于图上的每一个节点，feature map <span class="arithmatex">\(f_{in}^t: V_t \rightarrow \mathbb{R}^c\)</span> 均有一个对应的特征向量</li>
+</ul>
+<p>此外，我们还需要重新定义采样函数 <span class="arithmatex">\(p(·)\)</span> 和权重函数 <span class="arithmatex">\(w(·)\)</span></p>
+<ul>
+<li>
+<p>Sampling function</p>
+<p>对于 Graph，我们将卷积操作定义在节点 <span class="arithmatex">\(v_{ti}\)</span> 及其 neighbors 集合 <span class="arithmatex">\(B(v_{ti}) = \{v_{tj}|d(v_{ti},v_{tj}) \leq D\}\)</span> 上</p>
+<blockquote>
+<p>其中 <span class="arithmatex">\(d(v_{ti},v_{tj})\)</span>, <span class="arithmatex">\(D = 1\)</span> =&gt; 仅选择直接相邻的的节点</p>
+</blockquote>
+<p>我们可以将采样函数 <span class="arithmatex">\(p(·): B(v_{ti}) \rightarrow V\)</span> 改写为:</p>
+<div class="arithmatex">\[
+p(v_{ti}, v_{tj}) = v_{tj}
+\]</div>
+</li>
+<li>
+<p>Weight function</p>
+<p>由于 Graph 中的各个节点没有明确的相对位置（网格），本文根据一定策略将节点 <span class="arithmatex">\(v_{ti}\)</span> 的所有 neighbors <span class="arithmatex">\(B(v_{ti})\)</span> 划分为 <span class="arithmatex">\(K\)</span> 个子集，编号为 <span class="arithmatex">\([0, K-1]\)</span></p>
+<p>=&gt; 经过划分，<span class="arithmatex">\(v_{ti}\)</span> 的每一个 neighbot 都会有一个数字标签（子集编号）</p>
+<p>此时的权重函数可以被实现为 shape = <span class="arithmatex">\(c \times K\)</span> 的矩阵，有：</p>
+<div class="arithmatex">\[
+w(v_{ti}, v_{tj}) = w'(l_{ti}(v_{tj}))
+\]</div>
+</li>
+</ul>
+</li>
+<li>
+<p>Spatial Graph Convolution</p>
+<p>在重新定义采样函数和权重函数后，我们可以将特定关节点 <span class="arithmatex">\(v_{ti}\)</span> 上的卷积操作记为：</p>
+<div class="arithmatex">\[
+f_{out}(v_{ti}) = \sum_{v_{tj} \in B(v_{ti})} \frac{1}{Z_{ti}(v_{tj})} f_{in}(v_{tj}) \cdot w(l_{ti}(v_{tj}))
+\]</div>
+<p>其中正则化项 <span class="arithmatex">\(Z_{ti}(v_{tj})\)</span> 为邻接点 <span class="arithmatex">\(v_{tj}\)</span> 所在子集的 cardinality，用于平衡各子集对 output 产生的影响</p>
+</li>
+</ul>
+<h5 id="spatial-temporal-modeling">Spatial Temporal Modeling</h5>
+<ul>
+<li>
+<p>我们可以通过扩展 “邻域” 的概念，从而将 Spatial Conv 扩展到 Spatial-Temporal Conv</p>
+<p>将相邻帧上的同一 joint 节点也纳入 neighbor 的考量范围，给定关节点的邻域集合 <span class="arithmatex">\(B\)</span> 可记为：</p>
+<div class="arithmatex">\[
+B(v_{ti}) = v_{qj}, \text{ where }
+\left\{
+    \begin{align*}
+        &amp; d(v_{tj}, v_{ti}) \leq K \\
+        &amp; \|q-t\| \leq \lfloor \Gamma /2 \rfloor
+    \end{align*}
+\right.
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\Gamma\)</span> 用于控制时间上跨越的 n_frames，可以被视为 "temporal kernel size"</li>
+</ul>
+</li>
+<li>
+<p>基于 single frame 下的 labeling func <span class="arithmatex">\(l_{ti}(v_{tj})\)</span>，我们也以扩充到 S-T 范围：</p>
+<div class="arithmatex">\[
+    l_{ST}(v_{qj}) = l_{ti}(v_{tj}) + (q-t + \lfloor \Gamma / 2 \rfloor) \times K
+\]</div>
+</li>
+</ul>
+<h4 id="3-partition-strategies">3 Partition Strategies</h4>
+<p>以 single frame 情况为例，讨论 3 种领域划分方式</p>
+<ol>
+<li>
+<p>Uni-labeling: 只有 1 个 == whole neighbor 的子集</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(K = 1, l_{ti}(v_{tj}) = 0\)</span></p>
+</li>
+<li>
+<p>每个相邻节点上的特征向量将与<em>相同的权重向量</em>进行内积</p>
+</li>
+<li>
+<p>在单帧情况下，使用这种策略相当于计算权重向量与所有相邻节点的<em>平均特征向</em>量之间的内积</p>
+<p>可能导致丢失局部差分特性</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Distance partitioning: 根据两点间的路径距离 <span class="arithmatex">\(d(v_{ti}, v_{tj})\)</span> 划分
+    &gt; 本文考虑 <span class="arithmatex">\(D==1\)</span>, 故 <span class="arithmatex">\(d \in \{0,1\}\)</span></p>
+<ul>
+<li>
+<p><span class="arithmatex">\(K = 2, l_{ti}(v_{tj}) = d(v_{ti}, v_{tj})\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(d=0\)</span> 为中心位置 <span class="arithmatex">\(v_{ti}\)</span> 本身</p>
+</li>
+<li>
+<p><span class="arithmatex">\(d=1\)</span> 为其他与 <span class="arithmatex">\(v_{ti}\)</span> <em>直接相邻</em> 的节点</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Spatial configuration partitioning: 根据以下策略将 neighbors 划分为三个子集</p>
+<ol>
+<li>
+<p><span class="arithmatex">\(v_{ti}\)</span> 本身</p>
+</li>
+<li>
+<p>centripetal group（向心）： 比 <span class="arithmatex">\(v_{ti}\)</span> 更靠近骨架 <em>重心</em> 的点集</p>
+</li>
+<li>
+<p>centrifugal group（离心）：剩下的点</p>
+</li>
+</ol>
+<p>将 all frames 中指定关节 i 到重心的平均距离记为 <span class="arithmatex">\(r_i\)</span>，有：</p>
+<div class="arithmatex">\[
+l_{ti}(v_{tj}) = 
+    \left\{
+        \begin{align*}
+            0 &amp;\text{  if } r_j = r_i \\
+            1 &amp;\text{  if } r_j \lt r_i \\
+            2 &amp;\text{  if } r_j \gt r_i 
+        \end{align*}
+    \right.
+\]</div>
+</li>
+</ol>
+<h4 id="4-learnable-edge-importance-weighting">4 Learnable edge importance weighting</h4>
+<ul>
+<li>
+<p>在人体运动时，骨架关节将以 Group 的形式移动；且同一个关节可能参与了多个 Group 的协作。</p>
+<p>为此，在模拟不同组别的过程中，同一关节可能具有不同的 “重要性”</p>
+</li>
+<li>
+<p>作者因此在 ST-GCN 的每一层添加了一个 learnable mask <span class="arithmatex">\(M\)</span>，将根据每个 Spatial Graph 中的边集 <span class="arithmatex">\(E_S\)</span> 学习权重</p>
+</li>
+</ul>
+<h3 id="4-implementation">4 Implementation</h3>
+<blockquote>
+<p>由于对于 Graph 的卷积与 2D / 3D 卷积存在一些不同，此处介绍一些实现细节</p>
+</blockquote>
+<ul>
+<li>
+<p>single frame </p>
+<ul>
+<li>
+<p>各关节节点的连接通过 <em>邻接矩阵</em> <span class="arithmatex">\(A\)</span> 表示</p>
+</li>
+<li>
+<p>此外有一个 identity matrix <span class="arithmatex">\(I\)</span> 用于表示 self-connections</p>
+</li>
+<li>
+<p>使用 uni-label partition strategy，则 ST-GCN 操作可记为：</p>
+<div class="arithmatex">\[
+f_{out} = \Lambda^{-\frac{1}{2}}(A+I) \Lambda^{-\frac{1}{2}} f_{in}W
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(\Lambda^{ii} \sum_j (A^{ij} + I^{ij})\)</span></p>
+</li>
+<li>
+<p>所有通道的 weight vectors 相会堆叠形成权重矩阵 <span class="arithmatex">\(W\)</span></p>
+</li>
+<li>
+<p>将 <span class="arithmatex">\(A+I\)</span> 替换为 <span class="arithmatex">\((A+I) \otimes M\)</span> 即可实现 “可学习的重要性掩码”，M 被初始化全 1 矩阵</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>神经网络架构</p>
+<ul>
+<li>
+<p>由于 ST-GCN 的所有 nodes 共享权重矩阵，我们必须保证不同关节的 input 范围相同</p>
+<p>=&gt; 将原始的骨架数据放入 Batch Normalization Layer</p>
+</li>
+<li>
+<p>ST-GCN 模型共包含了 9 个 units，有 9 种 temporal kernel size</p>
+<ul>
+<li>
+<p>前三个 units 输出 64 channel，中间三个 units 输出 128 channels，最后三个 units 输出 256 channels</p>
+</li>
+<li>
+<p>每一个 unit 都应用了 ResNet 机制，并且以 <span class="arithmatex">\(p=0.5\)</span> 随机 drop feature 避免过拟合</p>
+</li>
+<li>
+<p>4th &amp; 7th 时间卷积层的 <code>strides=2</code>，用作池化层</p>
+</li>
+<li>
+<p>最终输出将通过 Global Pooling 得到一个 256D 的 feature vector</p>
+</li>
+</ul>
+</li>
+<li>
+<p>feature vector 将通过 SoftMax Classifier 识别动作类型</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2019-action-assessment-by-joint-relation-graphs">2019: Action Assessment by Joint Relation Graphs</h2>
+<h3 id="1-introduction">1 Introduction</h3>
+<ul>
+<li>
+<p>先前的工作</p>
+<ul>
+<li>
+<p>大部分聚焦于 whole secene（包括 performer's body &amp; background），但忽略了 detailed joint interactions</p>
+</li>
+<li>
+<p>由于各关节的动作质量一定程度依赖于其邻域，这使得细粒度的动作质量评估无法正确进行</p>
+</li>
+<li>
+<p>虽然部分工作尝试通过分析各 joint 的运动，但都是 individually 地进行分析</p>
+</li>
+</ul>
+</li>
+<li>
+<p>本文工作</p>
+<ul>
+<li>考虑了 locally connected joints 间的 interactive motion（而非 individually 的对每个关节点进行单独分析）</li>
+<li>构建了 trainable Joint Relation Graphs 并以此为基础对 joint motion 进行分析</li>
+<li>
+<p>提出了两个新的 Modules:</p>
+<div class="admonition info">
+<p class="admonition-title">Good Performance = Excellent Movement for each body part + Good Coordination among joints</p>
+</div>
+<ul>
+<li>
+<p>Joint Commonality Module：对 certain body part 的 general motion 进行建模</p>
+<p>locally connected joints 之间的运动共性反映了身体部分的 general motion</p>
+<p>通过在 spatial graph 中汇总关节运动来提取特定 time step 的身体部位动力学信息</p>
+</li>
+<li>
+<p>Joint Difference Module：对于 body part 内的 motion difference 进行建模</p>
+<p>locally connected joints 之间的差异性反映了运动的协调性</p>
+<p>通过将每个关节与其在空间图和时间图中的局部连接邻居进行比较，来提取协调信息</p>
+</li>
+</ul>
+</li>
+<li>
+<p>分析了本方法对于描述动作质量评估过程的可解释性</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-related-works">2 Related Works</h3>
+<h4 id="action-performance-assessment">Action Performance Assessment</h4>
+<ul>
+<li>
+<p>Gordon 首先探索了对视频进行自动动作评估的可行性，并尝试通过 skeleton trajectories 分析跳马</p>
+</li>
+<li>
+<p>对外科手术评估的工作为不同的外科动作定义了 specific features，使得这些成果难以泛化</p>
+</li>
+</ul>
+<h4 id="relation-models">Relation Models</h4>
+<blockquote>
+<p>CV 社区尝试对 semantic / spatial / temporal relation 进行建模</p>
+</blockquote>
+<p>一些工作尝试对 skeleton structure 上的 spatial-temporal relations 进行建模</p>
+<ul>
+<li>部分工作将 human skeleton 构建成 tree（移除了一些边）</li>
+<li>部分工作对 neighbouring joints 进行提取，并重新进行排列（但 image 中相邻的点在真实骨骼结构中可能不相邻）</li>
+<li>Celiktutan 尝试对 skeleton dynamic sequences 进行分析，但忽视了单幅 skeleton graph 中各 joint 之间的联系</li>
+</ul>
+<h4 id="graph-based-joint-relations">Graph-based Joint Relations</h4>
+<ul>
+<li>
+<p>部分 Action Recognition 也尝试通过 graph 对 spatial-temporal joint relation 进行建模</p>
+<p>simply connect the same joints individually across time</p>
+<p>但由于 short-term, local fluency and proficiency 对于 AQA 十分重要，这一方法并不好用</p>
+</li>
+<li>
+<p>本文通过分析 joints' neighbours on Both spatial &amp; temporal relation graphs 来对更细粒度的特征进行建模</p>
+</li>
+</ul>
+<h3 id="3-approach_1">3 Approach</h3>
+<p><center>
+<img src="../../assets/JRG-Pipline.png" style="max-height:300px;"/>
+</center></p>
+<h4 id="1-joint-commonality-module">1) Joint Commonality Module</h4>
+<blockquote>
+<p>Learning motion of joint neighbourhoods</p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">learnable Spatial Relation Graph</p>
+<blockquote>
+<p>represents how much impact each neighbour has on the motion of a certain joint within each time step</p>
+</blockquote>
+<ul>
+<li>使用邻接矩阵 <span class="arithmatex">\(A_s \in \mathbb{R}^{J\times J}\)</span> 表示顶点间的连接关系（<span class="arithmatex">\(J\)</span> 为顶点总数），其元素值非负<ul>
+<li>relevant pair 上的元素 is learnable</li>
+<li>irrelevant pair 上的元素被设为 0</li>
+</ul>
+</li>
+<li><span class="arithmatex">\(A_s(i,j)\)</span> 表示 i<sup>th</sup>-node 对 j<sup>th</sup>-node 施加的影响</li>
+</ul>
+</div>
+<p>Joint Commonality Module 本质上是在 Spatial Relation Graph 进行 graphConv 操作，最终输出 Commonality Features</p>
+<p>在进行 Conv 操作前，该模块学习了 individual joints' motion，而在卷积后对 neighbourhoods 进行了学习</p>
+<ul>
+<li>
+<p>假设进行 graphConv 前的 feature matrix 为 <span class="arithmatex">\(H_c^t\)</span>，包含了 t<sup>th</sup> time-step 中所有节点的 hidden state</p>
+<p><span class="arithmatex">\(c \in \{0,1\}\)</span> 表示 graphConv 是否已经执行</p>
+</li>
+<li>
+<p>graphConv 操作可以被视为 feature Matrix 与 adjacent Matrix 之间的乘积，即</p>
+<div class="arithmatex">\[
+H_1^t = A_s · H_0^t \in \mathbb{R}^{J \times M}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(M\)</span> 为 feature dimension of the hidden states</li>
+<li>the hidden states contain the motion features of the joints BEFORE the convolution，即 <span class="arithmatex">\(H_0^t = F^t \in \mathbb{R}^{J \times M}\)</span></li>
+</ul>
+</li>
+<li>
+<p>随后 Module 对所有 nodes 的 hidden state 进行聚合(MeanPooling)，得到 Commonality Feature</p>
+<div class="arithmatex">\[
+\overline{h^t_c} = \frac{1}{N} ({H^t_c}^T · [1,1,1,...,1]^T)
+\]</div>
+<h4 id="2-joint-difference-module">2) Joint Difference Module</h4>
+<blockquote>
+<p>Great motion differences among joints within a neighbourhood indicate a lack of coordination</p>
+</blockquote>
+</li>
+</ul>
+<p>Joint Difference Module 本质上是将特定 joint 与其 spatial &amp; temporal neighbours 进行对比，从而对 motion difference 进行学习，最终得到 Difference Features</p>
+<div class="admonition comment">
+<p class="admonition-title">目前只考虑特定 joint 在 <em>current &amp; previous</em> time step 中的 neighbours</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Temporal Relation Graph</p>
+<blockquote>
+<p>model the joint relations across two immediate time steps</p>
+</blockquote>
+<ul>
+<li>使用 <span class="arithmatex">\(A_p \in \mathbb{R}^{J\times J}\)</span> 表示节点间的邻接关系，被初始化为 <span class="arithmatex">\([0,1)\)</span> 的随机数</li>
+<li><span class="arithmatex">\(A_p(i,j)\)</span> 表示 (t-1)<sup>th</sup> 中的 <span class="arithmatex">\(v_i\)</span> 对 t<sup>t</sup> 中的 <span class="arithmatex">\(v_j\)</span> 的影响</li>
+</ul>
+</div>
+<ol>
+<li>
+<p>compute the motion differences between joint <span class="arithmatex">\(i\)</span> and each of its neighbours <span class="arithmatex">\(j\)</span></p>
+</li>
+<li>
+<p>aggregates the motion differences with weighted sum (权重为 <span class="arithmatex">\(w_j\)</span>)</p>
+<div class="arithmatex">\[
+\begin{align*}
+D_s^t(i,m) &amp;= \sum_j w_j · (A_s(i,j) · (F^t(i,m) - F^t(j,m)))\\
+D_p^t(i,m) &amp;= \sum_j w_j · (A_p(i,j) · (F^t(i,m) - F^t(j,m)))\\
+&amp;1 \leq i,j \leq J, 1 \leq m \leq M
+\end{align*}
+\]</div>
+</li>
+<li>
+<p>通过 MeanPooling 聚合得到 Difference Features <span class="arithmatex">\(\overline{d^t_s}, \overline{d^t_p}\)</span></p>
+<div class="arithmatex">\[
+\overline{d^t_s} = \frac{1}{N}({D_s^t}^T · [1,1,1,...,1]^T)
+\]</div>
+</li>
+</ol>
+<h4 id="3-regression-module">3) Regression Module</h4>
+<p>Input 包含了:</p>
+<ol>
+<li>whole-scene video feature <span class="arithmatex">\(q^t \in \mathbb{R}^M\)</span>（运动员在背景中的位置也是一个重要信息）</li>
+<li>Commonality Features <span class="arithmatex">\(\overline{h^t_c}\)</span></li>
+<li>Difference Features <span class="arithmatex">\(\overline{d^t_s}, \overline{d^t_p}\)</span></li>
+</ol>
+<hr/>
+<ol>
+<li>
+<p>通过 feature encoder 对 input feature 进行 encode</p>
+<div class="arithmatex">\[
+\begin{align*}
+\hat{u^t_i} &amp;= \text{EncodeFunc}_i(u_i^t)\\
+u_i^t &amp;\in \{q^t,\overline{h^t_0}, \overline{h^t_1}, \overline{d^t_s}, \overline{d^t_p}\}
+\end{align*}
+\]</div>
+</li>
+<li>
+<p>使用 feature pooling layer 整合得到 overall feature <span class="arithmatex">\(v^t\)</span>（<span class="arithmatex">\(\alpha_i ,\beta_i\)</span> 分别为 scalar &amp; bias）</p>
+<div class="arithmatex">\[
+v^t = \sum_i \alpha_i · \hat{u^t_i} + \beta_i
+\]</div>
+<p>为了降低不同 feature 之间存在的冗余，训练过程中会为 feature pooling layer 添加正则项：</p>
+<div class="arithmatex">\[
+R_O = \sum_{i,j} \gamma · (\hat{u^t_i}^T · \hat{u^t_j})
+\]</div>
+</li>
+<li>
+<p>使用两个 FC Layer 进行回归计算（视频被划分为 <span class="arithmatex">\(t\)</span> 个 segments，并独立进行回归预测）</p>
+<div class="arithmatex">\[
+\hat{s} = \sum_t \text{RegFunc}(v^t)
+\]</div>
+</li>
+</ol>
+<h4 id="evaluation">Evaluation</h4>
+<p>使用 MSE Loss，together with:</p>
+<ul>
+<li>orthogonal regularization term (with a weight 0.8)</li>
+<li>L2 regularization terms (with a weight 0.1) on the relation graphs</li>
+</ul>
+<h2 id="2022-skeleton-based-deep-pose-feature-learning">2022: Skeleton-based Deep Pose Feature Learning</h2>
+<div class="admonition warning">
+<p class="admonition-title">好像只是把 ST-GCN 叠了 10 层，再加一个 LSTM</p>
+</div>
+<h3 id="1-abstract_1">1 Abstract</h3>
+<ul>
+<li>
+<p>现有工作</p>
+<ul>
+<li>
+<p>Evaluate <strong>single / sequential-defined</strong> action in <strong>short-term</strong> videos</p>
+<blockquote>
+<p>Sample: diving(跳水), vault(跳马)</p>
+</blockquote>
+</li>
+<li>
+<p>Extract features <strong>directly</strong> from RGB videos through <strong>3D-ConvNets</strong></p>
+<div class="admonition bug">
+<p class="admonition-title">导致 feature 和 scene info 混淆在一起</p>
+<ul>
+<li>但另一篇文章又批判了 skeleton-based 方法忽视了水花等环境因素，导致准确度下降</li>
+<li>大概得考虑一下 trade off？</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<p>Long-duration Video 面临的挑战</p>
+<ul>
+<li>
+<p>Contain multiple chronologically(时序上) inconsistent actions</p>
+<p>e.g. 不同花滑短节目对于 滑行/跳跃/旋转 的编排顺序并不一致</p>
+</li>
+<li>
+<p>Actions only have slight difference in a few frames</p>
+<p>e.g. 3Flip &amp; 3Lutz 其实长得很像</p>
+</li>
+</ul>
+</li>
+<li>
+<p>WHY Skeleton-based ？</p>
+<blockquote>
+<p>Yes, but: 性能没有 RGB-Based 方法好</p>
+</blockquote>
+<ul>
+<li>
+<p>不应该只提供一个 final score，还应该提供 meaningful feedbacks 帮助人们进行改进</p>
+</li>
+<li>
+<p>Robust to changes in: appearance, lighting, surrounding env</p>
+</li>
+</ul>
+</li>
+<li>
+<p>本文工作：<code>deep pose feature learning</code> <code>long-duration videos (花滑/艺术体操)</code></p>
+<ul>
+<li>
+<p>特征提取：使用 <strong>Spatial-Temporal Pose Extraction (STPE)</strong> Module</p>
+<ul>
+<li>
+<p>Capture <strong>subtle</strong> changes</p>
+</li>
+<li>
+<p>Obtain <strong>skeletal data</strong> in <strong>space &amp; time</strong> dimensions</p>
+</li>
+</ul>
+</li>
+<li>
+<p>时序特征表示：使用 <strong>Inter-action Temporal Relation Extraction (ITRE)</strong> Module</p>
+<p>通过 RNN 对骨架数据的时序特征进行建模</p>
+</li>
+<li>
+<p>Score Regression：使用 FCN（全卷积网络）实现</p>
+</li>
+<li>
+<p>Benchmarks: MIT-Skate, FIS-V</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-relative-works">2 Relative Works</h3>
+<h4 id="skeleton-based-aqa">Skeleton-based AQA</h4>
+<p>在 Sports 领域的研究：</p>
+<ol>
+<li>
+<p>Pirsiavash 最早提出将 pose feature 应用于 AQA 领域</p>
+<p>通过 Discrete Cosine Transform (DCT) 对 pose feature 进行编码，随后使用 SVR 进行回归预测</p>
+</li>
+<li>
+<p>Venkataraman 提出计算 multivariate approximate entropy (多变量近似熵)，对 单个关节的变化 &amp; 关节间联系 进行建模</p>
+</li>
+<li>
+<p>Nekoui 建立了 two-stream(双流) 网络，对 appearance &amp; pose feature 分别进行建模</p>
+</li>
+<li>
+<p>Pan 提出了 Graph-based Model 对 关节间协方差 &amp; 身体局部动作 进行建模</p>
+</li>
+</ol>
+<hr/>
+<p>与 GCN 相关的方法：（只在 diving 这样的短时任务中验证过）</p>
+<blockquote>
+<p>GCN 相比于其他卷积网络，在骨架数据这种 graph-structured 的特征上具有更好的泛化性</p>
+</blockquote>
+<ol>
+<li>
+<p>Bruce 提出了一个 two-task GCN 对 deep pose feature 进行提取</p>
+<p>应用于老年痴呆症的异常检测与质量评估</p>
+</li>
+<li>
+<p>Nekoui 提出了数据集 ExPose，并使用了 ST-GCN 从提取的关节序列中提取 pose feature</p>
+</li>
+</ol>
+<h3 id="3-approach_2">3 Approach</h3>
+<details class="info">
+<summary>Figure Skating Grading Rule</summary>
+<blockquote>
+<p>这里也标榜了一下 "based on the rules of Figure-Skating"，然后水了好长一段</p>
+</blockquote>
+<div class="arithmatex">\[ \text{Final Score} = TES + PCS - TDS \]</div>
+<ul>
+<li>每个动作的 <span class="arithmatex">\(TES = \text{basic score} + GOE\)</span>，<span class="arithmatex">\(TDS \geq 0\)</span> 是失误扣分</li>
+<li>一般有 9 位裁判，去掉 最高&amp;最低 后取平均值</li>
+</ul>
+</details>
+<h4 id="1">1 骨架信息获取 &amp; 预处理</h4>
+<p>记共有 <span class="arithmatex">\(N\)</span> 个视频的 Labled RGB 视频数据集 <span class="arithmatex">\(V = \{v_i, l_i\}_{i= 1 \sim N}\)</span></p>
+<ul>
+<li>其中 i-th 具有 <span class="arithmatex">\(m\)</span> 帧的视频记为 <span class="arithmatex">\(v_i = \{I_j\}_{j=1\sim m}\)</span></li>
+<li><span class="arithmatex">\(l_i\)</span> 是 i-th 视频的 ground-truth label</li>
+</ul>
+<hr/>
+<ol>
+<li>
+<p>对 i-th 视频进行 Pose Estimation 后，得到骨架数据 <span class="arithmatex">\(v_i \rightarrow \{S_j\}_{j=1\sim m}\)</span></p>
+<p>这篇文章使用了 OpenPose 提供的 18-joint Model</p>
+</li>
+<li>
+<p>对所有的 Skeleton Seq 采取相同的采样策略：只处理前 <span class="arithmatex">\(T\)</span> 帧，使 <span class="arithmatex">\(s = \{S_j\}_{j=1\sim m} \rightarrow \{S_j\}_{j=1\sim T}\)</span></p>
+</li>
+<li>
+<p>将 <span class="arithmatex">\(s\)</span> 划分为 <span class="arithmatex">\(M\)</span> 个不重叠的子序列 <span class="arithmatex">\(s \rightarrow \{P_k\}_{k = 1 \sim M}\)</span>，每个子序列对应长度 <span class="arithmatex">\(Z = \frac{T}{M}\)</span></p>
+</li>
+<li>
+<p>考虑单个子序列 <span class="arithmatex">\(P = \{p^i = \{(x_j^i, y_j^i, \text{ac}_j^i)\}_{j=1}^{18}\}_{i=1}^Z\)</span></p>
+<p>其中： <span class="arithmatex">\((x_j, y_j)\)</span> 是 j-th joint 在笛卡尔坐标系下的坐标，<span class="arithmatex">\(\text{ac}_j\)</span> 是该坐标的置信度</p>
+</li>
+<li>
+<p>BatchNormalization： <span class="arithmatex">\(x' = \frac{x - \mu}{\sigma}\)</span></p>
+</li>
+</ol>
+<h4 id="2-stpe">2 时空姿态特征提取 (STPE)</h4>
+<p><center><img src="../../assets/STPE.png" style="max-height: 200px;"/></center></p>
+<p>熟悉的类 ST-GCN 思路：</p>
+<blockquote>
+<p>好的，直接拿 ST-GCN 当 backbone 了</p>
+</blockquote>
+<ul>
+<li>Spatial Dimension: 使用 skeleton-graph 来表示关节及其连接关系</li>
+<li>Temporal Dimension:  把相邻 frame 里的同一个 joint 连起来就算完事</li>
+</ul>
+<hr/>
+<p>小小改进：</p>
+<ul>
+<li>
+<p>Basic Block = SpatialConv layer <span class="arithmatex">\(\rightarrow\)</span> TemporalConv Layer <span class="arithmatex">\(\rightarrow\)</span> Dropout Layer</p>
+<p>SConv &amp; TConv 的输出都有 BatchNorm + ReLU 的处理</p>
+</li>
+<li>
+<p>堆叠 10 个 Basic Block：</p>
+<ul>
+<li>使用 <span class="arithmatex">\(C\)</span> 表示 feature Channel，<span class="arithmatex">\(Z\)</span> 为子序列时长，<span class="arithmatex">\(J = 18\)</span> 为关节总数</li>
+<li>令 temporal kernel size = 9 &amp;&amp; <span class="arithmatex">\(L_4, L_7\)</span> strides = 2，则 <code>4-3-3</code> 层的输出通道数分别为 <code>64-128-256</code></li>
+</ul>
+<div class="arithmatex">\[
+\text{input}^{C \times Z \times J} \rightarrow \text{STPE} \rightarrow \text{output}^{256 \times Z' \times J} = f_p
+\]</div>
+</li>
+</ul>
+<h4 id="3-atre">3 动作间时序联系提取 (ATRE)</h4>
+<blockquote>
+<ul>
+<li>对于花滑来说 action 之间的衔接会影响 PCS 得分</li>
+<li>这里通过使用了 LSTM 的 RNN 实现</li>
+</ul>
+</blockquote>
+<p>经过 STPE 模块的处理，我们得到了 pose feature <span class="arithmatex">\(F_p = \{f_p^k\}_{k=1\sim m}\)</span></p>
+<ol>
+<li>
+<p>使用 全连接(FC) 层来</p>
+<ul>
+<li>Remove redundant information</li>
+<li>Reduce dimension of Pose Feature</li>
+</ul>
+</li>
+<li>
+<p>使用 BatchNorm 层提升泛化能力</p>
+</li>
+</ol>
+<hr/>
+<blockquote>
+<p>关于 LSTM 的实现</p>
+</blockquote>
+<p>使用一个 <span class="arithmatex">\(M\)</span> time steps 的 LSTM 网络（因为 segmentation 的数量是固定的）</p>
+<ul>
+<li>
+<p>共有 <span class="arithmatex">\(M\)</span> 个 Memory-cells 用于存储 info * output feature</p>
+</li>
+<li>
+<p>每个 cell：</p>
+<ul>
+<li>输入 = i-th skeleton subSeq + 上一个 cell 的 output</li>
+<li>layer 数量为 1，hidden size of layer = 256</li>
+</ul>
+</li>
+<li>
+<p>最终输出 <span class="arithmatex">\(f_t\)</span>（两种方案）：</p>
+<ol>
+<li>✅ 最后一个 LSTM cell 的输出</li>
+<li>所有 LSTM cells 输出的平均值</li>
+</ol>
+</li>
+</ul>
+<h4 id="4">4 回归预测</h4>
+<ul>
+<li>
+<p>使用 3 Layers FCN(全连接神经网络) 进行特征降纬</p>
+<p>由于 STPE 的输出为 <span class="arithmatex">\(C' \times Z' \times J\)</span>，3 Layers 的节点数分别为 <code>[C'*Z'*J, 2048, 1]</code></p>
+</li>
+<li>
+<p>使用 2 Layers FCN 进行回归预测，节点数分别为 <code>[256, 1]</code></p>
+</li>
+</ul>
+<p>整个过程可被描述为：</p>
+<div class="arithmatex">\[
+\hat{l} = \text{Activation}(\text{FC}(f_s)), f_s \in \{f_p, f_t\}
+\]</div>
+<div class="admonition tip">
+<p class="admonition-title">Finding</p>
+<p>由于两个 Benchmark 之间的分数分布不太一样，作者发现使用 <code>original data + ReLU()</code> 的效果 &gt; <code>norm(data) + sigmoid()</code></p>
+</div>
+<ul>
+<li>
+<p>Loss Function</p>
+<p>不同于其他方法复杂的损失函数，这里只用预测值与实际值之间的 MSE 误差</p>
+<div class="arithmatex">\[
+L_{MSE} = \frac{1}{N}\sum_{i=1}^N(l_i - \hat{l}_i)^2
+\]</div>
+</li>
+</ul>
+<h2 id="2023-ms-gcn">2023: MS-GCN</h2>
+<blockquote>
+<p>Multi-skeleton Structure Graph Convolution Network</p>
+</blockquote>
+<h3 id="1-introduction_1">1 Introduction</h3>
+<ul>
+<li>
+<p>已有工作</p>
+<ul>
+<li>
+<p>广泛的应用场景：physical therapy &amp; rehabilitation, sporting event scoring, special skill training</p>
+</li>
+<li>
+<p>当前研究的一些不足：</p>
+<ol>
+<li>
+<p>大部分聚焦于 short video, 忽略了 long-duratoin videos。而长体育视频的 challenges 在于：</p>
+<ul>
+<li>large action speed variance &amp; duration</li>
+<li>high similarity categories</li>
+</ul>
+</li>
+<li>
+<p>通过 Deeplearning NN 从 RGB video 中提取信息的方法：</p>
+<ul>
+<li>忽视了 specific postures defnined by dynamic changes in human body joints </li>
+<li>无法区分 3Lz-3Lp 与 3Lz-3Tp （但是 skeletion-based 方法可以）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Pose Estimation 技术对 AQA 的影响</p>
+<ul>
+<li>可以直接从 RGB video 中提取 Skeleton data</li>
+<li>现有方法只是根据无力结构对 joints 进行连接，忽略了语义信息以及身体各部分间的连接关系</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>本文工作</p>
+<ul>
+<li>
+<p>提出了三种 skeleton structures 以实现对 关节 &amp; 身体部位 运动模式的建模</p>
+<blockquote>
+<p>Joints' self-connection, intra-part connection, inter-part connection</p>
+</blockquote>
+</li>
+<li>
+<p>设计了一个 Temporal Attention Learning Module，用于提取 skeleton subSeq 中的时序联系，并对不同 action 赋予正确的权重</p>
+</li>
+<li>
+<p>benchmarks: MIT-Skate, Rhythmic Gymnastics</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-related-works_1">2 Related Works</h3>
+<h4 id="rgb-video-baesd-aqa">RGB video-baesd AQA</h4>
+<ul>
+<li>RGB video-based 方法通过提取丰富的时空信息，已经实现了对 <em>short-video</em> 中的 <em>simple action</em> 的有效评估</li>
+<li>但受复杂场景因素影响（人体外观 / 背景变化），RGB-based 方法包含了许多无关的场景信息，使其不能准确描述人体运动</li>
+</ul>
+<hr/>
+<ol>
+<li>少数人将 AQA 视为一个 level classifying task</li>
+<li>
+<p>大多属人将 AQA 当做一个 regression task:</p>
+<ul>
+<li>Dong 提出了 Multistage Regression Model (MSRM) 用于从不同的 hidden substages 中提取并 fuse feature</li>
+<li>Li 提出了一个 2 * C3D + 2 * FC 的端到端模型，并使用了两个 loss（分别约束 quality score &amp; rank）</li>
+<li>Gao 将 agents 划分为 primary/secondary 两类，以对交互式动作中的非对称关系进行分析</li>
+<li>Wang 提出了 TSA 模型，使用 single object tracker 来区分前后景</li>
+</ul>
+</li>
+<li>
+<p>最近，也有一些人聚焦于 pair-ranking task:</p>
+<ul>
+<li>Doughty 最初考虑了将任意两个视频组成输入，并提出了 similarity loss</li>
+<li>Jain 使用 C3D 进行特征提取，并通过 Siamese Network 实现了 reference-guided evaluation</li>
+<li>Yu 使用 I3D 提取特征，并通过 GART 来学习一对视频间的 relative score</li>
+</ul>
+</li>
+</ol>
+<h4 id="skeleton-based-aqa_1">Skeleton-based AQA</h4>
+<div class="admonition warning">
+<p class="admonition-title">现有的 Skeleton-based Methods 聚焦于 local 信息</p>
+<p>他们通过构建 single joint adjacnet matrix 来表示人体骨骼的自然拓扑结构</p>
+<p>但这种方法忽略了无骨骼连接关节间的隐含信息，以及 global 视角下身体各部分间关系中暗含的信息</p>
+<p>=&gt; 这使得提取信息对于人体运动特征的表征肤浅、不充分，进而降低预测性能</p>
+</div>
+<ul>
+<li>Prisiavash 首先将 pose estimation 应用于 AQA（DCT + SVR）</li>
+<li>Bruce 提出了基于 GCN 的方法，将 feature embed into 2D-Vecs，并通过 SoftMax Classifier 探测异常动作</li>
+<li>
+<p>Pan 提出在短视频中应用 joints relation graph，他们提出了两个模块：一个模块从身体部位动力学中提取特征，另一个模块从关节协调中学习。</p>
+<p>在随后的工作中，他们开发了一种自适应动作评估系统，该系统可以根据关节相互作用为不同类型的动作自动构建不同的评估架构</p>
+</li>
+<li>
+<p>[Action Recognition] Plizzari 提出了 two-stream Spatial-Temporal Transformer Network (ST-TR)，使用 Spatial/Temporal Self-attention Module 分别对帧内/帧间关系进行建模</p>
+</li>
+<li>
+<p>一些方法尝试将 appearance &amp; pose 信息结合，他们通常采用双流网络独立处理两种特征，并在 fuse 后进行回归预测</p>
+</li>
+</ul>
+<h3 id="3-approach_3">3 Approach</h3>
+<p><center>
+<img src="../../assets/MS-GCN.png" style="max-height:300px;"/>
+</center></p>
+<h4 id="1-skeleton-sequence-extraction-sampling">1) Skeleton Sequence Extraction &amp; Sampling</h4>
+<ul>
+<li>
+<p>本文使用 18-joints OpenPose + avanced 2D Pose Estimation 进行特征提取</p>
+</li>
+<li>
+<p>考虑到长视频中 skeletonSeq 存在信息冗余，本文首先在 temporal demension 上进行采样：</p>
+<p>对于 skeletonSeq <span class="arithmatex">\(S = \{s_i^t\}_{i=1\sim 18}^{t=1\sim T} = \{(x_i^t, y_i^t ,acc_i^t)\}\)</span></p>
+<ol>
+<li>使用 uniform sampling strategy with fixed interval <span class="arithmatex">\(\Delta l\)</span>，有：<span class="arithmatex">\(S' = \{s'_l\}_{l=1\sim L}, L = T/\Delta l\)</span></li>
+<li>使用 uniform partition strategy 将采样后的 skeletonSeq 划分成 <span class="arithmatex">\(G\)</span> 个不重叠的 subSeqs (每个 subSeq 的长度为 <span class="arithmatex">\(L/G\)</span>)</li>
+</ol>
+</li>
+</ul>
+<h4 id="2-deep-pose-feature-learning">2) Deep Pose Feature Learning</h4>
+<details class="info">
+<summary>3 types of skeleton structures</summary>
+<p><center>
+<img src="../../assets/MS-TCN-3-skeletons.png" style="max-height: 200px;"/>
+</center></p>
+<ol>
+<li>
+<p>Joints' Self-connection <span class="arithmatex">\(A_{self}\)</span></p>
+<p>以 local 视角聚焦于关节本身，确保每个 joint 在卷积过程中能被平等对待</p>
+</li>
+<li>
+<p>Intra-part Connection <span class="arithmatex">\(A_{intra}\)</span></p>
+<p>根据骨骼自然连接关系定义，对身体特定部位的运动模式进行建模</p>
+</li>
+<li>
+<p>Inter-part Connection <span class="arithmatex">\(A_{inter}\)</span></p>
+<p>使得从属于不同身体部位的 joint 间产生依赖关系，确保能捕捉到 global 信息</p>
+</li>
+</ol>
+</details>
+<p>对于 normalized skeleton subSeq <span class="arithmatex">\(P = \{(x,y,acc)_v^t\}_{v=1\sim 18}^{t=1\sim T} \in \mathbb{R}^{3\times V \times T'}\)</span>，使用以下的方式对于 skeleton graph 进行 encode：</p>
+<ul>
+<li>
+<p>构建 Spatial Relation Graph <span class="arithmatex">\(A = A_{self},A_{intra},A_{inter}\)</span></p>
+<ul>
+<li>
+<p><span class="arithmatex">\(A_{self}\)</span> 是一个 <span class="arithmatex">\(V \times V\)</span> 的 identity matrix，<span class="arithmatex">\(A_{intra},A_{inter}\)</span> 是 <span class="arithmatex">\(V\times V\)</span> 的邻接矩阵</p>
+</li>
+<li>
+<p><span class="arithmatex">\(A_{ij} \in \{0,1\}\)</span> 表示顶点 <span class="arithmatex">\((v_i, v_j)\)</span> 间是否存在边</p>
+</li>
+</ul>
+</li>
+<li>
+<p>构建 MS-GCN: a hierachy of 10 stacked blocks</p>
+<ul>
+<li>10个 blocks 的输出通道数为 64*4 + 128*3 + 256*3</li>
+<li>4<sup>th</sup> &amp; 7<sup>th</sup> 的 <code>strideSize=2</code>，其他层均为 1</li>
+<li>输入 <span class="arithmatex">\(P_{in} \in \mathbb{R}^{C_{in} \times 18 \times T'}\)</span></li>
+<li>最后一层的输出将被 flattern 为一个 vector，并输入一个具有 <span class="arithmatex">\(d\)</span> 个神经元的 FC Layer 进行降纬，得到 <span class="arithmatex">\(f_p \in \mathbb{R}^d\)</span></li>
+</ul>
+</li>
+<li>
+<p>单个 block 的结构如下：
+    <center><img src="../../assets/MS-GCN-block.png" style="max-height: 250px;"/></center></p>
+<ol>
+<li>
+<p>GCN Layer 拥有三个独立的 Conv Operator 以分别处理三个 Graph <span class="arithmatex">\(A\)</span>，从而抽取 motion pattern of joints &amp; body parts。</p>
+<ul>
+<li>
+<p>整个 block 在 Spatial 纬度上的操作可以表述为：<span class="arithmatex">\(P_{spatial}(v_i) = \sum_{j=1}^{18} \sum_{k=1}^3 (M_{ij}^k \odot A_{ij}^k)P_{in}(v_j) W^k\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(M^k\)</span> 用于 scale the contribution of a nodes' feature，<span class="arithmatex">\(W^k\)</span> 是 Conv Kernel</p>
+</li>
+</ul>
+</li>
+<li>
+<p>TCN Layer 通过 2D Conv (<code>kernelSize = 9*1</code>) 实现</p>
+<ul>
+<li>
+<p>GCN &amp; TCN 层后都跟了一个 BatchNorm；此外，为了训练的稳定性增加了 residual connection</p>
+</li>
+<li>
+<p>整个 block 的处理过程可以描述为：<span class="arithmatex">\(P_{out} = \sigma(\gamma_{temporal}(\sigma(\gamma_{spatial}(P_{in}))))\)</span>，<span class="arithmatex">\(\sigma = ReLU(BatchNorm(·))\)</span></p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-temporal-attention-learning">3) Temporal Attention Learning</h4>
+<blockquote>
+<p>extract features from the layout &amp; arrangement of actions</p>
+</blockquote>
+<p>经过 MS-GCN 模块处理，我们可以得到 Pose Features <span class="arithmatex">\(F_p = \{f_p^m\}_{m=1\sim G} \in \mathbb{R}^d\)</span>（<span class="arithmatex">\(m\)</span> 为 skeleten subSeq 编号）</p>
+<ol>
+<li>
+<p>此处使用拥有 <span class="arithmatex">\(G\)</span> 个 cells 的 LSTM 来提取 subSeqs 间的 temporal structures，对于每个 cell 来说</p>
+<ul>
+<li><code>n_layer = 1</code>, <code>n_hidden_size = d'</code></li>
+<li>input = m<sup>th</sup>-pose features + 上一个 cell 的输出</li>
+<li>output = temporal relation feature <span class="arithmatex">\(f_t^m \in \mathbb{R}^{d'}\)</span>，所有 cell 的输出集合记为 <span class="arithmatex">\(F_t = \{f_t^m\}_{m=1\sim G}\)</span></li>
+</ul>
+</li>
+<li>
+<p>根据 self-attention learning strategy 将新的 <span class="arithmatex">\(F_t\)</span> embed 成 vector</p>
+</li>
+<li>
+<p>根据 embedded vector 生成 correlation matrix &amp; attention weight</p>
+</li>
+<li>
+<p>使用 <span class="arithmatex">\(SoftMax(·)\)</span> 对 attention weight 进行 normalize</p>
+</li>
+<li>
+<p>将 weighted sum 作为新的 feature</p>
+</li>
+</ol>
+<hr/>
+<p>上述过程可以描述为：</p>
+<div class="arithmatex">\[
+\begin{align*}
+e_m &amp;= V_p^T tanh(W_pf_t^m) \\
+\hat{F}_t &amp;= \sum_{m=1}^G \alpha(e_m) f_t^m
+\end{align*}
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(V_p \in \mathbb{R}^{d'}, W_p \in \mathbb{R}^{d' \times d'}\)</span> 均为可训练参数，用于计算 correlation</p>
+</li>
+<li>
+<p><span class="arithmatex">\(e_m\)</span> 代表 self-attention learning 对 m<sup>th</sup>-cell output 估计的 attention weight</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\alpha(·)\)</span> 表示对 weight vec <span class="arithmatex">\(\{e_m\}_{,=1\sim G}\)</span> 进行的 SoftMax 操作</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\hat{F}_t \in \mathbb{R}^{d'}\)</span> 是 Temporal Attention Learning 得到的最终特征</p>
+</li>
+</ul>
+<h4 id="4-score-prediction-evaluation">4) Score Prediction &amp; Evaluation</h4>
+<ul>
+<li>
+<p>分数预测通过 一个全连接层 + 激活函数 实现：</p>
+<div class="arithmatex">\[
+\hat{S} = \text{activation}(FC(\hat{F}_t))
+\]</div>
+</li>
+<li>
+<p>使用 MSE Loss 以最小化预测总分与 ground-truth 之间的误差 (<span class="arithmatex">\(N\)</span> 为 batchSize)：</p>
+<div class="arithmatex">\[
+\mathcal{L} = \frac{1}{n} \sum_{n=1}^N (\hat{S}_n - L_n)^2
+\]</div>
+</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: GCN" class="md-footer__link md-footer__link--prev" href="../GCN/">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                上一页
+              </span>
+<div class="md-ellipsis">
+                GCN
+              </div>
+</div>
+</a>
+<a aria-label="下一页: Segmentation" class="md-footer__link md-footer__link--next" href="../Segmentation/">
+<div class="md-footer__title">
+<span class="md-footer__direction">
+                下一页
+              </span>
+<div class="md-ellipsis">
+                Segmentation
+              </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2023 SeaBee
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

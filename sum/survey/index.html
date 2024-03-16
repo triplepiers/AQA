@@ -1,0 +1,2045 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://triplepiers.github.io/AQA/sum/survey/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../Regression-Based/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>Survey - Action Quality Assessment</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Action Quality Assessment" class="md-header__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Action Quality Assessment
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Survey
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="light-green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Action Quality Assessment" class="md-nav__button md-logo" aria-label="Action Quality Assessment" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Action Quality Assessment
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Summary
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Summary
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Survey
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Survey
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2021-a-survey-of-video-based-aqa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021: A Survey of Video-based AQA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021: A Survey of Video-based AQA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definition-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Definition &amp; Challenges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-datasets-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Datasets &amp; Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-models-2021" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Models (截至 2021)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 发展前景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022: 视频理解中的动作质量评估方法综述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2022: 视频理解中的动作质量评估方法综述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aqa" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 AQA 方法分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 数据集 &amp; 评价指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 限制与展望
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Datasets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2023-logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: LOGO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pose
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      MMPose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2019-videopose-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      2019: VideoPose 3D
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022-mhformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022: MHFormer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2024-hot" class="md-nav__link">
+    <span class="md-ellipsis">
+      2024: HoT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segmentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2017-ed-tcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2017: ED-TCN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2020-ms-tcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020: MS-TCN++
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-acm-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021: ACM-Net
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      多模态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多模态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2023-skating-mixer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: Skating-Mixer 音频
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Regression-Based/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Constrastive/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constrastive
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Transformer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Self-Supervised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Self-Supervised
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GCN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GCN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Selekton-Based/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Selekton-based
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Segmentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Repitition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FigureSkating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FigureSkating
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            References
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            2018
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2018%20Skeleton.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ST-GCN 基于骨骼的动作识别
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2021/CoRe.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CoRe 组感知对比回归
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2021/TSA-Net.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TSA-Net 管自注意力网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2021/Video-based.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Video-based
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2022/TPA.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TPT 时序转译 transformer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2023/PECoP.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PECoP 连续预训练
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2023/STPN.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FSPN 细粒度时空解析网络
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ref/2023/IRIS.pdf" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IRIS 评分标准可解释分割
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2021-a-survey-of-video-based-aqa" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021: A Survey of Video-based AQA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2021: A Survey of Video-based AQA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-definition-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 Definition &amp; Challenges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-datasets-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 Datasets &amp; Evaluation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-models-2021" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 Models (截至 2021)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 发展前景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022: 视频理解中的动作质量评估方法综述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2022: 视频理解中的动作质量评估方法综述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-aqa" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 AQA 方法分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 数据集 &amp; 评价指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 限制与展望
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Datasets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="New Datasets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2023-logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: LOGO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pose
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mmpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      MMPose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2019-videopose-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      2019: VideoPose 3D
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2022-mhformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2022: MHFormer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2024-hot" class="md-nav__link">
+    <span class="md-ellipsis">
+      2024: HoT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Segmentation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Segmentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2017-ed-tcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2017: ED-TCN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2020-ms-tcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      2020: MS-TCN++
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2021-acm-net" class="md-nav__link">
+    <span class="md-ellipsis">
+      2021: ACM-Net
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      多模态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多模态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2023-skating-mixer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2023: Skating-Mixer 音频
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">几篇综述</h1>
+<h2 id="2021-a-survey-of-video-based-aqa">2021: A Survey of Video-based AQA</h2>
+<h3 id="1-definition-challenges">1 Definition &amp; Challenges</h3>
+<ul>
+<li>
+<p>相关领域：Human Action Recognition &amp; Analysis</p>
+<ul>
+<li>
+<p>现有的技术支持 action classification of short/long-term videos, temporal action segmentation and spatial-temporal action
+location</p>
+</li>
+<li>
+<p>在 video sruveillance, vedio retrieval &amp; human-computer interaction 领域有着广泛应用</p>
+</li>
+</ul>
+<div class="admonition bug">
+<p class="admonition-title">只能对动作进行 粗粒度的分类/定位，并不能对特定动作的质量进行客观评价</p>
+</div>
+<ul>
+<li>强调识别、捕捉不同种类动作之间的 external differences</li>
+</ul>
+<blockquote>
+<p>AQA 则聚焦于同一种类动作间的 internal differences</p>
+</blockquote>
+</li>
+<li>
+<p>AQA 问题目标</p>
+<p>得到一个能 <em>自动做出客观评价的智能系统</em>，从而减少在动作评估中投入的人力物力、并降低主观影响。</p>
+</li>
+</ul>
+<h4 id="definition-form">Definition &amp; Form</h4>
+<ul>
+<li>
+<p>Video-based AQA 是一个基于视频数据生成对特定动作质量客观评价的 internal differences 任务</p>
+</li>
+<li>
+<p>用于 AQA 和 HAR 任务的 <strong>模型</strong> 具有一定程度的相似性：</p>
+<p>首先进行 feature extraction，随后通过 network head 实现复杂任务</p>
+<ul>
+<li>
+<p>传统方法会采取 <u>DFT/DCT/linear combination</u> 实现 feature aggregation</p>
+</li>
+<li>
+<p>深度学习方法的发展则使得通过 <u>深层卷积网络(DCN)/RNN</u> 进行 video embedding 成为可能</p>
+</li>
+</ul>
+</li>
+<li>
+<p>AQA 任务大致可被划分为以下三种：</p>
+<ol>
+<li>
+<p>Regression Scoring：常见于运动领域</p>
+<ul>
+<li>
+<p>一般直接使用 <u>SVR/FCN</u> 直接进行预测</p>
+</li>
+<li>
+<p>以 MSE 作为优化目标</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Grading：常见于对手术操作的评分</p>
+<ul>
+<li>
+<p>实际上是个分类任务，输出的是诸如 <code>novice</code>, <code>medium</code>, <code>expert</code> 的标签</p>
+</li>
+<li>
+<p>一般使用 classification accuracy 进行评估</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Pairwise Sorting</p>
+<ul>
+<li>
+<p>从测试集里面随手抓两个（一对）视频进行拉踩</p>
+</li>
+<li>
+<p>使用 pairwise sorting accuracy 进行评估</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="challenges">Challenges</h4>
+<ul>
+<li>
+<p>Area Specifed</p>
+<ul>
+<li>
+<p>Medical Care：由于医疗动作具有较高的时间复杂度、语言信息量和低容忍度，医疗相关的 AQA 解决方案需要有较强的语义理解能力</p>
+</li>
+<li>
+<p>Sports：body distortion &amp; motion blur</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Common Challenges</p>
+<p>计算效率、视角遮挡、模型可解释性  etc.</p>
+</li>
+</ul>
+<h3 id="2-datasets-evaluation">2 Datasets &amp; Evaluation</h3>
+<div class="admonition warning">
+<p class="admonition-title">TES 和 PCS相关性不大 (by MS-LSTM)</p>
+</div>
+<p><center>Datasets for AQA</center></p>
+<table>
+<tr>
+    <th>类型</th>
+    <th>名称</th>
+    <th>Desc.</th>
+</tr>
+<tr>
+    <td rowspan="8">Sport</td>
+    <td>MIT-Diving</td>
+    <td>60fps, 平均每个视频包含 150 帧，分数范围为 [20,100]</td>
+</tr>
+<tr>
+    <td>MIT-Skiing</td>
+    <td>24fps, 平均每个视频包含 4200 帧，分数范围为 [0,100]</td>
+</tr>
+<tr>
+    <td>UNLV Dive & UNLV Vault</td>
+    <td>平均每个视频包含 75 帧，分数范围为 [0,20]</td>
+</tr>
+<tr>
+    <td>Basketball Performance Assessment Dataset</td>
+    <td>24 Train + 24 Test，有 250 + 250 个 pair label</td>
+</tr>
+<tr>
+    <td>AQA-7</td>
+    <td>包含7种运动的视频，803 train + 303 test</td>
+</tr>
+<tr>
+    <td>MTL-AQA</td>
+    <td>16种不同类别的跳水视频，每个由7位裁判打分</td>
+</tr>
+<tr>
+    <td>FisV-5</td>
+    <td>平均时长为 2min50s，由9位裁判评判 TES & PCS</td>
+</tr>
+<tr>
+    <td>Fall Recognition in Figure Skating</td>
+    <td>276 顺利落冰 + 141 摔倒</td>
+</tr>
+<tr>
+    <td>Medical Care</td>
+    <td>包含缝合、穿针、打结三部分，有部分分和总评分</td>
+</tr>
+<tr>
+    <td rowspan="3">Others</td>
+    <td>Epic skills 2018</td>
+    <td>包含揉面团、绘画、使用筷子三个子集</td>
+</tr>
+<tr>
+    <td>BEST</td>
+    <td>平均时长为 188s，包含5种不同日常活动的视频</td>
+</tr>
+<tr>
+    <td>Infinite grasp dataset</td>
+    <td>包含了94个婴儿抓东西的视频，时长在 80-500s，有 pair label</td>
+</tr>
+</table>
+
+<p><center>Performance Metrics</center></p>
+<p><center></p>
+<table>
+<tr>
+    <th>Task</th>
+    <th>Metric</th>
+</tr>
+<tr>
+    <td>Regression Scoring</td>
+    <td>均方误差 MSE</td>
+</tr>
+<tr>
+    <td>Grading</td>
+    <td>Classification Accuracy</td>
+</tr>
+<tr>
+    <td>Pairwise Sorting</td>
+    <td>Spearman Correlation Coefficient</td>
+</tr>
+</table>
+<p></center></p>
+<div class="admonition info">
+<p class="admonition-title">Spearman Correlation Coefficient <span class="arithmatex">\(\rho\)</span></p>
+<div class="arithmatex">\[
+\rho = \frac{\sum_i(p_i - \overline{p})(q_i - \overline{q})}{\sqrt{\sum_i(p_i - \overline{p})^2 \sum_i(q_i - \overline{q})^2}}
+\]</div>
+</div>
+<h3 id="3-models-2021">3 Models (截至 2021)</h3>
+<ul>
+<li>
+<p>Medical Skill Evaluation</p>
+<p>由于对医疗动作评估问题的研究早于深度学习方法的发展，大多数医疗相关的模型都使用了 <u>traditional feature</u></p>
+</li>
+<li>
+<p>Sport AQA</p>
+<p>由于起步相对较晚，体育相关的研究使用 CNN 和 RNN 实现了较好的成果</p>
+<ol>
+<li>
+<p>based on Deep Learning</p>
+<ul>
+<li>
+<p>通常使用 2D-CNN/3D-CNN/LSTM 来进行 feature extract &amp; aggregate</p>
+</li>
+<li>
+<p>通过 Network Head 来适配不同类型的任务</p>
+</li>
+</ul>
+<p>根据关注点不同可划分为: Structure Design / Loss Desgin 两类</p>
+</li>
+<li>
+<p>based on Handcrafted Features (before 2014)</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Medical Care</p>
+<p>由于较强的专业性，医疗领域没有一个可以作为统一 benchmark 的数据集</p>
+<ul>
+<li>
+<p>GIT 聚焦于 OSATS 系统下的外壳手术技能评估</p>
+</li>
+<li>
+<p>JHU 聚焦于 机器人微创手术(RMIS)</p>
+</li>
+<li>
+<p>ASU 聚焦于 腹腔镜手术(laparoscopic surgery)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4">4 发展前景</h3>
+<ul>
+<li>
+<p>Dataset</p>
+<p>目前存在的 AQA 数据集规模较小，且包含的语义信息较少</p>
+<p>=&gt; 希望在未来推出更大规模、包含更多语义信息的数据集</p>
+</li>
+<li>
+<p>Model: more Efficient &amp; Accurate</p>
+<ul>
+<li>
+<p>更好的利用 temporal info 对动作进行建模</p>
+</li>
+<li>
+<p>使用 Unsupervised 方法减少数据标注、降低主观影响</p>
+</li>
+<li>
+<p>对 复杂、长期 动作的质量进行评估</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2022">2022: 视频理解中的动作质量评估方法综述</h2>
+<h3 id="1-aqa">1 AQA 方法分类</h3>
+<ol>
+<li>以质量分数为评估结果</li>
+<li>以等级类别为评估结果</li>
+<li>以质量等级排序为评估结果</li>
+</ol>
+<h3 id="2">2 数据集 &amp; 评价指标</h3>
+<div class="admonition comment">
+<p class="admonition-title">21 那篇按照数据集的 “内容” 聚类，这篇按 “指标” 聚类了</p>
+</div>
+<ol>
+<li>
+<p>以质量分数为评估结果</p>
+<ul>
+<li>评价指标：Spearman Rank Correlation</li>
+<li>数据集：（一张表，比 2021 的有增加）</li>
+<li>实验结果对比：把各个方法的 Spearman Rank Corr. 列在了同一张表里，然后对比分析</li>
+</ul>
+</li>
+<li>
+<p>以 等级类别/ 质量等级排序 为评估结果（二合一）</p>
+<ul>
+<li>
+<p>评价指标：</p>
+<ul>
+<li>等级类别：<span class="arithmatex">\(\text{accuracy} = \frac{n_{分类正确}}{N}\)</span></li>
+<li>
+<p>质量等级排序：</p>
+<ul>
+<li>考虑一对样本 <span class="arithmatex">\((p_i,p_j)\)</span>，如果预测值的相对大小符合真实值的相对大小关系，则认为分类正确 <code>m+=1</code></li>
+<li>对于整个数据集，若存在 <span class="arithmatex">\(N\)</span> 对样本，则 <span class="arithmatex">\(\text{accuracy}_{rank} = \frac{m}{N}\)</span></li>
+</ul>
+</li>
+<li>
+<p>（新）NDCG：常用于搜索算法评估，评估预测排名序列与实际排名序列的相似程度</p>
+</li>
+</ul>
+</li>
+<li>
+<p>数据集</p>
+</li>
+<li>实验结果对比：把 accuracy 列了一下</li>
+</ul>
+</li>
+</ol>
+<h3 id="3">3 限制与展望</h3>
+<ol>
+<li>
+<p>仅面向特定动作</p>
+<p>对每种动作单独训练模型进行评估，不能对复杂动作进行评估</p>
+</li>
+<li>
+<p>对分数的预测分析过于单一：只有回归模型</p>
+</li>
+<li>
+<p>虽然存在 “分阶段评估” 的方法，但切割方式简单</p>
+<ul>
+<li>大部分方法直接 <strong>等分</strong> 视频</li>
+<li>部分采用 <strong>时序分割</strong>，但可能导致时间信息丢失，分割准确率也会影响后续回归准确率</li>
+</ul>
+</li>
+<li>
+<p>对于以 <strong>排序</strong> 作为评估依据的方法，只有 pair-wise 的相对排序</p>
+<p>而在 <strong>排序学习算法</strong> 中，还有 Point-Wise Ranking / ListWise Sorting 两种</p>
+<p>缺少使用其他排序思想进行评估的指标</p>
+</li>
+<li>
+<p>数据集仍然欠缺</p>
+<p>对特定领域进行专家级注释的成本巨大，而 复杂动作的·多阶段 评价更是如此</p>
+<p>大部分模型以基于 image/video 的大规模数据进行预训练，急需基于 弱监督/半监督 的方法</p>
+</li>
+</ol>
+<h2 id="new-datasets">New Datasets</h2>
+<h3 id="2023-logo">2023: LOGO</h3>
+<blockquote>
+<p>A Long-Form Video Dataset for Group Action Quality Assessment</p>
+</blockquote>
+<ul>
+<li>领域：Artistic Swimming（花样游泳）</li>
+<li>平均时长：204.2s</li>
+<li>
+<p>具体描述：</p>
+<ul>
+<li>来自 26 场比赛的 200 个视频</li>
+<li>每个视频包含 8 名运动员</li>
+<li>包括对运动员团体信息 &amp; 动作过程的详细标注</li>
+</ul>
+</li>
+<li>
+<p>亮点：</p>
+<p>除基本的 <code>score &amp; action</code> 标注外，LOGO 还包含了 <code>formation</code> 标签</p>
+<p>=&gt; 使用 Graph 标注了 8 名运动员组成的队形关系</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>S. Zhang et al., &quot;LOGO: A Long-Form Video Dataset for Group Action Quality Assessment,&quot; 2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), Vancouver, BC, Canada, 2023, pp. 2405-2414, doi: 10.1109/CVPR52729.2023.00238.
+</code></pre></div>
+<h2 id="pose">Pose</h2>
+<div class="admonition warning">
+<p class="admonition-title">其实 z 轴位移还是会丢掉</p>
+</div>
+<h3 id="mmpose"><a href="https://github.com/open-mmlab/mmpose/tree/master">MMPose</a></h3>
+<blockquote>
+<p>MMPose is an open-source toolbox for pose estimation based on PyTorch. </p>
+</blockquote>
+<h3 id="2019-videopose-3d">2019: <a href="https://github.com/facebookresearch/VideoPose3D?tab=readme-ov-file">VideoPose 3D</a></h3>
+<ul>
+<li>
+<p>Video-based</p>
+<p>基于视频的方法就是在以上两类方法的基础上引入时间维度上的信息。相邻帧提供的上下文信息可以帮助我们更好地预测当前帧的姿态。对于遮挡情况，也可以根据前后几帧的姿态做一些合理推测。另外，由于在一段视频中同一个人的骨骼长度是不变的，因此这类方法通常会引入骨骼长度一致性的约束限制，有助于输出更加稳定的 3D pose。</p>
+</li>
+<li>
+<p>以 2D pose 序列作为输入，利用 Temporal Convolutional Network (TCN) 处理序列信息并输出 3D pose。</p>
+<p>TCN 的本质是在时间域上的卷积，它相对于 RNN 的最大优势在于能够并行处理多个序列，且 TCN 的计算复杂度较低，模型参数量较少。</p>
+</li>
+<li>
+<p>在 VideoPose3D 中，作者进一步利用 dilated convolution 扩大 TCN 的感受野。具体的网络结构与 SimpleBaseline3D 类似，采用了残差连接的全卷积网络。</p>
+</li>
+<li>
+<p>除此以外，VideoPose3D 还包含了一种半监督的训练方法，主要思路是添加一个轨迹预测模型用于预测根关节的绝对坐标，将相机坐标系下绝对的 3D pose 投影回 2D 平面，从而引入重投影损失。半监督方法在 3D label 有限的情况下能够更好地提升精度。</p>
+</li>
+</ul>
+<h3 id="2022-mhformer">2022: <a href="https://github.com/Vegetebird/MHFormer">MHFormer</a></h3>
+<p>Multi-Hypothesis Transformer（MHFormer）的方法，该方法旨在学习多个可能的姿势假设的时空表示。</p>
+<p>为了有效捕捉多假设之间的依赖关系，并在假设特征之间建立强大的关联，我们的方法将任务分解为三个阶段：</p>
+<ul>
+<li>
+<p>生成多个初始假设表示：这个阶段涉及创建多个初始姿势假设的表示。</p>
+</li>
+<li>
+<p>建模自假设通信：在这一阶段，该方法涉及将多个假设合并为单个汇聚表示，然后将其分成几个分散的假设，以促进假设之间的通信。</p>
+</li>
+<li>
+<p>学习跨假设通信和特征聚合：这一阶段侧重于学习跨假设通信，并聚合多假设特征以合成最终的3D姿势。</p>
+</li>
+</ul>
+<h3 id="2024-hot">2024: <a href="https://github.com/NationalGAILab/HoT">HoT</a></h3>
+<blockquote>
+<p>Hourglass Tokenizer for Efficient Transformer-Based 3D Human Pose Estimation</p>
+</blockquote>
+<ul>
+<li>
+<p>本文提出了一种即插即用的修剪和恢复框架，称为Hourglass Tokenizer（HoT），用于从视频中高效进行基于Transformer的三维人体姿势估计。</p>
+</li>
+<li>
+<p>HoT从修剪冗余帧的姿势标记开始，并以恢复完整长度的标记结束，从而在中间Transformer块中产生少量姿势标记，从而提高模型的效率。</p>
+<p>为了有效实现这一点，我们提出了一个标记修剪聚类（TPC），它动态选择一些具有高语义多样性的代表性标记，同时消除视频帧的冗余。</p>
+<p>此外，我们开发了一个标记恢复注意力（TRA），根据所选标记恢复详细的时空信息，从而将网络输出扩展到原始的全长度时间分辨率，以便进行快速推断。</p>
+</li>
+</ul>
+<h2 id="segmentation">Segmentation</h2>
+<h3 id="2017-ed-tcn">2017: <a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Lea_Temporal_Convolutional_Networks_CVPR_2017_paper.pdf">ED-TCN</a></h3>
+<ul>
+<li>我们的编码器-解码器TCN利用池化和上采样来有效捕获长程时间模式，而我们的扩张TCN使用扩张卷积。</li>
+<li>TCNs能够捕获动作组合、段持续时间和长程依赖关系，并且训练速度比基于竞争的基于LSTM的递归神经网络快一个数量级。</li>
+</ul>
+<h3 id="2020-ms-tcn">2020: <a href="https://arxiv.org/abs/2006.09220">MS-TCN++</a></h3>
+<p>相比于MS-TCN的:</p>
+<ol>
+<li>将原始生成的初始特征中利用并行的空洞卷积来捕获多尺度特征</li>
+<li>从特征冗余的角度入手，认为后面几层的特征相似性较高，所以参数共享的方法来降低参数量和耦合度</li>
+</ol>
+<h3 id="2021-acm-net">2021: <a href="https://arxiv.org/pdf/2104.02967.pdf">ACM-Net</a></h3>
+<blockquote>
+<p>Action Context Modeling Network for Weakly-Supervised Temporal Action Localization</p>
+</blockquote>
+<h2 id="_2">多模态</h2>
+<h3 id="2023-skating-mixer">2023: <a href="https://arxiv.org/pdf/2203.03990.pdf">Skating-Mixer</a> 音频</h3>
+<blockquote>
+<p>Long-Term Sport Audio-Visual Modeling with MLPs</p>
+</blockquote>
+<ul>
+<li>
+<p>Previous work</p>
+<ol>
+<li>花样滑冰中的每个动作变化迅速，因此简单地应用传统的<strong>帧采样</strong>会丢失很多宝贵的信息，特别是在3到5分钟的视频中</li>
+<li>先前的方法很少考虑其模型中的关键 <strong>audio-visual</strong> 关系</li>
+</ol>
+</li>
+<li>
+<p>Skating-Mixer: 它将MLP框架扩展为多模态方式，并通过我们设计的记忆循环单元（MRU）有效地学习长期表示。</p>
+</li>
+<li>
+<p>Neo Dataset: FS1000</p>
+<p>其中包含了8种节目类型的1000多个视频，涵盖了7种不同的评分指标，在数量和多样性上超过了其他数据集。</p>
+</li>
+<li>
+<p>benchmarks: Fis-V, FS1000</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Regression-Based/" class="md-footer__link md-footer__link--next" aria-label="下一页: Regression">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Regression
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 SeaBee
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.expand", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+      
+    
+  </body>
+</html>
