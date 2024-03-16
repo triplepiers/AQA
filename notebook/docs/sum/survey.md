@@ -293,6 +293,13 @@ S. Zhang et al., "LOGO: A Long-Form Video Dataset for Group Action Quality Asses
 
 > MMPose is an open-source toolbox for pose estimation based on PyTorch. 
 
+### [POEM: Human POse EMbedding](https://github.com/google-research/google-research/tree/master/poem)
+
+Google 的两篇文章考虑了骨架数据的视角不变性：
+
+- Pr-VIPE: Learning a view-invariant probabilistic pose embedding space. [ECCV'20 paper][IJCV'21 paper]
+- CV-MIM: Learning disentangled view-invariant pose representations and view representations. [CVPR'21 paper]
+
 ### 2019: [VideoPose 3D](https://github.com/facebookresearch/VideoPose3D?tab=readme-ov-file)
 
 - Video-based
@@ -348,6 +355,101 @@ Multi-Hypothesis Transformer（MHFormer）的方法，该方法旨在学习多�
 > Action Context Modeling Network for Weakly-Supervised Temporal Action Localization
 
 ## 多模态
+
+### 2019: [C3D-AVG & MSCADC](https://arxiv.org/pdf/1904.04346.pdf) 文本评论
+
+!!! info "Multitask 多任务"
+    - 本文的三个目标：细粒度动作识别（次要）、评论生成（次要）、AQA 得分估计（主要）
+    - 细粒度动作识别实际上是对 video-level 进行: Position, Armstand, Rotation type, #SS, #TW 打标
+
+#### [Related Work] Multi-modal approaches and captioning
+
+下列工作侧重于字幕或改进字幕，但我们将字幕任务与AQA任务相结合，以提供更强的监督：
+
+- Quattoni 等人使用大量未标记的图像及其相关标题来学习图像表示。他们发现，这种额外信息的预训练可以加速对目标任务的学习。
+- Sonal等人并非将标题用作地面实况标签，而是将其视为“视图”，并与图像一起使用以学习分类器，采用了协同训练。他们再次成功地将评论用作动作识别的“视图”。为了以自动化方式训练活动分类器，而无需任何手动标记。
+- Sonal和Mooney利用 CCTV 字幕，并将该系统用于视频检索。
+- Yu等人解决了为篮球生成细粒度视频描述的任务，并使用他们的新颖指标评估性能。
+- 在[20, 21]中解决了板球评论的生成问题
+- Sukhwani在[23]中解决了描述网球视频的问题。
+
+#### [Multitask AQA Dataset] MTL-AQA
+
+!!! bug "生成的评论多少还是牛头不对马嘴"
+
+!!! warning "首个多任务AQA数据集"
+
+- 拥有1412个样本，这是迄今为止最大的AQA数据集。
+- 仅关注跳水（因为最近它的使用量最大）
+- 新数据集中的跳水样本来自于各种国际比赛，包括10米跳台和3米跳板，包括男性和女性运动员，个人或成对的同步跳水选手，以及不同的视角。
+
+---
+
+- 将跳水分解为其组成部分，例如跳水的位置、翻滚的次数（SS）和扭转的次数（TW）
+  
+    > 而不是直接使用跳水编号（相当于动作识别中的动作类）
+
+- 使用谷歌的语音转文字API将评论的音频转换为文本。
+
+#### Approach
+
+!!! info "降低 Conv3D 占用大量内存的两种方案"
+    1. 将视频（96帧）分成小片段（16帧），然后聚合片段级表示以获得视频级描述。
+    2. 将视频进行降采样成小片段。
+
+!!! info "C3D-AVG在STL和MTL方面都优于MSCADC，而MSCADC具有比C3D-AVG更快和更低内存需求的优势。有关定性结果"
+    STL - 单任务，MTL - 多任务
+
+##### 方案1: C3D-AVG
+> Averaging as aggregation
+
+![](../assets/C3D-AVG-MTL.png)
+
+- 使用具有 5 个 PoolingLayer 的 C3D 进行 clip 特征提取
+- Aggregation: use AVERAGING as the linear combination
+- Task-specific heads:
+
+    - 动作识别 & 分数预测：clip-level pool-5 features 被逐元素地平均以产生视频级表示
+    - 文本评论生成(Seq2Seq)：每个 clip-level feature（在 avg 前）丢入 captioning branch 生成逐 clip 评论
+
+##### 方案2: MSCADC
+> Multiscale Context Aggregation with Dilated Convolutions
+
+![](../assets/MSCADC-MTL.png)
+
+- 使用 C3D + BatchNorm，去除了最后两层的 Pooling，改用 `dilation_rate=2`
+
+- Task-specific heads: 每个子任务用单独的 head
+
+    与C3D-AVG网络不同，我们将完整动作降采样为仅包含16帧的短序列（类似Nibali等人[15]所做的关键动作快照）
+
+#### Evaluation
+
+- AQA Loss（回归任务）：同时使用 $l_1$ 距离和 $l_2$ 距离有更好的效果
+
+    $$
+    \mathcal{L}_{AQA} = -\frac{1}{N} \sum_{i=1}^N ((\hat{s_i} - s_i)^2 + |\hat{s_i} - s_i|)
+    $$
+
+- cross-entropy loss (动作识别任务)
+
+    $$
+    \mathcal{L}_{Cls} = -\frac{1}{N} \sum_{i=1}^N \sum_{sa} \sum_{j=1}^{k_{sa}} y_{i,j}^{sa} \log{(x_{i,j}^{sa})}
+    $$
+
+    $k_{sa}$ 是 sub-action class 的总数
+
+- 评论生成任务
+
+    $$
+    \mathcal{L}_{Cap} = -\frac{1}{N} \sum_{i=1}^N \sum_{sl} \ln{(x^{cap}_{y^{cap}})},\ \text{sl 为句子长度}
+    $$
+
+- 总的 loss: 还有其他参数
+
+$$
+\mathcal{L} = \alpha \mathcal{L}_{AQA} + \beta \mathcal{L}_{Cls} + \gamma \mathcal{L}_{Cap}
+$$
 
 ### 2023: [Skating-Mixer](https://arxiv.org/pdf/2203.03990.pdf) 音频
 

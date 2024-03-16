@@ -46,10 +46,11 @@
 
     ---
 
-    [论文](LUSD-NET) 提出的 对 TES 和 PCS 分别进行了回归预测
+    [论文](LUSD-NET) 提出的 对 TES 和 PCS 分别进行了回归预测（使用的还是 `visual` 特征）
 
     - 使用 ACM-Net 逐个确定 clip 中是否包含技术动作（仅利用视频级别标签来定位动作实例的时间边界并识别相应的动作类别）
-    - Uncertainty Score Disentanglement (USD)：不确定性分数解缠。
+
+    - Uncertainty Score Disentanglement (USD)：不确定性分数解缠，使用 DETR 实现。
 
         学习独立的面向PCS和面向TES的特征，并利用这些特征来预测PCS和TES。
 
