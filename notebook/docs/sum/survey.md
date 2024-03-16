@@ -67,6 +67,8 @@ location
 
 ### 2 Datasets & Evaluation
 
+!!! warning "TES 和 PCS相关性不大 (by MS-LSTM)"
+
 <center>Datasets for AQA</center>
 
 <table>
@@ -259,3 +261,106 @@ location
 
     大部分模型以基于 image/video 的大规模数据进行预训练，急需基于 弱监督/半监督 的方法
 
+## New Datasets
+
+### 2023: LOGO
+
+> A Long-Form Video Dataset for Group Action Quality Assessment
+
+- 领域：Artistic Swimming（花样游泳）
+- 平均时长：204.2s
+- 具体描述：
+
+    - 来自 26 场比赛的 200 个视频
+    - 每个视频包含 8 名运动员
+    - 包括对运动员团体信息 & 动作过程的详细标注
+
+- 亮点：
+
+    除基本的 `score & action` 标注外，LOGO 还包含了 `formation` 标签
+
+    => 使用 Graph 标注了 8 名运动员组成的队形关系
+
+```text
+S. Zhang et al., "LOGO: A Long-Form Video Dataset for Group Action Quality Assessment," 2023 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), Vancouver, BC, Canada, 2023, pp. 2405-2414, doi: 10.1109/CVPR52729.2023.00238.
+```
+
+## Pose
+
+!!! warning "其实 z 轴位移还是会丢掉"
+
+### [MMPose](https://github.com/open-mmlab/mmpose/tree/master)
+
+> MMPose is an open-source toolbox for pose estimation based on PyTorch. 
+
+### 2019: [VideoPose 3D](https://github.com/facebookresearch/VideoPose3D?tab=readme-ov-file)
+
+- Video-based
+
+    基于视频的方法就是在以上两类方法的基础上引入时间维度上的信息。相邻帧提供的上下文信息可以帮助我们更好地预测当前帧的姿态。对于遮挡情况，也可以根据前后几帧的姿态做一些合理推测。另外，由于在一段视频中同一个人的骨骼长度是不变的，因此这类方法通常会引入骨骼长度一致性的约束限制，有助于输出更加稳定的 3D pose。
+
+- 以 2D pose 序列作为输入，利用 Temporal Convolutional Network (TCN) 处理序列信息并输出 3D pose。
+
+    TCN 的本质是在时间域上的卷积，它相对于 RNN 的最大优势在于能够并行处理多个序列，且 TCN 的计算复杂度较低，模型参数量较少。
+
+- 在 VideoPose3D 中，作者进一步利用 dilated convolution 扩大 TCN 的感受野。具体的网络结构与 SimpleBaseline3D 类似，采用了残差连接的全卷积网络。
+
+- 除此以外，VideoPose3D 还包含了一种半监督的训练方法，主要思路是添加一个轨迹预测模型用于预测根关节的绝对坐标，将相机坐标系下绝对的 3D pose 投影回 2D 平面，从而引入重投影损失。半监督方法在 3D label 有限的情况下能够更好地提升精度。
+
+### 2022: [MHFormer](https://github.com/Vegetebird/MHFormer)
+
+Multi-Hypothesis Transformer（MHFormer）的方法，该方法旨在学习多个可能的姿势假设的时空表示。
+
+为了有效捕捉多假设之间的依赖关系，并在假设特征之间建立强大的关联，我们的方法将任务分解为三个阶段：
+
+- 生成多个初始假设表示：这个阶段涉及创建多个初始姿势假设的表示。
+
+- 建模自假设通信：在这一阶段，该方法涉及将多个假设合并为单个汇聚表示，然后将其分成几个分散的假设，以促进假设之间的通信。
+
+- 学习跨假设通信和特征聚合：这一阶段侧重于学习跨假设通信，并聚合多假设特征以合成最终的3D姿势。
+
+### 2024: [HoT](https://github.com/NationalGAILab/HoT)
+> Hourglass Tokenizer for Efficient Transformer-Based 3D Human Pose Estimation
+
+- 本文提出了一种即插即用的修剪和恢复框架，称为Hourglass Tokenizer（HoT），用于从视频中高效进行基于Transformer的三维人体姿势估计。
+  
+- HoT从修剪冗余帧的姿势标记开始，并以恢复完整长度的标记结束，从而在中间Transformer块中产生少量姿势标记，从而提高模型的效率。
+  
+    为了有效实现这一点，我们提出了一个标记修剪聚类（TPC），它动态选择一些具有高语义多样性的代表性标记，同时消除视频帧的冗余。
+    
+    此外，我们开发了一个标记恢复注意力（TRA），根据所选标记恢复详细的时空信息，从而将网络输出扩展到原始的全长度时间分辨率，以便进行快速推断。
+    
+## Segmentation
+
+### 2017: [ED-TCN](https://openaccess.thecvf.com/content_cvpr_2017/papers/Lea_Temporal_Convolutional_Networks_CVPR_2017_paper.pdf)
+
+- 我们的编码器-解码器TCN利用池化和上采样来有效捕获长程时间模式，而我们的扩张TCN使用扩张卷积。
+- TCNs能够捕获动作组合、段持续时间和长程依赖关系，并且训练速度比基于竞争的基于LSTM的递归神经网络快一个数量级。
+
+### 2020: [MS-TCN++](https://arxiv.org/abs/2006.09220)
+
+相比于MS-TCN的:
+
+1. 将原始生成的初始特征中利用并行的空洞卷积来捕获多尺度特征
+2. 从特征冗余的角度入手，认为后面几层的特征相似性较高，所以参数共享的方法来降低参数量和耦合度
+
+### 2021: [ACM-Net](https://arxiv.org/pdf/2104.02967.pdf)
+> Action Context Modeling Network for Weakly-Supervised Temporal Action Localization
+
+## 多模态
+
+### 2023: [Skating-Mixer](https://arxiv.org/pdf/2203.03990.pdf) 音频
+
+> Long-Term Sport Audio-Visual Modeling with MLPs
+
+ - Previous work
+  
+    1. 花样滑冰中的每个动作变化迅速，因此简单地应用传统的**帧采样**会丢失很多宝贵的信息，特别是在3到5分钟的视频中
+    2. 先前的方法很少考虑其模型中的关键 **audio-visual** 关系
+
+- Skating-Mixer: 它将MLP框架扩展为多模态方式，并通过我们设计的记忆循环单元（MRU）有效地学习长期表示。
+- Neo Dataset: FS1000
+  
+    其中包含了8种节目类型的1000多个视频，涵盖了7种不同的评分指标，在数量和多样性上超过了其他数据集。
+
+- benchmarks: Fis-V, FS1000

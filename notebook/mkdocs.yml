@@ -2,6 +2,7 @@ site_name: Action Quality Assessment
 site_url: https://triplepiers.github.io/AQA/
 copyright: Copyright © 2023 SeaBee
 plugins:
+  - search
   - mermaid2
   # - termynal:
   #     prompt_literal_start:
@@ -85,6 +86,7 @@ nav:
     - Selekton-based: sum/Selekton-Based.md
     - Segmentation: sum/Segmentation.md
 - Repitition: rep.md
+- FigureSkating: FigureSkating.md
 - References:
   - 2018:
     - ST-GCN 基于骨骼的动作识别: ref/2018 Skeleton.pdf
